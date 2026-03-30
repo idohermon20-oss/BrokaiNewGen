@@ -6,8 +6,15 @@ Edit this file to change bot tokens, API keys, scan intervals, etc.
 import os
 from pathlib import Path
 
+# Auto-load .env file from project root (if present)
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).parent.parent / ".env")
+except ImportError:
+    pass  # dotenv not installed — fall back to plain env vars
+
 # ─── Credentials ───────────────────────────────────────────────────────────────
-# Set these via environment variables (or a .env file loaded before import).
+# Values are read from the .env file in the project root (or from env vars).
 
 BOT_TOKEN      = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 CHAT_ID        = os.environ.get("TELEGRAM_CHAT_ID", "")
