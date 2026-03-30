@@ -1,0 +1,338 @@
+"""
+Maya scraper — TASE disclosure system via maya.tase.co.il (v1 API).
+Uses Playwright to establish a browser session, then calls the website's
+internal /api/v1/ endpoints via page.evaluate() (same-origin fetch).
+
+MayaMonitor       : fetch filings, company list, event calendar
+MayaFilingExtractor: extract structured facts from filing text
+EarningsCalendar  : upcoming earnings events
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import time
+from datetime import datetime, timedelta
+
+from ..config import MAYA_TYPE_MAP
+from ..models import Signal, now_iso, signal_key
+from ..analysis.enricher import SignalEnricher
+
+MAYA_V1_BASE = "https://maya.tase.co.il"
+MAYA_V1_API  = "/api/v1"
+
+
+class MayaMonitor:
+    def __init__(self):
+        from playwright.sync_api import sync_playwright
+        self._pw      = sync_playwright().start()
+        self._browser = self._pw.chromium.launch(headless=True)
+        self._context = self._browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            )
+        )
+        self._page = self._context.new_page()
+        print("[Maya] Launching browser session...")
+        try:
+            self._page.goto(
+                f"{MAYA_V1_BASE}/he",
+                wait_until="networkidle",
+                timeout=60000,
+            )
+            print("[Maya] Session established.")
+        except Exception as e:
+            print(f"[Maya] Session setup warning: {e}")
+
+    # ── Low-level helpers ──────────────────────────────────────────────────────
+
+    def _post(self, path: str, body: dict) -> list | dict:
+        """POST to maya.tase.co.il/api/v1/{path} via in-page fetch (same-origin)."""
+        body_json = json.dumps(body, ensure_ascii=False)
+        js = f"""async () => {{
+            const resp = await fetch('{MAYA_V1_API}{path}', {{
+                method: 'POST',
+                headers: {{'Content-Type': 'application/json', 'accept': 'application/json, text/plain, */*'}},
+                body: {repr(body_json)}
+            }});
+            const text = await resp.text();
+            return {{status: resp.status, body: text}};
+        }}"""
+        try:
+            result = self._page.evaluate(js)
+            if result["status"] != 200:
+                print(f"[Maya] POST {path} -> {result['status']}: {result['body'][:120]}")
+                return []
+            data = json.loads(result["body"])
+            if isinstance(data, dict) and "errors" in data:
+                print(f"[Maya] POST {path} error: {data['errors']}")
+                return []
+            return data
+        except Exception as e:
+            print(f"[Maya] POST {path} error: {e}")
+            return []
+
+    def _get_eval(self, path: str, params: str = "") -> list | dict:
+        """GET to maya.tase.co.il/api/v1/{path} via in-page fetch (same-origin)."""
+        url = f"{MAYA_V1_API}{path}"
+        if params:
+            url += f"?{params}"
+        js = f"""async () => {{
+            const resp = await fetch('{url}');
+            const text = await resp.text();
+            return {{status: resp.status, body: text}};
+        }}"""
+        try:
+            result = self._page.evaluate(js)
+            if result["status"] != 200:
+                return []
+            data = json.loads(result["body"])
+            if isinstance(data, dict) and "errors" in data:
+                return []
+            return data
+        except Exception as e:
+            print(f"[Maya] GET {path} error: {e}")
+            return []
+
+    # ── Public fetch methods ───────────────────────────────────────────────────
+
+    def fetch_recent_reports(self, page_size: int = 100) -> list[dict]:
+        """Fetch recent company filings via POST /api/v1/reports/companies."""
+        results = []
+        # API max page size appears to be 30, so paginate
+        per_page = 30
+        pages = max(1, (page_size + per_page - 1) // per_page)
+        for page_num in range(1, pages + 1):
+            batch = self._post(
+                "/reports/companies",
+                {"pageSize": per_page, "pageNumber": page_num},
+            )
+            if not isinstance(batch, list):
+                break
+            results.extend(batch)
+            if len(batch) < per_page:
+                break  # Last page
+        if not results:
+            print("[Maya] WARNING: fetch_recent_reports returned 0 results.")
+        return results
+
+    def fetch_company_list(self) -> list[dict]:
+        """
+        Build a minimal company list from autocomplete for news-name matching.
+        Ticker symbols are not available via this API — returns [] for the
+        company map, which disables yfinance-based market scanning.
+        The market anomaly detector falls back to TASE_MAJOR_TICKERS in config.
+        """
+        # Query Hebrew 2-letter combos to cover most company names
+        companies = {}
+        for prefix in ["אל", "בז", "בנ", "גב", "דל", "הב", "וי", "חב", "טב",
+                        "יב", "כי", "לב", "מנ", "נת", "סל", "עב", "פז", "צל",
+                        "קב", "רב", "שב", "תב", "אי", "בי", "גי", "מי"]:
+            batch = self._get_eval("/companies/autocomplete", f"Search={prefix}")
+            if isinstance(batch, list):
+                for item in batch:
+                    key = item.get("key")
+                    name = item.get("value", "")
+                    if key and name:
+                        companies[key] = name
+        # Use TASE{companyId} as pseudo-ticker so news signals can converge
+        # with Maya filing signals that share the same company
+        result = [{"CompanyName": name, "CompanyTicker": f"TASE{cid}", "CompanyId": cid}
+                  for cid, name in companies.items()]
+        print(f"[Maya] Company list built: {len(result)} names.")
+        return result
+
+    def fetch_event_calendar(self, days_ahead: int = 14) -> list[dict]:
+        """Fetch scheduled financial reports (earnings calendar)."""
+        result = self._post(
+            "/corporate-actions/financial-reports-schedule",
+            {"pageSize": 30, "pageNumber": 1},
+        )
+        return result if isinstance(result, list) else []
+
+    def fetch_institutional_filings(self, page_size: int = 50) -> list[dict]:
+        """Fetch institutional-holder filings — uses same endpoint, filtered by keyword."""
+        reports = self.fetch_recent_reports(page_size)
+        # Filter to reports whose title contains Hebrew institutional keywords
+        institutional_kw = ["מחזיק", "בעל עניין", "רכישה", "מכירה", "החזקה"]
+        return [r for r in reports if any(kw in str(r.get("title", "")) for kw in institutional_kw)]
+
+    def fetch_filing_text(self, url: str) -> str:
+        """Navigate to a filing URL and extract visible text."""
+        page = self._context.new_page()
+        try:
+            page.goto(url, wait_until="networkidle", timeout=25000)
+            text = page.inner_text("body")
+            text = re.sub(r"\s+", " ", text)
+            return text[:4000]
+        except Exception:
+            return ""
+        finally:
+            page.close()
+
+    def reports_to_signals(
+        self, reports: list[dict], seen_ids: set[str]
+    ) -> tuple[list[Signal], dict[str, str]]:
+        signals  = []
+        texts    = {}
+        enricher       = SignalEnricher()
+        extractor      = MayaFilingExtractor()
+        full_text_count = 0   # limit full-text fetches per cycle
+
+        for rep in reports:
+            rep_id = str(rep.get("id", ""))
+            if not rep_id or rep_id in seen_ids:
+                continue
+
+            # Extract company info from the nested companies array
+            companies_list = rep.get("companies", [])
+            first_co   = companies_list[0] if companies_list else {}
+            company_name = first_co.get("name", rep.get("reporterName", "Unknown"))
+            company_id   = str(first_co.get("companyId", ""))
+            # Use TASE{companyId} as pseudo-ticker for convergence grouping
+            ticker       = f"TASE{company_id}" if company_id else ""
+
+            title       = rep.get("title", "")
+            form_id     = rep.get("formId") or ""
+            report_date = (rep.get("publishDate") or "")[:10]
+            # Construct a deep-link to the report on the Maya website
+            url         = f"{MAYA_V1_BASE}/he/reports/{rep_id}"
+
+            # Determine signal sub-type from title keywords (MAYA_TYPE_MAP)
+            sub_type = "filing"
+            for kw, mapped in MAYA_TYPE_MAP.items():
+                if kw in title or kw in form_id:
+                    sub_type = mapped
+                    break
+
+            sig = Signal(
+                ticker       = ticker,
+                ticker_yf    = "",
+                company_name = company_name,
+                signal_type  = f"maya_{sub_type}",
+                headline     = f"Maya: {title[:120] or form_id or 'Regulatory disclosure'}",
+                detail       = f"Form: {form_id} | Date: {report_date} | Co: {company_name}",
+                url          = url,
+                timestamp    = now_iso(),
+            )
+
+            filing_text = title + " " + company_name
+            facts = extractor.extract(filing_text, f"maya_{sub_type}")
+            if facts:
+                sig.detail += " | " + json.dumps(facts, ensure_ascii=False)
+
+            # For high-value signal types, fetch full filing text (max 2 per cycle)
+            if sub_type in ("contract", "institutional") and full_text_count < 2:
+                full_text = self.fetch_filing_text(url)
+                if full_text:
+                    full_facts = extractor.extract(full_text, f"maya_{sub_type}")
+                    if full_facts:
+                        sig.detail += " | FULL: " + json.dumps(full_facts, ensure_ascii=False)
+                    filing_text = full_text
+                    full_text_count += 1
+
+            enricher.enrich(sig, filing_text)
+            signals.append(sig)
+            texts[signal_key(sig)] = filing_text
+            seen_ids.add(rep_id)
+
+        return signals, texts
+
+    def close(self):
+        try:
+            self._page.close()
+            self._context.close()
+            self._browser.close()
+            self._pw.stop()
+        except Exception:
+            pass
+
+
+class MayaFilingExtractor:
+    """Extracts structured facts from Maya filing text using regex + keywords."""
+
+    _AMOUNT_RE = re.compile(
+        r"(\$|USD|ILS|NIS|₪)?\s*(\d[\d,\.]*)\s*(million|billion|מיליון|מיליארד|M|B)\b",
+        re.IGNORECASE,
+    )
+    _STAKE_RE = re.compile(r"(\d+\.?\d*)\s*(%|percent)", re.IGNORECASE)
+
+    def extract(self, text: str, signal_type: str) -> dict:
+        result = {}
+        if not text:
+            return result
+
+        if "contract" in signal_type or "new_contract" in signal_type or "maya_contract" in signal_type:
+            m = self._AMOUNT_RE.search(text)
+            if m:
+                result["deal_size"] = m.group(0).strip()
+            for kw in ["with ", "from ", "by ", "customer: ", "client: "]:
+                idx = text.lower().find(kw)
+                if idx != -1:
+                    raw_snippet = text[idx + len(kw):idx + len(kw) + 50]
+                    snippet = re.split(r"[,\.\(\)\d\$₪]|\bworth\b|\bfor\b|\band\b", raw_snippet)[0].strip()
+                    if snippet and len(snippet) > 2:
+                        result["customer_name"] = snippet
+                        break
+            if "raised guidance" in text.lower() or "raised its guidance" in text.lower():
+                result["guidance_raised"] = True
+
+        if "institutional" in signal_type or "shareholder" in signal_type or "מחזיק" in text:
+            m = self._STAKE_RE.search(text)
+            if m:
+                result["stake_pct"] = m.group(0).strip()
+            tl = text.lower()
+            buy_words  = ["purchased", "acquired", "increased", "bought", "רכש", "הגדיל"]
+            sell_words = ["sold", "disposed", "decreased", "מכר", "הפחית"]
+            if any(w in tl for w in buy_words):
+                result["direction"] = "BUY"
+            elif any(w in tl for w in sell_words):
+                result["direction"] = "SELL"
+
+        if "earnings" in signal_type or "maya_earnings" in signal_type:
+            tl = text.lower()
+            if any(w in tl for w in ["beat", "exceeded", "above expectations", "עלה על הציפיות"]):
+                result["beat_estimates"] = True
+            if any(w in tl for w in ["raised guidance", "increased guidance", "העלה תחזית"]):
+                result["guidance_raised"] = True
+            for q in ["Q1", "Q2", "Q3", "Q4"]:
+                if q in text:
+                    result["period"] = q
+                    break
+
+        return result
+
+
+class EarningsCalendar:
+    def __init__(self, maya: MayaMonitor):
+        self.maya = maya
+
+    def get_upcoming(self, days_ahead: int = 10) -> list[Signal]:
+        events  = self.maya.fetch_event_calendar(days_ahead)
+        signals = []
+        today   = datetime.now().date()
+        cutoff  = (today + timedelta(days=days_ahead)).isoformat()
+
+        for ev in events:
+            company    = ev.get("companyName", ev.get("CompanyName", "Unknown"))
+            company_id = str(ev.get("companyId", ""))
+            ticker     = f"TASE{company_id}" if company_id else ""
+            ev_date    = (ev.get("scheduledDate") or ev.get("EventDate") or ev.get("Date") or "")[:10]
+            ev_type    = ev.get("eventName", ev.get("EventType", ev.get("Type", "earnings")))
+            if ev_date and ev_date > cutoff:
+                continue
+            signals.append(Signal(
+                ticker       = ticker,
+                ticker_yf    = "",
+                company_name = company,
+                signal_type  = "earnings_calendar",
+                headline     = f"{company}: {ev_type} expected {ev_date}",
+                detail       = str(ev),
+                url          = f"{MAYA_V1_BASE}/he/corporate-actions",
+                timestamp    = now_iso(),
+                event_date   = ev_date,
+            ))
+        return signals

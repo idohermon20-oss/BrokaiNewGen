@@ -1,0 +1,19 @@
+{
+  "language": "en",
+  "alerts_enabled": true,
+  "scan_interval_seconds": 900,
+  "top_n_alerts": 3,
+  "volume_spike_x": 2.5,
+  "price_move_pct": 3.5,
+  "enabled_sectors": [
+    "Banks",
+    "TechDefense",
+    "Energy",
+    "PharmaBiotech",
+    "RealEstate",
+    "TelecomConsumer",
+    "Discovery"
+  ],
+  "last_offset": 549998341,
+  "last_updated": "2026-03-27T12:48:58.293009+00:00"
+}
