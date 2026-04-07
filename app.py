@@ -9,6 +9,10 @@ import re
 import threading
 from datetime import date, datetime
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env before anything else so OPENAI_API_KEY is available
+load_dotenv()
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
