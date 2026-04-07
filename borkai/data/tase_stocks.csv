@@ -1,0 +1,94 @@
+ticker,name,sector,market_cap_bucket
+HAPO,Bank Hapoalim,Banks,large
+LUMI,Bank Leumi,Banks,large
+MZTF,Mizrahi Tefahot Bank,Banks,large
+DSCT,Bank Discount,Banks,large
+FIBI,First International Bank,Banks,mid
+PHOE,Phoenix Insurance,Insurance,large
+HARL,Harel Insurance,Insurance,large
+MGDL,Migdal Insurance,Insurance,large
+MSBI,Menorah Mivtachim,Insurance,large
+ESLT,Elbit Systems,Defense,large
+ICL,ICL Group,Chemicals,large
+ORL,Bazan Oil Refineries,Energy,large
+DLEKG,Delek Group,Energy,large
+PZOL,Paz Energy,Energy,large
+ENLT,Enlight Renewable Energy,Energy,mid
+GSFI,NewMed Energy,Energy,mid
+SPNR,Shapir Engineering,Construction,large
+BEZQ,Bezeq,Telecom,large
+PTNR,Partner Communications,Telecom,large
+CEL,Cellcom,Telecom,mid
+AZRG,Azrieli Group,Real Estate,large
+AMOT,Amot Investments,Real Estate,large
+ELCO,Elco Holdings,Real Estate,large
+GVYM,Gav-Yam Lands,Real Estate,mid
+PTBL,Property and Building,Real Estate,mid
+ALRV,Alrov Properties,Real Estate,mid
+SUPR,Shufersal,Retail,large
+RAMI,Rami Levy,Retail,large
+OSEM,Osem,Food,large
+STRS,Strauss Group,Food,large
+DLTA,Delta Galil,Consumer,large
+NICE,NICE Systems,Technology,large
+TSEM,Tower Semiconductor,Technology,large
+NVMI,Nova Ltd,Technology,large
+AUDC,AudioCodes,Technology,mid
+CAMT,Camtek,Technology,mid
+GILT,Gilat Satellite,Technology,mid
+ALLT,Allot Communications,Technology,mid
+RDCM,Radcom,Technology,small
+SILI,Silicom,Technology,mid
+TEVA,Teva Pharmaceutical,Pharma,large
+IDB,IDB Holdings,Holdings,mid
+KRUR,Kibbutz Industries,Holdings,mid
+ACCRV,Acer Capital,Holdings,small
+CLAL,Clal Insurance,Insurance,large
+MIVTX,Mivtach Shamir Holdings,Insurance,large
+DIFI,Direct Insurance,Insurance,mid
+ILCO,Israel Corp,Holdings,large
+MTIL,Meitav Investment House,Finance,large
+MTDS,Meitav Dash Investments,Finance,large
+SGRE,Shikun & Binui,Construction,large
+MTRX,Matrix IT,Technology,large
+PCBT,Priority Software,Technology,mid
+HLWN,Hilan Tech,Technology,mid
+PCOM,Pointer Telocation,Technology,mid
+BRND,Brainsway,Pharma,mid
+BLRX,BioLineRx,Pharma,small
+MAPI,Mapi Pharma,Pharma,mid
+ZIM,Zim Integrated Shipping,Transport,large
+SPCE,Spacecom,Telecom,mid
+MNRT,Menivim,Real Estate,mid
+ECMX,Electra Real Estate,Real Estate,mid
+DRSL,Dor Alon Energy,Energy,mid
+LVPR,Lev Leviev Properties,Holdings,mid
+AYAL,Ayalon Insurance,Insurance,mid
+ISCF,Israel Chemicals Finance,Chemicals,mid
+AMRK,A.M.R.K. Holdings,Holdings,small
+HDST,Hadassah Biomedical,Pharma,small
+KARE,Kamedis Pharma,Pharma,small
+EVGN,Evogene,Technology,small
+BCNV,BioCanCell,Pharma,small
+NAWI,Nawi Brothers Group,Construction,small
+RMLI,Rami Levy Chain Stores,Retail,large
+TVLT,Tivall,Food,mid
+BRAM,Bram Industries,Consumer,small
+CLIS,Clal Industries,Holdings,large
+FTAL,Fattal Hotels,Consumer,large
+ISCM,Iscar Metal Working,Manufacturing,large
+DORL,Dorad Energy,Energy,mid
+GNGR,Gan Shmuel Foods,Food,small
+HLIL,Hilan,Technology,mid
+MGRT,Migros Turkey,Retail,mid
+NVLG,Novolog Pharmaceutical,Pharma,small
+OPKO,OPKOHealth Israel,Pharma,mid
+PLSN,Plus500,Finance,large
+SMLT,Sievert Larsen Moltech,Manufacturing,small
+THGR,The Group Real Estate,Real Estate,small
+VNET,VocalTec Communications,Technology,small
+WSMR,Weissman Real Estate,Real Estate,small
+YAHD,Yahad Real Estate,Real Estate,small
+ZRFN,Zrif Energy,Energy,small
+AFIL,Africa Israel Investments,Holdings,large
+KNFM,Knafaim Holdings,Transport,mid
