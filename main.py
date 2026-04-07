@@ -117,7 +117,7 @@ def analyze(
     time_horizon: str,
     market: str = "us",
     save_report: bool = True,
-    output_dir: str = ".",
+    output_dir: str = "reports",
     progress_callback: Optional[Callable[[int, str, str], None]] = None,
 ) -> tuple:
     """

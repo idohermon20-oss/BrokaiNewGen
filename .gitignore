@@ -22,6 +22,8 @@ env/
 
 # Reports output (generated files — don't commit)
 reports/
+report_*.md
+*.docx
 
 # IDE
 .vscode/
