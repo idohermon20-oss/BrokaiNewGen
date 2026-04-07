@@ -1,0 +1,1182 @@
+{
+  "source": "il.investing.com/equities/israel",
+  "total": 168,
+  "stocks": [
+    {
+      "englishName": "מניות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מניות פופולריות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/trending-stocks",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טרום פתיחת מסחר - ארה\"ב",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/pre-market",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מסחר מאוחר",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/after-hours",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אמריקה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/americas",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אירופה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/europe",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שיא 52 שבועות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/52-week-high",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שפל 52 שבועות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/52-week-low",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הכי פעילות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/most-active-stocks",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "עולות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/top-stock-gainers",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "יורדות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/top-stock-losers",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מניות מוערכות בחסר",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/most-undervalued",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מניות מוערכות ביתר",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/most-overvalued",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מניות דואליות בעולם",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/world-adrs",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מניות קנאביס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/cannabis-stocks",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טבע",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/teva-pharm",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פועלים",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bank-hapoalim",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "לאומי",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bank-leumi-le-is",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "איי.סי.אל",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/icl",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בזק",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bezeq-ord",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "דלק קבוצה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/delek-group",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אלטשולר שחם פיננסים",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/altshuler-shaham-funds-pension-ltd",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אל על",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/el-al",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פייזר",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/pfizer",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מטא פלטפורמס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/facebook-inc",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טסלה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/tesla-motors",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אפל",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/apple-computer-inc",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אנבידיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/nvidia-corp",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "Trump Media & Technology Group",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/digital-world-acquisition",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פלנטיר טכנולוג'יז",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/palantir-technologies-inc",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "המזרח התיכון",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/middle-east",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אסיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/asia-pacific",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ארגנטינה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/argentina",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ארצות הברית",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/united-states",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ברזיל",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/brazil",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ג'מיקה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/jamaica",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ונצואלה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/venezuela",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מקסיקו",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/mexico",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פרו",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/peru",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "צ'ילה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/chile",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קולומביה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/colombia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קוסטה ריקה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/costa-rica",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קנדה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/canada",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אוסטריה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/austria",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אוקראינה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/ukraine",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "איטליה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/italy",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "איסלנד",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/iceland",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אירלנד",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/ireland",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אסטוניה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/estonia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בולגריה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bulgaria",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בוסניה והרצגובינה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bosnia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בלגיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/belgium",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בריטניה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/united-kingdom",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "גרמניה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/germany",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "דנמרק",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/denmark",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הולנד",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/netherlands",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הונגריה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/hungary",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טורקיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/turkey",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "יוון",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/greece",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "לוקסמבורג",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/luxembourg",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "לטביה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/latvia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ליטא",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/lithuania",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מונטנגרו",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/montenegro",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מלטה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/malta",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "נורבגיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/norway",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "סלובניה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/slovenia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "סלובקיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/slovakia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ספרד",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/spain",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "סרביה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/serbia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פולין",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/poland",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פורטוגל",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/portugal",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פינלנד",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/finland",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "צרפת",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/france",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קפריסין",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/cyprus",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קרואטיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/croatia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "רומניה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/romania",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "רוסיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/russia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "רפובליקה צ'כית",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/czech-republic",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שבדיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/sweden",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שוויץ",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/switzerland",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אוסטרליה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/australia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אינדונזיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/indonesia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בנגלדש",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bangladesh",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "דרום קוריאה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/south-korea",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הודו",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/india",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הונג קונג",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/hong-kong",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ויטנאם",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/vietnam",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טאיוואן",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/taiwan",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "יפן",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/japan",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מונגוליה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/mongolia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מלזיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/malaysia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ניו-זילנד",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/new-zealand",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "סין",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/china",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "סינגפור",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/singapore",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "סרי לנקה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/sri-lanka",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פיליפינים",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/philippines",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פקיסטן",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/pakistan",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קזחסטן",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/kazakhstan",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "תאילנד",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/thailand",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "איחוד האמירויות הערביות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/abu-dhabi",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בחריין",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bahrain",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הרשות הפלסטינית",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/palestine",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ירדן",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/jordan",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "כווית",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/kuwait",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "לבנון",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/lebanon",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מצרים",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/egypt",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "עומן",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/oman",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "עיראק",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/iraq",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ערב הסעודית",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/saudi-arabia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קטאר",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/qatar",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אפריקה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/africa",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אוגנדה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/uganda",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בוטסואנה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/botswana",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "דרום אפריקה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/south-africa",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "זימבבואה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/zimbabwe",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "זמביה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/zambia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "חוף השנהב",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/ivory-coast",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טוניס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/tunisia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טנזניה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/tanzania",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מאוריציוס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/mauritius",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מלאווי",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/malawi",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מרוקו",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/morocco",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ניגריה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/nigeria",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "נמיביה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/namibia",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קניה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/kenya",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "רואנדה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/rwanda",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אמות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/amot-investments",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "כלל עסקי ביטוח",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/clal-insurance",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ניו-מד אנרג יהש",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/delek-drill-par",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "דיסקונט",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/isr-discount-bnk",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אלביט מערכות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/elbit-systems-limited?cid=10906",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "בינלאומי",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/fibi-5",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הראל השקעות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/harel-ins---inv",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מבנה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/indus-building",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מגדל ביטוח",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/migdal-insurance",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מליסרון",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/melisron-1",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מנורה מב החזקות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/menora-mivt-hld",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מזרחי טפחות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/mizrahi-tefahot",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "נייס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/nice-systems",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "הפניקס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/phoenix-ord1",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שופרסל",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/super-sol-01",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שטראוס גרופ",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/strauss-group",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "טאואר",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/tower-semicond",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "קמטק",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/camtek",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "דמרי",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/dimri",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "נובה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/nova-measuring",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "עזריאלי קבוצה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/azrieli-group",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ביג",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/big",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אנלייט אנרגיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/enlight-ene",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שפיר הנדסה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/shapir-engineering-industry",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אורמת טכנולוגיות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/ormat-technologies-inc?cid=945707",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "או.פי.סי אנרגיה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/opc-energy",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "נאוויטס פטרו",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/navitas-petroleum-unit",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פתאל",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/fattal-1998",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "נקסט ויז׳ן",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/next-vision-stabilized-systems",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מאסיבית",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/massivit-3d-printing-technologies",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "תיקון עולם קנבט",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/tamir-fishmn-ven",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "תמיס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/b.-yair",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "אירודרום קבוצה",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/apply",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "Stark Power",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/ecoppia-scientific",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "גילת",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/gilat-satellite",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "מיטרוניקס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/maytronics",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "ביוליין אר אקס",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/bioline-rx-ltd",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "גוטו",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/neratech-media",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "נקסטייג׳",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/micromedic",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "תיגי",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/tigi",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "פלסאנמור",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/pulsenmore",
+      "ticker_yf": ""
+    },
+    {
+      "englishName": "שור-טק השקעות",
+      "hebrewName": "",
+      "ticker": "",
+      "url": "https://il.investing.com/equities/suretech-investments-lp",
+      "ticker_yf": ""
+    }
+  ]
+}

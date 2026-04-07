@@ -790,18 +790,25 @@ class DeepStockAnalyzer:
                 # MA trend direction — useful for LLM context
                 if out.get("ma_20") and out.get("ma_50"):
                     out["ma_trend"] = "bullish" if out["ma_20"] > out["ma_50"] else "bearish"
-                # Day change: live price vs last session close (or last two closes)
+                # Last-session change vs prior close.
+                # NOTE: TASE .TA tickers on Yahoo Finance provide end-of-day data only —
+                # no real-time intraday feed. fast_info.last_price equals the most recent
+                # available close, so this always reflects the last completed session's move,
+                # not the current intraday move if the market is open right now.
                 if len(df) >= 2:
                     prev      = float(close.iloc[-2])
                     last_sess = float(close.iloc[-1])
                     live      = out.get("last_price") or last_sess
                     if prev > 0:
-                        # If live price differs from last close → market open (intraday)
+                        # If live differs materially from last close → true intraday (rare for .TA)
                         if last_sess > 0 and abs(live - last_sess) / last_sess > 0.001:
-                            out["today_change_pct"] = round((live / last_sess - 1) * 100, 2)
+                            out["today_change_pct"]   = round((live / last_sess - 1) * 100, 2)
+                            out["price_data_note"]    = "intraday"
                         else:
-                            out["today_change_pct"] = round((last_sess / prev - 1) * 100, 2)
+                            out["today_change_pct"]   = round((last_sess / prev - 1) * 100, 2)
+                            out["price_data_note"]    = "last_session"  # end-of-day, not real-time
 
+            # Income statement financials
             try:
                 fin = tk.income_stmt
                 if fin is not None and not fin.empty:
@@ -809,16 +816,74 @@ class DeepStockAnalyzer:
                     if rev_row is not None and len(rev_row) >= 2:
                         rev_growth = (rev_row.iloc[0] - rev_row.iloc[1]) / abs(rev_row.iloc[1]) * 100
                         out["revenue_growth_pct"] = round(rev_growth, 1)
-                    # Also capture net income growth
                     ni_row = fin.loc["Net Income"] if "Net Income" in fin.index else None
                     if ni_row is not None and len(ni_row) >= 2 and ni_row.iloc[1] != 0:
                         ni_growth = (ni_row.iloc[0] - ni_row.iloc[1]) / abs(ni_row.iloc[1]) * 100
                         out["net_income_growth_pct"] = round(ni_growth, 1)
             except Exception:
                 pass
+
+            # Valuation multiples — fetched via .info for LLM scoring context.
+            # These are critical for the sector LLM: P/E for growth vs value,
+            # P/B for banks, dividend yield for telecom/banks/RE, margins for quality.
+            try:
+                full_info = tk.info
+                pe_t = full_info.get("trailingPE")
+                pe_f = full_info.get("forwardPE")
+                pb   = full_info.get("priceToBook")
+                div  = full_info.get("dividendYield")
+                gm   = full_info.get("grossMargins")
+                nm   = full_info.get("profitMargins")
+                de   = full_info.get("debtToEquity")
+                if pe_t and 0 < pe_t < 500:   out["pe_trailing"]     = round(pe_t, 1)
+                if pe_f and 0 < pe_f < 500:   out["pe_forward"]      = round(pe_f, 1)
+                if pb  and pb > 0:             out["price_to_book"]   = round(pb, 2)
+                if div and div > 0:            out["dividend_yield"]  = round(div * 100, 2)  # as %
+                if gm  is not None:            out["gross_margin"]    = round(gm * 100, 1)   # as %
+                if nm  is not None:            out["net_margin"]      = round(nm * 100, 1)   # as %
+                if de  is not None:            out["debt_to_equity"]  = round(de, 1)
+            except Exception:
+                pass
+
         except Exception as e:
             out["error"] = str(e)
         return out
+
+
+def refresh_financial_snapshot_cache(tickers: list, state: dict) -> None:
+    """
+    Refresh daily financial snapshot for all major TASE stocks.
+    Fetches yf.Ticker(t).info for each ticker and stores key metrics in
+    state["financial_snapshot_cache"]. Called once per day from researcher.py.
+    """
+    import logging
+    log = logging.getLogger(__name__)
+    cache: dict = {}
+    for t in tickers:
+        try:
+            info = yf.Ticker(t).info
+            div_raw = info.get("dividendYield")
+            rev_raw = info.get("revenueGrowth")
+            pm_raw  = info.get("profitMargins")
+            gm_raw  = info.get("grossMargins")
+            roe_raw = info.get("returnOnEquity")
+            cache[t] = {
+                "price":             info.get("currentPrice") or info.get("regularMarketPrice"),
+                "mktCap":            info.get("marketCap"),
+                "pe_trailing":       info.get("trailingPE"),
+                "pe_forward":        info.get("forwardPE"),
+                "price_to_book":     info.get("priceToBook"),
+                "dividend_yield":    round(div_raw * 100, 2) if div_raw else None,
+                "revenue_growth_pct": round(rev_raw * 100, 1) if rev_raw else None,
+                "net_margin":        round(pm_raw  * 100, 1) if pm_raw  is not None else None,
+                "gross_margin":      round(gm_raw  * 100, 1) if gm_raw  is not None else None,
+                "return_on_equity":  round(roe_raw * 100, 1) if roe_raw is not None else None,
+                "debt_to_equity":    info.get("debtToEquity"),
+            }
+        except Exception:
+            cache[t] = {}
+    state["financial_snapshot_cache"] = cache
+    log.info(f"[FinSnap] Refreshed financial snapshot for {len(cache)} tickers")
 
 
 class DynamicUniverseBuilder:

@@ -1,0 +1,3949 @@
+{
+  "generated": "2026-04-03",
+  "total": 788,
+  "with_english_name": 539,
+  "with_hebrew_name": 171,
+  "with_both_names": 171,
+  "stocks": [
+    {
+      "ticker": "ABOU-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ABOU.TA",
+      "english_name": "Abou Family Residence Ltd",
+      "hebrew_name": "אבו פמילי ריט בע\"מ"
+    },
+    {
+      "ticker": "ABRA.TA",
+      "english_name": "Abra Information Technologies Ltd.",
+      "hebrew_name": "אברא טכנולוגיות מידע בע\"מ"
+    },
+    {
+      "ticker": "ACCL.TA",
+      "english_name": "Accel Solutions Group Ltd",
+      "hebrew_name": "אקסל סולושנס גרופ בע\"מ"
+    },
+    {
+      "ticker": "ACKR.TA",
+      "english_name": "Ackerstein Group Ltd",
+      "hebrew_name": "קבוצת אקרשטיין בע\"מ"
+    },
+    {
+      "ticker": "ACRO-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ACRO.TA",
+      "english_name": "Kvutzat Acro Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ADGR.TA",
+      "english_name": "Adgar Investments and Development Ltd",
+      "hebrew_name": "אדגר השקעות ופיתוח בע\"מ"
+    },
+    {
+      "ticker": "ADRT-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AEPL-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AEPL-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AFHL-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AFHL.TA",
+      "english_name": "Afcon Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AFPR-P5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AFPR.TA",
+      "english_name": "AFI Properties Ltd.",
+      "hebrew_name": "אפי נכסים בע\"מ"
+    },
+    {
+      "ticker": "AFRE-B6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AFRE.TA",
+      "english_name": "Africa Israel Residences Ltd",
+      "hebrew_name": "אפריקה ישראל מגורים בע\"מ"
+    },
+    {
+      "ticker": "AGLN-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AGRD-C1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AGRD.TA",
+      "english_name": "Autonomous Guard Ltd",
+      "hebrew_name": "אוטונומוס גארד בע\"מ"
+    },
+    {
+      "ticker": "AILN.TA",
+      "english_name": "Axilion Smart Mobility Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALAR.TA",
+      "english_name": "Alarum Technologies Ltd.",
+      "hebrew_name": "אלארום טכנולוגיות בע\"מ"
+    },
+    {
+      "ticker": "ALBA.TA",
+      "english_name": "Albaad Massuot Yitzhak Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALHE-B16.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALHE-B17.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALHE.TA",
+      "english_name": "Alony-Hetz Properties & Investments Ltd",
+      "hebrew_name": "אלוני-חץ נכסים והשקעות בע\"מ"
+    },
+    {
+      "ticker": "ALL.TA",
+      "english_name": "AllTrade Recycling Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALLT.TA",
+      "english_name": "Allot Ltd.",
+      "hebrew_name": "אלוט בע\"מ"
+    },
+    {
+      "ticker": "ALMA.TA",
+      "english_name": "Almogim Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALMC-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALMD.TA",
+      "english_name": "Allmed Solutions Ltd",
+      "hebrew_name": "אולמד סולושנס בע\"מ"
+    },
+    {
+      "ticker": "ALMY-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALMY.TA",
+      "english_name": "ALMA YESODOT",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALRPR.TA",
+      "english_name": "Alrov Properties and Lodgings Ltd.",
+      "hebrew_name": "אלרוב נדל\"ן ומלונאות בע\"מ"
+    },
+    {
+      "ticker": "ALTF.TA",
+      "english_name": "Altshuler Shaham Finance Ltd",
+      "hebrew_name": "אלטשולר שחם גמל ופנסיה בע\"מ"
+    },
+    {
+      "ticker": "ALUM-C1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ALUMA.TA",
+      "english_name": "Aluma Infrastructure Fund (2020) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMAL.TA",
+      "english_name": "Amal Holdings A.D. Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMAN.TA",
+      "english_name": "Amanet Management & Systems Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMD.TA",
+      "english_name": "Amiad Water Systems Ltd.",
+      "hebrew_name": "עמיעד מערכות מים בע\"מ"
+    },
+    {
+      "ticker": "AMDA.TA",
+      "english_name": "Almeda Ventures Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMOT.TA",
+      "english_name": "Amot Investments Ltd.",
+      "hebrew_name": "אמות השקעות בע\"מ"
+    },
+    {
+      "ticker": "AMPA-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMPA.TA",
+      "english_name": "Ampa Ltd",
+      "hebrew_name": "אמפא בע\"מ"
+    },
+    {
+      "ticker": "AMRK.TA",
+      "english_name": "Amir Marketing and Investments in Agriculture Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMRM.TA",
+      "english_name": "AMRAM AVRAHAM CONS",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMTR-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AMTR-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ANGL.TA",
+      "english_name": "Salomon A. Angel Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ANLT.TA",
+      "english_name": "Analyst I.M.S. Investment Management Services Ltd",
+      "hebrew_name": "אנליסט אי.אמ.אס.-שרותי ניהול השקעות בע\"מ"
+    },
+    {
+      "ticker": "APLP.TA",
+      "english_name": "Apollo Power Ltd.",
+      "hebrew_name": "אפולו פאוור בע\"מ"
+    },
+    {
+      "ticker": "ARAN.TA",
+      "english_name": "Aran Research & Development (1982) Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ARBE.TA",
+      "english_name": "Arbe Robotics Ltd.",
+      "hebrew_name": "ארבה רובוטיקס בע\"מ"
+    },
+    {
+      "ticker": "ARD.TA",
+      "english_name": "Arad Ltd.",
+      "hebrew_name": "ארד בע\"מ"
+    },
+    {
+      "ticker": "ARDM.TA",
+      "english_name": "Aerodrome Group Ltd",
+      "hebrew_name": "קבוצת אירודרום בע\"מ"
+    },
+    {
+      "ticker": "ARF.TA",
+      "english_name": "Ashdod Refinery Ltd",
+      "hebrew_name": "בית זיקוק אשדוד בע\"מ"
+    },
+    {
+      "ticker": "ARGO-C1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ARGO.TA",
+      "english_name": "ARGO Properties N.V.",
+      "hebrew_name": "ארגו פרופרטיז אן.וי."
+    },
+    {
+      "ticker": "ARIN.TA",
+      "english_name": "Ari Real Estate (Arena) Investment Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ARNG.TA",
+      "english_name": "Airengy Tech Ltd",
+      "hebrew_name": "אייראנג'י טק בע\"מ"
+    },
+    {
+      "ticker": "ARPR-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ARPT-B13.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ARPT-B14.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ARPT.TA",
+      "english_name": "Airport City Ltd.",
+      "hebrew_name": "איירפורט סיטי בע\"מ"
+    },
+    {
+      "ticker": "ARTS.TA",
+      "english_name": "Airtouch Solar Ltd",
+      "hebrew_name": "איירטאצ' סולאר בע\"מ"
+    },
+    {
+      "ticker": "ARYT.TA",
+      "english_name": "Aryt Industries Ltd.",
+      "hebrew_name": "ארית תעשיות בע\"מ"
+    },
+    {
+      "ticker": "ASGR-B10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ASGR-B11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ASGR.TA",
+      "english_name": "Aspen Group Ltd.",
+      "hebrew_name": "אספן גרופ בע\"מ"
+    },
+    {
+      "ticker": "ASHG.TA",
+      "english_name": "Ashtrom Group Ltd.",
+      "hebrew_name": "אשטרום נכסים בע\"מ"
+    },
+    {
+      "ticker": "ASHO.TA",
+      "english_name": "Ashot Ashkelon Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ATRY.TA",
+      "english_name": "Atreyu Capital Markets Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AUDC.TA",
+      "english_name": "AudioCodes Ltd.",
+      "hebrew_name": "אודיוקודס בע\"מ"
+    },
+    {
+      "ticker": "AUIS.TA",
+      "english_name": "E.S. Australia Israel Holdings Ltd",
+      "hebrew_name": "א.ש. אוסטרליה ישראל החזקות בע\"מ"
+    },
+    {
+      "ticker": "AURA-B19.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AURA.TA",
+      "english_name": "Aura Investments Ltd.",
+      "hebrew_name": "אאורה השקעות בע\"מ"
+    },
+    {
+      "ticker": "AUSA-M.TA",
+      "english_name": "Aura Smart Air Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVDP-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVDP-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVDP-B6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVGD-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVGD.TA",
+      "english_name": "Av-Gad Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVGL.TA",
+      "english_name": "Avgol Industries 1953 Ltd",
+      "hebrew_name": "אבגול תעשיות 1953 בע\"מ"
+    },
+    {
+      "ticker": "AVIA.TA",
+      "english_name": "Aviation Links Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVIV.TA",
+      "english_name": "Mordechai Aviv Taasiot Beniyah (1973) Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AVRT.TA",
+      "english_name": "Avrot Industries Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AXN.TA",
+      "english_name": "Axon Vision Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AYA-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AYAL.TA",
+      "english_name": "Ayalon Insurance Company Ltd",
+      "hebrew_name": "איילון חברה לביטוח בע\"מ"
+    },
+    {
+      "ticker": "AZRG.TA",
+      "english_name": "Azrieli Group Ltd.",
+      "hebrew_name": "קבוצת עזריאלי בע\"מ"
+    },
+    {
+      "ticker": "AZRL-B10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AZRM-B16.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "AZRM.TA",
+      "english_name": "Azorim-Investment, Development & Construction Co. Ltd",
+      "hebrew_name": "אזורים-חברה להשקעות בפתוח ובבנין בע\"מ"
+    },
+    {
+      "ticker": "AZRT.TA",
+      "english_name": "Reit Azorim - H.F Living Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BARI.TA",
+      "english_name": "Barak Investment House Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BBLS.TA",
+      "english_name": "Bubbles Intergroup Ltd",
+      "hebrew_name": "באבלס אינטרגרופ בע\"מ"
+    },
+    {
+      "ticker": "BEZQ.TA",
+      "english_name": "Bezeq The Israel Telecommunication Corp. Ltd",
+      "hebrew_name": "בזק החברה הישראלית לתקשורת בע\"מ"
+    },
+    {
+      "ticker": "BHNY.TA",
+      "english_name": "Bee-io Honey Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIG-B22.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIG-B23.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIG-B24.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIG-B25.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIG.TA",
+      "english_name": "BIG Shopping Centers Ltd",
+      "hebrew_name": "ביג-טק 50 מו\"פ - שותפות מוגבלת"
+    },
+    {
+      "ticker": "BIGT.TA",
+      "english_name": "Big Tech 50 R&D-Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIMT.TA",
+      "english_name": "Bio Meat Foodtech - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIOV.TA",
+      "english_name": "Bio-View Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BIRM.TA",
+      "english_name": "Birman Wood & Hardware Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BKFR-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BKFR.TA",
+      "english_name": "Bait Bakfar Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BKRY.TA",
+      "english_name": "Bikurey Hasade Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLDI.TA",
+      "english_name": "Baladi Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLEG-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLEG-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLEG-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLEG.TA",
+      "english_name": "Blackedge Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLGO.TA",
+      "english_name": "Buligo Capital Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLND.TA",
+      "english_name": "Blender Financial Technologies",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLRN.TA",
+      "english_name": "BladeRanger Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLRX.TA",
+      "english_name": "BioLineRx Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLSR.TA",
+      "english_name": "Blue Square Real Estate Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BLWV-M.TA",
+      "english_name": "Blue Wave Water Capital Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BOLT.TA",
+      "english_name": "BioLight Life Sciences Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BONI-B23.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BONS.TA",
+      "english_name": "Bonus BioGroup Ltd.",
+      "hebrew_name": "בונוס ביוגרופ בע\"מ"
+    },
+    {
+      "ticker": "BOTI.TA",
+      "english_name": "Bonei Hatichon Civil Engineering & Infrastructures Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BRAN.TA",
+      "english_name": "Baran Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BRIH.TA",
+      "english_name": "Rav-Bariach (08) Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BRIL.TA",
+      "english_name": "Brill Shoe Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BRKT.TA",
+      "english_name": "Bareket Capital Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BRMG.TA",
+      "english_name": "Brimag Digital Age Ltd.",
+      "hebrew_name": "ברימאג דיגיטל אייג' בע\"מ"
+    },
+    {
+      "ticker": "BRND.TA",
+      "english_name": "Brand Group (M.G) Ltd",
+      "hebrew_name": "אפסלון ברנדס הולדינג בע\"מ"
+    },
+    {
+      "ticker": "BSEN.TA",
+      "english_name": "Bet Shemesh Engines Holdings (1997) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BSRE-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BUFT.TA",
+      "english_name": "Buff Technologies Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BULL-M.TA",
+      "english_name": "Bull Trading and Investment Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BVC.TA",
+      "english_name": "BATM Advanced Communications Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BVGG.TA",
+      "english_name": "Bait Vegag Real Estate Development Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BWAY.TA",
+      "english_name": "BrainsWay Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "BYON-M.TA",
+      "english_name": "Beyon3D Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CAMT.TA",
+      "english_name": "Camtek Ltd.",
+      "hebrew_name": "קמטק בע\"מ"
+    },
+    {
+      "ticker": "CANF.TA",
+      "english_name": "Can-Fite BioPharma Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CASL-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CASL-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CAST.TA",
+      "english_name": "Castro Model Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CBI.TA",
+      "english_name": "Clal Biotechnology Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CDEV.TA",
+      "english_name": "Cohen Development Gas & Oil Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CEL.TA",
+      "english_name": "Cellcom Israel Ltd.",
+      "hebrew_name": "סלקום ישראל בע\"מ"
+    },
+    {
+      "ticker": "CGEN.TA",
+      "english_name": "Compugen Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CILO.TA",
+      "english_name": "Cielo-Blu Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CISY.TA",
+      "english_name": "CI Systems (Israel) Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CLIS.TA",
+      "english_name": "Clal Insurance Enterprises Holdings Ltd.",
+      "hebrew_name": "כלל ביטוח גיוסי הון בע\"מ"
+    },
+    {
+      "ticker": "CLLC-B14.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CLLC-B15.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CMDR.TA",
+      "english_name": "Computer Direct Group Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CMER.TA",
+      "english_name": "C. Mer Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CNGL.TA",
+      "english_name": "Canada Global (T.R) Ltd",
+      "hebrew_name": "קנדה גלובל (ט.ר) בע\"מ"
+    },
+    {
+      "ticker": "CNTL-M.TA",
+      "english_name": "CONTINUAL LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPI0431.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPI0456.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPI0837.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPIA.TA",
+      "english_name": "Cipia Vision Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPLN-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPPL-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPPL.TA",
+      "english_name": "City People of Rotshtein Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CPTP.TA",
+      "english_name": "Capital Point Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CRML.TA",
+      "english_name": "Carmel Corp Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CRMT.TA",
+      "english_name": "Carmit Candy Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CRSM-B6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CRSM-B7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CRSM.TA",
+      "english_name": "Carasso Motors Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CRSR.TA",
+      "english_name": "Carasso Real Estate Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CTPL5.TA",
+      "english_name": "I.C.P. Israel Citrus Plantations Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "CYBR.TA",
+      "english_name": "PALO ALTO NETWORKS",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DANE.TA",
+      "english_name": "Danel (Adir Yeoshua) Ltd",
+      "hebrew_name": "דנאל (אדיר יהושע) בע\"מ"
+    },
+    {
+      "ticker": "DANH.TA",
+      "english_name": "Dan Hotels Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DELG.TA",
+      "english_name": "Delta Galil Industries Ltd.",
+      "hebrew_name": "דלתא-גליל תעשיות בע\"מ"
+    },
+    {
+      "ticker": "DIFI-B7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DIFI.TA",
+      "english_name": "Direct Finance of Direct Group (2006) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DIMRI.TA",
+      "english_name": "Y.H. Dimri Construction & Development Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DIPL.TA",
+      "english_name": "Diplomat Holdings Ltd",
+      "hebrew_name": "דיפלומט אחזקות בע\"מ"
+    },
+    {
+      "ticker": "DISI.TA",
+      "english_name": "Discount Investment Corporation Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DLEA.TA",
+      "english_name": "Delek Automotive Systems Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DLEKG.TA",
+      "english_name": "Delek Group Ltd.",
+      "hebrew_name": "קבוצת דלק בע\"מ"
+    },
+    {
+      "ticker": "DLIA-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DLKG-B41.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DLKG-B42.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DLPR.TA",
+      "english_name": "DELEK ISRAEL PROPE",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DLTI.TA",
+      "english_name": "Delta Israel Brands Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DNDP-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DNDP-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DNDP-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DNDP-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DNYA.TA",
+      "english_name": "Danya Cebus Ltd.",
+      "hebrew_name": "דניה סיבוס בע\"מ"
+    },
+    {
+      "ticker": "DORL-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DORL.TA",
+      "english_name": "Doral Group Renewable Energy Resources Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DRAL-B9.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DRAL.TA",
+      "english_name": "Dor Alon Energy In Israel (1988) Ltd",
+      "hebrew_name": "דור אלון אנרגיה בישראל (1988) בע\"מ"
+    },
+    {
+      "ticker": "DRSH-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DRSH-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DRSH.TA",
+      "english_name": "Dorsel Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DSCT.TA",
+      "english_name": "Israel Discount Bank Limited",
+      "hebrew_name": "בנק דיסקונט לישראל בע\"מ"
+    },
+    {
+      "ticker": "DSIT.TA",
+      "english_name": "DSIT Solutions Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DSMN-B11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DSMN-P6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DSMN-P7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DSMN-P8.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DSTN-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "DUNI.TA",
+      "english_name": "Duniec Bros. Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ECCL-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ECNR-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ECNR.TA",
+      "english_name": "Econergy Renewable Energy Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ECP.TA",
+      "english_name": "Electra Consumer Products (1970) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EEAM-M.TA",
+      "english_name": "E.E.A.M.I Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EFCP.TA",
+      "english_name": "Effi Capital Nadlan Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EFNC-M.TA",
+      "english_name": "ERECH FINANCE",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELAD.TA",
+      "english_name": "ELAD SOFTWARE",
+      "hebrew_name": "אלעד מערכות תוכנה בע\"מ"
+    },
+    {
+      "ticker": "ELAL.TA",
+      "english_name": "El Al Israel Airlines Ltd.",
+      "hebrew_name": "אל על  נתיבי אויר לישראל בע\"מ"
+    },
+    {
+      "ticker": "ELCO.TA",
+      "english_name": "Elco Ltd.",
+      "hebrew_name": "ראלקו סוכנויות בע\"מ"
+    },
+    {
+      "ticker": "ELCRE.TA",
+      "english_name": "Electra Real Estate Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELDT-B10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELDT-B11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELDT.TA",
+      "english_name": "Eldan Transportation LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELEC-B36.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELEC-B37.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELLO.TA",
+      "english_name": "Ellomay Capital Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELMR.TA",
+      "english_name": "El-Mor Electric Installation & Services (1986) Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELRN.TA",
+      "english_name": "Elron Ventures Ltd",
+      "hebrew_name": "אלרון ונצ'רס בע\"מ"
+    },
+    {
+      "ticker": "ELSPC.TA",
+      "english_name": "Elspec Engineering Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELTR.TA",
+      "english_name": "Electra Limited",
+      "hebrew_name": "אלקטרה מוצרי צריכה (1970) בע\"מ"
+    },
+    {
+      "ticker": "ELUS-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ELWS.TA",
+      "english_name": "Electreon Wireless Ltd",
+      "hebrew_name": "אלקטריאון וירלס בע\"מ"
+    },
+    {
+      "ticker": "EMCO.TA",
+      "english_name": "E & M Computing Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EMDV.TA",
+      "english_name": "Emilia Development (O.F.G) Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EMIT-B10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EMIT-B11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EMITF.TA",
+      "english_name": "ELBIT IMAGING LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ENCR-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ENLT.TA",
+      "english_name": "Enlight Renewable Energy Ltd",
+      "hebrew_name": "אנלייט אנרגיה מתחדשת בע\"מ"
+    },
+    {
+      "ticker": "ENLV.TA",
+      "english_name": "Enlivex Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ENOG.TA",
+      "english_name": "Energean plc",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ENOP-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ENRG.TA",
+      "english_name": "Energix - Renewable Energies Ltd.",
+      "hebrew_name": "אנרג'יקס-אנרגיות מתחדשות בע\"מ"
+    },
+    {
+      "ticker": "EPIT.TA",
+      "english_name": "Epitomee Medical Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EQTL.TA",
+      "english_name": "Equital Ltd.",
+      "hebrew_name": "אקויטל בע\"מ"
+    },
+    {
+      "ticker": "ERKA.TA",
+      "english_name": "Erika Carmel-Tech Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ESLT.TA",
+      "english_name": "Elbit Systems Ltd.",
+      "hebrew_name": "אלביט מערכות בע\"מ"
+    },
+    {
+      "ticker": "ESLY-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ETGA.TA",
+      "english_name": "ETGA Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EVGN.TA",
+      "english_name": "Evogene Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EXPO-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "EXPO.TA",
+      "english_name": "Export Investment Co. Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FBRT.TA",
+      "english_name": "FMS Enterprises Migun Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FEAT.TA",
+      "english_name": "Feat Fund Investments - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FGAS.TA",
+      "english_name": "Fire & Gas Detection Technologies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FIBI.TA",
+      "english_name": "First International Bank of Israel Ltd",
+      "hebrew_name": "הבנק הבינלאומי הראשון לישראל בע\"מ"
+    },
+    {
+      "ticker": "FIBIH.TA",
+      "english_name": "F.I.B.I. Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FLYS-M.TA",
+      "english_name": "Flying Spark Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FORTY.TA",
+      "english_name": "Formula Systems (1985) Ltd.",
+      "hebrew_name": "פורמולה מערכות (1985)בע\"מ"
+    },
+    {
+      "ticker": "FOX.TA",
+      "english_name": "Fox-Wizel Ltd.",
+      "hebrew_name": "פוקס-ויזל בע\"מ"
+    },
+    {
+      "ticker": "FRDN.TA",
+      "english_name": "Fridenson Logistic Services Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FRSX.TA",
+      "english_name": "Foresight Autonomous Holdings Ltd.",
+      "hebrew_name": "פורסייט אוטונומס הולדינגס בע\"מ"
+    },
+    {
+      "ticker": "FTAL-P2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "FTAL.TA",
+      "english_name": "Fattal Holdings (1998) Ltd",
+      "hebrew_name": "פתאל החזקות (1998) בע\"מ"
+    },
+    {
+      "ticker": "G107.TA",
+      "english_name": "Group 107 Ltd",
+      "hebrew_name": "גרופ 107 בע\"מ"
+    },
+    {
+      "ticker": "GABY-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GABY-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GABY.TA",
+      "english_name": "Gabay Group",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GAD.TA",
+      "english_name": "Gad-Dairies (Marketing 1992) Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GAGR.TA",
+      "english_name": "Gaon Group Ltd.",
+      "hebrew_name": "קבוצת גאון בע\"מ"
+    },
+    {
+      "ticker": "GAON-M.TA",
+      "english_name": "B GAON HOLDINGS LT",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GCT.TA",
+      "english_name": "G City Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GEFR.TA",
+      "english_name": "Geffen Residence & Renewal Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GFC-M.TA",
+      "english_name": "G.F.C Green Fields Capital Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GILT.TA",
+      "english_name": "Gilat Satellite Networks Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GIVO.TA",
+      "english_name": "Givot Olam Oil Exploration-Limited Partnership(1993)",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GIX.TA",
+      "english_name": "Gix Internet Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GKL.TA",
+      "english_name": "Global Knafaim Leasing Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GLDE.TA",
+      "english_name": "Golden Energy Power Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GLRS.TA",
+      "english_name": "Globrands Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GLTL.TA",
+      "english_name": "Gilat Telecom Global Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GMAI-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GNCL.TA",
+      "english_name": "Gencell Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GNGR.TA",
+      "english_name": "Ginegar Plastic Products Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GNRS.TA",
+      "english_name": "Generation Capital Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GOHO.TA",
+      "english_name": "Golden House Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GOI0728.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GOI1035.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GOLD.TA",
+      "english_name": "The Gold Bond Group Ltd.",
+      "hebrew_name": "קבוצת גולד בונד בע\"מ"
+    },
+    {
+      "ticker": "GOLF.TA",
+      "english_name": "Golf & Co Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GOSS.TA",
+      "english_name": "G1 Secure Solutions Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GOTO.TA",
+      "english_name": "Goto Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GPAY-M.TA",
+      "english_name": "Global Pay (P.C.S) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GRIN.TA",
+      "english_name": "Golan Renewable Industries Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GSFI.TA",
+      "english_name": "Gan Shmuel Foods Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GSHM-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GVYM-B12.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "GVYM.TA",
+      "english_name": "Gav-Yam Lands Corp. Ltd",
+      "hebrew_name": "חברת גב ים לקרקעות בע\"מ"
+    },
+    {
+      "ticker": "HAMAT.TA",
+      "english_name": "Hamat Group Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HARL.TA",
+      "english_name": "Harel Insurance Investments & Financial Services Ltd",
+      "hebrew_name": "הראל השקעות בביטוח ושרותים פיננסים בע\"מ"
+    },
+    {
+      "ticker": "HDST-M.TA",
+      "english_name": "HBL - Hadasit Bio-Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HGG.TA",
+      "english_name": "Hagag Group Real Estate Entrepreneurship Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HGGE.TA",
+      "english_name": "Hagag Europe Development Z.F. Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HILA-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HIPR.TA",
+      "english_name": "Hiper Global Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HLAN.TA",
+      "english_name": "Hilan Ltd.",
+      "hebrew_name": "חילן בע\"מ"
+    },
+    {
+      "ticker": "HLMS.TA",
+      "english_name": "Holmes Place International Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HMAM.TA",
+      "english_name": "Hamama Meir Trading (1996) Ltd.",
+      "hebrew_name": "הום ביוגז בע\"מ"
+    },
+    {
+      "ticker": "HMGS.TA",
+      "english_name": "HomeBiogas Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HOD.TA",
+      "english_name": "Hod Assaf Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRIN-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRIN-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRIN-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRIS-B21.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRIS-B22.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRIS-B23.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRON.TA",
+      "english_name": "Hiron-Trade Investments & Industrial Buildings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HRPK-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "HUMX-M.TA",
+      "english_name": "Human Xtensions Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IARG.TA",
+      "english_name": "Iargento Hi Tech Assets Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IBI.TA",
+      "english_name": "I.B.I. Investment House Ltd",
+      "hebrew_name": "אי.בי.אי. - ניהול וחיתום בע\"מ"
+    },
+    {
+      "ticker": "IBID-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IBID-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IBID-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IBID-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IBID-B6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IBIU.TA",
+      "english_name": "I.B.I.- Managing & Underwriting Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ICHO.TA",
+      "english_name": "Israel Canada Hotels Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ICL.TA",
+      "english_name": "ICL Group Ltd",
+      "hebrew_name": "כיל בע\"מ"
+    },
+    {
+      "ticker": "ICON.TA",
+      "english_name": "iCon Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IDIN.TA",
+      "english_name": "I.D.I. Insurance Company Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IDMO.TA",
+      "english_name": "Idomoo Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IDNT.TA",
+      "english_name": "Identi Healthcare Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IES.TA",
+      "english_name": "I.E.S Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ILCO.TA",
+      "english_name": "Israel Corporation Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ILDC-B27.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ILDC.TA",
+      "english_name": "Land Development of Nimrodi Group Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ILDR.TA",
+      "english_name": "Israel Land Development - Urban Renewal Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ILX.TA",
+      "english_name": "Ilex Medical Ltd",
+      "hebrew_name": "אילקס מדיקל בע\"מ"
+    },
+    {
+      "ticker": "IMCO.TA",
+      "english_name": "IMCO Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IMED.TA",
+      "english_name": "Imed Infinity Medical-Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INCR.TA",
+      "english_name": "InterCure Ltd.",
+      "hebrew_name": "אינטרקיור בע\"מ"
+    },
+    {
+      "ticker": "ININ.TA",
+      "english_name": "Inter Industries Plus Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INIS-B13.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INIS-B14.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INIS-P1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INIS-P2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INIS-P3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INRM-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "INRM.TA",
+      "english_name": "Inrom Construction Industries Ltd",
+      "hebrew_name": "אינרום תעשיות בנייה בע\"מ"
+    },
+    {
+      "ticker": "INTR.TA",
+      "english_name": "Inter Gamma Investment Company Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IPO-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "IPO.TA",
+      "english_name": "InPlay Oil Corp.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISAH-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISCD-P5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISCD.TA",
+      "english_name": "Isracard Ltd.",
+      "hebrew_name": "ישראכרט בע\"מ"
+    },
+    {
+      "ticker": "ISCN.TA",
+      "english_name": "Israel Canada (T.R) Ltd",
+      "hebrew_name": "ישראל קנדה מלונות בע\"מ"
+    },
+    {
+      "ticker": "ISHI.TA",
+      "english_name": "Israel Shipyards Industries Ltd",
+      "hebrew_name": "תעשיות מספנות ישראל בע\"מ"
+    },
+    {
+      "ticker": "ISHO.TA",
+      "english_name": "Isras Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISI.TA",
+      "english_name": "Imagesat International (I.S.I) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISOP.TA",
+      "english_name": "Israel Opportunity - Energy Resources, LP",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISPR-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISPR-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISRA-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISRA.TA",
+      "english_name": "Isramco Negev 2 Limited Partnership",
+      "hebrew_name": "ישראמקו נגב 2 שותפות מוגבלת"
+    },
+    {
+      "ticker": "ISRG.TA",
+      "english_name": "Israir Group Ltd",
+      "hebrew_name": "ישראייר גרופ בע\"מ"
+    },
+    {
+      "ticker": "ISRO.TA",
+      "english_name": "Isrotel Ltd.",
+      "hebrew_name": "ישרוטל בע\"מ"
+    },
+    {
+      "ticker": "ISRS.TA",
+      "english_name": "Isras Investment Company Ltd",
+      "hebrew_name": "ישרס חברה להשקעות בע\"מ"
+    },
+    {
+      "ticker": "ISTA.TA",
+      "english_name": "Issta Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ISTS-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "JBNK.TA",
+      "english_name": "Bank of Jerusalem Ltd.",
+      "hebrew_name": "ירושלים מימון והנפקות (2005) בע\"מ"
+    },
+    {
+      "ticker": "JCFN.TA",
+      "english_name": "Jacob Finance and Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "JEEN.TA",
+      "english_name": "Jeen AI Technologies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "JRIS-B20.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KAFR.TA",
+      "english_name": "Kafrit Industries (1993) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KARE.TA",
+      "english_name": "Kardan Real Estate Enterprise and Development Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KEN.TA",
+      "english_name": "Kenon Holdings Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KLIL.TA",
+      "english_name": "Klil Industries Ltd",
+      "hebrew_name": "קליל תעשיות בע\"מ"
+    },
+    {
+      "ticker": "KMDA.TA",
+      "english_name": "Kamada Ltd.",
+      "hebrew_name": "קמדה בע\"מ"
+    },
+    {
+      "ticker": "KNFM.TA",
+      "english_name": "Knafaim Holdings Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KOHN-B1.TA",
+      "english_name": "Kohan Properties Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KRDI.TA",
+      "english_name": "Kardan Israel Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KRNV-M.TA",
+      "english_name": "Kardan N.V.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KRUR.TA",
+      "english_name": "Kerur Holdings Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KSM-F243.TA",
+      "english_name": "Ksm Mutual Funds Ltd. - ETF Bond Market Fund",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "KSTN.TA",
+      "english_name": "Keystone Infra Ltd",
+      "hebrew_name": "קיסטון אינפרא בע\"מ"
+    },
+    {
+      "ticker": "LAHAV.TA",
+      "english_name": "Lahav LR Real Estate Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LAPD.TA",
+      "english_name": "Lapidoth Capital Ltd",
+      "hebrew_name": "לפידות-חלץ - שותפות מוגבלת"
+    },
+    {
+      "ticker": "LBRA.TA",
+      "english_name": "Libra Insurance Company Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LBTL.TA",
+      "english_name": "A. Libental Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LCTX.TA",
+      "english_name": "Lineage Cell Therapeutics, Inc.",
+      "hebrew_name": "ליניאג' סל תרפיוטיקס אינק."
+    },
+    {
+      "ticker": "LEOF-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LEOF.TA",
+      "english_name": "Lewinsky-Ofer Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LEVI-B9.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LEVI.TA",
+      "english_name": "Meshulam Levinstein Contracting & Engineering Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LGTS-B7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LHIS.TA",
+      "english_name": "Lachish Industries Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LIAM-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LIVI-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LNTR-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LPHL.TA",
+      "english_name": "Lapidoth-Heletz Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LPSN.TA",
+      "english_name": "LivePerson, Inc.",
+      "hebrew_name": "לייבפרסון, אינק."
+    },
+    {
+      "ticker": "LSCO-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LSCO.TA",
+      "english_name": "Lesico Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUDN.TA",
+      "english_name": "Ludan Engineering Co. Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUDT.TA",
+      "english_name": "LUDAN-TECH LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUM-B187.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUM-B188.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUM-B407.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUM-P10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUM-P11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUM-P8.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUM-P9.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUMI.TA",
+      "english_name": "Bank Leumi le-Israel B.M.",
+      "hebrew_name": "בנק לאומי לישראל בע\"מ"
+    },
+    {
+      "ticker": "LURO.TA",
+      "english_name": "LUZON RONSON N.V",
+      "hebrew_name": "לוזון רונסון אן.וי."
+    },
+    {
+      "ticker": "LUZC.TA",
+      "english_name": "Luzon Credit and Finance Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "LUZN.TA",
+      "english_name": "Amos Luzon Development and Energy Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MAX-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MAX-P5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MAX-P6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MAXO.TA",
+      "english_name": "Max Stock Ltd.",
+      "hebrew_name": "מקס סטוק בע\"מ"
+    },
+    {
+      "ticker": "MCLL.TA",
+      "english_name": "Michlol Finance Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MCPL.TA",
+      "english_name": "MICHPAL TECHS LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MDIN.TA",
+      "english_name": "Modiin Energy-Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MDPR-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MDPR.TA",
+      "english_name": "Medipower (Overseas) Public Co. Limited",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MDTR.TA",
+      "english_name": "Mediterranean Towers Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MEDN-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MEDN.TA",
+      "english_name": "Mehadrin Ltd",
+      "hebrew_name": "מהדרין בע\"מ"
+    },
+    {
+      "ticker": "MGDF-B15.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGDF-B17.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGDF-B18.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGDF-T16.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGDL.TA",
+      "english_name": "Migdal Insurance and Financial Holdings Ltd.",
+      "hebrew_name": "מגדל אחזקות ביטוח ופיננסים בע\"מ"
+    },
+    {
+      "ticker": "MGDO-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGDO.TA",
+      "english_name": "Megiddo Y.K. Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGOR.TA",
+      "english_name": "Mega Or Holdings Ltd",
+      "hebrew_name": "מגה אור החזקות בע\"מ"
+    },
+    {
+      "ticker": "MGRT-B10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGRT-B8.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGRT-B9.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MGRT.TA",
+      "english_name": "Megureit Israel Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MIA-C1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MIA.TA",
+      "english_name": "Mia Dynamics Motors Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MIFT.TA",
+      "english_name": "Millennium Food Tech Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MISH.TA",
+      "english_name": "Mivtach Shamir Holdings Ltd",
+      "hebrew_name": "מבטח שמיר פיננסים בע\"מ"
+    },
+    {
+      "ticker": "MLD-M.TA",
+      "english_name": "MirLand Development Corporation Plc",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MLRN-B7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MLRN.TA",
+      "english_name": "M.L.R.N Projects and Trading Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MLSR-B22.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MLSR-P5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MLSR.TA",
+      "english_name": "Melisron Ltd.",
+      "hebrew_name": "מליסרון בע\"מ"
+    },
+    {
+      "ticker": "MLTH.TA",
+      "english_name": "Malam-Team Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MLTM.TA",
+      "english_name": "Malam - Team Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MMHD.TA",
+      "english_name": "Menora Mivtachim Holdings Ltd.",
+      "hebrew_name": "מנורה איאראן מימון בקליק בע\"מ"
+    },
+    {
+      "ticker": "MNIF-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MNIF.TA",
+      "english_name": "Menif - Financial Services Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MNIN.TA",
+      "english_name": "Mendelson Infrastructures & Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MNMO-10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MNRA.TA",
+      "english_name": "Menara Ventures Xl - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MNRT-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MNRT.TA",
+      "english_name": "Menivim - The New Reit Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MNRV.TA",
+      "english_name": "Minrav Group Ltd",
+      "hebrew_name": "מנורה מבטחים ביטוח בע\"מ"
+    },
+    {
+      "ticker": "MPP-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MPP.TA",
+      "english_name": "More Provident Funds and Pensions Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRG.TA",
+      "english_name": "Multi Retail Group Ltd",
+      "hebrew_name": "מולטי ריטייל גרופ בע\"מ"
+    },
+    {
+      "ticker": "MRHL.TA",
+      "english_name": "Merchavia Holdings and Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRIN-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRIN.TA",
+      "english_name": "Y.D. More Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRPK-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRPK-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRPK-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRPK-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MRPK-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MSBI.TA",
+      "english_name": "Hamashbir 365 Ltd",
+      "hebrew_name": "המשביר 365 בע\"מ"
+    },
+    {
+      "ticker": "MSHR.TA",
+      "english_name": "Mishorim Real Estate Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MSKE.TA",
+      "english_name": "Meshek Energy - Renewable Energies Ltd.",
+      "hebrew_name": "משק אנרגיה-אנרגיות מתחדשות בע\"מ"
+    },
+    {
+      "ticker": "MSLA.TA",
+      "english_name": "Maslavi Construction Company Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MSVT.TA",
+      "english_name": "Massivit 3D Printing Technologies Ltd",
+      "hebrew_name": "מאסיבית טכנולוגיות הדפסה תלת מימד בע\"מ"
+    },
+    {
+      "ticker": "MTAV-P1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MTAV.TA",
+      "english_name": "Meitav Investment House Ltd",
+      "hebrew_name": "מיטבית הולדינג (1992) בע\"מ"
+    },
+    {
+      "ticker": "MTLF.TA",
+      "english_name": "Matricelf Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MTRD.TA",
+      "english_name": "Meitav Trade Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MTRN.TA",
+      "english_name": "Maytronics Ltd.",
+      "hebrew_name": "מיטרוניקס בע\"מ"
+    },
+    {
+      "ticker": "MTRX-C2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MTRX.TA",
+      "english_name": "Matrix IT Ltd.",
+      "hebrew_name": "מטריקס אי.טי בע\"מ"
+    },
+    {
+      "ticker": "MUTG.TA",
+      "english_name": "URBAN BRAND LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MVNE-B26.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MVNE-P2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MVNE.TA",
+      "english_name": "Mivne Real Estate (K.D) Ltd",
+      "hebrew_name": "חירון-מסחר השקעות ומבנה תעשיה בע\"מ"
+    },
+    {
+      "ticker": "MYDS-C2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MYDS.TA",
+      "english_name": "Mydas Real Estate Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MZIS-P5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "MZTF.TA",
+      "english_name": "Mizrahi Tefahot Bank Ltd.",
+      "hebrew_name": "בנק מזרחי טפחות בע\"מ"
+    },
+    {
+      "ticker": "NAWI-B7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NAWI-P10.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NAWI.TA",
+      "english_name": "Nawi Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NFTA.TA",
+      "english_name": "Naphtha Israel Petroleum Corp. Ltd.",
+      "hebrew_name": "נפטא חברה ישראלית לנפט בע\"מ"
+    },
+    {
+      "ticker": "NICE.TA",
+      "english_name": "NICE Ltd.",
+      "hebrew_name": "נייס בע\"מ"
+    },
+    {
+      "ticker": "NISA.TA",
+      "english_name": "Nissan Medical Industries Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NMCO-B6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NOFR-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NOFR.TA",
+      "english_name": "O.Y. Nofar Energy Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NRGN.TA",
+      "english_name": "NRGene Technologies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NSTR.TA",
+      "english_name": "Norstar Holdings Inc",
+      "hebrew_name": "נורסטאר החזקות אינק"
+    },
+    {
+      "ticker": "NTGR.TA",
+      "english_name": "Netanel Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NTML.TA",
+      "english_name": "Neto Malinda Trading Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NTNB-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NTNB.TA",
+      "english_name": "Netanel Menivim Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NTO.TA",
+      "english_name": "Neto M.E Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NURI.TA",
+      "english_name": "Nur Ink Innovations Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NUSA-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NVLG.TA",
+      "english_name": "Novolog (Pharm-Up 1966) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NVMI.TA",
+      "english_name": "Nova Ltd.",
+      "hebrew_name": "נובה בע\"מ"
+    },
+    {
+      "ticker": "NVPT-B8.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NVPT.TA",
+      "english_name": "Navitas Petroleum, Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NWMD.TA",
+      "english_name": "NewMed Energy - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NXFR-M.TA",
+      "english_name": "NEXTFERM TECHNOLOG",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NXGN-M.TA",
+      "english_name": "NEXTGEN BIOMED LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NXSN.TA",
+      "english_name": "NextVision Stabilized Systems, Ltd.",
+      "hebrew_name": "נקסט ויז'ן מערכות מיוצבות בע\"מ"
+    },
+    {
+      "ticker": "NXTG-M.TA",
+      "english_name": "Nextage Therapeutics Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NXTM.TA",
+      "english_name": "Nextcom Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "NYAX.TA",
+      "english_name": "Nayax Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "OFEK-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "OMCN.TA",
+      "english_name": "Omer Construction & Engineering (1986) Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ONE.TA",
+      "english_name": "One Software Technologies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "OPAL-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "OPAL.TA",
+      "english_name": "Opal Balance Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "OPCE.TA",
+      "english_name": "OPC Energy Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "OPK.TA",
+      "english_name": "OPKO Health, Inc.",
+      "hebrew_name": "אופקו הלת', אינק"
+    },
+    {
+      "ticker": "ORA.TA",
+      "english_name": "Ormat Technologies, Inc.",
+      "hebrew_name": "אורמת טכנולוגיות, אינק"
+    },
+    {
+      "ticker": "ORAD.TA",
+      "english_name": "Orad Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORIN-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORIN.TA",
+      "english_name": "Orian Sh.M. Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORL.TA",
+      "english_name": "Oil Refineries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORMP.TA",
+      "english_name": "Oramed Pharmaceuticals Inc.",
+      "hebrew_name": "אורמד פארמסוטיקלס אינק."
+    },
+    {
+      "ticker": "ORNP-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORNP-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORNP.TA",
+      "english_name": "Orion Retail Properties Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORON.TA",
+      "english_name": "Oron Group Investments & Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ORTC.TA",
+      "english_name": "O.R.T. Technologies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "OVRS.TA",
+      "english_name": "Overseas Commerce Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PAYT.TA",
+      "english_name": "Payton Industries Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PAZ-P2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PAZ.TA",
+      "english_name": "Paz Retail And Energy Ltd.",
+      "hebrew_name": "פז קמעונאות ואנרגיה בע\"מ"
+    },
+    {
+      "ticker": "PCBT.TA",
+      "english_name": "P.C.B. Technologies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PEN-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PEN.TA",
+      "english_name": "Peninsula Group Ltd",
+      "hebrew_name": "קבוצת פנינסולה בע\"מ"
+    },
+    {
+      "ticker": "PENT-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PERI.TA",
+      "english_name": "Perion Network Ltd.",
+      "hebrew_name": "פריון נטוורק בע\"מ"
+    },
+    {
+      "ticker": "PHOE-C7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PHOE.TA",
+      "english_name": "Phoenix Financial Ltd",
+      "hebrew_name": "פניקס החזקות בע\"מ"
+    },
+    {
+      "ticker": "PHTM.TA",
+      "english_name": "Photomyne Ltd",
+      "hebrew_name": "פוטומיין בע\"מ"
+    },
+    {
+      "ticker": "PIDE-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PIES-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PIES.TA",
+      "english_name": "Pie Siam Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PIIN-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PIIN-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PKHL-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PLRM.TA",
+      "english_name": "Palram Industries (1990) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PLSM.TA",
+      "english_name": "Pulsenmore Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PLSN.TA",
+      "english_name": "Plasson Industries Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PLUR.TA",
+      "english_name": "Pluri Inc.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PMNT.TA",
+      "english_name": "Payment Financial Technologies Ltd",
+      "hebrew_name": "פיימנט טכנולוגיות פיננסיות בע\"מ"
+    },
+    {
+      "ticker": "PMVM.TA",
+      "english_name": "Pomvom Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PNCP-B16.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PNCP-B17.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PNCP-B18.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PNRG.TA",
+      "english_name": "Phinergy Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POL-B102.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POL-B103.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POL-B104.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POL-B14.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POL-B15.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POL-B204.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POL-P2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POLI.TA",
+      "english_name": "Bank Hapoalim B.M.",
+      "hebrew_name": "בנק הפועלים בע\"מ"
+    },
+    {
+      "ticker": "POLP.TA",
+      "english_name": "Polyram Plastic Industries LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POLY.TA",
+      "english_name": "Polygon Real Estate Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "POSA-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PPBT.TA",
+      "english_name": "Purple Biotech Ltd",
+      "hebrew_name": "פרפל ביוטק בע\"מ"
+    },
+    {
+      "ticker": "PPIL.TA",
+      "english_name": "Plastopil Hazorea Company Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRDM.TA",
+      "english_name": "Prodalim Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRIM-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRIM.TA",
+      "english_name": "Prime Energy P.E. Ltd",
+      "hebrew_name": "פריים אנרג'י פי.אי בע\"מ"
+    },
+    {
+      "ticker": "PRKM.TA",
+      "english_name": "Parkomat International Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRMG.TA",
+      "english_name": "Primotec Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRPD.TA",
+      "english_name": "Propdo Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRSK-B16.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRSK-B17.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRSK.TA",
+      "english_name": "Prashkovsky Investments and Construction Ltd.",
+      "hebrew_name": "פרשקובסקי השקעות ובניין בע\"מ"
+    },
+    {
+      "ticker": "PRTC-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PRTC.TA",
+      "english_name": "Priortech Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PSEC-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PSRX.TA",
+      "english_name": "PsyRX CNS Bio-Tech Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PTBL-B12.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PTBL-B13.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PTBL.TA",
+      "english_name": "Property & Building Corp. Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PTCH-B11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PTCH.TA",
+      "english_name": "Israel Petrochemical Enterprises Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "PTNR.TA",
+      "english_name": "Partner Communications Company Ltd.",
+      "hebrew_name": "חברת פרטנר תקשורת בע\"מ"
+    },
+    {
+      "ticker": "PTX.TA",
+      "english_name": "Petrotx - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "QLTU.TA",
+      "english_name": "Qualitau Ltd",
+      "hebrew_name": "קווליטאו בע\"מ"
+    },
+    {
+      "ticker": "QNCO.TA",
+      "english_name": "Y.Z. Queenco Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RANI-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RANI.TA",
+      "english_name": "Rani Zim Shopping Centers Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RATI.TA",
+      "english_name": "Ratio Energies - Limited Partnership",
+      "hebrew_name": "רציו פטרוליום אנרגיה - שותפות מוגבלת"
+    },
+    {
+      "ticker": "RAVD.TA",
+      "english_name": "Ravad Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RAYG-M.TA",
+      "english_name": "Ray Tlv Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RAYK-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RAYK-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "REKA.TA",
+      "english_name": "Rekah Pharmaceutical Industry Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RENT-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RENT.TA",
+      "english_name": "RENT IT-RESIDENTIA",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RGAS.TA",
+      "english_name": "R.G.A. Services & Cleaning (Israel) 1987 Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RIMO.TA",
+      "english_name": "Rimoni Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RIT1-B8.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RIT1.TA",
+      "english_name": "Reit 1 Ltd",
+      "hebrew_name": "ריט 1 בע\"מ"
+    },
+    {
+      "ticker": "RLCO.TA",
+      "english_name": "Ralco Agencies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RLRE.TA",
+      "english_name": "Rami Levy Hashikma Real Estate Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RMLI.TA",
+      "english_name": "Rami Levi Chain Stores Hashikma Marketing 2006 Ltd",
+      "hebrew_name": "רשת חנויות רמי לוי שיווק השיקמה 2006 בע\"מ"
+    },
+    {
+      "ticker": "RMN.TA",
+      "english_name": "Ram-On Investments and Holdings (1999) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RMON.TA",
+      "english_name": "Rimon Consulting & Management Services Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ROBO.TA",
+      "english_name": "RoboGroup T.E.K. Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ROTS-B14.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ROTS.TA",
+      "english_name": "Rotshtein Realestate Ltd",
+      "hebrew_name": "אנשי העיר מקבוצת רוטשטיין בע\"מ"
+    },
+    {
+      "ticker": "RPAC.TA",
+      "english_name": "Rapac Communication & Infrastructure Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RPOL.TA",
+      "english_name": "RP Optical Lab Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RSDR-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RSEL.TA",
+      "english_name": "RSL Electronics Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RTEN.TA",
+      "english_name": "Rotem Energy Mineral (REM) - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RTLS.TA",
+      "english_name": "Retailors Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RTMD-M.TA",
+      "english_name": "RETAILMINDS TEC",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RTPT.TA",
+      "english_name": "Ratio Petroleum Energy - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RTSN.TA",
+      "english_name": "Rotem Shani Entrepreneurship and Investment Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RVL.TA",
+      "english_name": "Raval ACS Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "RZR.TA",
+      "english_name": "Razor Labs",
+      "hebrew_name": "רייזור לאבס בע\"מ"
+    },
+    {
+      "ticker": "SADE-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SADE.TA",
+      "english_name": "Sade Real Estate-Y.S Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SAE.TA",
+      "english_name": "Shufersal Ltd",
+      "hebrew_name": "שופרסל בע\"מ"
+    },
+    {
+      "ticker": "SANO1.TA",
+      "english_name": "Sano Bruno's Enterprises Ltd",
+      "hebrew_name": "סנו-מפעלי ברונוס בע\"מ"
+    },
+    {
+      "ticker": "SARN.TA",
+      "english_name": "Sarine Technologies Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SATL-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SBEN-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SBEN.TA",
+      "english_name": "Shikun & Binui Energy Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SCC-B19.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SCC-B20.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SCC.TA",
+      "english_name": "Space-Communication Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SCDX.TA",
+      "english_name": "Scodix Ltd.",
+      "hebrew_name": "סקודיקס בע\"מ"
+    },
+    {
+      "ticker": "SCOP.TA",
+      "english_name": "Scope Metals Group Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SEMG.TA",
+      "english_name": "Seach Medical Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SFRN-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SFRN.TA",
+      "english_name": "Sufrin Holdings Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SHAN.TA",
+      "english_name": "Shaniv Paper Industry Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SHGR.TA",
+      "english_name": "Shagrir Group Vehicle Services Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SHMM.TA",
+      "english_name": "Shamaym Improve Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SHNP.TA",
+      "english_name": "E. Schnapp & Co. Works Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SHOM.TA",
+      "english_name": "E.N. Shoham Business Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SHVA.TA",
+      "english_name": "Automatic Bank Services Limited",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SHVL.TA",
+      "english_name": "Shoval Engineering and Construction Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SIMD-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SKBN-B11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SKBN.TA",
+      "english_name": "Shikun & Binui Ltd.",
+      "hebrew_name": "שיכון ובינוי אנרגיה בע\"מ"
+    },
+    {
+      "ticker": "SKLN.TA",
+      "english_name": "Skyline Investments Inc.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SLARL.TA",
+      "english_name": "Sella Capital Real Estate Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SLCL-M.TA",
+      "english_name": "Silver Castle Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SLRM.TA",
+      "english_name": "Solrom Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SMAG.TA",
+      "english_name": "Smart Agro - Limited",
+      "hebrew_name": "סמארט אגרו-שותפות מוגבלת"
+    },
+    {
+      "ticker": "SMNR-C1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SMNR.TA",
+      "english_name": "Shemen Yielding Real Estate Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SMSH.TA",
+      "english_name": "Smart Shooter Ltd.",
+      "hebrew_name": "סמארט שוטר בע\"מ"
+    },
+    {
+      "ticker": "SMT-B14.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SMT.TA",
+      "english_name": "Summit Real Estate Holdings Ltd",
+      "hebrew_name": "סאמיט אחזקות נדל\"ן בע\"מ"
+    },
+    {
+      "ticker": "SNCM.TA",
+      "english_name": "Suny Cellular Communication Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SNEL.TA",
+      "english_name": "Synel M.L.L Payway Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SNFL.TA",
+      "english_name": "Sunflower Sustainable Investments Ltd",
+      "hebrew_name": "סאנפלאואר השקעות מתחדשות בע\"מ"
+    },
+    {
+      "ticker": "SOFW.TA",
+      "english_name": "SofWave Medical Ltd.",
+      "hebrew_name": "סופווייב מדיקל בע\"מ"
+    },
+    {
+      "ticker": "SOLR.TA",
+      "english_name": "Solaer Renewable Energies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SOLT.TA",
+      "english_name": "Solterra Renewable Energies Ltd",
+      "hebrew_name": "סולטרה אנרגיה בע\"מ"
+    },
+    {
+      "ticker": "SONO.TA",
+      "english_name": "Sonovia Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SONR-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SONR.TA",
+      "english_name": "SNOL REAL ESTATE A",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPDV.TA",
+      "english_name": "Speedvalue Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPEN-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPEN.TA",
+      "english_name": "Shapir Engineering and Industry Ltd",
+      "hebrew_name": "שפיר פרוייקטים אירופה בע\"מ"
+    },
+    {
+      "ticker": "SPGS-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPGS-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPGS.TA",
+      "english_name": "Supergas Power (2019) Ltd",
+      "hebrew_name": "סופרגז פאוור (2019) בע\"מ"
+    },
+    {
+      "ticker": "SPNR-B7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPNTC.TA",
+      "english_name": "N.R. Spuntech Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPRD-B3.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPRD-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPRD-B6.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SPRG.TA",
+      "english_name": "Spring Ventures Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SRAC.TA",
+      "english_name": "S.R. Accord Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SRFT-B14.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SRFT.TA",
+      "english_name": "Zvi Sarfati & Sons Investments & Constructions Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "STEC.TA",
+      "english_name": "Shure-Tech Investments - Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "STG.TA",
+      "english_name": "STG International Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "STRG.TA",
+      "english_name": "Storage Drop Storage Technologies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "STRK-M.TA",
+      "english_name": "Stark Power Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "STRS.TA",
+      "english_name": "Strauss Group Ltd.",
+      "hebrew_name": "שטראוס גרופ בע\"מ"
+    },
+    {
+      "ticker": "STRW.TA",
+      "english_name": "STRAWBERRY FIELDS",
+      "hebrew_name": "סטרוברי פילדס ריט לימיטד"
+    },
+    {
+      "ticker": "SUGT.TA",
+      "english_name": "Sugat Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "SVRT-M.TA",
+      "english_name": "SAVOREAT LTD",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TASE.TA",
+      "english_name": "The Tel-Aviv Stock Exchange Ltd.",
+      "hebrew_name": "הבורסה לניירות ערך בתל-אביב בע\"מ"
+    },
+    {
+      "ticker": "TATT.TA",
+      "english_name": "TAT Technologies Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TAYA.TA",
+      "english_name": "Taya Investment Co., Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TDRN-B5.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TDRN.TA",
+      "english_name": "Tadiran Group Ltd",
+      "hebrew_name": "תדיראן תעשיות קשר אלחוטי בע\"מ"
+    },
+    {
+      "ticker": "TECT.TA",
+      "english_name": "Tectona Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TEDE.TA",
+      "english_name": "Tedea Technological Development and Automation Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TEVA.TA",
+      "english_name": "Teva Pharmaceutical Industries Limited",
+      "hebrew_name": "טבע תעשיות פרמצבטיות בע\"מ"
+    },
+    {
+      "ticker": "TFRLF.TA",
+      "english_name": "Tefron Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TGI.TA",
+      "english_name": "Tgi Infrastructures Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TGTR.TA",
+      "english_name": "Together Pharma Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "THES.TA",
+      "english_name": "Thirdeye Systems Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TIGBUR.TA",
+      "english_name": "Tigbur Group Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TIGI.TA",
+      "english_name": "Tigi Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TKUN.TA",
+      "english_name": "Tikun Olam-Cannbit Pharmaceuticals Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TLSY.TA",
+      "english_name": "Telsys Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TMIS.TA",
+      "english_name": "Themis G.R.E.N. Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TMRP.TA",
+      "english_name": "Tamar Petroleum Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TNDO.TA",
+      "english_name": "Tondo Smart Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TOEN.TA",
+      "english_name": "Tomer Energy Royalties (2012) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TOPG.TA",
+      "english_name": "Top Group Software Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TPGM.TA",
+      "english_name": "TopGum Industries Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR1016.TA",
+      "english_name": "ISRAEL(STATE OF) 0% T-BILL 06/1",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR1116.TA",
+      "english_name": "TREASR BND 1116",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR1216.TA",
+      "english_name": "TREASR BND 1216",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR217.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR317.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR416.TA",
+      "english_name": "0 ISRAEL 16 T-B 416",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR417.TA",
+      "english_name": "TREASR BND 417",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR516.TA",
+      "english_name": "0 ISRAEL 16 T-B 516",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR616.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR726.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR816.TA",
+      "english_name": "TREASR BND 816",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TR916.TA",
+      "english_name": "ISRAEL(STATE OF) 0% T-BILL 07/0",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TRAN.TA",
+      "english_name": "Trucknet Enterprise Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TRLT.TA",
+      "english_name": "Tera Light Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TRPZ.TA",
+      "english_name": "Turpaz Industries Ltd",
+      "hebrew_name": "תורפז תעשיות בע\"מ"
+    },
+    {
+      "ticker": "TRX.TA",
+      "english_name": "Terminal X Online Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TSEM.TA",
+      "english_name": "Tower Semiconductor Ltd.",
+      "hebrew_name": "טאואר סמיקונדקטור בע\"מ"
+    },
+    {
+      "ticker": "TSG.TA",
+      "english_name": "TSG IT Advanced Systems Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TTAM.TA",
+      "english_name": "Tiv Taam Holdings 1 Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TURB.TA",
+      "english_name": "Turbogen Ltd",
+      "hebrew_name": "טורבוג'ן בע\"מ"
+    },
+    {
+      "ticker": "TURG-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "TUZA.TA",
+      "english_name": "TEUZA",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "UDII-B7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "UMH-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "UMH.TA",
+      "english_name": "UMH Properties, Inc.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "UNCT.TA",
+      "english_name": "Unicorn Technologies - Limited Partnership",
+      "hebrew_name": "יוניקורן טכנולוגיות-שותפות מוגבלת"
+    },
+    {
+      "ticker": "UNIT.TA",
+      "english_name": "Unitronics (1989) (R\"G) Ltd",
+      "hebrew_name": "יוניטרוניקס (1989) (ר\"ג) בע\"מ"
+    },
+    {
+      "ticker": "UNMI-P2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "UNMI.TA",
+      "english_name": "UNIVERSAL MOTORS I",
+      "hebrew_name": "יוניברסל מוטורס ישראל בע\"מ"
+    },
+    {
+      "ticker": "UNTC.TA",
+      "english_name": "Unic-tech, Limited Partnership",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "UPSL.TA",
+      "english_name": "Upsellon Brands Holdings Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "URBC.TA",
+      "english_name": "URBANICA (PALO) RE",
+      "hebrew_name": "אורבניקה (פאלו) ריטייל בע\"מ"
+    },
+    {
+      "ticker": "UTRN.TA",
+      "english_name": "Utron Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "VCTR.TA",
+      "english_name": "Victory Supermarket Chain Ltd",
+      "hebrew_name": "ויקטורי רשת סופרמרקטים בע\"מ"
+    },
+    {
+      "ticker": "VILR-B11.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "VILR-B12.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "VILR.TA",
+      "english_name": "Villar International Ltd.",
+      "hebrew_name": "וילאר אינטרנשיונל בע\"מ"
+    },
+    {
+      "ticker": "VRDS.TA",
+      "english_name": "Veridis Environment Ltd",
+      "hebrew_name": "ורידיס אינווירונמנט בע\"מ"
+    },
+    {
+      "ticker": "VRYX.TA",
+      "english_name": "Veloryx Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "VTNA.TA",
+      "english_name": "Vitania Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "WATR.TA",
+      "english_name": "Water.Io Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "WESR-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "WESR.TA",
+      "english_name": "Wesure Global Tech Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "WILC.TA",
+      "english_name": "G. Willi-Food International Ltd.",
+      "hebrew_name": "וילי פוד השקעות בע\"מ"
+    },
+    {
+      "ticker": "WILK-R1.TA",
+      "english_name": "WILK TECHNOLOGIES",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "WILK.TA",
+      "english_name": "Wilk Technologies Ltd",
+      "hebrew_name": "וילק טכנולוגיות בע\"מ"
+    },
+    {
+      "ticker": "WLFD.TA",
+      "english_name": "Willy-Food Investments Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "WSDL-B4.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "XTLB.TA",
+      "english_name": "XTL Biopharmaceuticals Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "YAAZ.TA",
+      "english_name": "Yaaz Entrepreneurship and Urban Renewal Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "YACO.TA",
+      "english_name": "Yacobi Brothers Group (YSB) Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "YBOX-C7.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "YBOX.TA",
+      "english_name": "Ybox Real Estate Ltd.",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "YBRD.TA",
+      "english_name": "Y.B Urban Renewal - Residential Development Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "YESD.TA",
+      "english_name": "Yesodot Eitanim Construction Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "YHNF.TA",
+      "english_name": "M.Yochananof and Sons (1988) Ltd",
+      "hebrew_name": "מ.יוחננוף ובניו (1988) בע\"מ"
+    },
+    {
+      "ticker": "YOZM-B2.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ZNKL.TA",
+      "english_name": "Zanlakol Ltd",
+      "hebrew_name": "זנלכל בע\"מ"
+    },
+    {
+      "ticker": "ZOOZ.TA",
+      "english_name": "ZOOZ Strategy Ltd.",
+      "hebrew_name": "זוז אסטרטגיה בע\"מ"
+    },
+    {
+      "ticker": "ZPRS-B1.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ZPRS.TA",
+      "english_name": "Zephyrus Wing Energies Ltd",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ZUR-B13.TA",
+      "english_name": "",
+      "hebrew_name": ""
+    },
+    {
+      "ticker": "ZUR.TA",
+      "english_name": "Zur Shamir Holdings Ltd",
+      "hebrew_name": ""
+    }
+  ]
+}

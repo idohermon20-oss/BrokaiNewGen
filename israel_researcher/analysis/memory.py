@@ -33,7 +33,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timedelta
 
-from ..models import Signal
+from ..models import Signal, today, is_pseudo_ticker, is_cache_stale, fmt_mcap, fmt_rsi_label
 
 
 class StockMemoryManager:
@@ -110,7 +110,7 @@ class StockMemoryManager:
             vs52  = f.get("pct_vs_52w_high",    "?")
             rev   = f.get("revenue_growth_pct", "?")
             cap   = f.get("market_cap")
-            cap_str = _fmt_mcap(cap) if cap else "?"
+            cap_str = fmt_mcap(cap) if cap else "?"
             parts.append(
                 f"Technicals: RSI={rsi} MA={trend} vs52wHigh={vs52}% "
                 f"revGrowth={rev}% mktCap={cap_str}"
@@ -132,45 +132,37 @@ class StockMemoryManager:
 
     def fundamentals_stale(self, ticker: str) -> bool:
         """True if fundamentals are missing or older than TTL."""
-        entry = self._mem.get(ticker, {})
-        date_str = entry.get("fundamentals_date", "")
-        if not date_str:
-            return True
-        try:
-            age = (datetime.now() - datetime.strptime(date_str, "%Y-%m-%d")).days
-            return age >= self._FUNDAMENTALS_TTL_DAYS
-        except Exception:
-            return True
+        date_str = self._mem.get(ticker, {}).get("fundamentals_date", "")
+        return is_cache_stale(date_str, self._FUNDAMENTALS_TTL_DAYS)
 
     # ── Write ─────────────────────────────────────────────────────────────────
 
     def update_company_name(self, ticker: str, company_name: str) -> None:
         """Store the human-readable company name for a ticker (used by bot tools for display)."""
-        if company_name and not company_name.startswith("TASE"):
+        if company_name and not is_pseudo_ticker(company_name):
             entry = self._mem.setdefault(ticker, {})
-            if not entry.get("company_name"):   # don't overwrite once set
+            if not entry.get("company_name"):
                 entry["company_name"] = company_name
 
     def update_fundamentals(self, ticker: str, tech_data: dict) -> None:
         entry = self._mem.setdefault(ticker, {})
         entry["fundamentals"]      = tech_data
-        entry["fundamentals_date"] = _today()
+        entry["fundamentals_date"] = today()
 
     def update_signal_history(self, ticker: str, signals: list[Signal], final_score: float) -> None:
         entry   = self._mem.setdefault(ticker, {})
-        # Capture company_name from first signal that has a real name
         for s in signals:
             name = getattr(s, "company_name", "") or ""
-            if name and not name.startswith("TASE"):
+            if name and not is_pseudo_ticker(name):
                 self.update_company_name(ticker, name)
                 break
-        today   = _today()
+        date    = today()
         history = entry.get("signal_history", [])
 
         # Deduplicate same-day entry
         history = [h for h in history if h.get("date") != today]
         history.append({
-            "date":         today,
+            "date":         date,
             "signal_types": list({s.signal_type for s in signals}),
             "final_score":  round(final_score, 1),
         })
@@ -190,7 +182,7 @@ class StockMemoryManager:
 
     def update_analyst_notes(self, ticker: str, notes: str) -> None:
         entry = self._mem.setdefault(ticker, {})
-        today_str      = _today()
+        today_str      = today()
         existing       = entry.get("analyst_notes", "")
         existing_date  = entry.get("notes_date", "")
         if existing and existing_date and existing_date != today_str:
@@ -232,7 +224,7 @@ class StockMemoryManager:
         if headlines:
             entry = self._mem.setdefault(ticker, {})
             entry["recent_news"] = " | ".join(headlines)
-            entry["news_date"]   = _today()
+            entry["news_date"]   = today()
 
     def update_maya_history(self, ticker: str, signal: Signal) -> None:
         """
@@ -329,15 +321,8 @@ class StockMemoryManager:
             rev   = f.get("revenue_growth_pct", "?")
             cap   = f.get("market_cap")
             price = f.get("last_price", "?")
-            cap_str = _fmt_mcap(cap) if cap else "?"
-            rsi_label = ""
-            try:
-                rsi_val = float(rsi)
-                if rsi_val < 30:   rsi_label = " (oversold)"
-                elif rsi_val > 70: rsi_label = " (overbought)"
-                else:              rsi_label = " (neutral)"
-            except Exception:
-                pass
+            cap_str   = fmt_mcap(cap) if cap else "?"
+            rsi_label = fmt_rsi_label(rsi)
             sections.append(
                 f"\nCached Technicals:\n"
                 f"  • Price: ₪{price} | RSI-14: {rsi}{rsi_label}\n"
@@ -389,18 +374,3 @@ class StockMemoryManager:
         return f"Stock memory: {len(self._mem)} tickers tracked"
 
 
-def _today() -> str:
-    return datetime.now().strftime("%Y-%m-%d")
-
-
-def _fmt_mcap(cap) -> str:
-    """Format market cap as human-readable string (e.g. '₪2.3B', '$450M')."""
-    try:
-        cap = float(cap)
-        if cap >= 1e9:
-            return f"₪{cap/1e9:.1f}B"
-        if cap >= 1e6:
-            return f"₪{cap/1e6:.0f}M"
-        return f"₪{cap:.0f}"
-    except Exception:
-        return "?"

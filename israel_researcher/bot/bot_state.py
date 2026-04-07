@@ -17,18 +17,20 @@ from ..config import BOT_STATE_FILE
 
 ALL_SECTORS = [
     "Banks", "TechDefense", "Energy", "PharmaBiotech",
-    "RealEstate", "TelecomConsumer", "Discovery",
+    "RealEstate", "TelecomConsumer", "TourismTransport", "Construction", "Discovery",
 ]
 
 # Map from user-facing sector name → agent class name suffix (for filtering)
 SECTOR_AGENT_MAP = {
-    "Banks":           "BanksAgent",
-    "TechDefense":     "TechDefenseAgent",
-    "Energy":          "EnergyAgent",
-    "PharmaBiotech":   "PharmaAgent",
-    "RealEstate":      "RealEstateAgent",
-    "TelecomConsumer": "TelecomConsumerAgent",
-    "Discovery":       "DiscoveryAgent",
+    "Banks":            "BanksAgent",
+    "TechDefense":      "TechDefenseAgent",
+    "Energy":           "EnergyAgent",
+    "PharmaBiotech":    "PharmaAgent",
+    "RealEstate":       "RealEstateAgent",
+    "TelecomConsumer":  "TelecomConsumerAgent",
+    "TourismTransport": "TourismTransportAgent",
+    "Construction":     "ConstructionAgent",
+    "Discovery":        "DiscoveryAgent",
 }
 
 

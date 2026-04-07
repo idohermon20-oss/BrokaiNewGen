@@ -21,9 +21,9 @@ from .agents.manager import ResearchManager
 from .bot import BotServer, load_bot_settings
 from .config import (
     BOT_TOKEN, CHAT_ID, OPENAI_API_KEY,
-    CHECK_INTERVAL_SECONDS,
+    CHECK_INTERVAL_SECONDS, TASE_MAJOR_TICKERS,
 )
-from .models import load_state
+from .models import load_state, save_state
 
 
 def run_research_cycle(
@@ -71,6 +71,21 @@ def main() -> None:
             # Refresh shared state snapshot before cycle
             with state_lock:
                 state_ref["current"] = load_state()
+
+            # Refresh financial snapshot cache once per day (for screen_stocks bot tool)
+            _state_now = state_ref["current"]
+            _today = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
+            if _state_now.get("last_financial_cache_refresh") != _today:
+                try:
+                    from .sources.market import refresh_financial_snapshot_cache
+                    refresh_financial_snapshot_cache(TASE_MAJOR_TICKERS, _state_now)
+                    _state_now["last_financial_cache_refresh"] = _today
+                    save_state(_state_now)
+                    with state_lock:
+                        state_ref["current"] = _state_now
+                    print(f"[FinSnap] Daily financial snapshot refreshed ({len(TASE_MAJOR_TICKERS)} tickers)")
+                except Exception as _fe:
+                    print(f"[FinSnap] Refresh failed (non-fatal): {_fe}")
 
             run_research_cycle(
                 openai_key = OPENAI_API_KEY,

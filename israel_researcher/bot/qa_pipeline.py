@@ -19,6 +19,7 @@ import traceback
 from ..config import OPENAI_API_KEY, OPENAI_MODEL
 from ..analysis.llm import LLMAnalyst
 from ..analysis.memory import StockMemoryManager
+from ..models import is_pseudo_ticker, fmt_mcap, fmt_rsi_label, MAYA_SIGNAL_TYPES
 
 # ── Compact ticker → company map injected into the intent prompt ──────────────
 _KNOWN_TICKERS: dict[str, str] = {
@@ -55,6 +56,32 @@ _KNOWN_TICKERS: dict[str, str] = {
     "SAE":   "Shufersal / שופרסל",
     "STRS":  "Strauss Group / שטראוס",
     "MTRX":  "Matrix IT / מטריקס",
+    # Banks/Finance additions
+    "MISH":  "Mivtach Shamir Insurance & Finance / מבטח שמיר",
+    # Tourism / Transport
+    "ELAL":  "El Al Airlines / אל על",
+    "ISRO":  "Isrotel / ישרוטל",
+    "DANH":  "Dan Hotels / דן",
+    "FTAL":  "Fattal Hotels / פתאל",
+    "ISRG":  "Israir Group / ישראייר",
+    # Construction
+    "ELTR":  "Electra / אלקטרה",
+    "DNYA":  "Danya Cebus / דניה סיבוס",
+    "ASHG":  "Ashtrom Group / אשטרום",
+    "SPEN":  "Shapir Engineering / שפיר",
+    "SKBN":  "Shikun u'Binui / שיכון ובינוי",
+    "DIMRI": "Dimri Real Estate / דימרי",
+    # Consumer additions
+    "FOX":   "Fox-Wizel / פוקס",
+    "DIPL":  "Diplomat Holdings / דיפלומט",
+    "RMLI":  "Rami Levi / רמי לוי",
+    "ELCO":  "Elco / אלקו",
+    # Energy additions
+    "SNFL":  "Sunflower Sustainable Investments / סאנפלאואר",
+    # Tech/Defense addition
+    "TDRN":  "Tadiran / תדיראן",
+    # Common Hebrew names for existing tickers
+    "AYALON": "Ayalon Insurance / איילון",
 }
 
 _TICKER_LIST_TEXT = "\n".join(f"  {k}: {v}" for k, v in _KNOWN_TICKERS.items())
@@ -72,7 +99,7 @@ def _build_dynamic_ticker_list(state: dict) -> str:
     seen = set(_KNOWN_TICKERS)
 
     for tkr, entry in state.get("stock_memory", {}).items():
-        if tkr in seen or tkr.startswith("TASE"):
+        if tkr in seen or is_pseudo_ticker(tkr):
             continue
         company = entry.get("company_name", "")
         if company:
@@ -165,25 +192,19 @@ def _tool_stock_data(ticker: str | None, state: dict) -> str:
         rev      = data.get("revenue_growth_pct", "?")
         inc      = data.get("income_growth_pct", "?")
         vol      = data.get("avg_volume", "?")
-        day_chg  = data.get("today_change_pct")
+        day_chg   = data.get("today_change_pct")
+        price_note = data.get("price_data_note", "last_session")
 
-        cap_str = f"₪{cap/1e9:.1f}B" if cap and cap >= 1e9 else (f"₪{cap/1e6:.0f}M" if cap else "?")
-
-        rsi_label = ""
-        try:
-            rv = float(rsi)
-            if rv < 30:   rsi_label = " — OVERSOLD"
-            elif rv > 70: rsi_label = " — OVERBOUGHT"
-            else:          rsi_label = " — neutral"
-        except Exception:
-            pass
+        cap_str   = fmt_mcap(cap) if cap else "?"
+        rsi_label = fmt_rsi_label(rsi)
 
         vol_str = f"{int(vol):,}" if vol and vol != "?" else "?"
 
         day_str = ""
         if day_chg is not None:
-            sign = "+" if day_chg >= 0 else ""
-            day_str = f"  ({sign}{day_chg:.2f}% today)"
+            sign  = "+" if day_chg >= 0 else ""
+            label = "today intraday" if price_note == "intraday" else "last session"
+            day_str = f"  ({sign}{day_chg:.2f}% {label})"
 
         lines = [
             f"Live Data — {ticker} ({company}):",
@@ -364,13 +385,8 @@ def _tool_maya_filings(ticker: str | None, state: dict) -> str:
     Can filter by ticker or return all recent filings.
     """
     try:
-        MAYA_TYPES = {
-            "maya_ipo", "maya_spinoff", "maya_ma", "maya_contract",
-            "maya_buyback", "maya_institutional", "maya_earnings",
-            "maya_dividend", "maya_rights", "maya_management", "maya_filing",
-        }
         weekly = state.get("weekly_signals", [])
-        filings = [s for s in weekly if _sig_get(s, "signal_type") in MAYA_TYPES]
+        filings = [s for s in weekly if _sig_get(s, "signal_type") in MAYA_SIGNAL_TYPES]
 
         if ticker:
             bare = ticker.replace(".TA", "").upper()
@@ -457,16 +473,38 @@ def _tool_live_scan(ticker: str | None, _state: dict) -> str:
     if not ticker:
         return ""
     try:
-        from ..sources.market import MarketAnomalyDetector
+        from ..sources.market import MarketAnomalyDetector, DeepStockAnalyzer
         ticker_yf = ticker + ".TA" if not ticker.endswith(".TA") else ticker
+
+        # Always fetch basic price data so "current move" questions always get a number
+        price_line = ""
+        try:
+            d = DeepStockAnalyzer().analyze(ticker_yf)
+            lp = d.get("last_price")
+            chg = d.get("today_change_pct")
+            note = d.get("price_data_note", "last_session")
+            if lp:
+                label = "intraday" if note == "intraday" else "last session"
+                if chg is not None:
+                    sign = "+" if chg >= 0 else ""
+                    price_line = f"Price: ₪{lp}  ({sign}{chg:.2f}% {label})"
+                else:
+                    price_line = f"Price: ₪{lp}  (change unavailable)"
+        except Exception:
+            pass
+
         detector = MarketAnomalyDetector([ticker_yf])
         signals = detector.scan_universe(
             sample_size=1,
             priority_tickers=[ticker_yf],
         )
         if not signals:
-            return f"No anomalies detected for {ticker} right now (no volume spike, price move, or technical trigger)."
-        lines = [f"Live scan results for {ticker}:"]
+            base = f"No anomalies detected for {ticker} right now (no volume spike, price move ≥3.5%, or technical trigger)."
+            return f"{base}\n{price_line}" if price_line else base
+        header = f"Live scan results for {ticker}:"
+        if price_line:
+            header += f"\n{price_line}"
+        lines = [header]
         for s in signals:
             lines.append(f"  [{s.signal_type}] {s.headline}")
             if s.detail:
@@ -657,6 +695,213 @@ def _tool_ipo_watchlist(_ticker: str | None, state: dict) -> str:
         return f"[ipo_watchlist error: {e}]"
 
 
+def _fmt_financial(df, label: str) -> str:
+    """Format a yfinance financials DataFrame into an analyst-readable table."""
+    import math
+    if df is None or df.empty:
+        return f"No {label} data available."
+    key_rows = ["Total Revenue", "Gross Profit", "Operating Income",
+                "Net Income", "EBITDA", "Basic EPS"]
+    cols = list(df.columns[:4])  # up to 4 most recent periods
+    lines = [f"{label}:"]
+    for row in key_rows:
+        if row not in df.index:
+            continue
+        vals = []
+        for col in cols:
+            try:
+                v = df.loc[row, col]
+                if v is None:
+                    vals.append("N/A")
+                elif hasattr(v, "__float__") and math.isnan(float(v)):
+                    vals.append("N/A")
+                else:
+                    v = float(v)
+                    if abs(v) >= 1e9:
+                        vals.append(f"₪{v/1e9:.2f}B")
+                    elif abs(v) >= 1e6:
+                        vals.append(f"₪{v/1e6:.1f}M")
+                    else:
+                        vals.append(f"₪{v:.0f}")
+            except Exception:
+                vals.append("N/A")
+        period_labels = [str(c)[:10] for c in cols]
+        lines.append(f"  {row}: " + "  |  ".join(
+            f"{p}: {v}" for p, v in zip(period_labels, vals)
+        ))
+    return "\n".join(lines)
+
+
+def _tool_financials(ticker: str | None, _state: dict, _top_n: int = 5) -> str:
+    """
+    Annual + quarterly income statement and key balance sheet items for a specific ticker.
+    Best for: "What was X's revenue last year?", "Q1 profit for BEZQ?", "EPS history?"
+    """
+    import math
+    if not ticker:
+        return "Please specify a stock ticker."
+    ticker_yf = ticker if ticker.endswith(".TA") else ticker + ".TA"
+    try:
+        import yfinance as yf
+        tk = yf.Ticker(ticker_yf)
+        annual    = tk.financials             # annual income statement
+        quarterly = tk.quarterly_financials   # quarterly income statement
+        bs        = tk.balance_sheet
+
+        parts = [
+            _fmt_financial(annual,    "Annual Income Statement (last 4 years)"),
+            _fmt_financial(quarterly, "Quarterly Income Statement (last 4 quarters)"),
+        ]
+
+        if bs is not None and not bs.empty:
+            bs_items = ["Total Assets", "Total Debt", "Cash And Cash Equivalents",
+                        "Stockholders Equity", "Total Liabilities Net Minority Interest"]
+            bs_lines = ["Balance Sheet (latest):"]
+            for item in bs_items:
+                if item not in bs.index:
+                    continue
+                try:
+                    v = float(bs.loc[item, bs.columns[0]])
+                    if abs(v) >= 1e9:
+                        bs_lines.append(f"  {item}: ₪{v/1e9:.2f}B")
+                    else:
+                        bs_lines.append(f"  {item}: ₪{v/1e6:.1f}M")
+                except Exception:
+                    pass
+            if len(bs_lines) > 1:
+                parts.append("\n".join(bs_lines))
+
+        return "\n\n".join(parts) if parts else "No financial data found."
+    except Exception as e:
+        return f"[financials error for {ticker}: {e}]"
+
+
+def _tool_screen_stocks(_ticker: str | None, state: dict, _top_n: int = 20) -> str:
+    """
+    Reads daily financial snapshot cache to answer broad screening questions.
+    Best for: "Cheapest stock by P/E", "highest dividend yield", "best revenue growth".
+    No ticker required.
+    """
+    cache = state.get("financial_snapshot_cache", {})
+    if not cache:
+        return (
+            "Financial snapshot cache not yet populated — it refreshes once daily at the start "
+            "of the first research cycle. Try again in a few minutes after the next cycle runs."
+        )
+    rows = []
+    for t, snap in cache.items():
+        if not snap:
+            continue
+        rows.append({
+            "ticker":    t.replace(".TA", ""),
+            "price":     snap.get("price"),
+            "mktCap":    snap.get("mktCap"),
+            "pe":        snap.get("pe_trailing"),
+            "pb":        snap.get("price_to_book"),
+            "divYield":  snap.get("dividend_yield"),
+            "revGrowth": snap.get("revenue_growth_pct"),
+            "netMargin": snap.get("net_margin"),
+            "roe":       snap.get("return_on_equity"),
+        })
+    if not rows:
+        return "No financial data in snapshot cache."
+    rows.sort(key=lambda r: (r.get("mktCap") or 0), reverse=True)
+    rows = rows[:25]
+
+    def fmt(v, d=1):
+        return f"{v:.{d}f}" if v is not None else "N/A"
+
+    lines = [f"Financial Snapshot — {len(rows)} stocks (by market cap):"]
+    lines.append(f"{'Ticker':<10} {'Price':>8} {'MktCap':>10} {'P/E':>7} {'P/B':>6} {'Div%':>6} {'RevGr%':>8} {'NtMrg%':>7}")
+    lines.append("-" * 72)
+    for r in rows:
+        mc  = r["mktCap"]
+        mc_str  = f"₪{mc/1e9:.1f}B" if mc and mc >= 1e9 else (f"₪{mc/1e6:.0f}M" if mc else "N/A")
+        pr_str  = f"₪{r['price']:.2f}" if r["price"] else "N/A"
+        lines.append(
+            f"{r['ticker']:<10} {pr_str:>8} {mc_str:>10} "
+            f"{fmt(r['pe']):>7} {fmt(r['pb']):>6} {fmt(r['divYield']):>6} "
+            f"{fmt(r['revGrowth']):>8} {fmt(r['netMargin']):>7}"
+        )
+    return "\n".join(lines)
+
+
+def _tool_top_movers(_ticker: str | None, state: dict, top_n: int = 10) -> str:
+    """
+    Fetch today's % change for all validated TASE tickers (full universe) and return
+    the top gainers and biggest losers.  No ticker required.
+    Uses state["tase_universe_cache"] (400-500 stocks) populated by DiscoveryAgent,
+    falling back to TASE_MAJOR_TICKERS (~60 stocks) if the cache is empty.
+    Best for: 'What went up the most today?', 'Top losers today', 'מה עלה הכי הרבה?'
+    """
+    import math
+    try:
+        import yfinance as yf
+        from ..config import TASE_MAJOR_TICKERS
+
+        # Use full validated TASE universe (400-500 stocks) if available
+        universe_cache = state.get("tase_universe_cache", {})
+        tickers = universe_cache.get("tickers", [])
+        if not tickers:
+            tickers = TASE_MAJOR_TICKERS  # fallback when cache not yet populated
+        source_label = f"{len(tickers)} TASE stocks"
+
+        # Batch download: one API call for all tickers — far faster and more reliable
+        # than per-ticker fast_info calls. period="2d" gives yesterday + today close.
+        tickers_str = " ".join(tickers)
+        df = yf.download(tickers_str, period="2d", interval="1d",
+                         progress=False, auto_adjust=True, threads=True)
+
+        if df.empty or "Close" not in df:
+            return "Could not fetch today's price data from Yahoo Finance."
+
+        close = df["Close"]
+        if len(close) < 2:
+            return "Not enough price history to calculate today's change (market may not be open yet)."
+
+        today_row     = close.iloc[-1]
+        yesterday_row = close.iloc[-2]
+
+        results: list[dict] = []
+        for ticker_yf in tickers:
+            try:
+                t = today_row.get(ticker_yf)
+                p = yesterday_row.get(ticker_yf)
+                if t is None or p is None:
+                    continue
+                # pandas may return numpy float — convert and guard NaN/zero
+                t, p = float(t), float(p)
+                if math.isnan(t) or math.isnan(p) or p <= 0:
+                    continue
+                pct  = (t - p) / p * 100
+                bare = ticker_yf.replace(".TA", "")
+                results.append({"ticker": bare, "pct": round(pct, 2), "price": round(t, 2)})
+            except Exception:
+                pass
+
+        if not results:
+            return "No price data available for today (market may be closed)."
+
+        results.sort(key=lambda x: x["pct"], reverse=True)
+        n       = min(top_n, len(results))
+        gainers = results[:n]
+        losers  = list(reversed(results))[:n]
+
+        lines = [f"Today's top movers ({source_label}, {len(results)} with data):"]
+        lines.append(f"\n📈 Top {len(gainers)} gainers:")
+        for r in gainers:
+            sign = "+" if r["pct"] >= 0 else ""
+            lines.append(f"  • {r['ticker']}: {sign}{r['pct']:.2f}%  (₪{r['price']:.2f})")
+
+        lines.append(f"\n📉 Top {len(losers)} losers:")
+        for r in losers:
+            lines.append(f"  • {r['ticker']}: {r['pct']:.2f}%  (₪{r['price']:.2f})")
+
+        return "\n".join(lines)
+    except Exception as e:
+        return f"[top_movers error: {e}]"
+
+
 # ── Tool registry ─────────────────────────────────────────────────────────────
 
 _TOOL_REGISTRY: dict[str, callable] = {
@@ -678,6 +923,10 @@ _TOOL_REGISTRY: dict[str, callable] = {
     "get_maya_history":   _tool_maya_history,
     "get_user_alerts":    _tool_user_alerts,
     "get_ipo_watchlist":  _tool_ipo_watchlist,
+    "get_top_movers":     _tool_top_movers,
+    # Financial deep-dive and screening
+    "get_financials":     _tool_financials,
+    "screen_stocks":      _tool_screen_stocks,
 }
 
 # Full tool catalogue injected into the intent prompt
@@ -706,9 +955,25 @@ RESEARCHER STATE (cont.):
   get_user_alerts    — List the user's own custom alert rules set via /alert_add (for THIS chat)
   get_ipo_watchlist  — All IPO / new-listing activity tracked by the researcher (this week + memory)
 
+LIVE MARKET DATA (cont.):
+  get_top_movers     — Today's biggest % gainers AND losers across all major TASE stocks (no ticker needed)
+                       Use for: "what went up most today?", "top gainers", "biggest losers", "מה עלה הכי הרבה היום?"
+
+FINANCIAL DATA (yfinance income statement + balance sheet):
+  get_financials     — Annual AND quarterly income statement (revenue, gross profit, net income, EPS, EBITDA)
+                       + key balance sheet items for ONE specific stock. Requires a ticker.
+                       Use for: "what was X's revenue last year?", "Q1 profit for BEZQ?", "EPS history?",
+                       "מה היה הרווח של טבע?", "הכנסות בנק הפועלים"
+  screen_stocks      — Screens ALL major TASE stocks by P/E, P/B, dividend yield, revenue growth, net margin,
+                       market cap. Reads from daily snapshot cache — no ticker needed.
+                       Use for: "cheapest stock by P/E", "highest dividend yield", "best revenue growth",
+                       "מה הכי זול בבורסה?", "מניות עם צמיחה גבוהה בהכנסות"
+
 SELECTION RULES:
   • Stock-specific question      → get_stock_data + search_news + get_memory + get_weekly_signals + get_maya_filings
                                    (+ run_live_scan if asking about right NOW)
+  • Financial / fundamental Q    → get_financials + get_stock_data  (revenue, profit, EPS, balance sheet)
+  • Screening / ranking question → screen_stocks + get_macro  (cheapest, best growth, highest yield)
   • "What to buy today"          → get_alerted_stocks + get_macro
   • Market overview              → get_macro + get_sector_context
   • Sector question              → get_sector_context + get_macro
@@ -725,7 +990,7 @@ SELECTION RULES:
 # ── QAPipeline ────────────────────────────────────────────────────────────────
 
 # Intent types that require a resolved ticker to be useful
-_STOCK_INTENTS = {"stock_analysis", "live_scan", "earnings_query"}
+_STOCK_INTENTS = {"stock_analysis", "live_scan", "earnings_query", "financial_query"}
 
 # Canonical tool sets per intent — used as hard fallback when the LLM omits tools
 # or mistakenly returns direct_answer for a data question.
@@ -740,8 +1005,11 @@ _INTENT_REQUIRED_TOOLS: dict[str, list[str]] = {
     "maya_history":    ["get_maya_history"],
     "recommendations": ["get_alerted_stocks", "get_macro"],
     "tracker_query":   ["get_tracked_stocks"],
-    "alert_query":     ["get_user_alerts"],
-    "general_question":["get_macro"],
+    "alert_query":      ["get_user_alerts"],
+    "top_movers_query": ["get_top_movers"],
+    "financial_query":  ["get_financials", "get_stock_data"],
+    "screening_query":  ["screen_stocks", "get_macro"],
+    "general_question": ["get_macro"],
 }
 
 

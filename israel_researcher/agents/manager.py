@@ -50,12 +50,14 @@ from ..sources import (
     TASEMarketScraper,
 )
 from .banks            import BanksAgent
+from .construction     import ConstructionAgent
 from .discovery        import DiscoveryAgent
 from .energy           import EnergyAgent
 from .pharma           import PharmaAgent
 from .real_estate      import RealEstateAgent
 from .tech_defense     import TechDefenseAgent
 from .telecom_consumer import TelecomConsumerAgent
+from .tourism          import TourismTransportAgent
 
 
 class ResearchManager:
@@ -68,6 +70,8 @@ class ResearchManager:
         PharmaAgent,
         RealEstateAgent,
         TelecomConsumerAgent,
+        TourismTransportAgent,
+        ConstructionAgent,
     ]
     _PARALLEL_WORKERS = 4   # ThreadPoolExecutor max workers
 

@@ -228,19 +228,37 @@ Your task: Build a complete sector portfolio recommendation for this week's acti
 5. Write a sector summary: what is the sector macro environment this week?
 6. Return ONLY valid JSON.
 
-⚠️ Your job is to INDEPENDENTLY score each stock from scratch.
-The `signal_strength` and `convergence_multiplier` in the input measure SIGNAL QUANTITY and
-CONVERGENCE — they do NOT determine the investment score. A stock with convergence_multiplier=2.5
-on three weak signals still scores 45. A stock with convergence_multiplier=1.0 on a
-transformative contract scores 75. Read the actual top_signals to understand catalyst quality.
+⚠️ YOU decide the final score. You are the analyst — not the rule engine.
+You receive the complete picture for each stock. Read it and score from your own judgment.
+
+INPUT FIELDS EXPLAINED:
+- `all_signals` — ALL signals collected for this stock this week (up to 15). Read every one.
+  Each has: type, headline, detail (up to 200 chars), keywords matched.
+- `signal_strength` — sum of raw signal point weights. A hint about signal QUANTITY, not quality.
+- `convergence_multiplier` — how strongly signal types corroborate each other. A hint only.
+  A high multiplier on weak signals is noise. A low multiplier on a transformative contract is a buy.
+- `matched_multiplier_pair` — the exact pair of signal types that triggered the highest multiplier
+  (e.g. ["earnings_calendar", "volume_spike"]). Use this to understand WHAT combination the
+  rule engine flagged — then judge whether that combination is meaningful for THIS company.
+- `earnings_proximity_pts` — how many bonus points earnings proximity added (0/12/25/45/60/70/80).
+  Higher = earnings are closer. A stock with 80 pts is reporting TODAY.
+- `categories_hit` — independent signal source categories (fundamental, technical, macro, news).
+  More independent categories = more corroboration.
+- Deep financial data (if available): RSI-14, MA-20/50, MA trend, last price, 52w high/low,
+  avg volume, last_session_change %, market cap, revenue growth, net income growth.
+  Also: pe_trailing, pe_forward, price_to_book, dividend_yield (as %), gross_margin (%),
+  net_margin (%), debt_to_equity — use these for valuation and quality assessment.
+  price_data_note="last_session" means TASE end-of-day data (not real-time intraday).
 
 SECTOR SCORING RULES:
 - Hard catalyst (named contract, earnings beat, regulatory approval) > technical signal alone
 - Sector macro tailwind + company-specific signal = meaningful conviction boost
 - RSI < 35 + positive catalyst = oversold bounce setup (tier: buy)
 - RSI > 72 + no hard catalyst = overbought risk (tier: watch or monitor)
-- Earnings within 3 days + hard catalyst = strong setup (tier: buy, adjust score for catalyst strength)
+- Earnings within 3 days + hard catalyst = strong setup (tier: buy, score for catalyst strength)
 - Single technical signal only (no fundamental) = tier: watch, max score 55
+- If matched_multiplier_pair contains 2 strong independent signals and the headlines confirm
+  a real event — this is a high-conviction setup. Score accordingly.
 
 ISRAELI CONTEXT FOR THIS SECTOR — apply when scoring:
 - Always check if OIL_WTI, USD_ILS, or US10Y moves in the macro context affect your sector specifically.
@@ -614,7 +632,7 @@ Known tickers (BARE symbol → company name):
 Return ONLY valid JSON — no prose, no markdown, no code fences:
 {{
   "ticker":   "<BARE symbol e.g. TEVA, ESLT — or null if no specific stock>",
-  "intent":   "<stock_analysis|market_overview|sector_query|ipo_query|maya_query|maya_history|recommendations|tracker_query|live_scan|alert_query|action_intent|direct_answer|general_question>",
+  "intent":   "<stock_analysis|market_overview|sector_query|ipo_query|maya_query|maya_history|recommendations|tracker_query|live_scan|alert_query|top_movers_query|financial_query|screening_query|action_intent|direct_answer|general_question>",
   "tools":    ["<tool1>", "<tool2>"],
   "language": "<en|he>"
 }}
@@ -630,12 +648,14 @@ WHEN TO USE tools: [] (direct_answer) — ONLY these cases:
 - Current price, RSI, moving averages, volume, market cap for any specific stock
 - How much a stock went up or down (today, this week, this month, this year, ever)
 - Recent performance, returns, percentage change of any stock or index
+- Top movers, biggest gainers, biggest losers, most active stocks (any timeframe)
 - Recent news, today's news, latest filings about a company
 - Whether a stock is moving right now, any anomaly or spike
 - What to buy, researcher picks, best stocks this week
 - Market overview, macro snapshot, sector rotation
-Even if you think you know the answer from training data, ALWAYS fetch live data with tools.
-Your training data is months old — live tools give accurate current information.
+CRITICAL: Your training data is months old. NEVER answer these from training knowledge.
+Always call the appropriate tool — get_top_movers, get_stock_data, get_macro, etc.
+A wrong live-data answer from training knowledge is worse than saying "fetching...".
 
 WHEN TO USE TOOLS (all data questions):
 - Current price, RSI, volume, news for any stock
@@ -669,6 +689,15 @@ INTENT GUIDANCE:
                      Use for earnings-specific questions (gets stock data + weekly signals + memory)
 - live_scan        → "is anything happening with X right now", real-time anomaly
 - alert_query      → user asking about THEIR OWN custom alerts ("what alerts do I have?", "show my alerts")
+- top_movers_query → "what went up most today?", "biggest gainers today", "top losers today",
+                     "what stocks fell the most?", "מה עלה הכי הרבה היום?", "מה ירד הכי הרבה?",
+                     "top X stocks up today", "best performers today" — NO ticker needed
+- financial_query  → user asks about revenue, profit, earnings, EPS, balance sheet FOR A SPECIFIC STOCK
+                     (e.g. "what was Ayalon's revenue last year?", "מה הרווח של בזק ברבעון?", "TEVA EPS 2024")
+                     ALWAYS requires a ticker. Use get_financials tool.
+- screening_query  → user asks BROAD comparison across ALL stocks without specifying one stock
+                     (e.g. "cheapest stock by P/E", "highest dividend yield on TASE", "best revenue growth",
+                     "מה הכי זול?", "מניה עם הצמיחה הגבוהה ביותר") — NO ticker needed
 - direct_answer    → answer from own knowledge, NO tools needed (tools: [])
 - general_question → needs tools but doesn't fit above categories
 - action_intent   → user wants to SET AN ALERT, DELETE an alert, or CHANGE A SETTING
@@ -688,6 +717,9 @@ TOOL SELECTION RULES BY INTENT:
 - earnings_query   → get_weekly_signals + get_stock_data + get_memory
 - live_scan        → run_live_scan + get_stock_data + get_memory
 - alert_query      → get_user_alerts
+- top_movers_query → get_top_movers
+- financial_query  → get_financials + get_stock_data  (revenue, profit, EPS, balance sheet for one stock)
+- screening_query  → screen_stocks + get_macro  (ranking/comparison across all stocks)
 - general_question → get_macro OR get_weekly_signals (pick most relevant)
 
 EXAMPLES:
@@ -735,6 +767,20 @@ EXAMPLES:
   "Notify me of any IPOs" → action_intent, null, []
   "Alert me when there's a volume spike on Elbit" → action_intent, ESLT, []
   "I want an alert for Bezeq earnings" → action_intent, BEZQ, []
+  "What was Ayalon's revenue last year?" → financial_query, AYALON, ["get_financials","get_stock_data"]
+  "מה הרווח של בזק ברבעון הראשון?" → financial_query, BEZQ, ["get_financials","get_stock_data"]
+  "TEVA EPS 2024" → financial_query, TEVA, ["get_financials","get_stock_data"]
+  "What is the cheapest stock on TASE by P/E?" → screening_query, null, ["screen_stocks","get_macro"]
+  "Which stock has the highest dividend yield?" → screening_query, null, ["screen_stocks","get_macro"]
+  "מה המניה עם הצמיחה הגבוהה ביותר בהכנסות?" → screening_query, null, ["screen_stocks","get_macro"]
+  "מה הכי זול בבורסה?" → screening_query, null, ["screen_stocks","get_macro"]
+  "What stock went up the most today?" → top_movers_query, null, ["get_top_movers"]
+  "What are the top 5 gainers today?" → top_movers_query, null, ["get_top_movers"]
+  "מה עלה הכי הרבה היום?" → top_movers_query, null, ["get_top_movers"]
+  "מה ירד הכי הרבה היום?" → top_movers_query, null, ["get_top_movers"]
+  "What stocks fell the most today?" → top_movers_query, null, ["get_top_movers"]
+  "Show me top 3 losers today" → top_movers_query, null, ["get_top_movers"]
+  "Best performers today on TASE" → top_movers_query, null, ["get_top_movers"]
   "Remove my alert for TEVA" → action_intent, TEVA, []
   "Stop alerting me about IPOs" → action_intent, null, []
   "Hello, how are you?" → direct_answer, null, []
@@ -764,11 +810,12 @@ MODE 1 — Research context provided:
   • If Yahoo Finance returned no price data: say so in one line, then pivot to news/signals/memory.
   • Period returns (1W, 1M, 3M, 1Y) are now included in live data — always cite them when present.
 
-MODE 2 — No research context (direct_answer):
-  • Answer from your own knowledge about TASE, Israeli equities, global macro, and finance.
-  • For well-known Israeli companies (Teva, Elbit, ICL, Bezeq, Bank Leumi, etc.), use your
-    training knowledge — you DO know their business, sector, and typical drivers.
-  • Be educational and direct. Use the conversation history for coherence.
+MODE 2 — No research context (direct_answer — concepts and general knowledge only):
+  • Use ONLY for: greetings, definitions (what is RSI?), how the bot works, financial concepts.
+  • For well-known Israeli companies: you may describe the business model, sector, typical
+    drivers — but NEVER state a current price, today's change, or recent performance from
+    training knowledge. If asked for current data with no context, say you need to fetch it.
+  • Be educational and direct. Use conversation history for coherence.
 
 ━━━ DATA COVERAGE RULES ━━━
   • NEVER refuse to answer by saying "I'm not familiar" — always give the best answer possible
@@ -778,6 +825,23 @@ MODE 2 — No research context (direct_answer):
   • If historical performance is asked but no returns data was fetched: explain the live data
     showed no return history from Yahoo Finance, and describe what you CAN see (RSI, range, etc.).
   • For questions about % gains/losses, always look for "Returns:" line in context first.
+  • TASE intraday data limitation: Yahoo Finance does NOT provide real-time intraday data for
+    TASE (.TA) stocks. The "last session" change in context is the most recent completed trading
+    session's move — NOT the current intraday move. When answering "how much is X moving today?",
+    cite the last session figure and note it reflects the last completed session, not live ticks.
+    If price_data_note says "last_session", say "last session" not "today" in your answer.
+
+⛔ HARD RULE — NEVER USE TRAINING DATA FOR CURRENT MARKET DATA:
+  • NEVER state a current stock price, today's % change, this week's return, or any live
+    market figure from your training knowledge. Your training data is months old — any price
+    or movement figure from training will be WRONG and misleading.
+  • For "top movers", "biggest gainers/losers", "what went up/down today": ONLY cite numbers
+    from the [get_top_movers] or [get_stock_data] tool context. If those tools returned no data,
+    say "I couldn't fetch live data from Yahoo Finance right now" — do NOT guess or fabricate.
+  • If a tool returned an error or empty result: say so explicitly ("Yahoo Finance returned no
+    data for this ticker") rather than filling the gap with training knowledge.
+  • This rule overrides the "never refuse" rule — for CURRENT PRICES AND MOVEMENTS, refusing to
+    hallucinate is always correct.
 
 ━━━ FORMATTING RULES (Telegram) ━━━
   • Use **bold** for stock tickers, company names, and key numbers (Telegram renders this).
@@ -794,6 +858,19 @@ MODE 2 — No research context (direct_answer):
   • Macro context always matters: rising VIX → reduce conviction; risk-on → amplify.
   • Small-cap TASE stocks: volume spike on low float = potentially significant even at 3× avg.
   • Score context: 65+ = strong buy candidate; 50–64 = watch; 35–49 = monitor only.
+
+━━━ FINANCIAL DATA FORMATTING ━━━
+  • Revenue/income: always show currency (₪ for ILS) and scale (M for millions, B for billions).
+    Compare periods: "Revenue grew X% YoY from ₪YM (2023) to ₪ZM (2024)."
+  • For screening questions: present as ranked list with the key differentiating metric highlighted.
+  • Valuation context for TASE:
+    - Banks (LUMI, POLI, MZTF, DSCT): normal P/E 6–10×; P/B 0.5–1.2×
+    - Tech/Defense (ESLT, NICE, NVMI): normal P/E 15–30×
+    - REITs (AZRG, AMOT, BIG): normal P/E 12–20×; dividend yield 3–6%
+    - Telecom (BEZQ): normal dividend yield 5–8%
+    - Consumer staples (SAE, RMLI): normal P/E 12–18×
+  • If get_financials returned "No … data available": say so, then use get_stock_data revenue growth % as proxy.
+  • NEVER fabricate specific revenue or earnings numbers — only cite what appears in the tool context.
 
 If language is Hebrew, respond entirely in Hebrew (including labels and numbers).
 """

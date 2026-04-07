@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pandas as pd
 
-EXCEL_PATH = Path(__file__).parent.parent.parent / "israel_researcher_memory.xlsx"
+EXCEL_PATH = Path(__file__).parent.parent.parent / "data" / "israel_researcher_memory.xlsx"
 
 _ACTIVE_SHEET  = "Active Memory"
 _LOG_SHEET     = "Research Log"

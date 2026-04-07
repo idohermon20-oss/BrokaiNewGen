@@ -107,6 +107,55 @@ def signal_key(s: Signal) -> str:
     return f"{s.ticker}_{s.signal_type}_{s.timestamp[:10]}"
 
 
+def is_pseudo_ticker(name: str) -> bool:
+    """True for Maya internal IDs (TASE{companyId}) that are not real .TA symbols."""
+    return bool(name) and name.startswith("TASE")
+
+
+def is_cache_stale(date_str: str, ttl_days: float) -> bool:
+    """True if date_str is empty, unparseable, or older than ttl_days."""
+    if not date_str:
+        return True
+    try:
+        fetched = datetime.fromisoformat(date_str)
+        age = datetime.now(timezone.utc) - fetched.astimezone(timezone.utc)
+        return age > timedelta(days=ttl_days)
+    except Exception:
+        return True
+
+
+def fmt_mcap(cap) -> str:
+    """Format a market-cap number as a human-readable string (e.g. '₪2.3B', '₪450M')."""
+    try:
+        cap = float(cap)
+        if cap >= 1e9:
+            return f"₪{cap/1e9:.1f}B"
+        if cap >= 1e6:
+            return f"₪{cap/1e6:.0f}M"
+        return f"₪{cap:.0f}"
+    except Exception:
+        return "?"
+
+
+def fmt_rsi_label(rsi) -> str:
+    """Return an RSI status label string for display."""
+    try:
+        rv = float(rsi)
+        if rv < 30:   return " — OVERSOLD"
+        if rv > 70:   return " — OVERBOUGHT"
+        return " — neutral"
+    except Exception:
+        return ""
+
+
+# Signal type sets — used for filtering/routing in multiple modules
+MAYA_SIGNAL_TYPES: frozenset[str] = frozenset({
+    "maya_ipo", "maya_spinoff", "maya_ma", "maya_contract",
+    "maya_buyback", "maya_institutional", "maya_earnings",
+    "maya_dividend", "maya_rights", "maya_management", "maya_filing",
+})
+
+
 def days_to_earnings(s: Signal) -> Optional[int]:
     """Days until earnings event, or None if signal is not earnings_calendar."""
     if s.signal_type != "earnings_calendar" or not s.event_date:
@@ -147,11 +196,7 @@ def refresh_company_cache(state: dict, maya) -> list[dict]:
     cache_stale    = True
 
     if fetched_at_str and companies:
-        try:
-            fetched_at  = datetime.fromisoformat(fetched_at_str)
-            cache_stale = (datetime.now(timezone.utc) - fetched_at.astimezone(timezone.utc)) > timedelta(hours=24)
-        except Exception:
-            pass
+        cache_stale = is_cache_stale(fetched_at_str, ttl_days=1)
 
     if cache_stale:
         print("[Maya] Refreshing company list...")

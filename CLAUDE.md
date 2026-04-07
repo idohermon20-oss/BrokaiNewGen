@@ -1,35 +1,62 @@
 # BorsaProject (Brokai) — Claude Code Guide
 
-## Project Overview
-AI-powered stock analysis and portfolio management system. Integrates financial data, news sentiment, and LLM analysis to score stocks, generate valuations, forecast performance, and manage client portfolios. Supports US and Israeli (TASE) equity markets.
+## Who you are helping and what they are building
 
-## Architecture
+**Shai (Developer 1)** is building `israel_researcher` — an autonomous AI analyst for the Israeli stock market (TASE). This is the active, production module. When Shai asks for help, the work is almost always inside `israel_researcher/` or one of the shared support layers (`data/`, `utils/`, `shared/`).
 
-### Core Pipeline (`main.py`)
-- `StockManagement` — fetches data, runs AI forecasts, writes Excel outputs
-- `clientManagement` — ties AI analysis to client portfolios and recommendations
+The system runs every 15 minutes, reads Maya TASE filings in real-time, scans 500+ Israeli stocks for technical signals, runs 8 sector LLM agents in parallel, and sends Telegram alerts with scored stock picks. Think of it as a buy-side equity analyst running 24/7.
 
-### Key Modules
-| File | Role |
-|------|------|
-| `StockManagement.py` | Core orchestrator: yfinance data, OpenAI LLM calls, scoring |
-| `client.py` | Portfolio model: trade tracking, price fetching |
-| `clientManagement.py` | High-level manager: recommendations per client |
-| `news.py` | RSS/sitemap news aggregation, deduplication, text extraction |
-| `alert.py` | Telegram bot: monitors aTyr Pharma press releases |
-| `multibiutec.py` | Telegram bot: monitors 5 biotech companies (aTyr, KALA, RAPP, Omeros, Crinetics) |
-| `APIMessageEdit.py` | Template-based LLM prompt formatting |
-| `DefultStockTable.py` | Excel output schema definitions |
-| `israel_researcher/` | Israeli stock research agent (package — see structure below) |
+A second developer (Ido) is planned to build `portfolio/` on top of Shai's research signals — but that module does not exist yet.
 
-### Data Files
-- `stock_lists.xlsx` — Stock universe (Ticker, Name, Market, Sector)
-- `StocksTable.xlsx` — AI-generated forecasts and volatility predictions
-- `DeepTable.xlsx` — Deep LLM analysis results
-- `StockPortfolioTable.xlsx` — Portfolio recommendations
-- `seen.json` — News deduplication state
-- `atyr_state.json`, `multi_biotech_state.json` — Alert bot state (last seen timestamps)
-- `israel_researcher_state.json` — Israel researcher persistent state (seen Maya IDs, company cache, ticker validation cache)
+## Purpose
+AI-powered stock research for the Israeli (TASE) market, with a planned portfolio management layer.
+Multi-developer monorepo — each top-level folder has a clear owner.
+
+## Monorepo Layout
+
+| Folder | Owner | Status | Purpose |
+|--------|-------|--------|---------|
+| `israel_researcher/` | Developer 1 (Shai) | Active | TASE research agent — Maya filings, sector agents, LLM scoring, Telegram bot |
+| `portfolio/` | Developer 2 | Planned | Portfolio management built on research signals |
+| `shared/` | Both | Active | Shared Python functions: top stocks, signal filtering, financial report parsing, portfolio analytics |
+| `data/` | Both | Active | Runtime state & memory files read/written by all modules |
+| `utils/` | Both | Active | Data-fetch and doc-generation scripts (fetch_maya, fetch_tase, build_llm_mapping, make_pdf, make_pptx) |
+| `docs/` | Both | Active | Generated documentation — never edit directly |
+
+## Collaboration Rules
+1. `israel_researcher/` is Developer 1's domain — do not modify its internals.
+2. `portfolio/` reads from `data/` and imports from `shared/` — not from `israel_researcher`.
+3. Functions useful to both developers go in `shared/`, not inside either module.
+4. All runtime data (state, memory, mappings) lives in `data/`.
+5. Generated docs go in `docs/` only — never inside a package folder.
+6. `.env` at root is shared by all modules.
+
+## Entry Points
+
+| Command (from project root) | Description |
+|-----------------------------|-------------|
+| `python -m israel_researcher` | TASE research loop + Telegram bot |
+| `python portfolio/main.py` | (planned) Portfolio management |
+| `python utils/make_pdf.py` | Regenerate PDF → docs/ |
+| `python utils/make_pptx.py` | Regenerate slide deck → docs/ |
+| `python utils/fetch_maya_companies.py` | Rebuild Maya company universe (Playwright, ~5 min) → data/maya_companies_full.xlsx |
+| `python utils/fetch_tase_universe.py` | Rebuild TASE equity universe from YF Screener → data/tase_universe_full.xlsx |
+| `python utils/build_llm_mapping.py` | Expand Maya companyId→.TA ticker mapping via GPT-4o-mini |
+
+## Quick Shared API
+
+```python
+import json
+from pathlib import Path
+from shared.stocks import find_top_stocks, filter_signals_by_score
+from shared.analytics import find_max_stock, calc_pnl, sector_weights
+from shared.reports import parse_financial_report, summarize_filing
+
+state = json.loads(Path("data/israel_researcher_state.json").read_text(encoding="utf-8"))
+top = find_top_stocks(state, n=10)
+```
+
+---
 
 ### `israel_researcher/` package structure
 ```
@@ -285,8 +312,9 @@ python -m israel_researcher   # Israeli stock research agent (TASE, Maya, LLM)
 
 ## Known Limitations & Gotchas
 
-- **Maya pseudo-tickers**: Maya API returns no real stock symbols — only `TASE{companyId}` IDs. These cannot converge with yfinance technical signals. Web news + technicals are the primary real-ticker signal path. IPO stocks are an exception: DiscoveryAgent now scores them directly via their `maya_ipo` signal + company-name web news search, without requiring a real ticker.
-- **Maya company cache has no real tickers**: `fetch_company_list()` intentionally uses `TASE{id}` as `CompanyTicker`. `DynamicUniverseBuilder` now uses Yahoo Finance Screener (exchange=TLV) instead as the universe source. The Maya company cache is only used for Hebrew company name → ID mapping (for news matching).
+- **Maya ticker mapping (238 mappings, 170 unique tickers)**: `data/maya_company_mapping.json` maps Maya `companyId` → real `.TA` ticker. Built via Hebrew name matching + GPT-4o-mini resolution. `maya.py` loads this on startup via `_load_company_mapping()` and uses `resolve_ticker(companyId)` in `reports_to_signals()`. Maya filing signals for known companies now carry real `.TA` tickers and `ticker_yf`, so they CAN converge with yfinance technical signals in the ConvergenceEngine. Companies not in the mapping still get `TASE{cid}` pseudo-tickers. To expand: run `python utils/build_llm_mapping.py`.
+- **Maya pseudo-tickers (for unknown companies)**: Maya API returns no real stock symbols for ~850 smaller/private companies. These still use `TASE{companyId}` IDs. IPO stocks are an exception: DiscoveryAgent scores them directly via their `maya_ipo` signal + company-name web news search.
+- **Maya company cache has no real tickers**: `fetch_company_list()` now uses real `.TA` ticker when known via `maya_company_mapping.json`, else `TASE{id}`. `DynamicUniverseBuilder` uses Yahoo Finance Screener (exchange=TLV) as the universe source. The Maya company cache is used for Hebrew company name → ID mapping (for news matching).
 - **yfinance SSL on Hebrew username**: `__init__.py` copies certifi cert to `%TEMP%\brokai_cacert.pem` and sets `SSL_CERT_FILE`, `REQUESTS_CA_BUNDLE`, `CURL_CA_BUNDLE` before any imports.
 - **Israeli news name matching**: Regex word-boundary match on Hebrew company names from Maya autocomplete. Often fails (name variants, abbreviations) → `GENERAL` ticker → contributes nothing to convergence. Hebrew text matching is inherently imprecise due to construct forms and abbreviations.
 - **Low-volume TASE stocks**: Many TA-SME stocks trade <50K shares/day. `MarketAnomalyDetector` thresholds are calibrated for TASE (volume_spike = 2.5×, price_move = 3.5%) — do not raise these as it would exclude valid small-cap signals.
@@ -298,7 +326,7 @@ python -m israel_researcher   # Israeli stock research agent (TASE, Maya, LLM)
 - **Memory analyst notes**: Accumulate across days — current analysis stored in `analyst_notes`, previous day's notes preserved in `prior_analyst_notes`. LLM sees both for trend recognition. Notes are NOT overwritten within the same day; overwritten with prior-preservation on next day.
 - **Structured LLM memory insights**: Each sector LLM call also returns `memory_update` per stock with 4 fields: `memory_note` (distilled 1-sentence non-obvious insight), `sentiment` (bullish/bearish/neutral), `risk_flag` (what invalidates thesis), `watch_for` (price level or catalyst to monitor). These are saved via `StockMemoryManager.update_llm_insights()` and injected back into the next cycle's LLM prompt via `build_context_string()`. This lets the LLM notice patterns humans and raw signals miss (e.g. "third consecutive week of volume with no news = informed trading").
 - **Market cap in memory**: `build_context_string()` includes `mktCap` from cached fundamentals so the LLM can assess catalyst size relative to company size without additional API calls.
-- **Delisted stocks**: Sapiens International (SPNS/SMTC) — delisted Dec 2025. Magic Software (MGIC) — delisted Feb 2026. Do not add these.
+- **Delisted stocks**: Sapiens International (SPNS/SMTC) — delisted Dec 2025. Magic Software (MGIC) — delisted Feb 2026. Silicom (SILC) — acquired by Celestica 2023. Kornit Digital (KRNT.TA) — delisted from TASE 2021, still on Nasdaq only. Ituran (ITRN.TA) — delisted from TASE, still on Nasdaq only. Do not add `.TA` variants of these.
 - **`^TA35.TA` invalid**: Use `^TA125.TA` instead.
 - **Clal Insurance**: ticker is `CLIS.TA` not `CLAL.TA`.
 - **State files**: Never delete `*_state.json` — they track deduplication and validation caches that take many cycles to rebuild. Excel memory survives state wipes and is used to restore `stock_memory` and `alerted_today`.

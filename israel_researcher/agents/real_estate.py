@@ -1,12 +1,12 @@
 """
-RealEstateAgent — covers Israeli real estate (14 tickers).
+RealEstateAgent — covers Israeli commercial real estate REITs (11 tickers).
 
 Domain expertise:
   - AZRG/AMOT: premium commercial REITs, trade near NAV
-  - DIMRI/SKBN/SPEN: residential construction & development
   - BOI rate cuts = direct P/E expansion (all RE stocks re-rate)
   - Stocks near 52w lows + low RSI = BOI pivot anticipation play
   - High dividend yield attracts institutional buyers when rates fall
+  - Construction companies (DIMRI, SKBN, SPEN) moved to ConstructionAgent
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from .base import SectorAgent
 
 class RealEstateAgent(SectorAgent):
     sector_name = "RealEstate"
-    tickers     = SECTOR_TICKERS["RealEstate"]  # 14 tickers
+    tickers     = SECTOR_TICKERS["RealEstate"]  # 11 tickers (commercial REITs only)
 
     @property
     def _sector_domain(self) -> str:
@@ -31,8 +31,9 @@ class RealEstateAgent(SectorAgent):
             "Trades at slight NAV premium. Defensive large-cap.\n"
             "- AMOT, BIG, MLSR, ALHE, GVYM, ARPT, GCT: income-generating commercial RE. "
             "Occupancy rates and rental yield are key. Dividend yield 4-8% = institutional buyers.\n"
-            "- DIMRI, SKBN, SPEN, MVNE: residential construction and development. "
-            "Follow Israeli housing permit data, mortgage volumes, and population growth.\n"
+            "- MVNE: residential development, follow housing permit data and mortgage volumes.\n"
+            "- Construction contractors (ELTR, DNYA, ASHG, SPEN, SKBN, DIMRI) are covered "
+            "by the separate ConstructionAgent.\n"
             "- Shekel strengthening: positive (lower import costs for construction, "
             "lower foreign-currency debt service for leveraged RE companies).\n"
             "- US REIT index (VNQ) sentiment = global RE capital flow leading indicator.\n"
@@ -78,7 +79,7 @@ class RealEstateAgent(SectorAgent):
             peer_ticker    = "IYR",
             peer_label     = "US Real Estate ETF (IYR)",
             threshold_pct  = 2.5,
-            target_tickers = ["AZRG.TA", "GCT.TA", "SKBN.TA", "MVNE.TA"],
+            target_tickers = ["AZRG.TA", "GCT.TA", "MVNE.TA"],
             signal_type    = "sector_peer_move",
             direction_text = "Global real estate sentiment shift",
         ))

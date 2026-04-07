@@ -1,0 +1,102 @@
+<h1>Summary</h1>
+<p>Three architecture inconsistencies were fixed in BorsaProject: two data-fetch utility scripts were moved from the wrong package folder (<code>israel_researcher/</code>) to <code>utils/</code> where all standalone scripts live, their output paths were corrected to write to <code>data/</code> instead of inside the package, and a broken import in <code>news_monitor.py</code> caused by a deleted <code>news.py</code> was replaced with an inline RSS implementation.</p>
+
+<h2>Background / Problem</h2>
+<p>After the monorepo restructure that created <code>data/</code>, <code>utils/</code>, and <code>shared/</code>, three files were left in inconsistent locations:</p>
+<ul>
+  <li><code>israel_researcher/fetch_maya_companies.py</code> &mdash; a one-off Playwright scraper that belongs in <code>utils/</code>. It was also writing its Excel output into the package directory (<code>israel_researcher/</code>) instead of <code>data/</code>.</li>
+  <li><code>israel_researcher/fetch_tase_universe.py</code> &mdash; same problem. Additionally its <code>sys.path</code> hack was broken: it added <code>israel_researcher/</code> to the path but then tried to import <code>israel_researcher.config</code> from inside itself, which fails.</li>
+  <li><code>israel_researcher/sources/news_monitor.py</code> &mdash; imported <code>check_updates</code> from <code>news.py</code> which was deleted in a previous cleanup. The stale <code>.pyc</code> bytecode remained but the source was gone, causing a <code>ModuleNotFoundError</code> at startup.</li>
+</ul>
+
+<h2>Changes Made</h2>
+<table>
+  <tbody>
+    <tr><th>File</th><th>What changed</th></tr>
+    <tr><td><code>israel_researcher/fetch_maya_companies.py</code></td><td>Deleted (moved to utils/)</td></tr>
+    <tr><td><code>israel_researcher/fetch_tase_universe.py</code></td><td>Deleted (moved to utils/)</td></tr>
+    <tr><td><code>utils/fetch_maya_companies.py</code></td><td>Created &mdash; same logic, output path fixed to <code>data/maya_companies_full.xlsx</code></td></tr>
+    <tr><td><code>utils/fetch_tase_universe.py</code></td><td>Created &mdash; sys.path fix + output path fixed to <code>data/tase_universe_full.xlsx</code></td></tr>
+    <tr><td><code>israel_researcher/sources/news_monitor.py</code></td><td>Removed broken external import; added inline <code>_check_updates()</code> using feedparser</td></tr>
+    <tr><td><code>utils/README.md</code></td><td>Added all 5 scripts to the table</td></tr>
+    <tr><td><code>CLAUDE.md</code></td><td>Updated utils/ description and entry points table</td></tr>
+  </tbody>
+</table>
+
+<h2>Technical Details</h2>
+<p><strong>Fix 1 &mdash; Output paths (both fetch scripts)</strong></p>
+<ac:structured-macro ac:name=code>
+  <ac:parameter ac:name=language>python</ac:parameter>
+  <ac:plain-text-body><![CDATA[# Before (wrote into package folder):
+out_path = os.path.join(os.path.dirname(__file__), maya_companies_full.xlsx)
+
+# After (writes to shared data/ folder):
+from pathlib import Path as _Path
+out_path = str(_Path(__file__).parent.parent / data / maya_companies_full.xlsx)]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<p><strong>Fix 2 &mdash; sys.path import in fetch_tase_universe.py</strong></p>
+<ac:structured-macro ac:name=code>
+  <ac:parameter ac:name=language>python</ac:parameter>
+  <ac:plain-text-body><![CDATA[# Before (BROKEN: added israel_researcher/ to path, then looked for israel_researcher.config inside it):
+sys.path.insert(0, os.path.dirname(__file__))
+from israel_researcher.config import SECTOR_TICKERS, TASE_MAJOR_TICKERS
+
+# After (adds project root, so israel_researcher package is found correctly):
+from pathlib import Path as _Path
+sys.path.insert(0, str(_Path(__file__).parent.parent))
+from israel_researcher.config import SECTOR_TICKERS, TASE_MAJOR_TICKERS]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<p><strong>Fix 3 &mdash; Broken news import replaced with inline feedparser function</strong></p>
+<ac:structured-macro ac:name=code>
+  <ac:parameter ac:name=language>python</ac:parameter>
+  <ac:plain-text-body><![CDATA[# Before (news.py was deleted, this crashed at import time):
+from news import check_updates
+
+# After (inline implementation using feedparser, already in venv):
+import feedparser, datetime as _dt
+
+def _check_updates(sources: list[dict]) -> list[dict]:
+    items = []
+    for src in sources:
+        url, label = src.get(url, ), src.get(label, )
+        try:
+            feed = feedparser.parse(url)
+            for entry in feed.entries:
+                items.append({
+                    url: entry.get(link, ), title: entry.get(title, ),
+                    text: entry.get(summary, ),
+                    seen_at: _dt.datetime.utcnow().strftime(%Y-%m-%dT%H:%M:%SZ),
+                    source_label: label,
+                })
+        except Exception as exc:
+            items.append({url: None, error: str(exc), source_label: label})
+    return items]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>Architecture After Fix</h2>
+<table>
+  <tbody>
+    <tr><th>Script</th><th>Command</th><th>Output</th></tr>
+    <tr><td><code>utils/fetch_maya_companies.py</code></td><td><code>python utils/fetch_maya_companies.py</code></td><td><code>data/maya_companies_full.xlsx</code></td></tr>
+    <tr><td><code>utils/fetch_tase_universe.py</code></td><td><code>python utils/fetch_tase_universe.py</code></td><td><code>data/tase_universe_full.xlsx</code></td></tr>
+    <tr><td><code>utils/build_llm_mapping.py</code></td><td><code>python utils/build_llm_mapping.py</code></td><td><code>data/maya_company_mapping.json</code></td></tr>
+    <tr><td><code>utils/make_pdf.py</code></td><td><code>python utils/make_pdf.py</code></td><td><code>docs/israel_researcher_docs.pdf</code></td></tr>
+    <tr><td><code>utils/make_pptx.py</code></td><td><code>python utils/make_pptx.py</code></td><td><code>docs/israel_researcher_overview.pptx</code></td></tr>
+  </tbody>
+</table>
+
+<h2>How to Test</h2>
+<ul>
+  <li>Run: <code>python -c &quot;from israel_researcher.sources.news_monitor import IsraeliNewsMonitor; print(&apos;OK&apos;)&quot;</code> &mdash; should print OK with no ModuleNotFoundError</li>
+  <li>Verify fetch script paths: <code>python -c &quot;from pathlib import Path; p=Path(&apos;utils/fetch_maya_companies.py&apos;).read_text(); assert &apos;data/maya_companies_full&apos; in p; print(&apos;OK&apos;)&quot;</code></li>
+  <li>Run <code>python utils/fetch_tase_universe.py</code> to confirm import works (Ctrl+C after the first ticker)</li>
+</ul>
+
+<h2>Risks / Known Limitations</h2>
+<ul>
+  <li>The two Excel output files (<code>maya_companies_full.xlsx</code>, <code>tase_universe_full.xlsx</code>) are now written to <code>data/</code>. They are not gitignored &mdash; add them if they should not be committed.</li>
+  <li><code>fetch_tase_universe.py</code> requires <code>python utils/fetch_tase_universe.py</code> to be run from the project root so the <code>sys.path</code> addition resolves correctly.</li>
+  <li>The stale <code>__pycache__/news.cpython-314.pyc</code> at project root is harmless but can be deleted.</li>
+</ul>

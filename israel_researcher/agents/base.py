@@ -312,7 +312,12 @@ class SectorAgent(ABC):
                 result[tkr] = {
                     k: data[k] for k in
                     ("rsi_14", "ma_20", "ma_50", "ma_trend", "last_price",
-                     "pct_vs_52w_high", "market_cap", "revenue_growth_pct")
+                     "52w_high", "52w_low", "avg_volume", "today_change_pct",
+                     "pct_vs_52w_high", "market_cap",
+                     "revenue_growth_pct", "net_income_growth_pct",
+                     "pe_trailing", "pe_forward", "price_to_book",
+                     "dividend_yield", "gross_margin", "net_margin",
+                     "debt_to_equity")
                     if k in data
                 }
             except Exception:

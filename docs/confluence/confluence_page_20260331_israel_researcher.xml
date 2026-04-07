@@ -1,0 +1,363 @@
+<!-- Title: Israel Researcher Bot — Financial Q&A, Sector Agents &amp; Bug Fixes (2026-03-31) -->
+
+<ac:structured-macro ac:name="toc">
+  <ac:parameter ac:name="maxLevel">2</ac:parameter>
+</ac:structured-macro>
+
+<h1>Summary</h1>
+<p>This session extended the Israel stock research Telegram bot with two major capabilities: financial Q&amp;A (per-stock income statements, balance sheets via <code>get_financials</code>) and broad stock screening across all 86 major TASE stocks (<code>screen_stocks</code>). Several data quality bugs were fixed: delisted TASE tickers (ITRN, KRNT) removed from all config locations, valuation multiples (P/E, P/B, dividend yield, margins) are now correctly passed to the sector LLM for scoring, and the live-scan tool now always returns the current price and daily change so "what is X doing right now?" questions are answered with data.</p>
+
+<h2>Background / Problem</h2>
+<ul>
+  <li>The bot could not answer fundamental questions like "What was Ayalon's revenue last year?" or "Which Israeli stock has the cheapest P/E?"</li>
+  <li>The sector LLM scoring agents received technical data (RSI, MAs, price) but <strong>not</strong> valuation multiples — P/E, P/B, margins, dividend yield were fetched from Yahoo Finance but silently dropped before reaching the LLM prompt.</li>
+  <li>Two delisted tickers (ITRN.TA — Ituran, KRNT.TA — Kornit Digital) caused Yahoo Finance errors every 15-minute cycle.</li>
+  <li>Asking "what is TEVA doing right now?" returned only anomaly signals or "No anomalies detected" — never a plain price/daily-change answer.</li>
+</ul>
+
+<h2>Changes Made</h2>
+<table>
+  <tbody>
+    <tr><th>File</th><th>What changed</th></tr>
+    <tr><td><code>israel_researcher/bot/qa_pipeline.py</code></td><td>Added <code>_fmt_financial()</code>, <code>_tool_financials()</code>, <code>_tool_screen_stocks()</code>; extended <code>_KNOWN_TICKERS</code> with 20+ entries + 4 name corrections; registered new tools; added <code>financial_query</code> / <code>screening_query</code> intents; fixed <code>_tool_live_scan()</code> to always show price + daily change</td></tr>
+    <tr><td><code>israel_researcher/sources/market.py</code></td><td>Added <code>refresh_financial_snapshot_cache()</code> — fetches <code>yf.Ticker.info</code> for all 86 TASE_MAJOR_TICKERS once per day</td></tr>
+    <tr><td><code>israel_researcher/analysis/llm.py</code></td><td>Added <code>financial_query</code> / <code>screening_query</code> intents to <code>_INTENT_SYSTEM</code>; added FINANCIAL DATA FORMATTING section to <code>_CHAT_ANSWER_SYSTEM</code></td></tr>
+    <tr><td><code>israel_researcher/agents/base.py</code></td><td>Fixed <code>_deep_analyze()</code> to pass <code>pe_trailing</code>, <code>pe_forward</code>, <code>price_to_book</code>, <code>dividend_yield</code>, <code>gross_margin</code>, <code>net_margin</code>, <code>debt_to_equity</code> to sector LLM</td></tr>
+    <tr><td><code>israel_researcher/researcher.py</code></td><td>Added daily financial snapshot cache refresh trigger in main loop</td></tr>
+    <tr><td><code>israel_researcher/config.py</code></td><td>Removed ITRN.TA and KRNT.TA from <code>DUAL_LISTED_STOCKS</code>, <code>SECTOR_TICKERS</code>, and <code>TASE_MAJOR_TICKERS</code></td></tr>
+    <tr><td><code>CLAUDE.md</code></td><td>Updated delisted stocks section with ITRN, KRNT, SILC notes</td></tr>
+  </tbody>
+</table>
+
+<h2>System Architecture</h2>
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+skinparam componentStyle rectangle
+
+package "Main Thread (every 15 min)" {
+  [ResearchManager] as RM
+  [Phase1: Maya + News + Macro] as P1
+  [Phase2: 7 Sector Agents\n(ThreadPoolExecutor)] as P2
+  [Phase3: Manager LLM\n(CIO Arbitration)] as P3
+  [TelegramReporter\n(alerts + reports)] as TR
+  [Daily FinSnap Cache\nrefresh_financial_snapshot_cache()] as FS
+}
+
+package "Bot Thread (daemon, long-poll)" {
+  [BotServer] as BS
+  [QAPipeline] as QA
+  [LLMAnalyst\nplan_intent + chat_answer] as LA
+}
+
+database "state (RLock)" {
+  [israel_researcher_state.json] as STATE
+  [financial_snapshot_cache] as FSC
+  [stock_memory] as MEM
+  [weekly_signals] as WS
+}
+
+[Telegram API] as TG
+[Yahoo Finance / Maya / Google News] as EXT
+
+RM --> P1
+P1 --> P2
+P2 --> P3
+P3 --> TR
+RM --> FS
+FS --> FSC
+P1 --> STATE
+P2 --> STATE
+P3 --> TR
+TR --> TG
+
+BS --> QA
+QA --> LA
+LA --> EXT : live tools\n(get_stock_data, search_news)
+LA --> FSC : screen_stocks
+QA --> TG : reply
+BS <-- TG : getUpdates
+
+RM ..> STATE : RLock read/write
+BS ..> STATE : RLock deepcopy
+@enduml
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>Research Cycle State Machine</h2>
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+skinparam state {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+}
+
+[*] --> LOAD_STATE
+
+LOAD_STATE : load_state() from JSON
+LOAD_STATE --> FIN_CACHE_CHECK
+
+FIN_CACHE_CHECK : last_financial_cache_refresh == today?
+FIN_CACHE_CHECK --> PHASE1 : yes (skip)
+FIN_CACHE_CHECK --> REFRESH_FIN_CACHE : no
+
+REFRESH_FIN_CACHE : refresh_financial_snapshot_cache()\n86 tickers × yf.Ticker.info
+REFRESH_FIN_CACHE --> PHASE1
+
+PHASE1 : Maya filings (Playwright)\nDualListed overnight moves\nIsraeli news RSS\nMacro snapshot
+PHASE1 --> PHASE2
+
+PHASE2 : 7 Sector Agents in parallel\n(Banks, TechDefense, Energy, Pharma,\nRealEstate, TelecomConsumer, Discovery)
+PHASE2 --> PHASE3
+
+PHASE3 : Manager LLM arbitration\nCIO picks stock of week
+PHASE3 --> ALERTS
+
+ALERTS : send_quick_alerts() if enabled\ndaily_summary() after 17:00\nweekly_report() Thursday 17:00
+ALERTS --> SAVE_STATE
+
+SAVE_STATE : save_state() to JSON\nupdate stock_memory Excel
+SAVE_STATE --> SLEEP
+
+SLEEP : time.sleep(scan_interval_seconds)\ndefault 900s / 15 min
+SLEEP --> LOAD_STATE
+@enduml
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>Bot Q&amp;A Pipeline</h2>
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+actor User
+participant "BotServer\n(daemon thread)" as BOT
+participant "QAPipeline" as QA
+participant "LLMAnalyst\nplan_intent()" as INTENT
+participant "Tool Registry\n(11 tools)" as TOOLS
+participant "LLMAnalyst\nchat_answer()" as ANSWER
+participant "Telegram" as TG
+
+User -> BOT : free-text message
+BOT -> TG : "Analyzing..." placeholder
+BOT -> QA : answer(question, state)
+QA -> INTENT : plan_intent(question, ticker_list, tool_catalogue)
+INTENT --> QA : {ticker, intent, tools[], language}
+
+alt intent == direct_answer
+  QA -> ANSWER : chat_answer(question, "", history)
+else tools to run
+  loop for each tool
+    QA -> TOOLS : execute tool(ticker, state)
+    TOOLS --> QA : context string
+  end
+  QA -> ANSWER : chat_answer(question, context, history)
+end
+
+ANSWER --> QA : plain-text answer
+QA --> BOT : answer text
+BOT -> TG : edit placeholder → real answer
+TG -> User : answer (chunked ≤4096 chars)
+@enduml
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>Sector Agent Signal Flow</h2>
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+start
+
+:Filter pre-fetched cross-sector signals\nfor this sector's tickers;
+
+:MarketAnomalyDetector scan\n(volume_spike, price_move, breakout,\nma_crossover, oversold_bounce,\nlow_reversal, momentum, rel_strength);
+
+:Sector-specific macro signals\n(peer ETF moves, shekel, oil/rates);
+
+:ConvergenceEngine.group_by_ticker()\nPreliminary scoring;
+
+if (any ticker with final_score > 0?) then (yes)
+  :Web news enrichment for top-5\n(Google News RSS → LLM extract_web_news_signals);
+  :Re-run ConvergenceEngine\nwith enriched signals;
+  :DeepStockAnalyzer on top-8\n(RSI, MAs, P/E, P/B, margins,\nrevenue growth, market cap);
+  :Build memory context strings\n(analyst notes, sentiment, risk flag);
+  :Sector LLM score_sector()\nreturns ranked portfolio;
+  :Update stock_memory with\nLLM insights (sentiment, risk, watch_for);
+else (no signals)
+  :Return empty portfolio;
+endif
+
+stop
+@enduml
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>Financial Snapshot Cache State Machine</h2>
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+[*] --> EMPTY : bot starts / state reset
+
+EMPTY : state["financial_snapshot_cache"] = {}
+EMPTY : screen_stocks returns\n"cache not yet populated"
+EMPTY --> REFRESHING : first cycle of the day\n(last_financial_cache_refresh != today)
+
+REFRESHING : refresh_financial_snapshot_cache()\nfetches 86 tickers × yf.info\n~30-60 seconds
+REFRESHING --> POPULATED : all 86 tickers fetched\nstate["last_financial_cache_refresh"] = today
+
+POPULATED : screen_stocks reads cache\nreturns full 86-row table
+POPULATED : get_stock_data still live (not cached)
+POPULATED --> STALE : next calendar day
+
+STALE : cache has yesterday's data\nscreen_stocks still works\nbut data is 24h old
+STALE --> REFRESHING : next research cycle triggers refresh
+@enduml
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>Technical Details</h2>
+
+<h3>1. Financial tools added to QA pipeline</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">python</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+def _tool_financials(ticker: str | None, _state: dict, _top_n: int = 5) -> str:
+    """Fetches annual + quarterly income statement + key balance sheet for one stock."""
+    import math, yfinance as yf
+    if not ticker:
+        return "Please specify a stock ticker."
+    ticker_yf = ticker if ticker.endswith(".TA") else ticker + ".TA"
+    tk = yf.Ticker(ticker_yf)
+    parts = [
+        _fmt_financial(tk.financials, "Annual Income Statement (last 4 years)"),
+        _fmt_financial(tk.quarterly_financials, "Quarterly Income Statement (last 4 quarters)"),
+    ]
+    # Key balance sheet items
+    bs = tk.balance_sheet
+    if bs is not None and not bs.empty:
+        bs_lines = ["Balance Sheet (latest):"]
+        for item in ["Total Assets","Total Debt","Cash And Cash Equivalents",
+                     "Stockholders Equity","Total Liabilities Net Minority Interest"]:
+            if item in bs.index:
+                v = bs.loc[item, bs.columns[0]]
+                bs_lines.append(f"  {item}: ₪{v/1e9:.2f}B" if abs(v) >= 1e9 else f"  {item}: ₪{v/1e6:.1f}M")
+        parts.append("\n".join(bs_lines))
+    return "\n\n".join(p for p in parts if p)
+
+def _tool_screen_stocks(_ticker, state: dict, _top_n: int = 20) -> str:
+    """Screens all major TASE stocks by financial metrics from daily cache."""
+    cache = state.get("financial_snapshot_cache", {})
+    if not cache:
+        return "Financial snapshot cache not yet populated (runs once daily). Try again shortly."
+    rows = sorted(
+        [{"ticker": t.replace(".TA",""), **snap} for t, snap in cache.items() if snap],
+        key=lambda r: r.get("mktCap") or 0, reverse=True
+    )[:_top_n]
+    lines = [f"{'Ticker':<10} {'Price':>8} {'MktCap':>10} {'P/E':>7} {'P/B':>6} {'Div%':>6} {'RevGr%':>8}"]
+    lines.append("-" * 65)
+    for r in rows:
+        mc = r.get("mktCap")
+        mc_str = f"₪{mc/1e9:.1f}B" if mc and mc >= 1e9 else (f"₪{mc/1e6:.0f}M" if mc else "N/A")
+        price_str = f"₪{r['price']:.2f}" if r.get("price") else "N/A"
+        def f(v): return f"{v:.1f}" if v is not None else "N/A"
+        lines.append(f"{r['ticker']:<10} {price_str:>8} {mc_str:>10} {f(r.get('pe_trailing')):>7} {f(r.get('price_to_book')):>6} {f(r.get('dividend_yield')):>6} {f(r.get('revenue_growth_pct')):>8}")
+    return "\n".join(lines)
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>2. Valuation multiples now sent to sector LLM</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">python</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+# base.py _deep_analyze() — BEFORE (dropped valuation data)
+result[tkr] = {
+    k: data[k] for k in
+    ("rsi_14", "ma_20", "ma_50", "ma_trend", "last_price",
+     "52w_high", "52w_low", "avg_volume", "today_change_pct",
+     "pct_vs_52w_high", "market_cap",
+     "revenue_growth_pct", "net_income_growth_pct")
+    if k in data
+}
+
+# AFTER — now includes valuation multiples for sector LLM scoring
+result[tkr] = {
+    k: data[k] for k in
+    ("rsi_14", "ma_20", "ma_50", "ma_trend", "last_price",
+     "52w_high", "52w_low", "avg_volume", "today_change_pct",
+     "pct_vs_52w_high", "market_cap",
+     "revenue_growth_pct", "net_income_growth_pct",
+     "pe_trailing", "pe_forward", "price_to_book",
+     "dividend_yield", "gross_margin", "net_margin",
+     "debt_to_equity")
+    if k in data
+}
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>3. Live scan always returns price data</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">python</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+# _tool_live_scan — now fetches price first so "current move" questions always get data
+d = DeepStockAnalyzer().analyze(ticker_yf)
+lp = d.get("last_price")
+chg = d.get("today_change_pct")
+note = d.get("price_data_note", "last_session")
+if lp:
+    label = "intraday" if note == "intraday" else "last session"
+    sign = "+" if chg >= 0 else ""
+    price_line = f"Price: ₪{lp}  ({sign}{chg:.2f}% {label})" if chg is not None else f"Price: ₪{lp}"
+
+# If no anomaly triggered (move < 3.5%), user still gets price data:
+# "No anomalies detected for TEVA right now.
+#  Price: ₪151.20  (+0.5% last session)"
+  ]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>New Intent Routing</h2>
+<table>
+  <tbody>
+    <tr><th>Intent</th><th>Trigger example</th><th>Tools called</th></tr>
+    <tr><td><code>financial_query</code></td><td>"What was Ayalon's revenue last year?"</td><td>get_financials + get_stock_data</td></tr>
+    <tr><td><code>screening_query</code></td><td>"Which TASE stock has the cheapest P/E?"</td><td>screen_stocks + get_macro</td></tr>
+    <tr><td><code>live_scan</code></td><td>"What is TEVA doing right now?"</td><td>run_live_scan + get_stock_data + get_memory</td></tr>
+  </tbody>
+</table>
+
+<h2>How to Test</h2>
+<ul>
+  <li>Send bot: <strong>"What was Ayalon's revenue last year?"</strong> → should return annual income statement table</li>
+  <li>Send bot: <strong>"מה הרווח של בזק ברבעון האחרון?"</strong> → Hebrew financial query for BEZQ</li>
+  <li>Send bot: <strong>"Which Israeli stock has the cheapest P/E?"</strong> → should return sorted screening table</li>
+  <li>Send bot: <strong>"What is TEVA doing right now?"</strong> → should show price + daily change even if no anomaly</li>
+  <li>Send bot: <strong>"What is the highest dividend yield TASE stock?"</strong> → screening_query sorted by dividend_yield</li>
+  <li>After system starts: check state JSON has <code>financial_snapshot_cache</code> with ~86 entries</li>
+  <li>Check logs: <code>[FinSnap] Daily financial snapshot refreshed (86 tickers)</code> once per day</li>
+</ul>
+
+<h2>Sector Agent Coverage</h2>
+<table>
+  <tbody>
+    <tr><th>Agent</th><th>Tickers</th><th>Key change</th></tr>
+    <tr><td>BanksAgent</td><td>15</td><td>No change</td></tr>
+    <tr><td>TechDefenseAgent</td><td>11</td><td>Removed KRNT.TA (delisted TASE 2021)</td></tr>
+    <tr><td>EnergyAgent</td><td>9</td><td>No change</td></tr>
+    <tr><td>PharmaAgent</td><td>5</td><td>No change</td></tr>
+    <tr><td>RealEstateAgent</td><td>14</td><td>No change</td></tr>
+    <tr><td>TelecomConsumerAgent</td><td>8</td><td>No change</td></tr>
+    <tr><td>DiscoveryAgent</td><td>~400–500 (full TASE)</td><td>No change</td></tr>
+  </tbody>
+</table>
+
+<h2>Risks / Known Limitations</h2>
+<ul>
+  <li>Financial snapshot cache is populated once per day — first run of a new day may serve stale data until the refresh completes (~30–60s)</li>
+  <li>TASE stocks on Yahoo Finance provide end-of-day data only; "last session" change is not real-time intraday</li>
+  <li>Some TASE small-caps have no P/E or revenue data in Yahoo Finance — <code>get_financials</code> returns "No data available" for these</li>
+  <li>Hebrew ticker name matching in <code>_KNOWN_TICKERS</code> is manual — new companies must be added explicitly</li>
+</ul>

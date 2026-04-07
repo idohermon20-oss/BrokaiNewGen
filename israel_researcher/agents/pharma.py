@@ -44,8 +44,6 @@ class PharmaAgent(SectorAgent):
             "- ITRN (Ituran Location, dual-listed Nasdaq+TASE): fleet management and stolen-vehicle "
             "recovery. Not pure pharma — evaluate on contract wins, subscriber growth, and emerging "
             "markets expansion (Latin America is key revenue driver).\n"
-            "- PRGO (Perrigo, dual-listed Nasdaq+TASE): OTC consumer health. "
-            "Regulatory divestitures and pipeline FDA decisions = key catalysts.\n"
             "- US Biotech index (XBI/IBB): sentiment leading indicator for the entire sector.\n\n"
             "SCORING ADJUSTMENTS:\n"
             "+ XBI up >3%: apply +8 to KMDA, CGEN, EVGN, BRND\n"
@@ -97,9 +95,10 @@ class PharmaAgent(SectorAgent):
             peer_ticker    = "ILS=X",
             peer_label     = "USD/ILS (shekel weakening)",
             threshold_pct  = 1.5,
-            target_tickers = ["TEVA.TA", "ICL.TA", "KMDA.TA", "BRND.TA", "CGEN.TA", "EVGN.TA"],
+            target_tickers = ["TEVA.TA", "ICL.TA", "KMDA.TA", "BRND.TA",
+                              "CGEN.TA", "EVGN.TA", "ITRN.TA"],
             signal_type    = "shekel_move",
-            direction_text = "USD-denominated pharma/biotech revenue tailwind",
+            direction_text = "USD-denominated pharma/biotech/tech revenue tailwind",
         ))
 
         return signals

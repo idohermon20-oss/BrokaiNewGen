@@ -266,19 +266,23 @@ class ConvergenceEngine:
                 elif dte <= 14:
                     dte_bonus = 12
 
-            cats      = g["categories"]
-            best_mult = 1.0
+            cats         = g["categories"]
+            best_mult    = 1.0
+            matched_pair: list[str] = []
             for pair, mult in self.MULTIPLIERS.items():
                 if pair.issubset(cats) and mult > best_mult:
-                    best_mult = mult
+                    best_mult    = mult
+                    matched_pair = sorted(pair)
             if len(cats) >= 3:
                 best_mult *= 1.3
 
-            g["multiplier"]  = round(best_mult, 2)
+            g["multiplier"]    = round(best_mult, 2)
+            g["matched_pair"]  = matched_pair   # which signal combo triggered best multiplier
+            g["dte_bonus"]     = dte_bonus      # earnings proximity bonus amount
             # Multiplier applies to signal base only; earnings urgency bonus added on top
-            g["final_score"] = min(100, round(g["base_score"] * best_mult) + dte_bonus)
-            g["converged"]   = len(cats) >= 2
-            g["categories"]  = sorted(g["categories"])
+            g["final_score"]   = min(100, round(g["base_score"] * best_mult) + dte_bonus)
+            g["converged"]     = len(cats) >= 2
+            g["categories"]    = sorted(g["categories"])
 
         return groups
 
@@ -287,26 +291,33 @@ class ConvergenceEngine:
 
     def to_llm_input(self, grouped: dict[str, dict]) -> str:
         """
-        Build the JSON input for the sector / quick LLM scorer.
-        NOTE: `final_score` is intentionally OMITTED so the LLM scores from scratch
-        rather than anchoring on a pre-computed number.
-        `signal_strength` and `convergence_multiplier` are provided as raw signal
-        quality indicators only — they describe QUANTITY/CONVERGENCE of signals,
-        NOT the investment score.
+        Build the full JSON input for the sector LLM scorer.
+
+        The LLM is the FINAL arbiter of each stock's score.
+        `signal_strength`, `convergence_multiplier`, and `matched_multiplier_pair`
+        are provided as raw signal-quality HINTS only — the LLM must read the actual
+        signals and assess catalyst quality independently.
+        `final_score` is intentionally omitted to prevent anchoring bias.
         """
         compact = {
             ticker: {
-                "company":               g["company_name"],
-                "categories_hit":        list(g["categories"]),
-                "signals_count":         len(g["signals"]),
-                "days_to_earnings":      g["days_to_earnings"],
-                "urgent_earnings":       g["urgent_earnings"],
-                "signal_strength":       g["base_score"],       # raw signal weight sum
-                "convergence_multiplier": g["multiplier"],      # how well signals corroborate each other
-                "top_signals": [
-                    {"type": s.signal_type, "headline": s.headline,
-                     "detail": s.detail[:120], "keywords": s.keywords_hit}
-                    for s in g["signals"][:5]
+                "company":                 g["company_name"],
+                "categories_hit":          list(g["categories"]),
+                "signals_count":           len(g["signals"]),
+                "days_to_earnings":        g["days_to_earnings"],
+                "urgent_earnings":         g["urgent_earnings"],
+                "earnings_proximity_pts":  g.get("dte_bonus", 0),
+                "signal_strength":         g["base_score"],
+                "convergence_multiplier":  g["multiplier"],
+                "matched_multiplier_pair": g.get("matched_pair", []),
+                "all_signals": [
+                    {
+                        "type":     s.signal_type,
+                        "headline": s.headline,
+                        "detail":   s.detail[:200],
+                        "keywords": s.keywords_hit,
+                    }
+                    for s in g["signals"][:15]
                 ],
             }
             for ticker, g in grouped.items()

@@ -1,0 +1,128 @@
+<h1>Summary</h1>
+<p>
+  Major capability expansion of the <strong>israel_researcher</strong> Telegram bot and research pipeline.
+  This session added two new sector agents (Construction, Tourism/Transport), expanded the TechDefense
+  universe from 11 to 21 tickers with detailed sub-sector domain knowledge, introduced three new Q&amp;A tools
+  (top movers, financial deep-dive, stock screening), and refactored shared utilities into <code>models.py</code>
+  to eliminate duplication across the codebase.
+</p>
+
+<h2>Background / Problem</h2>
+<ul>
+  <li>The bot had no way to answer "what went up most today?" — required a new <code>get_top_movers</code> tool scanning 400-500 TASE stocks.</li>
+  <li>Financial deep-dives (revenue, profit, EPS history) were not supported — users had to go to external sites.</li>
+  <li>TechDefense only covered 11 tickers and had no domain knowledge for small-cap defense sub-contractors (ARYT, ASHO, ISHI, CMER, SMSH, ARDM, ELRN).</li>
+  <li>Construction and Tourism/Transport sectors had no dedicated agents, leaving these companies in the undifferentiated DiscoveryAgent pool.</li>
+  <li>Helper functions <code>_today()</code>, <code>_fmt_mcap()</code>, <code>fmt_rsi_label()</code>, and the <code>MAYA_SIGNAL_TYPES</code> set were copy-pasted across 4 modules.</li>
+  <li>Globes and Calcalist direct RSS feeds were dead (0 entries) — news from Israel's two most important financial papers was completely absent.</li>
+  <li>The sector LLM prompt showed only 5 signals per stock (truncated at <code>top_signals[:5]</code>) — high-quality signals were being dropped silently.</li>
+  <li>LLM was anchoring scores on pre-computed <code>final_score</code> values; <code>matched_multiplier_pair</code> and <code>earnings_proximity_pts</code> were not exposed.</li>
+  <li>The bot could hallucinate current stock prices from stale training data — no hard guardrails existed.</li>
+</ul>
+
+<h2>Changes Made</h2>
+<table>
+  <tbody>
+    <tr><th>File</th><th>What changed</th></tr>
+    <tr><td><code>agents/construction.py</code></td><td>NEW — ConstructionAgent for 6 tickers (ELTR, DNYA, ASHG, SPEN, SKBN, DIMRI). Sector signals: steel ETF SLX move, BOI rate proxy, government contract tailwind.</td></tr>
+    <tr><td><code>agents/tourism.py</code></td><td>NEW — TourismTransportAgent for 5 tickers (ELAL, ISRO, DANH, FTAL, ISRG). Sector signals: US airline peers (DAL/UAL/LUV), hotel peers (HLT/MAR/IHG), WTI oil (fuel cost), geopolitical risk.</td></tr>
+    <tr><td><code>agents/tech_defense.py</code></td><td>Expanded from 11 → 21 tickers. Added ARYT, ASHO, TATT, ISHI, CMER, ARDM, SMSH, ELRN, MTRX, TDRN. Full sub-sector domain knowledge (naval defense, tactical comms, drone/surveillance, defense venture). Defense peer signal now targets all 9 defense tickers, not just ESLT/NXSN.</td></tr>
+    <tr><td><code>agents/real_estate.py</code></td><td>Moved DIMRI, SPEN, SKBN to Construction sector. Added FOX.TA and DIPL.TA to TelecomConsumer tickers.</td></tr>
+    <tr><td><code>agents/telecom_consumer.py</code></td><td>Added FOX (Fox-Wizel) and DIPL (Diplomat Holdings) to consumer sub-group.</td></tr>
+    <tr><td><code>agents/manager.py</code></td><td>Registered ConstructionAgent and TourismTransportAgent in <code>_AGENT_CLASSES</code>.</td></tr>
+    <tr><td><code>agents/base.py</code></td><td>Replaced inline <code>_fmt_mcap()</code> and <code>_today()</code> with shared imports from <code>models.py</code>.</td></tr>
+    <tr><td><code>analysis/convergence.py</code></td><td>Added <code>matched_pair</code> and <code>dte_bonus</code> fields to grouped output. Changed <code>top_signals[:5]</code> → <code>all_signals[:15]</code> and detail truncation 120 → 200 chars. Added new fields to <code>to_llm_input()</code>: <code>matched_multiplier_pair</code>, <code>earnings_proximity_pts</code>.</td></tr>
+    <tr><td><code>analysis/llm.py</code></td><td>Rewrote sector LLM prompt to explain all new input fields. Added 3 new intent types: <code>top_movers_query</code>, <code>financial_query</code>, <code>screening_query</code>. Added 15 new intent classification examples. Added hard guardrail: LLM must never state current prices from training data. Fixed Q&amp;A chat answer prompt to distinguish last_session vs intraday data.</td></tr>
+    <tr><td><code>analysis/memory.py</code></td><td>Replaced duplicate <code>_today()</code>, <code>_fmt_mcap()</code>, <code>is_pseudo_ticker()</code>, <code>is_cache_stale()</code> calls with shared imports from <code>models.py</code>.</td></tr>
+    <tr><td><code>bot/qa_pipeline.py</code></td><td>Added 3 new tools: <code>get_top_movers</code>, <code>get_financials</code>, <code>screen_stocks</code>. Registered in <code>_TOOL_REGISTRY</code> and <code>_INTENT_REQUIRED_TOOLS</code>. Added 25 known tickers for Tourism, Construction, Consumer sectors. Replaced inline helpers with <code>models.py</code> imports. Fixed <code>day_str</code> to say "last session" vs "today intraday" based on <code>price_data_note</code>. Added <code>price_line</code> to live scan results so "is X moving?" always gets a number.</td></tr>
+    <tr><td><code>bot/bot_state.py</code></td><td>Minor cleanup — removed duplicate MAYA_TYPES dict in favor of <code>MAYA_SIGNAL_TYPES</code> from models.</td></tr>
+    <tr><td><code>models.py</code></td><td>Promoted 5 shared utilities to module-level exports: <code>today()</code>, <code>is_pseudo_ticker()</code>, <code>is_cache_stale()</code>, <code>fmt_mcap()</code>, <code>fmt_rsi_label()</code>. Added <code>MAYA_SIGNAL_TYPES</code> frozenset. Fixed <code>is_cache_stale()</code> to use timezone-aware datetime comparison.</td></tr>
+    <tr><td><code>config.py</code></td><td>Added <code>SECTOR_TICKERS["TourismTransport"]</code> and <code>SECTOR_TICKERS["Construction"]</code>. Expanded <code>TASE_MAJOR_TICKERS</code> with 20+ new tickers. Fixed dead Globes/Calcalist RSS feeds → Google News <code>site:</code> queries. Added <code>TATT.TA</code> to dual-listed mapping. Removed delisted <code>ITRN.TA</code> and <code>KRNT.TA</code>. Added <code>MISH.TA</code> (Mivtach Shamir) to Banks sector. Expanded <code>DeepStockAnalyzer</code> output with 7 valuation fields (P/E trailing/forward, P/B, dividend yield, gross/net margin, D/E).</td></tr>
+    <tr><td><code>sources/market.py</code></td><td>Added <code>price_data_note</code> field to <code>DeepStockAnalyzer</code> output (<code>"intraday"</code> vs <code>"last_session"</code>). Added <code>refresh_financial_snapshot_cache()</code> for daily screening cache population. Fixed <code>is_cache_stale()</code> to use shared helper.</td></tr>
+    <tr><td><code>researcher.py</code></td><td>Wired <code>refresh_financial_snapshot_cache()</code> into the daily cycle.</td></tr>
+  </tbody>
+</table>
+
+<h2>Technical Details</h2>
+
+<h3>New Q&amp;A Tools</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">python</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+# get_top_movers — scans 400-500 TASE tickers via yf.download() batch call
+def _tool_top_movers(_ticker, state, top_n=10):
+    universe = state.get("tase_universe_cache", {}).get("tickers", []) or TASE_MAJOR_TICKERS
+    df = yf.download(" ".join(universe), period="2d", interval="1d",
+                     progress=False, auto_adjust=True, threads=True)
+    close = df["Close"]
+    # pct = (today_close - yesterday_close) / yesterday_close * 100
+    # Returns top N gainers + top N losers
+
+# get_financials — annual + quarterly income statement + balance sheet
+def _tool_financials(ticker, _state):
+    tk = yf.Ticker(ticker + ".TA")
+    annual    = tk.financials            # 4-year income statement
+    quarterly = tk.quarterly_financials  # 4-quarter income statement
+    bs        = tk.balance_sheet         # latest balance sheet
+
+# screen_stocks — reads state["financial_snapshot_cache"] (populated daily)
+# Returns P/E, P/B, dividend yield, revenue growth, net margin for top 25 by mktCap
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>Shared utility promotion to models.py</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">python</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+# Before: each module had its own copy of these helpers
+def _today() -> str:               return datetime.now().strftime("%Y-%m-%d")
+def _fmt_mcap(cap) -> str:         ...  # copy-pasted in 4 files
+def is_pseudo_ticker(s) -> bool:   return s.startswith("TASE")  # copy-pasted
+
+# After: canonical versions in models.py, imported everywhere
+from .models import today, is_pseudo_ticker, is_cache_stale, fmt_mcap, fmt_rsi_label, MAYA_SIGNAL_TYPES
+
+# is_cache_stale now timezone-aware:
+def is_cache_stale(date_str: str, ttl_days: float) -> bool:
+    fetched = datetime.fromisoformat(date_str)
+    age = datetime.now(timezone.utc) - fetched.astimezone(timezone.utc)
+    return age > timedelta(days=ttl_days)
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>Sector LLM signal visibility fix</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">python</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+# Before: only 5 signals shown to LLM, detail truncated at 120 chars
+"top_signals": [{"type": s.signal_type, "headline": s.headline,
+                  "detail": s.detail[:120], ...} for s in g["signals"][:5]]
+
+# After: all 15 signals, detail at 200 chars, new explainability fields
+"all_signals": [{"type": s.signal_type, "headline": s.headline,
+                  "detail": s.detail[:200], ...} for s in g["signals"][:15]],
+"matched_multiplier_pair": ["earnings_calendar", "volume_spike"],  # what triggered top multiplier
+"earnings_proximity_pts":  60,   # how urgently earnings are approaching (0/12/25/45/60/70/80)
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h2>How to Test</h2>
+<ul>
+  <li>Start <code>python -m israel_researcher</code> and confirm 9 sector agents appear in the cycle log (Banks, TechDefense, Energy, PharmaBiotech, RealEstate, TelecomConsumer, Discovery, <strong>Construction</strong>, <strong>TourismTransport</strong>).</li>
+  <li>Send the bot <strong>"what went up most today?"</strong> — should trigger <code>get_top_movers</code> and return a ranked table of TASE gainers/losers.</li>
+  <li>Send <strong>"what was Bezeq's revenue last year?"</strong> — should trigger <code>get_financials</code> with BEZQ and return annual income statement.</li>
+  <li>Send <strong>"cheapest stock by P/E"</strong> — should trigger <code>screen_stocks</code> after the daily cache populates (first cycle of the day).</li>
+  <li>Verify TechDefense agent scores ARYT or CMER when a <code>maya_contract</code> filing appears for them — small-cap defense bonus (+15) should push them into buy tier.</li>
+  <li>Check <code>israel_researcher/config.py</code> Globes RSS — confirm articles appear in the news monitor (Google News site: queries should yield items, the old direct feeds were empty).</li>
+  <li>Ask the bot for a current stock price with no context — confirm it fetches live data rather than hallucinating from training knowledge.</li>
+</ul>
+
+<h2>Risks / Known Limitations</h2>
+<ul>
+  <li><strong>financial_snapshot_cache</strong> is empty on first run — <code>screen_stocks</code> returns an error message until the first daily refresh completes. This is intentional (graceful degradation).</li>
+  <li><strong>get_top_movers</strong> uses end-of-day TASE data from Yahoo Finance — it reflects the last completed session, not live intraday prices. The tool output says "today's top movers" which may be yesterday if TASE is closed.</li>
+  <li><strong>Construction and TourismTransport</strong> agents have no sector-specific macro signals yet (the <code>get_sector_signals()</code> stubs return <code>[]</code>). They run the standard 8-detector technical scan but have no peer ETF signals. This is a known gap — macro signals will be added in a follow-up.</li>
+  <li><strong>TATT.TA dual-listed</strong> — added to <code>_DUAL_LISTED</code> in TechDefenseAgent. Yahoo Finance may lag on TATT.TA overnight moves vs Nasdaq — verify signal fires correctly.</li>
+  <li><strong>Google News RSS rate limiting</strong> — site: queries for Globes/Calcalist/TheMarker are 3 new feeds. Total RSS feed count increased. Monitor for HTTP 429 in the news monitor log.</li>
+  <li><strong>DeepStockAnalyzer valuation fields</strong> — fetched via <code>tk.info</code> which is a separate HTTP call per ticker. This adds latency to the top-8 analysis phase. If YF rate-limits, fields return None gracefully.</li>
+</ul>

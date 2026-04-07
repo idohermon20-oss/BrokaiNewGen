@@ -1,160 +1,148 @@
-# Brokai — Task Breakdown & Status
+# Brokai — Israeli Stock Research Agent
 
-> Purpose: Break down the work into smaller executable units, attach success criteria (DoD), dependencies, and priority, and prepare a roadmap for upcoming sprints.
-
----
-
-## ✅ Completed
-
-| ID | Area | Deliverable | Key Work | DoD (Definition of Done) | Artifacts |
-|---|---|---|---|---|---|
-| C1 | Analysis | Valuation of a private investment portfolio based on financial reports and up-to-date news | Report collection, DCF/multiples, news integration | Analytical reports + valuation output | - |
-| C2 | Stock Scoring | Assigning a score to a stock based on 3-year history & performance | Historical features, normalization, scoring | Stable scoring module/file | - |
-| C3 | Forecasting | Future valuation for a stock (reports + news) | Feature pipeline + baseline model | Run forecast for stock at given cut-off date | - |
-| C4 | Recommendations | Recommended stocks | Score/forecast filtering, threshold setup | Top-N recommendations with short rationale | - |
+AI-powered research system for the Tel Aviv Stock Exchange (TASE). Scans the full TASE universe every 15 minutes, reads Maya filings in real-time, scores stocks using LLM analysis, and delivers alerts via Telegram.
 
 ---
 
-## 📋 Backlog (To Do) — by Streams
+## What it does
 
-### A. Data & Integrations (Market/News/Crypto)
-
-| ID | Task | Sub-steps | DoD | Dependencies | Priority |Done by
-|---|---|---|---|---|---|---|
-| D1 | Select real-time market data provider | Map providers (Polygon/IEX/Alpaca/IB/Bursa IL), check SLA & cost | Comparison table + written decision | - | High |
-| D2 | Integrate Market Data (US) | Connect API, retry logic, throttling, caching | Internal endpoint returning OHLCV/Level-1 | D1 | High |
-| D3 | Integrate Market Data (IL) | Connect TASE/broker, ticker mapping | Internal endpoint for IL data + delay validation | D1 | High |
-| D4 | General News + Breaking | Choose aggregator, filter by ticker/lang | Unified feed with metadata & deduplication | D1 | High |
-| D5 | Stock-specific News | NER/ticker matching, dedup, basic sentiment | API returns per-ticker news with sentiment | D4 | High |
-| D6 | Crypto Integration | Provider (Binance/Coinbase), time conversions | Endpoint with OHLCV for top coins | D1 | Medium |
-| D7 | Data Storage | Design DB schema (time-series, news, crypto) | Approved tables + retention policy | D2-D6 | High |
-
-### B. News, Social & Influencers
-
-| ID | Task | Sub-steps | DoD | Dependencies | Priority | Do |
-|---|---|---|---|---|---|---|
-| N1 | Twitter/X Integration | API/alternative, text+metadata ingestion | Scheduled ingestion, storage, normalization | D7 | High | Ido |
-| N2 | Instagram/Threads Integration | Legal/ethical access, provider integration | Data per creator/hashtag available | D7 | Medium | - |
-| N3 | Influencer Discovery | Build seed list, rank by engagement/PageRank | Table of influencers with scores | N1-N2 | Medium | - |
-| N4 | Text-to-Market Impact | Model linkage tweet/post ↔ return/vol | Correlation/VAR/Granger + significance report | N1 | High | - |
-| N5 | Breaking Alerts | Rules/ML for major event detection | Alert with ticker/reason/source | D4, N1 | High | - |
-
-### C. Modeling & Forecasting
-
-| ID | Task | Sub-steps | DoD | Dependencies | Priority |
-|---|---|---|---|---|---|
-| M1 | Feature Engineering | Technical (MA/RSI/ATR), fundamental, macro | Feature notebook + unit tests | D2-D7 | High |
-| M2 | Text Sentiment Features | FinBERT/Llama-FT, aspect-based sentiment | Sentiment features with time window | D4, N1 | High |
-| M3 | Short-term Forecast Model | XGBoost/LSTM/Transformer | Evaluation by AUC/IC/R² for T+1/T+5 | M1-M2 | High |
-| M4 | Medium/Long-term Model | Prophet/State-Space/Transformer | Accuracy vs benchmarks (Naive/ARIMA) | M1-M3 | Medium |
-| M5 | Uncertainty Estimation | Quantile/Ensemble/Dropout | Forecasts with confidence intervals | M3-M4 | High |
-| M6 | Explainability | SHAP/ICE/Feature Attribution | Explanatory report per ticker + API | M3 | High |
-
-### D. Backtesting, Simulation & Decisioning
-
-| ID | Task | Sub-steps | DoD | Dependencies | Priority |
-|---|---|---|---|---|---|
-| B1 | Backtesting Engine | Simulated trades, fees, slippage | Run on history with metrics | M1-M3 | High |
-| B2 | Performance Metrics | CAGR, Sharpe, Sortino, MaxDD, HitRate | Automated report + JSON results | B1 | High |
-| B3 | Decision Methodology | Signal→Position sizing (Kelly/Vol-Target) | Configurable decision module | M3, B1 | High |
-| B4 | Future Scenario Simulation | Macro/event impacts (rate, war), MC/bootstrapping | API with impact per ticker/portfolio | M4, B1 | Medium |
-| B5 | Risk Management | Stops, VaR/ES, exposure limits | Enforced in backtest + real-time | B1-B3 | High |
-
-### E. Product: Web, Demo, Portfolio
-
-| ID | Task | Sub-steps | DoD | Dependencies | Priority |
-|---|---|---|---|---|---|
-| P1 | Basic Website (MVP) | Results page, stock details, Top 10 | Responsive demo (desktop/mobile) | APIs D2-D5, M3 | High |
-| P2 | Demo Account | Signup, dummy data, limited scenarios | Demo user runs filters+recommendations | P1 | High |
-| P3 | AI Portfolio Display | Portfolio page, trade history | Graphs + explanations (from M6) | P1, M6 | High |
-
-### F. Competitive Advantage & Differentiators
-
-| ID | Task | Sub-steps | DoD | Dependencies | Priority |
-|---|---|---|---|---|---|
-| X1 | Full Transparency | Add visual explanations (graphs of sentiment vs price, sources, SHAP reports) | Each recommendation must include a “Why” panel | M6 | High |
-| X2 | Future Simulation Engine | Build “what-if” scenarios (interest rate hike, war, inflation) | Users can run custom scenarios and see expected impact | B4 | High |
-| X3 | Social-Driven Insights | Real-time influencer & sentiment correlation dashboards | Graph showing correlation between tweets/posts and stock moves | N4 | High |
-| X4 | AI Portfolio Manager | AI-managed demo portfolio, compared to benchmarks (S&P500, TA-125) | Live demo portfolio with performance tracking | P3 | High |
-| X5 | Risk Management Layer | Implement stops, VaR/ES, exposure rules in live + backtest | System prevents reckless trades | B5 | High |
-| X6 | Demo Experience | Free demo with virtual portfolio | New users can try without risk | P2 | Medium |
-| X7 | Dual Market Coverage | Support US + Israel equities + Crypto in one tool | Seamless cross-market analysis | D2, D3, D6 | High |
-| X8 | Regulatory Compliance | Ensure GDPR, ESG, MiFID II alignment | Compliance docs & automated reports | D7 | Medium |
-
-
-# Brokai — Project Roadmap & Team Breakdown
-
-This README serves as the central roadmap for Brokai.  
-Each section is owned by a dedicated team. For details, see the linked docs.
+- **Reads Maya TASE filings** — IPOs, earnings, contracts, institutional buyers, buybacks, dividends — the moment they are published, before any news outlet picks them up
+- **Scans 500+ TASE stocks** every cycle for volume spikes, breakouts, oversold bounces, MA crossovers, and relative strength
+- **Runs 8 sector agents in parallel** — Banks, Tech/Defense, Energy, Pharma, Real Estate, Telecom/Consumer, Tourism, and a Discovery agent that covers the full universe
+- **Cross-references global macro** — WTI oil, USD/ILS, US10Y, VIX, S&P500 — injected into every LLM call
+- **Uses GPT to score and rank** every stock, thinking like a buy-side analyst: what is the catalyst, how material is it relative to market cap, is it already priced in
+- **Sends Telegram alerts** — top 3 stocks every cycle, daily summary at 17:00, weekly Stock of the Week on Thursday
+- **Interactive Telegram bot** — ask questions in Hebrew or English: "מה קורה עם טבע?", "show me the top buys this week", "/macro", "/sector Banks"
 
 ---
 
-## ✅ Completed
-- Portfolio valuation based on financial analysis & news
-- Stock scoring (3-year history & performance)
-- Future valuation (financial reports + news)
-- Recommended stocks list
+## Repository layout
+
+```
+BorsaProject/
+├── israel_researcher/   ← Active: TASE research engine (Shai)
+│   ├── agents/          ← 8 sector agents + ResearchManager
+│   ├── sources/         ← Maya, market data, news, web search
+│   ├── analysis/        ← LLM scoring, convergence engine, memory
+│   └── bot/             ← Telegram bot server + Q&A pipeline
+├── portfolio/           ← Planned: portfolio management (Developer 2)
+├── shared/              ← Shared utilities for both developers
+│   ├── stocks.py        ← find_top_stocks(), filter_signals_by_score()
+│   ├── analytics.py     ← calc_pnl(), sector_weights(), find_max_stock()
+│   └── reports.py       ← parse_financial_report(), summarize_filing()
+├── data/                ← Runtime state, memory, mappings (shared)
+│   ├── israel_researcher_state.json
+│   ├── israel_researcher_memory.xlsx
+│   └── maya_company_mapping.json   ← 238 Maya companyId → .TA ticker mappings
+├── utils/               ← Standalone scripts (run directly)
+│   ├── fetch_maya_companies.py     ← Rebuild Maya company universe
+│   ├── fetch_tase_universe.py      ← Rebuild YF equity universe
+│   ├── build_llm_mapping.py        ← Expand Maya → ticker mapping via GPT
+│   ├── make_pdf.py                 ← Generate docs/israel_researcher_docs.pdf
+│   └── make_pptx.py                ← Generate docs/israel_researcher_overview.pptx
+└── docs/                ← Generated documentation
+```
 
 ---
 
-## 📋 Workstreams & Teams
+## Setup
 
-### 1. Data & Integrations Team
-**Scope**: Market data (US, IL), crypto, storage, compliance  
-**Tasks**: D1–D7, X7, X8  
-**Deliverables**: APIs for OHLCV, news feeds, crypto integration, DB schema  
-📄 [docs/data_integrations.md](docs/data_integrations.md)
+```bash
+# 1. Clone and activate virtual environment
+git clone https://github.com/idohermon20-oss/BrokaiNewGen.git
+cd BrokaiNewGen
+source venv/Scripts/activate   # Windows
+# source venv/bin/activate      # Linux/Mac
 
----
+# 2. Install dependencies
+pip install yfinance feedparser trafilatura openai pandas openpyxl \
+            beautifulsoup4 playwright python-dotenv
+playwright install chromium
 
-### 2. News & Social AI Team
-**Scope**: Social feeds, influencers, sentiment, breaking events  
-**Tasks**: N1–N5, X3  
-**Deliverables**: Ingestion pipelines, influencer scoring, correlation dashboards  
-📄 [docs/news_social.md](docs/news_social.md)
-
----
-
-### 3. Modeling & Forecasting Team
-**Scope**: Features, ML models, explainability, scenario modeling  
-**Tasks**: M1–M6, X1, X2  
-**Deliverables**: Forecast models, SHAP explainability, scenario simulations  
-📄 [docs/modeling.md](docs/modeling.md)
+# 3. Create .env at project root
+OPENAI_API_KEY=sk-...
+BOT_TOKEN=...          # Telegram bot token
+CHAT_ID=...            # Telegram chat ID
+OPENAI_MODEL=gpt-4o-mini
+```
 
 ---
 
-### 4. Quant & Decisioning Team
-**Scope**: Backtesting, KPIs, risk management, trading logic  
-**Tasks**: B1–B5, X2, X5  
-**Deliverables**: Backtesting engine, performance metrics, risk framework  
-📄 [docs/quant_decision.md](docs/quant_decision.md)
+## Running
+
+```bash
+# Start the research loop + Telegram bot (runs every 15 minutes)
+python -m israel_researcher
+
+# One-off utilities (run from project root)
+python utils/fetch_maya_companies.py    # Refresh Maya company universe (~5 min, Playwright)
+python utils/fetch_tase_universe.py     # Refresh TASE equity list from Yahoo Finance
+python utils/build_llm_mapping.py       # Expand Maya companyId→.TA mappings via GPT
+python utils/make_pdf.py                # Regenerate PDF docs → docs/
+python utils/make_pptx.py              # Regenerate slide deck → docs/
+```
 
 ---
 
-### 5. Product & Frontend Team
-**Scope**: Website MVP, demo account, portfolio UI  
-**Tasks**: P1–P3, X4, X6  
-**Deliverables**: Responsive website, demo user account, AI-managed portfolio view  
-📄 [docs/product.md](docs/product.md)
+## Telegram bot commands
+
+| Command | Description |
+|---------|-------------|
+| `/status` | Last scan time, alerts enabled, active sectors |
+| `/macro` | Live: TA-125, S&P500, USD/ILS, WTI oil, VIX, US10Y |
+| `/weekly` | Stock of the week + runners-up |
+| `/earnings` | Upcoming earnings events |
+| `/sector <name>` | Sector trend: BULL+/BULL/NEUTRAL/BEAR/BEAR- |
+| `/set_interval <min>` | Change scan interval (5–240 min) |
+| `/set_language en\|he` | Switch reply language |
+| `/enable_alerts` / `/disable_alerts` | Toggle Telegram alerts |
+| Free text | Ask anything — the bot uses GPT to answer with live data |
 
 ---
 
-### 6. BizDev & Strategy Team
-**Scope**: Competitive positioning, GTM strategy, investor materials  
-**Tasks**: X1–X8 (non-technical parts)  
-**Deliverables**: Competitor matrix, go-to-market strategy, compliance docs  
-📄 [docs/strategy.md](docs/strategy.md)
+## Architecture overview
+
+```
+Every 15 minutes:
+  Phase 1 — Cross-sector data (sequential)
+    Maya filings → Signal objects
+    Israeli news RSS → matched to companies
+    Dual-listed US overnight moves → leading indicators
+    Earnings calendar → upcoming events
+    Macro snapshot → injected into all LLM calls
+
+  Phase 2 — Sector agents (parallel, 4 workers)
+    Each agent: technicals → macro signals → web news → LLM scoring
+    Discovery agent covers full 500+ ticker universe
+
+  Phase 3 — Manager LLM arbitration
+    Picks Stock of the Week across all sectors
+    Enforces: no 2 from same sector, at least one small/mid cap, macro alignment
+
+  → Telegram alert: top 3 stocks with score, catalyst, risk
+```
 
 ---
 
-## 🔍 How to Track Progress
-- Each team updates their doc under `/docs/` folder.  
-- Use checkboxes `[ ]` / `[x]` for tasks in progress vs completed.  
-- Weekly sync: update this README with high-level status.
+## Key data files
+
+| File | Purpose | Rebuilt with |
+|------|---------|-------------|
+| `data/israel_researcher_state.json` | Live state: signals, dedup, ticker cache | Auto-managed |
+| `data/israel_researcher_memory.xlsx` | Persistent analyst notes per stock | Auto-managed |
+| `data/maya_company_mapping.json` | 238 Maya companyId → .TA ticker mappings | `utils/build_llm_mapping.py` |
+| `data/tase_ticker_names.json` | English names for 426 TASE tickers | `utils/fetch_tase_universe.py` |
 
 ---
 
-## 📊 Next Steps
-- [ ] Set up `/docs/` folder with team-specific markdown files  
-- [ ] Assign team leads for each stream  
-- [ ] Move backlog tasks into GitHub Projects or Jira for sprint planning
+## Tech stack
+
+| Layer | Technology |
+|-------|-----------|
+| LLM | OpenAI GPT-4o-mini |
+| Market data | yfinance |
+| Maya scraping | Playwright (headless Chromium, WAF bypass) |
+| News | feedparser, Google News RSS, trafilatura |
+| Alerts | Telegram Bot API |
+| Memory | pandas, openpyxl (Excel) |
+| Language | Python 3.8+ |

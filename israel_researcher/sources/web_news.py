@@ -19,6 +19,8 @@ import urllib.parse
 
 import feedparser
 
+from ..config import WEB_NEWS_SEARCH_NAMES
+
 
 class WebNewsSearcher:
     """
@@ -99,6 +101,10 @@ class WebNewsSearcher:
         """
         results: list[dict] = []
         seen_titles: set[str] = set()
+
+        # Apply search name override if configured (better query for some tickers)
+        ticker_ta = ticker if ticker.endswith(".TA") else ticker + ".TA"
+        company_name = WEB_NEWS_SEARCH_NAMES.get(ticker_ta, company_name)
 
         # Query 1 — company name (most useful for Israeli companies)
         if company_name:

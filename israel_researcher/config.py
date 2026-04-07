@@ -31,9 +31,10 @@ TOP_N_ALERTS           = 3    # top stocks per Telegram alert
 
 # ─── State ─────────────────────────────────────────────────────────────────────
 
-STATE_FILE      = Path("israel_researcher_state.json")
-BOT_STATE_FILE  = Path("bot_state.json")
-USER_ALERTS_FILE = Path("user_alerts.json")
+_DATA = Path(__file__).parent.parent / "data"
+STATE_FILE       = _DATA / "israel_researcher_state.json"
+BOT_STATE_FILE   = _DATA / "bot_state.json"
+USER_ALERTS_FILE = _DATA / "user_alerts.json"
 
 # ─── Maya API ──────────────────────────────────────────────────────────────────
 
@@ -71,11 +72,13 @@ MAYA_TYPE_MAP = {
 # ─── News sources ──────────────────────────────────────────────────────────────
 
 ISRAELI_NEWS_SOURCES = [
-    # ── Primary financial press (most important for stock signals) ──────────────
-    {"type": "rss", "url": "https://www.globes.co.il/webservice/rss/rssfeeder.aspx?iID=1111", "label": "Globes-Finance"},
-    {"type": "rss", "url": "https://www.globes.co.il/webservice/rss/rssfeeder.aspx?iID=1112", "label": "Globes-Stocks"},
-    {"type": "rss", "url": "https://www.calcalist.co.il/rss/rss.aspx",                         "label": "Calcalist"},
-    # ── General news with business sections ───────────────────────────────────
+    # ── Primary financial press via Google News site: queries ──────────────────
+    # Note: globes.co.il and calcalist.co.il direct RSS feeds are permanently dead (0 entries).
+    # Google News site: search returns 100 fresh articles per source — better than original feeds.
+    {"type": "rss", "url": "https://news.google.com/rss/search?q=site:globes.co.il&hl=iw&gl=IL&ceid=IL:iw",     "label": "Globes"},
+    {"type": "rss", "url": "https://news.google.com/rss/search?q=site:calcalist.co.il&hl=iw&gl=IL&ceid=IL:iw",  "label": "Calcalist"},
+    {"type": "rss", "url": "https://news.google.com/rss/search?q=site:themarker.com&hl=iw&gl=IL&ceid=IL:iw",    "label": "TheMarker"},
+    # ── General news with business sections (direct RSS — still working) ────────
     {"type": "rss", "url": "https://www.ynet.co.il/Integration/StoryRss6.xml",          "label": "Ynet-Finance"},
     {"type": "rss", "url": "https://www.ynet.co.il/Integration/StoryRss3.xml",          "label": "Ynet-Business"},
     {"type": "rss", "url": "https://rss.walla.co.il/feed/22",                           "label": "Walla-Finance"},
@@ -156,6 +159,17 @@ MACRO_TICKERS = {
     "US10Y":   "^TNX",       # US 10Y yield — proxy for global rate cycle; BoI tends to follow
 }
 
+# ─── Web news search name overrides ───────────────────────────────────────────
+# Maps .TA ticker → preferred Google News search query.
+# Used when the default company_name produces 0 or irrelevant results.
+# Tested 2026-04-01 — update when a company rebrands or a better query is found.
+WEB_NEWS_SEARCH_NAMES: dict[str, str] = {
+    "ASHO.TA": "Ashot Ashkelon",        # Hebrew "אשוט אשקלון" → 0 results; English works
+    "ELRN.TA": "אלרון וונצ'רס",         # "אלרון" alone → politician results; "וונצ'רס" disambiguates
+    "FOX.TA":  "פוקס ויזל",              # "פוקס" alone → Fox News/musicians; need brand qualifier
+    "CMER.TA": "מר תקשורת",             # "מר תעשיות" works but "מר תקשורת" returns more relevant articles
+}
+
 # ─── Dual-listed Israeli stocks (US ticker → TASE ticker) ──────────────────────
 # These trade on both Nasdaq/NYSE and TASE. US overnight moves are leading
 # indicators for TASE open the following morning.
@@ -177,50 +191,87 @@ DUAL_LISTED_STOCKS = {
     "EVGN":  "EVGN.TA",   # Evogene (ag-biotech)     (Nasdaq: EVGN  / TASE: EVGN.TA)
     "CGEN":  "CGEN.TA",   # Compugen (drug discovery)(Nasdaq: CGEN  / TASE: CGEN.TA)
     "BWAY":  "BRND.TA",   # Brainsway (brain stimul) (Nasdaq: BWAY  / TASE: BRND.TA)
+    "TATT":  "TATT.TA",  # TAT Technologies         (Nasdaq: TATT  / TASE: TATT.TA)
+    # SILC (Silicom) — acquired by Celestica 2023, delisted from TASE
+    # ITRN (Ituran) — delisted from TASE, trades only on Nasdaq now
+    # KRNT (Kornit Digital) — delisted from TASE 2021, trades only on Nasdaq now
 }
 
 # ─── Sector ticker groupings (used by sector agents) ──────────────────────────
 # Banks group includes Insurance + Finance services (all rate/macro sensitive)
-# TelecomConsumer combines Telecom + Consumer (both domestic-demand driven)
-
 SECTOR_TICKERS: dict[str, list[str]] = {
     "Banks": [
         "LUMI.TA", "POLI.TA", "MZTF.TA", "DSCT.TA", "FIBI.TA", "JBNK.TA",  # Big-5 banks + Bank of Jerusalem
         "PHOE.TA", "HARL.TA", "CLIS.TA", "MGDL.TA", "MMHD.TA",              # Insurance groups
         "ISCD.TA", "ILCO.TA", "DISI.TA", "TASE.TA",                          # Financial services
+        "MISH.TA",                                                              # Mivtach Shamir Holdings (asset management)
     ],
     "TechDefense": [
-        # Defense electronics & systems
-        "ESLT.TA",                                                              # Elbit Systems (defense)
-        "NXSN.TA", "HLAN.TA", "FORTY.TA", "MLTM.TA",                          # Defense tech / IT
+        # Defense prime contractors
+        "ESLT.TA",                                                              # Elbit Systems (largest Israeli defense)
+        "NXSN.TA",                                                              # NextVision (UAV stabilized cameras)
+        # Defense sub-systems & components
+        "ARYT.TA",                                                              # Aryt Industries (artillery/mortar fuzes)
+        "ASHO.TA",                                                              # Ashot Ashkelon (military aviation parts)
+        "TATT.TA",                                                              # TAT Technologies (aircraft thermal/MRO, Nasdaq: TATT)
+        # Naval defense
+        "ISHI.TA",                                                              # Israel Shipyards (military naval vessels)
+        # Tactical communications & C2
+        "CMER.TA",                                                              # Mer Group (IDF sole-supplier tactical comms)
+        # Drone & surveillance
+        "ARDM.TA",                                                              # Aerodrome Group (drone intelligence/surveillance)
+        "SMSH.TA",                                                              # SmartShooter (AI rifle guidance, IPO March 2026)
+        # Defense-tech venture
+        "ELRN.TA",                                                              # Elron Electronic (Rafael-linked defense tech venture)
+        # IT services & industrial tech
+        "HLAN.TA", "FORTY.TA", "MLTM.TA", "MTRX.TA",                          # HR/IT/holding companies
+        "TDRN.TA",                                                              # Tadiran Group (industrial electronics & tech)
         # Semiconductors & hardware
         "NVMI.TA", "TSEM.TA", "CAMT.TA",                                       # Semiconductors
         # Enterprise software & communications
         "NICE.TA", "AUDC.TA", "ALLT.TA",                                       # CX, voice networking
-        # IT services (Yahoo Finance verified valid March 2026)
-        "MTRX.TA",                                                              # Matrix IT (TA-125 IT services)
+        # KRNT (Kornit Digital) — delisted from TASE 2021, removed
     ],
     "Energy": [
         "DLEKG.TA", "OPCE.TA", "ENLT.TA", "NVPT.TA", "NWMD.TA",              # Gas & power
         "ENRG.TA", "ORL.TA", "PAZ.TA", "RATI.TA",                             # Refineries, fuel retail
+        "SNFL.TA",                                                              # Sunflower Sustainable Investments (renewables)
     ],
     "PharmaBiotech": [
         # Large-cap pharma / chemicals
         "TEVA.TA", "ICL.TA",
         # Biotech & specialty pharma (all Yahoo Finance verified)
         "KMDA.TA", "CGEN.TA", "EVGN.TA",                                       # Plasma, drug discovery, ag-biotech
-        "BRND.TA",                                                              # Brainsway (deep TMS devices)
-        "BWAY.TA",                                                              # Blue & White (generic pharma)
+        "BRND.TA",                                                              # Brainsway (deep TMS devices, Nasdaq: BWAY)
+        # ITRN (Ituran) — delisted from TASE, removed
     ],
     "RealEstate": [
-        "AZRG.TA", "AMOT.TA", "BIG.TA", "MLSR.TA", "MVNE.TA", "DIMRI.TA",
-        "SPEN.TA", "ALHE.TA", "GVYM.TA", "ARPT.TA", "GCT.TA", "SKBN.TA",
+        # Commercial REITs
+        "AZRG.TA", "AMOT.TA", "BIG.TA", "MLSR.TA", "MVNE.TA",
+        "ALHE.TA", "GVYM.TA", "ARPT.TA", "GCT.TA",
         "AURA.TA", "ROTS.TA",
         "AFRE.TA",                                                              # Africa Israel Residences (verified)
     ],
     "TelecomConsumer": [
         "BEZQ.TA", "PTNR.TA", "CEL.TA",                                        # Telecom big-3
-        "SAE.TA", "STRS.TA", "FTAL.TA", "RMLI.TA", "ELCO.TA",                # Consumer staples & discretionary
+        "SAE.TA", "STRS.TA", "RMLI.TA", "ELCO.TA",                            # Consumer staples & discretionary
+        "FOX.TA",                                                               # Fox-Wizel (apparel/fashion retail)
+        "DIPL.TA",                                                              # Diplomat Holdings (food/consumer goods distribution)
+    ],
+    "TourismTransport": [
+        "ELAL.TA",                                                              # El Al Israel Airlines (national carrier)
+        "ISRO.TA",                                                              # Isrotel (largest Israeli hotel chain)
+        "DANH.TA",                                                              # Dan Hotels
+        "FTAL.TA",                                                              # Fattal Holdings (hotels & tourism)
+        "ISRG.TA",                                                              # Israir Group (budget airline)
+    ],
+    "Construction": [
+        "ELTR.TA",                                                              # Electra Ltd (engineering & construction, 6.7B ILS)
+        "DNYA.TA",                                                              # Danya Cebus (construction, Africa Israel arm)
+        "ASHG.TA",                                                              # Ashtrom Group (construction & real estate dev)
+        "SPEN.TA",                                                              # Shapir Engineering & Industry
+        "SKBN.TA",                                                              # Shikun & Binui (construction & infrastructure)
+        "DIMRI.TA",                                                             # Y.H. Dimri Construction & Development
     ],
 }
 
@@ -308,27 +359,53 @@ TASE_MAJOR_TICKERS = [
     "GVYM.TA",   # Gav-Yam Lands
     "ARPT.TA",   # Airport City
     "GCT.TA",    # G City (formerly Gazit-Globe)
-    "SKBN.TA",   # Shikun & Binui (construction)
     "AURA.TA",   # Aura Investments
     "ROTS.TA",   # Rotshtein Real Estate
+    "AFRE.TA",   # Africa Israel Residences
 
     # ── TA-125: Energy (extended) ─────────────────────────────────────────────
     "ENRG.TA",   # Energix Renewable Energies
     "ORL.TA",    # Oil Refineries (Bazan Group)
     "PAZ.TA",    # Paz Retail & Energy
     "RATI.TA",   # Ratio Energies LP
+    "SNFL.TA",   # Sunflower Sustainable Investments (renewables)
 
     # ── TA-125: Consumer / Retail ─────────────────────────────────────────────
     "RMLI.TA",   # Rami Levi Chain Stores
     "ELCO.TA",   # Elco (electronics distribution)
+    "FOX.TA",    # Fox-Wizel (fashion/apparel retail)
+    "DIPL.TA",   # Diplomat Holdings (food/consumer goods distribution)
 
     # ── TA-125+: Tech / IT Services (Yahoo Finance verified) ─────────────────
     "MTRX.TA",   # Matrix IT (IT services holding company, TA-125)
+    "TDRN.TA",   # Tadiran Group (industrial electronics & tech)
 
-    # ── TA-125+: Biotech / Medical (Yahoo Finance verified) ───────────────────
-    "BRND.TA",   # Brainsway (deep TMS devices, Nasdaq+TASE dual-listed)
-    "BWAY.TA",   # Blue & White Pharmaceutical
+    # ── TA-125+: Biotech / Medical / Location Tech (Yahoo Finance verified) ─────
+    "BRND.TA",   # Brainsway (deep TMS devices, Nasdaq: BWAY / TASE: BRND.TA)
+    # ITRN.TA removed — delisted from TASE
+    # KRNT.TA removed — delisted from TASE 2021
 
-    # ── TA-125+: Real Estate ──────────────────────────────────────────────────
-    "AFRE.TA",   # Africa Israel Residences
+    # ── Defense sub-systems & components ─────────────────────────────────────
+    "ARYT.TA",   # Aryt Industries (ammunition fuzes, +2650% since Oct 2023)
+    "TATT.TA",   # TAT Technologies (military aircraft MRO, Nasdaq+TASE dual-listed)
+    "CMER.TA",   # Mer Group (IDF sole-supplier tactical communications)
+    "ISHI.TA",   # Israel Shipyards (military naval vessel construction)
+
+    # ── Tourism / Hotels / Airlines ───────────────────────────────────────────
+    "ELAL.TA",   # El Al Israel Airlines
+    "ISRO.TA",   # Isrotel (largest Israeli hotel chain)
+    "DANH.TA",   # Dan Hotels
+    "FTAL.TA",   # Fattal Holdings (hotels & tourism)
+    "ISRG.TA",   # Israir Group (budget airline)
+
+    # ── Construction & Engineering ────────────────────────────────────────────
+    "ELTR.TA",   # Electra Ltd (engineering & construction)
+    "DNYA.TA",   # Danya Cebus (construction)
+    "ASHG.TA",   # Ashtrom Group (construction & real estate development)
+    "SPEN.TA",   # Shapir Engineering & Industry
+    "SKBN.TA",   # Shikun & Binui (construction & infrastructure)
+    "DIMRI.TA",  # Y.H. Dimri Construction & Development
+
+    # ── Financial Services ────────────────────────────────────────────────────
+    "MISH.TA",   # Mivtach Shamir Holdings (asset management)
 ]

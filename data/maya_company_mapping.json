@@ -1,0 +1,6771 @@
+{
+  "generated": "2026-04-03",
+  "total_companies": 1086,
+  "total_matched": 238,
+  "cid_to_ticker": {
+    "373": "AURA.TA",
+    "1812": "AURA.TA",
+    "715": "AZRM.TA",
+    "1794": "AZRM.TA",
+    "1041": "MGDL.TA",
+    "2435": "ISRS.TA",
+    "1060": "SMT.TA",
+    "175": "IBI.TA",
+    "209": "AYAL.TA",
+    "1773": "ISCD.TA",
+    "720": "ENLT.TA",
+    "1581": "ENRG.TA",
+    "456": "BRND.TA",
+    "1172": "AFPR.TA",
+    "1338": "AFRE.TA",
+    "755": "EQTL.TA",
+    "587": "ARYT.TA",
+    "251": "ASHG.TA",
+    "1618": "ASHG.TA",
+    "1153": "FIBI.TA",
+    "593": "FIBI.TA",
+    "585": "HARL.TA",
+    "2177": "NVMI.TA",
+    "4961": "MGDL.TA",
+    "230": "BEZQ.TA",
+    "127": "MISH.TA",
+    "566": "MMHD.TA",
+    "1431": "MMHD.TA",
+    "629": "TEVA.TA",
+    "1327": "BIG.TA",
+    "604": "LUMI.TA",
+    "662": "POLI.TA",
+    "691": "DSCT.TA",
+    "695": "MZTF.TA",
+    "726": "JBNK.TA",
+    "273": "NICE.TA",
+    "694": "ELCO.TA",
+    "2485": "MMHD.TA",
+    "1778": "TASE.TA",
+    "1452": "GAON.TA",
+    "759": "GVYM.TA",
+    "1597": "MGDL.TA",
+    "1614": "MGDL.TA",
+    "1830": "MGDL.TA",
+    "1450": "MGOR.TA",
+    "2416": "BIG.TA",
+    "1741": "BRND.TA",
+    "1510": "PHOE.TA",
+    "1892": "HARL.TA",
+    "2517": "PHOE.TA",
+    "1792": "HARL.TA",
+    "1399": "MTAV.TA",
+    "434": "ISCN.TA",
+    "1435": "ISCN.TA",
+    "642": "LAPD.TA",
+    "1216": "LAPD.TA",
+    "748": "DSCT.TA",
+    "1867": "DIPL.TA",
+    "258": "TDRN.TA",
+    "2134": "AUDC.TA",
+    "627": "DELG.TA",
+    "1039": "ESLT.TA",
+    "1096": "DNYA.TA",
+    "1633": "SPEN.TA",
+    "490": "PAZ.TA",
+    "2028": "TSEM.TA",
+    "363": "ARDM.TA",
+    "674": "FIBI.TA",
+    "1621": "FTAL.TA",
+    "2417": "ROTS.TA",
+    "767": "PHOE.TA",
+    "1527": "PHOE.TA",
+    "107": "PHOE.TA",
+    "1009": "PHOE.TA",
+    "1367": "HARL.TA",
+    "1781": "HARL.TA",
+    "2457": "HARL.TA",
+    "1175": "HARL.TA",
+    "394": "RATI.TA",
+    "1786": "YHNF.TA",
+    "1324": "CLIS.TA",
+    "539": "ROTS.TA",
+    "2252": "ALLT.TA",
+    "393": "ELCO.TA",
+    "746": "STRS.TA",
+    "777": "SAE.TA",
+    "1140": "FOX.TA",
+    "1815": "MAXO.TA",
+    "1907": "VRDS.TA",
+    "256": "FORTY.TA",
+    "1248": "JBNK.TA",
+    "231": "MZTF.TA",
+    "1420": "AZRG.TA",
+    "639": "DSCT.TA",
+    "2095": "PTNR.TA",
+    "150": "MVNE.TA",
+    "1445": "RMLI.TA",
+    "1064": "MTAV.TA",
+    "2428": "MTAV.TA",
+    "1002": "MTAV.TA",
+    "1199": "MTAV.TA",
+    "1032": "ISRO.TA",
+    "2174": "CAMT.TA",
+    "1832": "BIG.TA",
+    "445": "MTRX.TA",
+    "1106": "IBI.TA",
+    "2467": "IBI.TA",
+    "1916": "NXSN.TA",
+    "1357": "RIT1.TA",
+    "1068": "SKBN.TA",
+    "1930": "SKBN.TA",
+    "501": "ELTR.TA",
+    "1616": "INRM.TA",
+    "1904": "KSTN.TA",
+    "323": "MLSR.TA",
+    "613": "ISRS.TA",
+    "1238": "ISRG.TA",
+    "234": "TDRN.TA",
+    "1040": "ESLT.TA",
+    "198": "JBNK.TA",
+    "1661": "FTAL.TA",
+    "1062": "SNFL.TA",
+    "739": "ELTR.TA",
+    "1264": "ELTR.TA",
+    "2066": "CEL.TA",
+    "749": "ELRN.TA",
+    "2536": "SMSH.TA",
+    "226": "MVNE.TA",
+    "729": "MISH.TA",
+    "1409": "MZTF.TA",
+    "1810": "ISHI.TA",
+    "1363": "PAZ.TA",
+    "2471": "AMPA.TA",
+    "813": "SANO1.TA",
+    "1803": "MSKE.TA",
+    "1152": "ELAL.TA",
+    "1901": "TRPZ.TA",
+    "1254": "PAZ.TA",
+    "1282": "PAZ.TA",
+    "1672": "RATI.TA",
+    "1625": "RATI.TA",
+    "2508": "RMLI.TA",
+    "190": "MZTF.TA",
+    "1788": "SKBN.TA",
+    "1137": "SKBN.TA",
+    "647": "POLI.TA",
+    "1437": "SPEN.TA",
+    "1127": "TDRN.TA",
+    "1139": "TDRN.TA",
+    "1610": "OPK.TA",
+    "1328": "AMOT.TA",
+    "1219": "ARD.TA",
+    "1212": "MTRN.TA",
+    "2250": "ORA.TA",
+    "797": "KLIL.TA",
+    "1397": "ABRA.TA",
+    "1390": "AVGL.TA",
+    "1465": "BBLS.TA",
+    "1269": "BRMG.TA",
+    "1651": "LCTX.TA",
+    "1817": "SMAG.TA",
+    "182": "ADGR.TA",
+    "314": "DANE.TA",
+    "1082": "AGRD.TA",
+    "1393": "ALMD.TA",
+    "1019": "ILX.TA",
+    "368": "ELWS.TA",
+    "387": "ALRPR.TA",
+    "390": "ALHE.TA",
+    "1008": "ANLT.TA",
+    "1762": "ENRG.TA",
+    "313": "ASGR.TA",
+    "1864": "MSVT.TA",
+    "1074": "APLP.TA",
+    "1862": "ARTS.TA",
+    "770": "ACCL.TA",
+    "1884": "ARGO.TA",
+    "1361": "ARF.TA",
+    "1975": "ARBE.TA",
+    "485": "BONS.TA",
+    "149": "GOLD.TA",
+    "1330": "PRSK.TA",
+    "1849": "RZR.TA",
+    "1110": "HLAN.TA",
+    "1579": "LPSN.TA",
+    "232": "ISRA.TA",
+    "1960": "G107.TA",
+    "106": "CNGL.TA",
+    "1072": "DRAL.TA",
+    "1936": "TURB.TA",
+    "1887": "SCDX.TA",
+    "371": "WILC.TA",
+    "1093": "QLTU.TA",
+    "2429": "LURO.TA",
+    "1873": "PHTM.TA",
+    "1583": "VCTR.TA",
+    "2463": "ELAD.TA",
+    "169": "SOLT.TA",
+    "1738": "MRG.TA",
+    "1813": "UNCT.TA",
+    "2072": "UNMI.TA",
+    "2170": "UNIT.TA",
+    "1001": "AUIS.TA",
+    "1886": "SOFW.TA",
+    "333": "PEN.TA",
+    "723": "NSTR.TA",
+    "130": "ZNKL.TA",
+    "2367": "ALTF.TA",
+    "643": "NFTA.TA",
+    "1300": "ARPT.TA",
+    "1091": "ALAR.TA",
+    "454": "GAGR.TA",
+    "1929": "JNGO.TA",
+    "1804": "SPGS.TA",
+    "1845": "HMAM.TA",
+    "199": "FRSX.TA",
+    "686": "MEDN.TA",
+    "1866": "ZOOZ.TA",
+    "278": "WILK.TA",
+    "416": "VILR.TA",
+    "1669": "ALTF.TA",
+    "1775": "ALTF.TA",
+    "1473": "ARNG.TA",
+    "1480": "INCR.TA",
+    "1843": "ENRG.TA",
+    "2234": "AMD.TA",
+    "1691": "ORMP.TA",
+    "2442": "ABOU.TA",
+    "2240": "PERI.TA",
+    "1896": "ACKR.TA",
+    "1459": "MSBI.TA",
+    "1654": "STRW.TA",
+    "1608": "FIBI.TA",
+    "1977": "PMNT.TA",
+    "765": "PPBT.TA",
+    "1871": "PRIM.TA",
+    "1095": "DLEKG.TA",
+    "2381": "URBC.TA"
+  },
+  "cid_to_isin": {},
+  "companies": {
+    "373": {
+      "name": "אאורה השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AURA.TA",
+      "isin": null
+    },
+    "1812": {
+      "name": "אאורה ריט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AURA.TA",
+      "isin": null
+    },
+    "297": {
+      "name": "אברות תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1390": {
+      "name": "אבגול תעשיות 1953 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AVGL.TA",
+      "isin": null
+    },
+    "1397": {
+      "name": "אברא טכנולוגיות מידע בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ABRA.TA",
+      "isin": null
+    },
+    "1461": {
+      "name": "אבוג'ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1829": {
+      "name": "אב-גד החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1863": {
+      "name": "אבו פמילי מגורים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2446": {
+      "name": "אביעד פיקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1465": {
+      "name": "באבלס אינטרגרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BBLS.TA",
+      "isin": null
+    },
+    "2482": {
+      "name": "אג'לן קומרשייל ריט הולדינגס אינק",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2357": {
+      "name": "אימאג'סט אינטרנשיונל(אי.אס.איי)בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1269": {
+      "name": "ברימאג דיגיטל אייג' בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BRMG.TA",
+      "isin": null
+    },
+    "1651": {
+      "name": "ליניאג' סל תרפיוטיקס אינק.",
+      "mainSecurityId": null,
+      "ticker": "LCTX.TA",
+      "isin": null
+    },
+    "1817": {
+      "name": "סמארט אגרו-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": "SMAG.TA",
+      "isin": null
+    },
+    "2090": {
+      "name": "איסכור אגן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1838": {
+      "name": "רימונים אגרוטק טיאלווי שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2380": {
+      "name": "חוליות תעשיות אגש\"ח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "182": {
+      "name": "אדגר השקעות ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ADGR.TA",
+      "isin": null
+    },
+    "1063": {
+      "name": "אדמה פתרונות לחקלאות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2418": {
+      "name": "רם אדרת הנדסה אזרחית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1853": {
+      "name": "בלאקאדג' בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "314": {
+      "name": "דנאל (אדיר יהושע) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DANE.TA",
+      "isin": null
+    },
+    "303": {
+      "name": "א.ד.יעקובוביץ' ייזום ובניה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "263": {
+      "name": "אדומים א.ד החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "556": {
+      "name": "אדן תגליות אנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "142": {
+      "name": "תדאה פיתוח טכנולוגי ואוטומציה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "324": {
+      "name": "נשואה זנקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "372": {
+      "name": "דוראה השקעות ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1650": {
+      "name": "נבידאה ביופארמסוטיקלס, אינק",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "197": {
+      "name": "כתר הוצאה לאור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1082": {
+      "name": "אוטונומוס גארד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AGRD.TA",
+      "isin": null
+    },
+    "1135": {
+      "name": "או.אר.טי.טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1287": {
+      "name": "אופל בלאנס השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1393": {
+      "name": "אולמד סולושנס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALMD.TA",
+      "isin": null
+    },
+    "1425": {
+      "name": "אוריין ש.מ. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1451": {
+      "name": "אורד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1610": {
+      "name": "אופקו הלת', אינק",
+      "mainSecurityId": null,
+      "ticker": "OPK.TA",
+      "isin": null
+    },
+    "1671": {
+      "name": "אוברסיז קומרס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "715": {
+      "name": "אזורים-חברה להשקעות בפתוח ובבנין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AZRM.TA",
+      "isin": null
+    },
+    "1476": {
+      "name": "פלאזה סנטרס אן.וי",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1794": {
+      "name": "ריט אזורים - ה.פ ליווינג בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AZRM.TA",
+      "isin": null
+    },
+    "1466": {
+      "name": "ווינד באז טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "531": {
+      "name": "בוני התיכון הנדסה אזרחית ותשתיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "560": {
+      "name": "בריטיש-ישראל נכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1118": {
+      "name": "אזימוט טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "400": {
+      "name": "אחים דוניץ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "621": {
+      "name": "קרור אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1041": {
+      "name": "מגדל אחזקות ביטוח ופיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MGDL.TA",
+      "isin": null
+    },
+    "2435": {
+      "name": "ישרס אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISRS.TA",
+      "isin": null
+    },
+    "448": {
+      "name": "גיבוי אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1060": {
+      "name": "סאמיט אחזקות נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SMT.TA",
+      "isin": null
+    },
+    "1703": {
+      "name": "קבוצת אחים יעקובי (ואי.אס.בי)בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "257": {
+      "name": "מרחביה אחזקות והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1307": {
+      "name": "אטראו שוקי הון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2135": {
+      "name": "באטמ תקשורת מתקדמת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2498": {
+      "name": "סאטל פרופרטיס פ.ל.סי",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1318": {
+      "name": "בלו וייב וואטר קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1910": {
+      "name": "אטלנטיום טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2126": {
+      "name": "אטיוניטי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1701": {
+      "name": "קריאטיב מדיה אנד קומיוניטי טראסט קורפוריישן",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1874": {
+      "name": "רייקאטצ' בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "174": {
+      "name": "אינטר גאמא חברה להשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "175": {
+      "name": "אי.בי.אי. בית השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "IBI.TA",
+      "isin": null
+    },
+    "209": {
+      "name": "איילון חברה לביטוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AYAL.TA",
+      "isin": null
+    },
+    "281": {
+      "name": "איי.סי.אל גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "282": {
+      "name": "אימקו תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "431": {
+      "name": "איי.אי.אס החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1019": {
+      "name": "אילקס מדיקל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ILX.TA",
+      "isin": null
+    },
+    "1028": {
+      "name": "אינטר תעשיות פלוס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1773": {
+      "name": "ישראכרט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISCD.TA",
+      "isin": null
+    },
+    "1370": {
+      "name": "ג'ין טכנולוגיות בינה מלאכותית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "815": {
+      "name": "מ.ת.מ. מבני תעשיה ומלאכה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "922": {
+      "name": "גילון",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "959": {
+      "name": "גליל משופר",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "968": {
+      "name": "גלבוע",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "976": {
+      "name": "האוצר - ממשלתית גלובלית",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "368": {
+      "name": "אלקטריאון וירלס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELWS.TA",
+      "isin": null
+    },
+    "387": {
+      "name": "אלרוב נדל\"ן ומלונאות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALRPR.TA",
+      "isin": null
+    },
+    "390": {
+      "name": "אלוני-חץ נכסים והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALHE.TA",
+      "isin": null
+    },
+    "491": {
+      "name": "אל-בן חברת רכוש והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "382": {
+      "name": "א.מ.ת. מיחשוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1693": {
+      "name": "רותם אנרגיה מחצבים (רא\"מ)-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "589": {
+      "name": "אמיליה פיתוח (מ.עו.פ) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "654": {
+      "name": "אמנת ניהול ומערכות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1328": {
+      "name": "אמות השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AMOT.TA",
+      "isin": null
+    },
+    "1632": {
+      "name": "אמ.די.ג'י. ריאל אסטייט גלובל לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1756": {
+      "name": "אמ אר אר ת'ירטין לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2468": {
+      "name": "אמריקן אקוויטי פרטנרס לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "720": {
+      "name": "אנלייט אנרגיה מתחדשת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ENLT.TA",
+      "isin": null
+    },
+    "1008": {
+      "name": "אנליסט אי.אמ.אס.-שרותי ניהול השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ANLT.TA",
+      "isin": null
+    },
+    "1581": {
+      "name": "אנרג'יקס-אנרגיות מתחדשות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ENRG.TA",
+      "isin": null
+    },
+    "1683": {
+      "name": "אנקור פרופרטיס,לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1762": {
+      "name": "אנרג'יאן פי אל סי",
+      "mainSecurityId": null,
+      "ticker": "ENRG.TA",
+      "isin": null
+    },
+    "1780": {
+      "name": "אנלייבקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1839": {
+      "name": "אנרג'ין טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2352": {
+      "name": "אנקור הזדמנויות לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "313": {
+      "name": "אספן גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ASGR.TA",
+      "isin": null
+    },
+    "422": {
+      "name": "אס.אר. אקורד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "550": {
+      "name": "אס.טי.ג'י. אינטרנשיונל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1864": {
+      "name": "מאסיבית טכנולוגיות הדפסה תלת מימד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MSVT.TA",
+      "isin": null
+    },
+    "2444": {
+      "name": "טיאסג'י איטי מערכות מתקדמות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "299": {
+      "name": "אר.אס.אל.אלקטרוניקה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "351": {
+      "name": "חד-אסף תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "544": {
+      "name": "מידאס השקעות בנדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "456": {
+      "name": "אפסלון ברנדס הולדינג בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BRND.TA",
+      "isin": null
+    },
+    "578": {
+      "name": "אפקון החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1074": {
+      "name": "אפולו פאוור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "APLP.TA",
+      "isin": null
+    },
+    "1172": {
+      "name": "אפי נכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AFPR.TA",
+      "isin": null
+    },
+    "1338": {
+      "name": "אפריקה ישראל מגורים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AFRE.TA",
+      "isin": null
+    },
+    "1979": {
+      "name": "אפי קפיטל נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1998": {
+      "name": "אפיטומי מדיקל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1933": {
+      "name": "באפ טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1862": {
+      "name": "איירטאצ' סולאר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARTS.TA",
+      "isin": null
+    },
+    "546": {
+      "name": "פרימיום פי.איי.אץ אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "383": {
+      "name": "אקסיליון תחבורה חכמה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "755": {
+      "name": "אקויטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "EQTL.TA",
+      "isin": null
+    },
+    "770": {
+      "name": "אקסל סולושנס גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ACCL.TA",
+      "isin": null
+    },
+    "1622": {
+      "name": "אקסטל לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1891": {
+      "name": "אקונרג'י אנרגיה מתחדשת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2190": {
+      "name": "אקס טי אל  ביופרמסוטיקלס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2501": {
+      "name": "אקסון ויז'ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "138": {
+      "name": "ארזים השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "366": {
+      "name": "ארי נדל\"ן (ארנה) השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "587": {
+      "name": "ארית תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARYT.TA",
+      "isin": null
+    },
+    "1122": {
+      "name": "ארן מחקר ופיתוח (1982) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1219": {
+      "name": "ארד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARD.TA",
+      "isin": null
+    },
+    "1884": {
+      "name": "ארגו פרופרטיז אן.וי.",
+      "mainSecurityId": null,
+      "ticker": "ARGO.TA",
+      "isin": null
+    },
+    "1920": {
+      "name": "אריקה כרמל-טק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "251": {
+      "name": "אשטרום נכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ASHG.TA",
+      "isin": null
+    },
+    "2396": {
+      "name": "אשל הירדן יזום ובנין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "666": {
+      "name": "לוזון אשראי ופיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1618": {
+      "name": "קבוצת אשטרום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ASHG.TA",
+      "isin": null
+    },
+    "312": {
+      "name": "עשות - אשקלון תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1361": {
+      "name": "בית זיקוק אשדוד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARF.TA",
+      "isin": null
+    },
+    "1153": {
+      "name": "הבינלאומי הראשון הנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FIBI.TA",
+      "isin": null
+    },
+    "593": {
+      "name": "הבנק הבינלאומי הראשון לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FIBI.TA",
+      "isin": null
+    },
+    "2110": {
+      "name": "תאת טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "802": {
+      "name": "ת.א.ת. תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1578": {
+      "name": "אתלון גלובל סקיוריטי אינק.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "732": {
+      "name": "מ. את מ. כהן חברה לבנין ועבודות ציבוריות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "378": {
+      "name": "הום סנטר (עשה זאת בעצמך) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1059": {
+      "name": "הום סנטרס (עשה זאת בעצמך) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "771": {
+      "name": "גבאי מניבים ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2483": {
+      "name": "קבוצת גבאי-בניה,יזום,ניהול ואחזקות נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1016": {
+      "name": "באומל משה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1043": {
+      "name": "נצבא החזקות 1995 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "585": {
+      "name": "הראל השקעות בביטוח ושרותים פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HARL.TA",
+      "isin": null
+    },
+    "244": {
+      "name": "אבג'ק - מזל (שותפות מוגבלת)",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1495": {
+      "name": "גדיש השקעות בגמל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "526": {
+      "name": "רבד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "625": {
+      "name": "עלבד משואות יצחק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1097": {
+      "name": "טסנת-בדיקות תכנה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1174": {
+      "name": "טסקום בדיקת מערכות תוכנה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1151": {
+      "name": "שיכון עובדים הנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1975": {
+      "name": "ארבה רובוטיקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARBE.TA",
+      "isin": null
+    },
+    "2177": {
+      "name": "נובה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "NVMI.TA",
+      "isin": null
+    },
+    "1128": {
+      "name": "חפציבה גלובל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1303": {
+      "name": "חפציבה חופים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1374": {
+      "name": "חפציבה ג'רוזלם גולד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1504": {
+      "name": "אפריל-תשובה אג\"ח (2007) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "4961": {
+      "name": "מגדל 0D כספית דולרית- נקובה $",
+      "mainSecurityId": null,
+      "ticker": "MGDL.TA",
+      "isin": null
+    },
+    "485": {
+      "name": "בונוס ביוגרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BONS.TA",
+      "isin": null
+    },
+    "1925": {
+      "name": "בול מסחר והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1980": {
+      "name": "בוליגו קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "149": {
+      "name": "קבוצת גולד בונד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "GOLD.TA",
+      "isin": null
+    },
+    "155": {
+      "name": "קבוצת מנרב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "286": {
+      "name": "קבוצת ברן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "288": {
+      "name": "קבוצת סקופ מתכות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "230": {
+      "name": "בזק החברה הישראלית לתקשורת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BEZQ.TA",
+      "isin": null
+    },
+    "1232": {
+      "name": "עמיר שיווק והשקעות בחקלאות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1102": {
+      "name": "תיקון עולם קנביט פארמסוטיקלס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "127": {
+      "name": "מבטח שמיר אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MISH.TA",
+      "isin": null
+    },
+    "566": {
+      "name": "מנורה מבטחים החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MMHD.TA",
+      "isin": null
+    },
+    "1431": {
+      "name": "מנורה מבטחים גיוס הון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MMHD.TA",
+      "isin": null
+    },
+    "1033": {
+      "name": "רקח תעשיה פרמצבטית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "629": {
+      "name": "טבע תעשיות פרמצבטיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TEVA.TA",
+      "isin": null
+    },
+    "1765": {
+      "name": "ג'י וואן פתרונות אבטחה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2230": {
+      "name": "יוניבו תעשיות פרמצבטיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "763": {
+      "name": "פ.י.ב.י. אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "235": {
+      "name": "בית-הזהב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "530": {
+      "name": "בירמן עצים ופרזול בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1293": {
+      "name": "ביולייט מדעי החיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1305": {
+      "name": "ביו ויו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1327": {
+      "name": "ביג מרכזי קניות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BIG.TA",
+      "isin": null
+    },
+    "1394": {
+      "name": "ביוליין אר אקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1802": {
+      "name": "בית בכפר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "424": {
+      "name": "בליץ טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1827": {
+      "name": "בלייד ריינג'ר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1846": {
+      "name": "בלנדר טכנולוגיות פיננסיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2450": {
+      "name": "בלדי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1436": {
+      "name": "רבל אי.סי.אס. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "604": {
+      "name": "בנק לאומי לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "LUMI.TA",
+      "isin": null
+    },
+    "662": {
+      "name": "בנק הפועלים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "POLI.TA",
+      "isin": null
+    },
+    "691": {
+      "name": "בנק דיסקונט לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DSCT.TA",
+      "isin": null
+    },
+    "695": {
+      "name": "בנק מזרחי טפחות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MZTF.TA",
+      "isin": null
+    },
+    "726": {
+      "name": "בנק ירושלים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "JBNK.TA",
+      "isin": null
+    },
+    "891": {
+      "name": "בנק ישראל- מק\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1490": {
+      "name": "ב.ס.ר הנדסה ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1330": {
+      "name": "פרשקובסקי השקעות ובניין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PRSK.TA",
+      "isin": null
+    },
+    "1849": {
+      "name": "רייזור לאבס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "RZR.TA",
+      "isin": null
+    },
+    "2487": {
+      "name": "אריה פרשקובסקי גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1970": {
+      "name": "קובוובס טכנולוג'יס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "117": {
+      "name": "ב.ס.ר אירופה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "395": {
+      "name": "ב.ס.ר פרוייקטים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1278": {
+      "name": "בססח-החברה הישראלית לבטוח אשראי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "506": {
+      "name": "גבעות עולם חיפושי נפט - שותפות מוגבלת (1993)",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "273": {
+      "name": "נייס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "NICE.TA",
+      "isin": null
+    },
+    "694": {
+      "name": "אלקו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELCO.TA",
+      "isin": null
+    },
+    "1110": {
+      "name": "חילן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HLAN.TA",
+      "isin": null
+    },
+    "1579": {
+      "name": "לייבפרסון, אינק.",
+      "mainSecurityId": null,
+      "ticker": "LPSN.TA",
+      "isin": null
+    },
+    "1196": {
+      "name": "מקבץ דיור נתנאל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2451": {
+      "name": "שליטה בצים מרכזי קניות - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2485": {
+      "name": "מנורה איאראן מימון בקליק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MMHD.TA",
+      "isin": null
+    },
+    "619": {
+      "name": "דובק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1052": {
+      "name": "אפקון בקרה ואוטומציה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1687": {
+      "name": "נאוויטס בקסקין מימון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "399": {
+      "name": "בריל תעשיות נעליים  בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1274": {
+      "name": "ברם תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1344": {
+      "name": "ברק בית השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1386": {
+      "name": "בריינסוויי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1940": {
+      "name": "ברקת קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "600": {
+      "name": "חברת החשמל לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2093": {
+      "name": "ביו דבש בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1161": {
+      "name": "אקסלנס-בשן אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "259": {
+      "name": "בתי זקוק לנפט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1641": {
+      "name": "רכבת ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1778": {
+      "name": "הבורסה לניירות ערך בתל-אביב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TASE.TA",
+      "isin": null
+    },
+    "336": {
+      "name": "תשלובת ח. אלוני בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "300": {
+      "name": "טיב תשלובת טכסטיל (1969) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "4965": {
+      "name": "MTF מחקה 4A משולבת NASDAQ 100 70% S&P 500 30% חודשי מ\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "245": {
+      "name": "התחנה המרכזית החדשה בתל-אביב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1452": {
+      "name": "ב.גאון אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "GAON.TA",
+      "isin": null
+    },
+    "1943": {
+      "name": "טופ גאם תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "454": {
+      "name": "קבוצת גאון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "GAGR.TA",
+      "isin": null
+    },
+    "61": {
+      "name": "קרן-ג.א.פ. החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "406": {
+      "name": "גאון אגרו תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "69": {
+      "name": "נגאנו השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "759": {
+      "name": "חברת גב ים לקרקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "GVYM.TA",
+      "isin": null
+    },
+    "1460": {
+      "name": "קבוצת תיגבור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "232": {
+      "name": "ישראמקו נגב 2 שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": "ISRA.TA",
+      "isin": null
+    },
+    "1369": {
+      "name": "פטרוטקס-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1881": {
+      "name": "יוניק-טק שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2371": {
+      "name": "בית וגג יזמות ונדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1597": {
+      "name": "מגדל ביטוח גיוס הון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MGDL.TA",
+      "isin": null
+    },
+    "1614": {
+      "name": "מגדלי הים התיכון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MGDL.TA",
+      "isin": null
+    },
+    "462": {
+      "name": "טוגדר פארמה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1830": {
+      "name": "הילה מגדלי משרדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MGDL.TA",
+      "isin": null
+    },
+    "2509": {
+      "name": "מחלבות גד (שיווק-1992) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1791": {
+      "name": "גדות מסופים לכימיקלים (1985) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1450": {
+      "name": "מגה אור החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MGOR.TA",
+      "isin": null
+    },
+    "2416": {
+      "name": "ביג מגה אנרגיה מתחדשת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BIG.TA",
+      "isin": null
+    },
+    "553": {
+      "name": "נגה אלקטרוטכניקה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1103": {
+      "name": "נגה השקעות בטכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1222": {
+      "name": "נגה מכשירים פיננסים (דולר) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "349": {
+      "name": "אומגה פרטנרס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2181": {
+      "name": "טיוגה טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1353": {
+      "name": "נאות הפסגה מודיעין עילית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1226": {
+      "name": "גולן תעשיות מתחדשות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1939": {
+      "name": "גוטו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2156": {
+      "name": "גולדן אנרג'י פאואר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1668": {
+      "name": "מגוריט ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1929": {
+      "name": "ג'נגו קונקטיביטי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "JNGO.TA",
+      "isin": null
+    },
+    "745": {
+      "name": "פוליגון נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1804": {
+      "name": "סופרגז פאוור (2019) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SPGS.TA",
+      "isin": null
+    },
+    "1418": {
+      "name": "נתיבי הגז הטבעי לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1845": {
+      "name": "הום ביוגז בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HMAM.TA",
+      "isin": null
+    },
+    "810": {
+      "name": "כהן פיתוח גז ונפט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1796": {
+      "name": "טכנולוגיות גילוי אש וגזים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1252": {
+      "name": "דור גז בטוחות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1486": {
+      "name": "סופרגז לבית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1531": {
+      "name": "אלון גז פיתוח אנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1191": {
+      "name": "נתיבים אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1184": {
+      "name": "אשל אגרות חוב שקליות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1203": {
+      "name": "אגד אגרות חוב 2004 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1339": {
+      "name": "קרן קציר אג\"ח להשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1385": {
+      "name": "חשמל פלוס אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1546": {
+      "name": "כרמל אגרות חוב 1 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1549": {
+      "name": "כרמל אגרות חוב 2 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1557": {
+      "name": "כרמל אגרות חוב 3 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "458": {
+      "name": "גטווי-פור יו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1026": {
+      "name": "גטר גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1114": {
+      "name": "טרגטמץ'בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "744": {
+      "name": "גיקס אינטרנט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1006": {
+      "name": "גילת טלקום גלובל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1130": {
+      "name": "גירון פיתוח ובניה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2030": {
+      "name": "גילת רשתות לווין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2458": {
+      "name": "מגידו י.ק. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "180": {
+      "name": "שלמה א. אנג'ל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1070": {
+      "name": "גלובל פיי (פי.סי.אס) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1548": {
+      "name": "גלוב משאבי אנרגיה(י.ח.ד)שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1559": {
+      "name": "גלובל כנפיים ליסינג בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1736": {
+      "name": "גלעד פקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1741": {
+      "name": "גלוברנדס גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "BRND.TA",
+      "isin": null
+    },
+    "2358": {
+      "name": "מור גמל ופנסיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1510": {
+      "name": "הפניקס גמא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PHOE.TA",
+      "isin": null
+    },
+    "350": {
+      "name": "ויז'ן סיגמא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1892": {
+      "name": "גמלא הראל נדל\"ן למגורים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HARL.TA",
+      "isin": null
+    },
+    "2517": {
+      "name": "הפניקס פנסיה וגמל בעמ",
+      "mainSecurityId": null,
+      "ticker": "PHOE.TA",
+      "isin": null
+    },
+    "1099": {
+      "name": "גמול ייזום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1134": {
+      "name": "גמול חברה להשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1443": {
+      "name": "גמול נדל\"ן למגורים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "532": {
+      "name": "גן שמואל מזון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1301": {
+      "name": "גניגר מפעלי פלסטיק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1842": {
+      "name": "איי ארגנטו נכסים טכנולוגיים,שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2188": {
+      "name": "קומפיוגן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1898": {
+      "name": "קוגנטה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2419": {
+      "name": "עוגן-אג\"ח חברתית 2 בע\"מ (חל\"צ)",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1792": {
+      "name": "הראל אלטרנטיב המגן",
+      "mainSecurityId": null,
+      "ticker": "HARL.TA",
+      "isin": null
+    },
+    "2516": {
+      "name": "עמל הולדינגס א.ד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1635": {
+      "name": "קנון הולדינגס",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2515": {
+      "name": "סימד הולדינגס, לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "103": {
+      "name": "טיב טעם הולדינגס 1 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "199": {
+      "name": "פורסייט אוטונומס הולדינגס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FRSX.TA",
+      "isin": null
+    },
+    "2533": {
+      "name": "אל עד יו אס קפיטל הולדינגס לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1662": {
+      "name": "פסיפיק אוק אסאואר(בי וי איי) הולדינגס, לטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1532": {
+      "name": "גפן מגורים והתחדשות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "264": {
+      "name": "גפן השקעות ביומד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1960": {
+      "name": "גרופ 107 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "G107.TA",
+      "isin": null
+    },
+    "1997": {
+      "name": "גרייס ברידינג בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2453": {
+      "name": "גרייסטון סיניור דיבט בי.איי לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "266": {
+      "name": "רובוגרופ ט.א.ק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1081": {
+      "name": "טופ גרופ תוכנה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2521": {
+      "name": "קטה גרופ - גיל קטה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2440": {
+      "name": "גשם למשתכן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1676": {
+      "name": "הגשמה לונדון קילבורן 1001 -אל פי",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1686": {
+      "name": "עומרים גשרים פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "308": {
+      "name": "קבוצת סוגת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "119": {
+      "name": "חירם גת חברה להנדסה ובנין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "427": {
+      "name": "אילן גת מהנדסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "325": {
+      "name": "פ.ד.א.ן השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "404": {
+      "name": "תמדא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2103": {
+      "name": "ראדא תעשיות אלקטרוניות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1732": {
+      "name": "סי דאבל יו ג'י בי הולדינגס לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "327": {
+      "name": "קינד (וודאימפורט) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1753": {
+      "name": "עלמדב אינק.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "443": {
+      "name": "תדביק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1088": {
+      "name": "עילדב השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "788": {
+      "name": "מודגל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1519": {
+      "name": "פאי מדדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1399": {
+      "name": "מיטב מדדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MTAV.TA",
+      "isin": null
+    },
+    "1195": {
+      "name": "ק.ס.ם מדדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1042": {
+      "name": "אינדקס מדדים בינלאומיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1249": {
+      "name": "פסגות מוצרי מדדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1446": {
+      "name": "פסגות תעודות סל מדדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1224": {
+      "name": "קסם תעודות סל ומוצרי מדדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1513": {
+      "name": "דה לסר גרופ לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1604": {
+      "name": "דה זראסאי גרופ לטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "341": {
+      "name": "שדה נדל\"ן-י.ש. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "106": {
+      "name": "קנדה גלובל (ט.ר) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "CNGL.TA",
+      "isin": null
+    },
+    "1814": {
+      "name": "אלמדה ונצ'רס שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "434": {
+      "name": "ישראל קנדה (ט.ר) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISCN.TA",
+      "isin": null
+    },
+    "1435": {
+      "name": "ישראל קנדה מלונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISCN.TA",
+      "isin": null
+    },
+    "1463": {
+      "name": "נטו מלינדה סחר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1072": {
+      "name": "דור אלון אנרגיה בישראל (1988) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DRAL.TA",
+      "isin": null
+    },
+    "2397": {
+      "name": "דורסל החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1890": {
+      "name": "אידומו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "642": {
+      "name": "לפידות קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "LAPD.TA",
+      "isin": null
+    },
+    "1216": {
+      "name": "לפידות-חלץ - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": "LAPD.TA",
+      "isin": null
+    },
+    "1878": {
+      "name": "ספידווליו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1945": {
+      "name": "טונדו סמארט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "753": {
+      "name": "לודזיה נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1855": {
+      "name": "ביו מיט פודטק - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1954": {
+      "name": "דטה סיינס קונסלטינג גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "253": {
+      "name": "מדטכניקה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "478": {
+      "name": "פלדטראק סוכניות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2084": {
+      "name": "פאנדטק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1649": {
+      "name": "סייפ-טי דטה א.ר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "748": {
+      "name": "דיסקונט מנפיקים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DSCT.TA",
+      "isin": null
+    },
+    "1867": {
+      "name": "דיפלומט אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DIPL.TA",
+      "isin": null
+    },
+    "2528": {
+      "name": "די.אס.איי.טי פתרונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "258": {
+      "name": "תדיראן גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TDRN.TA",
+      "isin": null
+    },
+    "1433": {
+      "name": "מדיפאואר (אוברסיס) פאבליק קו. לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1983": {
+      "name": "מדיפרס בריאות-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "345": {
+      "name": "מודיעין אנרגיה - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2134": {
+      "name": "אודיוקודס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AUDC.TA",
+      "isin": null
+    },
+    "444": {
+      "name": "מרדכי אביב תעשיות בניה (1973) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "627": {
+      "name": "דלתא-גליל תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DELG.TA",
+      "isin": null
+    },
+    "829": {
+      "name": "דלק מערכות רכב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1840": {
+      "name": "דליה חברות אנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1858": {
+      "name": "דלתא ישראל מותגים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2387": {
+      "name": "דלק ישראל נכסים (ד.פ.)בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1247": {
+      "name": "מנדלסון תשתיות ותעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1551": {
+      "name": "הזדמנות ישראלית מקורות אנרגיה שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1193": {
+      "name": "י.ח.דמרי בניה ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1039": {
+      "name": "אלביט הדמיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ESLT.TA",
+      "isin": null
+    },
+    "1315": {
+      "name": "רפאל מערכות לחימה מתקדמות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1096": {
+      "name": "דניה סיבוס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DNYA.TA",
+      "isin": null
+    },
+    "2496": {
+      "name": "דניאל פקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "121": {
+      "name": "קרדן ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1050": {
+      "name": "לודן חברה להנדסה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1083": {
+      "name": "קרדן נדל\"ן יזום ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1154": {
+      "name": "קרדן אן.וי.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1636": {
+      "name": "אלדן תחבורה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2477": {
+      "name": "דסטיני נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1633": {
+      "name": "שפיר הנדסה ותעשיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SPEN.TA",
+      "isin": null
+    },
+    "2441": {
+      "name": "שובל הנדסה ובניין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2474": {
+      "name": "ליאם הנדסה גרופ חריש מרכז עסקים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2522": {
+      "name": "עומר הנדסה ובניה (1986) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1194": {
+      "name": "אלספק הנדסה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1267": {
+      "name": "קמהדע בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1946": {
+      "name": "טריפלסייבר אבטחת מידע בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1666": {
+      "name": "מת\"ם - מרכז תעשיות מדע חיפה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "332": {
+      "name": "ידע מחשבים ותכנה (ישראל 1982) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "212": {
+      "name": "אורדע פרינט תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2031": {
+      "name": "אלדין מערכות מידע בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1707": {
+      "name": "דפוזיטיב מוצרים פיננסים",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "490": {
+      "name": "פקר-ידפז בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PAZ.TA",
+      "isin": null
+    },
+    "417": {
+      "name": "פיתקית מפעלי הדפסה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2028": {
+      "name": "טאואר סמיקונדקטור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TSEM.TA",
+      "isin": null
+    },
+    "1529": {
+      "name": "דקמא קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1084": {
+      "name": "מדקון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2104": {
+      "name": "רדקום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2221": {
+      "name": "לידקום אינטגרייטד סולושנס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "385": {
+      "name": "טריידקל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1337": {
+      "name": "תכלית אינדקס סל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "686": {
+      "name": "מהדרין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MEDN.TA",
+      "isin": null
+    },
+    "1728": {
+      "name": "עמידר,החברה הלאומית לשיכון בישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1562": {
+      "name": "סטורג' דרופ טכנולוגיות אחסון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "363": {
+      "name": "קבוצת אירודרום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARDM.TA",
+      "isin": null
+    },
+    "716": {
+      "name": "י.ס.פ. מטעי הדר ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "111": {
+      "name": "י.ב התחדשות הארץ- מתחמי מגורים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1561": {
+      "name": "הכשרת הישוב התחדשות עירונית בישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1679": {
+      "name": "מניבים קרן הריט החדשה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1848": {
+      "name": "סולאיר אנרגיות מתחדשות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1591": {
+      "name": "ג'רוסלם השקעות בטכנולוגיות (ג'י.טי.איי) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "134": {
+      "name": "מקסימה המרכז להפרדת אויר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "923": {
+      "name": "האוצר - ממשלתית משתנה",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "926": {
+      "name": "האוצר - ממשלתית שקלית",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "954": {
+      "name": "האוצר - ממשלתית צמודה",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "975": {
+      "name": "האוצר - ממשלתית קצרה",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2532": {
+      "name": "קוהאן פרופרטיס לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2497": {
+      "name": "פנטהאוז חב' לבנין והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1457": {
+      "name": "התעשיה האוירית לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "136": {
+      "name": "להב אל.אר רילאסטייט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "516": {
+      "name": "נץ ארה\"ב (ח.י) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "674": {
+      "name": "הבנק הבינלאומי הראשון למשכנתאות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FIBI.TA",
+      "isin": null
+    },
+    "287": {
+      "name": "י.זהבי חרושת מרצפות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "348": {
+      "name": "לוחות הגליל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "157": {
+      "name": "ויטה-פרי הגליל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "293": {
+      "name": "נביעות - טבע הגליל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1294": {
+      "name": "אייץ' בי אל - הדסית ביו החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2202": {
+      "name": "אלון חברת הדלק לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "51": {
+      "name": "הד ארצי בע\"מ ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "601": {
+      "name": "אוצר התישבות היהודים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1706": {
+      "name": "הולמס פלייס אינטרנשיונל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1240": {
+      "name": "חברת פלסטופיל הזורע בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1079": {
+      "name": "הזרע ג'נטיקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1271": {
+      "name": "קניון הזהב (2005) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "576": {
+      "name": "החברה לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "224": {
+      "name": "כלל החזקות עסקי ביטוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1621": {
+      "name": "פתאל החזקות (1998) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FTAL.TA",
+      "isin": null
+    },
+    "1931": {
+      "name": "הון הטבע בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1927": {
+      "name": "שירהטק פתרונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "375": {
+      "name": "מופת קרן הטכנולגיה לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1885": {
+      "name": "הייב 2040 מו\"פ שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2369": {
+      "name": "הייפר גלובל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2505": {
+      "name": "פיקהיל הכנסה ממשכנתאות שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "612": {
+      "name": "הכשרת הישוב מקבוצת נמרודי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1187": {
+      "name": "הכשרה חברה לביטוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "77": {
+      "name": "הכשרת הישוב קניונים ומרכזי מסחר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "508": {
+      "name": "הכשרה החזקות ביטוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "276": {
+      "name": "גרנית הכרמל השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "343": {
+      "name": "מלונות הכשרת הישוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1921": {
+      "name": "איידנטי הלת'קייר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1550": {
+      "name": "ערך פיננסים כהלכה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2493": {
+      "name": "הלל פקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1279": {
+      "name": "הלמן אלדובי בית השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1623": {
+      "name": "הלמן אלדובי קופות גמל ופנסיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1576": {
+      "name": "טריג הלת'קר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1459": {
+      "name": "המשביר 365 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MSBI.TA",
+      "isin": null
+    },
+    "1071": {
+      "name": "א.נ שוהם ביזנס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2385": {
+      "name": "עמרם אברהם חברה לבנין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2461": {
+      "name": "המצפן- שותפים לדרך בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "68": {
+      "name": "המ-לט (ישראל-קנדה) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "523": {
+      "name": "המילניום השלישי-תיירות ונופש החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1712": {
+      "name": "המכון לחקר האינטרנט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "504": {
+      "name": "אלה ר. הנדסת בנין והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2263": {
+      "name": "סודהסטרים אינטרנשיונל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "775": {
+      "name": "בנק הספנות לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1606": {
+      "name": "קדימהסטם בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "624": {
+      "name": "חברה ישראלית לספנות והספקה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "262": {
+      "name": "ח.ג.י.י. חברה לשיווק והספקה לבנין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2417": {
+      "name": "אנשי העיר מקבוצת רוטשטיין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ROTS.TA",
+      "isin": null
+    },
+    "105": {
+      "name": "פרי העמק (שימורים וקפואים)88 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "767": {
+      "name": "הפניקס פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PHOE.TA",
+      "isin": null
+    },
+    "1527": {
+      "name": "הפניקס גיוסי הון (2009)בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PHOE.TA",
+      "isin": null
+    },
+    "675": {
+      "name": "מרכז הפורמיקה אברבוך בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "107": {
+      "name": "הפניקס סוכנויות ביטוח 1989 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PHOE.TA",
+      "isin": null
+    },
+    "1009": {
+      "name": "הפניקס בית השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PHOE.TA",
+      "isin": null
+    },
+    "489": {
+      "name": "שפע הצלחה לוגיסטיקה (ב.פ.)בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "202": {
+      "name": "רשף מחשבים וציוד הקפי (1982) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1367": {
+      "name": "הראל ביטוח מימון והנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HARL.TA",
+      "isin": null
+    },
+    "1781": {
+      "name": "הראל פיקדון סחיר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HARL.TA",
+      "isin": null
+    },
+    "2457": {
+      "name": "הראל ריביות ופיקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HARL.TA",
+      "isin": null
+    },
+    "1175": {
+      "name": "הראל חברה לביטוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "HARL.TA",
+      "isin": null
+    },
+    "394": {
+      "name": "רציו אנרגיות-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": "RATI.TA",
+      "isin": null
+    },
+    "475": {
+      "name": "ניו-מד אנרג'י- שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1704": {
+      "name": "אלמור חשמל התקנות ושירותים (1986) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2490": {
+      "name": "י.ע.ז יזמות ובניה והתחדשות עירונית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "161": {
+      "name": "וואן טכנולוגיות תוכנה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "704": {
+      "name": "יצוא-חברה להשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2456": {
+      "name": "שמואל ברוך יזמות ובניה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "699": {
+      "name": "חברה לנכסים ולבנין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1677": {
+      "name": "נובולוג (פארם אפ 1966) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1553": {
+      "name": "אלמוגים החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2481": {
+      "name": "אלמוג (כ.ד.א.י.) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1936": {
+      "name": "טורבוג'ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TURB.TA",
+      "isin": null
+    },
+    "2491": {
+      "name": "לודן-טק (ל.ק.) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1887": {
+      "name": "סקודיקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SCDX.TA",
+      "isin": null
+    },
+    "2534": {
+      "name": "פרודלים השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "371": {
+      "name": "וילי פוד השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "WILC.TA",
+      "isin": null
+    },
+    "2393": {
+      "name": "סונול נדל\"ן והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2364": {
+      "name": "יעקב פיננסים והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "486": {
+      "name": "וויי-בוקס נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1772": {
+      "name": "ווסטדייל אמריקה לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1865": {
+      "name": "ווישור גלובלטק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1968": {
+      "name": "ווטר אי או בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1093": {
+      "name": "קווליטאו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "QLTU.TA",
+      "isin": null
+    },
+    "1405": {
+      "name": "פאוורג'ן סולאר איי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1866": {
+      "name": "זוז אסטרטגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ZOOZ.TA",
+      "isin": null
+    },
+    "2429": {
+      "name": "לוזון רונסון אן.וי.",
+      "mainSecurityId": null,
+      "ticker": "LURO.TA",
+      "isin": null
+    },
+    "2464": {
+      "name": "יוזמות - פיתוח נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "290": {
+      "name": "תעוזה",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "473": {
+      "name": "קבוצת עמוס לוזון יזמות ואנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1786": {
+      "name": "מ.יוחננוף ובניו (1988) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "YHNF.TA",
+      "isin": null
+    },
+    "1324": {
+      "name": "כלל ביטוח גיוסי הון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "CLIS.TA",
+      "isin": null
+    },
+    "539": {
+      "name": "רוטשטיין נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ROTS.TA",
+      "isin": null
+    },
+    "1771": {
+      "name": "יוטרון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1873": {
+      "name": "פוטומיין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PHTM.TA",
+      "isin": null
+    },
+    "2280": {
+      "name": "אוטומקס מוטורס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2252": {
+      "name": "אלוט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALLT.TA",
+      "isin": null
+    },
+    "278": {
+      "name": "וילק טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "WILK.TA",
+      "isin": null
+    },
+    "416": {
+      "name": "וילאר אינטרנשיונל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "VILR.TA",
+      "isin": null
+    },
+    "1515": {
+      "name": "ויתניה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1583": {
+      "name": "ויקטורי רשת סופרמרקטים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "VCTR.TA",
+      "isin": null
+    },
+    "200": {
+      "name": "לוינסקי עופר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "393": {
+      "name": "ראלקו סוכנויות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELCO.TA",
+      "isin": null
+    },
+    "756": {
+      "name": "מפעלים פטרוכימיים בישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2463": {
+      "name": "אלעד מערכות תוכנה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELAD.TA",
+      "isin": null
+    },
+    "2436": {
+      "name": "גוך קפיטל בעמ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1824": {
+      "name": "ולוריקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "169": {
+      "name": "סולטרה אנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SOLT.TA",
+      "isin": null
+    },
+    "1738": {
+      "name": "מולטי ריטייל גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MRG.TA",
+      "isin": null
+    },
+    "1822": {
+      "name": "פולירם תעשיות פלסטיק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1609": {
+      "name": "תומר תמלוגי אנרגיה (2012) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1825": {
+      "name": "יומן אקסטנשנס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1861": {
+      "name": "פוםוום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1978": {
+      "name": "אלומה קרן תשתיות (2020) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2101": {
+      "name": "אלומיי קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1813": {
+      "name": "יוניקורן טכנולוגיות-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": "UNCT.TA",
+      "isin": null
+    },
+    "1991": {
+      "name": "קונטיניואל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2072": {
+      "name": "יוניברסל מוטורס ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "UNMI.TA",
+      "isin": null
+    },
+    "2170": {
+      "name": "יוניטרוניקס (1989) (ר\"ג) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "UNIT.TA",
+      "isin": null
+    },
+    "1742": {
+      "name": "שמוס אינטרנשיונל לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2514": {
+      "name": "פרוספקט קפיטל קורפוריישן",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "746": {
+      "name": "שטראוס גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "STRS.TA",
+      "isin": null
+    },
+    "2413": {
+      "name": "זפירוס ווינג אנרג'יס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1001": {
+      "name": "א.ש. אוסטרליה ישראל החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AUIS.TA",
+      "isin": null
+    },
+    "2454": {
+      "name": "פאי פלוס פיקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1054": {
+      "name": "מנועי בית שמש אחזקות (1997) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1349": {
+      "name": "רבוע כחול נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2063": {
+      "name": "אלון רבוע כחול ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1121": {
+      "name": "פועלים שוקי הון טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1333": {
+      "name": "מועדון 365 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "777": {
+      "name": "שופרסל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SAE.TA",
+      "isin": null
+    },
+    "1648": {
+      "name": "קופרליין אמריקאס לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1886": {
+      "name": "סופווייב מדיקל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SOFW.TA",
+      "isin": null
+    },
+    "333": {
+      "name": "קבוצת פנינסולה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PEN.TA",
+      "isin": null
+    },
+    "384": {
+      "name": "קבוצת חמת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1140": {
+      "name": "פוקס-ויזל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FOX.TA",
+      "isin": null
+    },
+    "1815": {
+      "name": "מקס סטוק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MAXO.TA",
+      "isin": null
+    },
+    "1907": {
+      "name": "ורידיס אינווירונמנט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "VRDS.TA",
+      "isin": null
+    },
+    "256": {
+      "name": "פורמולה מערכות (1985)בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FORTY.TA",
+      "isin": null
+    },
+    "723": {
+      "name": "נורסטאר החזקות אינק",
+      "mainSecurityId": null,
+      "ticker": "NSTR.TA",
+      "isin": null
+    },
+    "730": {
+      "name": "צור שמיר אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1248": {
+      "name": "ירושלים מימון והנפקות (2005) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "JBNK.TA",
+      "isin": null
+    },
+    "1427": {
+      "name": "מפעלי ע. שנפ ושות' בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1797": {
+      "name": "רותם שני יזמות והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2486": {
+      "name": "מותג עירוני בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1724": {
+      "name": "רמות בעיר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1754": {
+      "name": "זאפ גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1860": {
+      "name": "קוויקליזארד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2443": {
+      "name": "י.ד. ברזאני בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "192": {
+      "name": "רוזבאד נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1555": {
+      "name": "קומפיוטרייזד אלקטריסיטי סיסטמס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "261": {
+      "name": "זהר תעשיות מוצרי חשמל (1986) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1590": {
+      "name": "גולד קפיטל זהב 1 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1112": {
+      "name": "קניאל תעשיות אריזה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1304": {
+      "name": "קנזון ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1403": {
+      "name": "פרידנזון שירותים לוגיסטיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1588": {
+      "name": "רני צים מרכזי קניות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "295": {
+      "name": "גלטן ביודיזל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2478": {
+      "name": "רייסדור יזמות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2523": {
+      "name": "אמיד יזמות ונדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "130": {
+      "name": "זנלכל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ZNKL.TA",
+      "isin": null
+    },
+    "432": {
+      "name": "ז'נס קוסמטיקס פריז בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "545": {
+      "name": "ז'נס הולדינגס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1698": {
+      "name": "צ'וזן נכסים לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "359": {
+      "name": "גרנד סנטר חברה לפתוח והשקעות ברח' דיזנגוף  בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1630": {
+      "name": "לייטסטון אנטרפרייזס לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2503": {
+      "name": "לנטרה קנדה אנטרפרייזס לימיטד פרטנרשיפ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "231": {
+      "name": "מזרחי טפחות חברה להנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MZTF.TA",
+      "isin": null
+    },
+    "1420": {
+      "name": "קבוצת עזריאלי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AZRG.TA",
+      "isin": null
+    },
+    "2353": {
+      "name": "יוזרוואי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "139": {
+      "name": "אחוזת בית רעננה-דיור מוגן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "656": {
+      "name": "ח.אלקטרוניקה 1988 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "639": {
+      "name": "חברת השקעות דיסקונט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DSCT.TA",
+      "isin": null
+    },
+    "1739": {
+      "name": "חברת נמלי ישראל-פיתוח נכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2095": {
+      "name": "חברת פרטנר תקשורת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PTNR.TA",
+      "isin": null
+    },
+    "1722": {
+      "name": "חג'ג' אירופה דיוולופמנט צ.ש. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "823": {
+      "name": "קבוצת חג'ג' ייזום נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "361": {
+      "name": "צמיחה אינווסטמנט האוס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "575": {
+      "name": "חוף האלמוג אילת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1029": {
+      "name": "חוף גיא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "150": {
+      "name": "חירון-מסחר השקעות ומבנה תעשיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MVNE.TA",
+      "isin": null
+    },
+    "1517": {
+      "name": "תמיר פישמן אג\"ח חכם בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1132": {
+      "name": "חלל-תקשורת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "196": {
+      "name": "ח.ל. מימון והנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1453": {
+      "name": "חממה מאיר סחר (1996) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2367": {
+      "name": "אלטשולר שחם פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALTF.TA",
+      "isin": null
+    },
+    "1189": {
+      "name": "חמית הנפקות 1 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1234": {
+      "name": "חמית הנפקות 2 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1285": {
+      "name": "חמית הנפקות 3 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1335": {
+      "name": "חמית הנפקות 4 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1445": {
+      "name": "רשת חנויות רמי לוי שיווק השיקמה 2006 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "RMLI.TA",
+      "isin": null
+    },
+    "243": {
+      "name": "חנ\"ל - ים המלח שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "392": {
+      "name": "חסין אש-חברה למוצרים קרמיים (1990) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "558": {
+      "name": "חסון פ. ע. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1508": {
+      "name": "יצחקי מחסנים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "533": {
+      "name": "אורטל יציקות לחץ (1993) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1507": {
+      "name": "אגרקסקו חברה ליצוא חקלאי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2518": {
+      "name": "אוריון נכסים מסחריים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1787": {
+      "name": "מ.ל.ר.ן פרוייקטים ומסחר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "451": {
+      "name": "שחר המילניום (1991) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "507": {
+      "name": "קבוצת מיחשוב ישיר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1005": {
+      "name": "חיון מחשבים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1823": {
+      "name": "סטארק פאוור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "643": {
+      "name": "נפטא חברה ישראלית לנפט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "NFTA.TA",
+      "isin": null
+    },
+    "2449": {
+      "name": "קבוצת מיי טאון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "637": {
+      "name": "טאו תשואות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1064": {
+      "name": "מיטב בית השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MTAV.TA",
+      "isin": null
+    },
+    "2428": {
+      "name": "מיטב טרייד השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MTAV.TA",
+      "isin": null
+    },
+    "1306": {
+      "name": "מטבעות עולם בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1002": {
+      "name": "מיטבית הולדינג (1992) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MTAV.TA",
+      "isin": null
+    },
+    "1199": {
+      "name": "מיטב שקל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MTAV.TA",
+      "isin": null
+    },
+    "1962": {
+      "name": "קונטגארד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1665": {
+      "name": "נמקו ריאלטי לטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2475": {
+      "name": "נץ יו.אס.איי לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2527": {
+      "name": "איה ניו יורק לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1065": {
+      "name": "איתוראן איתור ושליטה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "168": {
+      "name": "נטו מ.ע. אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1167": {
+      "name": "פסגות תעודות התחייבות מט\"ח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1296": {
+      "name": "פסגות מוצרי מט\"ח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1481": {
+      "name": "תכלית אינדקס מט\"ח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1444": {
+      "name": "סמארטטיסיפי טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1185": {
+      "name": "טי.ג'י.איי תשתיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1729": {
+      "name": "אלטיטיוד השקעות לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1847": {
+      "name": "ריטייל-מיינדס טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1908": {
+      "name": "ריטיילורס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "433": {
+      "name": "נקסטייג' תראפיוטיקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "354": {
+      "name": "טלסיס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2484": {
+      "name": "קסטלן נדל\"ן (בי.וי.אי), לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1325": {
+      "name": "קפיטל פוינט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1032": {
+      "name": "ישרוטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISRO.TA",
+      "isin": null
+    },
+    "1535": {
+      "name": "טמפו משקאות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "442": {
+      "name": "סי אי סיסטמס (ישראל) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2409": {
+      "name": "סיאון אינווסטמנט קורפוריישן",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1613": {
+      "name": "סקייליין אינווסטמנטס אינק",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "396": {
+      "name": "טמבור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "805": {
+      "name": "טמפו תעשיות בירה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1499": {
+      "name": "טן-חברה לדלק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "514": {
+      "name": "טוטנאור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "435": {
+      "name": "עוף טנא תעשיות (1991) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1688": {
+      "name": "נאוויטס פטרוליום, שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1984": {
+      "name": "ארטסיס360 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1699": {
+      "name": "נובל אסטס(בי.וי.איי)לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "238": {
+      "name": "ממן-מסופי מטען וניטול בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1841": {
+      "name": "נקסטפרם טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1971": {
+      "name": "סטפוינט.אייאיי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2348": {
+      "name": "וורטי מרקטפלייס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "668": {
+      "name": "טפחות בנק משכנתאות לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "60": {
+      "name": "ביטפארמס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1702": {
+      "name": "פננטפארק פלוטינג רייט קפיטל לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "216": {
+      "name": "טקטונה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2174": {
+      "name": "קמטק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "CAMT.TA",
+      "isin": null
+    },
+    "1298": {
+      "name": "נקסטקום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1832": {
+      "name": "ביג-טק 50 מו\"פ - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": "BIG.TA",
+      "isin": null
+    },
+    "1889": {
+      "name": "שור-טק השקעות-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "328": {
+      "name": "פריורטק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1872": {
+      "name": "פרימוטק גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1870": {
+      "name": "טראקנט אנטרפרייז בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1948": {
+      "name": "טרמינל איקס אונליין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1982": {
+      "name": "טראלייט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "445": {
+      "name": "מטריקס אי.טי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MTRX.TA",
+      "isin": null
+    },
+    "1654": {
+      "name": "סטרוברי פילדס ריט לימיטד",
+      "mainSecurityId": null,
+      "ticker": "STRW.TA",
+      "isin": null
+    },
+    "1669": {
+      "name": "אלטשולר שחם בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALTF.TA",
+      "isin": null
+    },
+    "1775": {
+      "name": "אלטשולר שחם גמל ופנסיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALTF.TA",
+      "isin": null
+    },
+    "1106": {
+      "name": "אי.בי.אי. - ניהול וחיתום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "IBI.TA",
+      "isin": null
+    },
+    "1566": {
+      "name": "איי.די.איי הנפקות (2010) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1608": {
+      "name": "איי.די.איי. חברה לביטוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FIBI.TA",
+      "isin": null
+    },
+    "2467": {
+      "name": "אי.בי.אי פיקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "IBI.TA",
+      "isin": null
+    },
+    "796": {
+      "name": "תיא חברה להשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1221": {
+      "name": "פי.סי.בי. טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1926": {
+      "name": "ליברה חברה לביטוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1876": {
+      "name": "תיגי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "494": {
+      "name": "מיה דיינמיקס מוטורס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2356": {
+      "name": "יו.אמ.איץ' פרופרטיס אינק",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1916": {
+      "name": "נקסט ויז'ן מערכות מיוצבות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "NXSN.TA",
+      "isin": null
+    },
+    "1964": {
+      "name": "סיפיה וויז'ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "249": {
+      "name": "שיח מדיקל גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1949": {
+      "name": "רב-בריח(08) תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1066": {
+      "name": "השטיח המעופף בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "71": {
+      "name": "ת.מ.מ. תעשיות מיחזור משולבות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1124": {
+      "name": "אי.איי.אם טכנולוגיות מיחשוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1212": {
+      "name": "מיטרוניקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MTRN.TA",
+      "isin": null
+    },
+    "1357": {
+      "name": "ריט 1 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "RIT1.TA",
+      "isin": null
+    },
+    "412": {
+      "name": "פייטון תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1300": {
+      "name": "איירפורט סיטי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARPT.TA",
+      "isin": null
+    },
+    "1473": {
+      "name": "אייראנג'י טק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ARNG.TA",
+      "isin": null
+    },
+    "1068": {
+      "name": "שיכון ובינוי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SKBN.TA",
+      "isin": null
+    },
+    "1930": {
+      "name": "שיכון ובינוי אנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SKBN.TA",
+      "isin": null
+    },
+    "2511": {
+      "name": "מיכפל טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1680": {
+      "name": "לסיכו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1790": {
+      "name": "קבוצת ביכורי השדה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "501": {
+      "name": "אלקטרה מוצרי צריכה (1970) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELTR.TA",
+      "isin": null
+    },
+    "1320": {
+      "name": "סילבר קסטל אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "76": {
+      "name": "רימוני תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1675": {
+      "name": "מימון ישיר מקבוצת ישיר (2006) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1833": {
+      "name": "אימד אינפיניטי מדיקל - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1928": {
+      "name": "רימון שירותי ייעוץ וניהול בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "397": {
+      "name": "עין שלישית מערכות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1115": {
+      "name": "סינאל מלל פייוויי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1480": {
+      "name": "אינטרקיור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "INCR.TA",
+      "isin": null
+    },
+    "1616": {
+      "name": "אינרום תעשיות בנייה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "INRM.TA",
+      "isin": null
+    },
+    "1843": {
+      "name": "פינרג'י בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ENRG.TA",
+      "isin": null
+    },
+    "660": {
+      "name": "ניסן תעשיות רפואיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1036": {
+      "name": "איסתא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1904": {
+      "name": "קיסטון אינפרא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "KSTN.TA",
+      "isin": null
+    },
+    "2520": {
+      "name": "איסתא נכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "323": {
+      "name": "מליסרון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MLSR.TA",
+      "isin": null
+    },
+    "2234": {
+      "name": "עמיעד מערכות מים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AMD.TA",
+      "isin": null
+    },
+    "683": {
+      "name": "יעסור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1828": {
+      "name": "מניף-שירותים פיננסיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2123": {
+      "name": "ג.ויליפוד אינטרנשיונל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2363": {
+      "name": "סנילביץ' נדל\"ן ויזמות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1993": {
+      "name": "אייקון גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2392": {
+      "name": "רייק אספן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1502": {
+      "name": "מירלנד דיוולופמנט קורפריישן פי אל סי",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1774": {
+      "name": "שירותי בנק אוטומטיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "613": {
+      "name": "ישרס חברה להשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISRS.TA",
+      "isin": null
+    },
+    "1238": {
+      "name": "ישראייר גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISRG.TA",
+      "isin": null
+    },
+    "440": {
+      "name": "כרמית תעשיות ממתקים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "522": {
+      "name": "כפרית תעשיות (1993) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "795": {
+      "name": "כארמור פתרונות משולבים לרכב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1664": {
+      "name": "קבוצת שגריר שירותי רכב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1343": {
+      "name": "פסיפיק רכב ותחבורה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1589": {
+      "name": "ש. שלמה רכב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1401": {
+      "name": "כוכב-עולם מוצרי השקעה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "118": {
+      "name": "קלרום רכב וציוד הנדסי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "778": {
+      "name": "סינרג'י כבלים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "663": {
+      "name": "כדורי (מילניום) השקעות ונכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1013": {
+      "name": "סיון הדרכה ומערכות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "234": {
+      "name": "תדיראן מוצרי צריכה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TDRN.TA",
+      "isin": null
+    },
+    "1040": {
+      "name": "אלביט מערכות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ESLT.TA",
+      "isin": null
+    },
+    "2502": {
+      "name": "אסותא מרכזים רפואיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1265": {
+      "name": "מרכז משען בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "487": {
+      "name": "אנגל מרכזי מסחר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "223": {
+      "name": "רשת הרבוע הכחול נכסים והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1123": {
+      "name": "פויכטונגר השקעות 1984 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "826": {
+      "name": "תעשיות לכיש בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "783": {
+      "name": "כי\"ל מימון והנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1020": {
+      "name": "כים ניר שרותי תעופה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1027": {
+      "name": "דור כימיקלים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1288": {
+      "name": "קליר כימיקלים - יצור ושווק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1447": {
+      "name": "כלל תעשיות ביוטכנולוגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1944": {
+      "name": "מכלול מימון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "608": {
+      "name": "כלל תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2439": {
+      "name": "מכלול מימון נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "198": {
+      "name": "כלכלית ירושלים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "JBNK.TA",
+      "isin": null
+    },
+    "515": {
+      "name": "כמיפל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "543": {
+      "name": "כנפיים אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1272": {
+      "name": "כן פייט ביופרמה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1266": {
+      "name": "מרכנתיל הנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1661": {
+      "name": "פתאל נכסים(אירופה)בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "FTAL.TA",
+      "isin": null
+    },
+    "1536": {
+      "name": "לוינשטין נכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "915": {
+      "name": "כפיר",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "916": {
+      "name": "כפיר חדש",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1416": {
+      "name": "כפיר 1 מכשירים פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "752": {
+      "name": "מיכפלים השקעות ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1024": {
+      "name": "תכשיטי כפריס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1748": {
+      "name": "כרמל קורפ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "237": {
+      "name": "כרמל מערכות מיכלים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "710": {
+      "name": "כרמל-אגוד למשכנתאות והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1044": {
+      "name": "כרמל אחזקות (אי.אל) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1472": {
+      "name": "כרמל אולפינים",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1228": {
+      "name": "מבט-מכשירים פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "581": {
+      "name": "מפעלי מתכת קדמני בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "250": {
+      "name": "מירומית מפעלי מתכת אשקלון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1091": {
+      "name": "אלארום טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ALAR.TA",
+      "isin": null
+    },
+    "1484": {
+      "name": "מצלאוי חברה לבנין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1062": {
+      "name": "סאנפלאואר השקעות מתחדשות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SNFL.TA",
+      "isin": null
+    },
+    "1382": {
+      "name": "אלבר שירותי מימונית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1737": {
+      "name": "סילברסטין נכסים לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1125": {
+      "name": "ר.ה. טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "352": {
+      "name": "לגנא הולדינגס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "401": {
+      "name": "פלג-ניא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "559": {
+      "name": "אלגו השקיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "402": {
+      "name": "בוימלגרין קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1697": {
+      "name": "אלה פקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1657": {
+      "name": "סלזיון קורפוריישן",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "631": {
+      "name": "מפעלי ים המלח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1017": {
+      "name": "חברת ברום ים המלח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2535": {
+      "name": "אולטרייד מחזור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2538": {
+      "name": "פאלו אלטו נטוורקס אינק",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2506": {
+      "name": "ליווינג סטון איממו בי.וי.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1098": {
+      "name": "טלכור טלקום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "204": {
+      "name": "כלל תיירות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "156": {
+      "name": "מלם-תים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "731": {
+      "name": "מלם-תים אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1857": {
+      "name": "עלמא יסודות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "634": {
+      "name": "שמן נדל\"ן מניב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1806": {
+      "name": "מילניום פוד-טק-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1057": {
+      "name": "פלסאון תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1895": {
+      "name": "פלסאנמור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1514": {
+      "name": "סלע קפיטל נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1905": {
+      "name": "גלעד מאי חברה להשקעות בניה ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "164": {
+      "name": "אלעד מלונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "206": {
+      "name": "אלעד אירופה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1147": {
+      "name": "גלעד אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1462": {
+      "name": "אלעזרא החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1902": {
+      "name": "מטריסלף בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1310": {
+      "name": "קבוצת גולף א. ק. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "811": {
+      "name": "ולפמן תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "496": {
+      "name": "קולפלנט אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "609": {
+      "name": "וולפסון קלור מאיר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "603": {
+      "name": "בנק לפתוח התעשיה בישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1770": {
+      "name": "פלציב עין הנצי\"ב אגודה שיתופית חקלאית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "457": {
+      "name": "אליאנס חברה לצמיגים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "739": {
+      "name": "אלקטרה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELTR.TA",
+      "isin": null
+    },
+    "1264": {
+      "name": "אלקטרה נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELTR.TA",
+      "isin": null
+    },
+    "2066": {
+      "name": "סלקום ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "CEL.TA",
+      "isin": null
+    },
+    "644": {
+      "name": "פלרם (1990) תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "749": {
+      "name": "אלרון ונצ'רס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELRN.TA",
+      "isin": null
+    },
+    "1924": {
+      "name": "סולרום החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2009": {
+      "name": "סאני תקשורת סלולרית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "146": {
+      "name": "אל-רוב (ישראל) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1659": {
+      "name": "דלשה קפיטל לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1859": {
+      "name": "ביונ תלת מימד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2536": {
+      "name": "סמארט שוטר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SMSH.TA",
+      "isin": null
+    },
+    "226": {
+      "name": "מבנה נדל\"ן (כ.ד) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MVNE.TA",
+      "isin": null
+    },
+    "729": {
+      "name": "מבטח שמיר פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MISH.TA",
+      "isin": null
+    },
+    "1169": {
+      "name": "מבט תעודות סל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1183": {
+      "name": "מבט סל בינלאומי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1691": {
+      "name": "אורמד פארמסוטיקלס אינק.",
+      "mainSecurityId": null,
+      "ticker": "ORMP.TA",
+      "isin": null
+    },
+    "141": {
+      "name": "ש.שלמה החזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1496": {
+      "name": "ש.י.ר שלמה נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1487": {
+      "name": "מזור רובוטיקה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1409": {
+      "name": "קבוצת מזרחי ובניו השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MZTF.TA",
+      "isin": null
+    },
+    "1410": {
+      "name": "אוסיף מזרח אירופה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "779": {
+      "name": "מן תעשית מזון והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1442": {
+      "name": "צ.מ.ח המרמן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2507": {
+      "name": "אמטראסט אר.אי. לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2391": {
+      "name": "פרקומט אינטרנשיונל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1467": {
+      "name": "מישורים השקעות נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1503": {
+      "name": "ענבר מכשירים פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1163": {
+      "name": "ק.ס.ם מכשירים פיננסיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1237": {
+      "name": "שחרית מכשירים פיננסיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "822": {
+      "name": "מלונות דן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1914": {
+      "name": "מנרה ונצ'רס אקס אל-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "315": {
+      "name": "מפעלי פ.מ.ס. מיגון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1810": {
+      "name": "תעשיות מספנות ישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ISHI.TA",
+      "isin": null
+    },
+    "1363": {
+      "name": "פז קמעונאות ואנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PAZ.TA",
+      "isin": null
+    },
+    "2471": {
+      "name": "אמפא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "AMPA.TA",
+      "isin": null
+    },
+    "813": {
+      "name": "סנו-מפעלי ברונוס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SANO1.TA",
+      "isin": null
+    },
+    "481": {
+      "name": "מלון מצפה כנרת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1150": {
+      "name": "מקורות חברת מים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1763": {
+      "name": "מקס איט פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2465": {
+      "name": "מרב פקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1689": {
+      "name": "תמר פטרוליום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "573": {
+      "name": "משולם לוינשטין הנדסה וקבלנות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1803": {
+      "name": "משק אנרגיה-אנרגיות מתחדשות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MSKE.TA",
+      "isin": null
+    },
+    "2250": {
+      "name": "אורמת טכנולוגיות, אינק",
+      "mainSecurityId": null,
+      "ticker": "ORA.TA",
+      "isin": null
+    },
+    "208": {
+      "name": "נאוי גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1894": {
+      "name": "נאייקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "421": {
+      "name": "נתנאל גרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2412": {
+      "name": "נתנאל מניבים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1414": {
+      "name": "ענבר אג\"ח ויטליטי 1 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1587": {
+      "name": "גלילאו סאטילייט נביגיישן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "676": {
+      "name": "חברה לבנין מלון הנביאים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1329": {
+      "name": "ספרינג ונצ'רס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1868": {
+      "name": "פליינג ספארק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1893": {
+      "name": "נור אינק אינוביישנס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1455": {
+      "name": "אקסלנז ביוסיינס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "628": {
+      "name": "נחושתן חברה להשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "692": {
+      "name": "נחושתן נכסים ויזום בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2423": {
+      "name": "רנט איט-ריט מגורים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1025": {
+      "name": "שניב תעשיות נייר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1231": {
+      "name": "נמ\"ת נכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "269": {
+      "name": "סינמה נאמנויות השקעות בסרטים-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1628": {
+      "name": "ספנסר אקוויטי גרופ לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1820": {
+      "name": "ג'נסל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1085": {
+      "name": "נעמן גרופ (נ.ו) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2530": {
+      "name": "אינפליי אויל קורפ.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2425": {
+      "name": "קרדיטו הנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1875": {
+      "name": "קלין וליו ונצ'רס - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1092": {
+      "name": "נקסט ג'ן ביומד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1769": {
+      "name": "ג'נריישן קפיטל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1152": {
+      "name": "אל על  נתיבי אויר לישראל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ELAL.TA",
+      "isin": null
+    },
+    "1821": {
+      "name": "סבוריט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1430": {
+      "name": "דויסבורג הולדינג (לוקסמבורג) אס.איי",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1918": {
+      "name": "גלאסבוקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "322": {
+      "name": "סגיאל השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1108": {
+      "name": "פסגות תעודות סל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1158": {
+      "name": "פסגות התחייבות דולרית סחירה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1207": {
+      "name": "פסגות רבעוני בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1273": {
+      "name": "פסגות פלטינום מוצרים מובנים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2424": {
+      "name": "מימון ישיר הנפקות(סדרה 16) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2460": {
+      "name": "מימון ישיר נדל\"ן ומשכנתאות הנפקות (סדרה 1) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2499": {
+      "name": "מימון ישיר נדל\"ן ומשכנתאות הנפקות (סדרה 2) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2539": {
+      "name": "מימון ישיר נדל\"ן ומשכנתאות הנפקות (סדרה 3) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1159": {
+      "name": "קאר אנד גו (סדרה א) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1599": {
+      "name": "גדסדן נכסים אינקורפורייטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1297": {
+      "name": "משקי ליסינג (סדרה 1) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1974": {
+      "name": "סופרין אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2304": {
+      "name": "סונוביה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2438": {
+      "name": "סטרוברי פילדס ריט, אינק",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "280": {
+      "name": "קסטרו מודל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1800": {
+      "name": "סייברוואן 2014 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1899": {
+      "name": "אורה סמארט אייר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1170": {
+      "name": "ק.ס.ם מוצרים פיננסיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2368": {
+      "name": "סנדייסקי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "595": {
+      "name": "סנפרוסט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1491": {
+      "name": "סנטראל יורופיאן אסטייטס אנ.וי",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1292": {
+      "name": "תראפיקס ביוסיינסס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1760": {
+      "name": "אינטרנשיונל פליוורס אנד פראגרנסס אינק.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1168": {
+      "name": "אקסלנס - סער אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2433": {
+      "name": "ספיר פקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2185": {
+      "name": "סרגון נטוורקס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "790": {
+      "name": "קיסריה השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "540": {
+      "name": "יסתא השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1173": {
+      "name": "תעבורה אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "528": {
+      "name": "מוצרי מעברות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "453": {
+      "name": "ברעד חברה לעבודות עפר,פיתוח וכבישים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "735": {
+      "name": "בירי בראשי עבודות עפר פיתוח תשתית וכבישים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1725": {
+      "name": "עדיקה סטייל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1341": {
+      "name": "מומנט מוצרי השקעה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "413": {
+      "name": "קשרי תעופה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2472": {
+      "name": "עופר השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1471": {
+      "name": "ענני תקשורת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1352": {
+      "name": "עירית רעננה",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1987": {
+      "name": "פיפלביז עסקים חברתיים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2366": {
+      "name": "שלניר יעוץ ושיווק עסקי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "285": {
+      "name": "עצמון מרצפות ושיש בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1262": {
+      "name": "עצמון אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "713": {
+      "name": "בנק עצמאות למשכנתאות ולפתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "430": {
+      "name": "מפעלי עץ כרמיאל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "693": {
+      "name": "תעל-תעשיות עץ לבוד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "53": {
+      "name": "גלבוע תעשיות עץ (1982) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1500": {
+      "name": "י.ש. אחים יעקובי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1056": {
+      "name": "עוז עתיד אינטרנשיונל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2344": {
+      "name": "פאי סיאם בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2420": {
+      "name": "פאי פיקדונות ומוצרים מובנים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2500": {
+      "name": "פאי ריביות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1488": {
+      "name": "לידמס פרופרטיס פבליק קומפני לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "362": {
+      "name": "טופגרופ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2389": {
+      "name": "פרופדו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2388": {
+      "name": "רשות שדות התעופה בישראל.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "380": {
+      "name": "אירופה ישראל (מ.מ.ש.) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1901": {
+      "name": "תורפז תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TRPZ.TA",
+      "isin": null
+    },
+    "1254": {
+      "name": "פז-פקדון זר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PAZ.TA",
+      "isin": null
+    },
+    "1282": {
+      "name": "פז פיקדון זר 2 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PAZ.TA",
+      "isin": null
+    },
+    "1672": {
+      "name": "רציו פטרוליום אנרגיה - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": "RATI.TA",
+      "isin": null
+    },
+    "2479": {
+      "name": "אר פי אופטיקל לאב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1977": {
+      "name": "פיימנט טכנולוגיות פיננסיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PMNT.TA",
+      "isin": null
+    },
+    "1569": {
+      "name": "פלורי אינק.",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "765": {
+      "name": "פרפל ביוטק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PPBT.TA",
+      "isin": null
+    },
+    "700": {
+      "name": "פמה חברה להשקעות ונכסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "428": {
+      "name": "ליפמן הנדסה אלקטרונית בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2442": {
+      "name": "אבו פמילי ריט בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ABOU.TA",
+      "isin": null
+    },
+    "1911": {
+      "name": "פסיירקס סי אן אס ביו-טק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1035": {
+      "name": "א.פ.ס.ק. תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "438": {
+      "name": "פסיפיקה אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "317": {
+      "name": "מפעיל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "398": {
+      "name": "מפעלי פלדה מאוחדים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "769": {
+      "name": "רפק תקשורת ותשתיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1871": {
+      "name": "פריים אנרג'י פי.אי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PRIM.TA",
+      "isin": null
+    },
+    "2240": {
+      "name": "פריון נטוורק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "PERI.TA",
+      "isin": null
+    },
+    "425": {
+      "name": "צבי צרפתי ובניו השקעות ובנין (1992) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1961": {
+      "name": "צבר סולאר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1095": {
+      "name": "קבוצת דלק בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "DLEKG.TA",
+      "isin": null
+    },
+    "1644": {
+      "name": "קבוצת אורון אחזקות והשקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1625": {
+      "name": "רציו אנרגיות (מימון) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "RATI.TA",
+      "isin": null
+    },
+    "1331": {
+      "name": "קבוצת צילו-בלו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "353": {
+      "name": "צינור דרום 82 תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "391": {
+      "name": "צמרות בוני הארץ בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "557": {
+      "name": "צמנטכל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1023": {
+      "name": "צפריר מהנדסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "483": {
+      "name": "פריצקר יזמות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "517": {
+      "name": "אוליצקי כריה (1990) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1935": {
+      "name": "פי.אס.סי-קאן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1793": {
+      "name": "קאי קפיטל שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2372": {
+      "name": "קאי מלונאות וספא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2381": {
+      "name": "אורבניקה (פאלו) ריטייל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "URBC.TA",
+      "isin": null
+    },
+    "1937": {
+      "name": "קזואר טכנולוגיות מתקדמות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1053": {
+      "name": "מ.ק.ח. מרכז קניות חיפה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "797": {
+      "name": "קליל תעשיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "KLIL.TA",
+      "isin": null
+    },
+    "2508": {
+      "name": "רמי לוי השקמה נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "RMLI.TA",
+      "isin": null
+    },
+    "132": {
+      "name": "קמור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "339": {
+      "name": "קמן אחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1316": {
+      "name": "קמור אירופה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2398": {
+      "name": "מ.ו. השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1585": {
+      "name": "קרסו מוטורס בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1850": {
+      "name": "קרן פיט השקעות-שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2384": {
+      "name": "קרסו נדל\"ן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "497": {
+      "name": "קשר רנט-א-קאר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1218": {
+      "name": "דור אנרגיה הנפקת אגח 1 בעמ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2519": {
+      "name": "תורג'מן מניבים ואחזקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "270": {
+      "name": "לירז מערכות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1458": {
+      "name": "ברגרואין רזידנטיאל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1477": {
+      "name": "אלעד יו.אס. רזידינשיאל (ישראל) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "190": {
+      "name": "משאבים חברה להנפקות של בנק המזרחי המאוחד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "MZTF.TA",
+      "isin": null
+    },
+    "511": {
+      "name": "דרלון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "782": {
+      "name": "ארלדן השקעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "135": {
+      "name": "וורלד גרופ קפיטל (58) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "316": {
+      "name": "נירלט צבעים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1209": {
+      "name": "רם-און השקעות והחזקות (1999) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "792": {
+      "name": "דרעד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1214": {
+      "name": "אופרייט ליס רעם בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "4953": {
+      "name": "פורצ'ן (6F) לונג/שורט- קרן גידור בנאמנות",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1708": {
+      "name": "הרץ פרופרטיס גרופ, לימיטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1784": {
+      "name": "הרץ גרופ ריאלטי טרסט",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1696": {
+      "name": "אורשי ג.ש. בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1896": {
+      "name": "קבוצת אקרשטיין בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "ACKR.TA",
+      "isin": null
+    },
+    "1801": {
+      "name": "קבוצת דוראל משאבי אנרגיה מתחדשת בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1200": {
+      "name": "משאב יזום ופיתוח בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1595": {
+      "name": "שמן משאבי נפט וגז בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1745": {
+      "name": "מסיעי אריה שאשא בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "468": {
+      "name": "משב תעשיות קירור בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "669": {
+      "name": "מ.ט.י. מחשבים ושירותי תכנה (1982) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2378": {
+      "name": "בינת תקשורת מחשבים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "942": {
+      "name": "שגיא",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "943": {
+      "name": "שגיא משופר",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "547": {
+      "name": "שדות נפט (1992) - שותפות מוגבלת",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1441": {
+      "name": "ביכורי השדה דרום שיווק תוצרת חקלאית (2002) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2473": {
+      "name": "ימין משה 25 אג\"ח - 1 - בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2541": {
+      "name": "ימין משה 26 אג\"ח 2 בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2407": {
+      "name": "אבני שהם אופנה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1243": {
+      "name": "שחרית הנפקות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1263": {
+      "name": "שחרית שוקי הון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1396": {
+      "name": "שחר ארוך אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "724": {
+      "name": "קבוצת שחר חדש בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2445": {
+      "name": "מימון ישיר נדל\"ן ומשכנתאות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1788": {
+      "name": "שיכון ובינוי נדלן בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SKBN.TA",
+      "isin": null
+    },
+    "1137": {
+      "name": "שיכון ובינוי מימון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SKBN.TA",
+      "isin": null
+    },
+    "647": {
+      "name": "משכן-בנק הפועלים למשכנתאות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "POLI.TA",
+      "isin": null
+    },
+    "1922": {
+      "name": "שמיים אימפרוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2430": {
+      "name": "ישפרו בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2525": {
+      "name": "רשף טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1437": {
+      "name": "שפיר פרוייקטים אירופה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "SPEN.TA",
+      "isin": null
+    },
+    "743": {
+      "name": "ישפרו חברה ישראלית להשכרת מבנים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "301": {
+      "name": "החברה הישראלית לאשפרה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2226": {
+      "name": "שרין טכנולוגיות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1809": {
+      "name": "תשתיות אנרגיה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1141": {
+      "name": "תבור אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1155": {
+      "name": "אקסלנס-תבור אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1030": {
+      "name": "אומני מותגי מזון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1127": {
+      "name": "תדיראן תעשיות קשר אלחוטי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TDRN.TA",
+      "isin": null
+    },
+    "1139": {
+      "name": "תדיראן קשר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": "TDRN.TA",
+      "isin": null
+    },
+    "207": {
+      "name": "תכן הנפקות (1987) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1202": {
+      "name": "תכלית דולר עולמי בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1223": {
+      "name": "תכלית תעודות סל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1261": {
+      "name": "תכלית מטבעות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1336": {
+      "name": "תכלית גלובל בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1022": {
+      "name": "מלון ימית תל-אביב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "4963": {
+      "name": "תכלית 0A TTF תל בונד מאגר",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1289": {
+      "name": "תמיס ג'י.אר.אי.אנ.בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2492": {
+      "name": "יותם פקדונות בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "248": {
+      "name": "נ.ת.מ. - נכסי תחבורה ומסחר בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2386": {
+      "name": "ע.ע. יסודות איתנים ייזום ובניה בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1808": {
+      "name": "לוויתן בונד בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1710": {
+      "name": "תנופורט (1990) בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1145": {
+      "name": "איתן אגרות חוב בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "2076": {
+      "name": "תפרון בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1670": {
+      "name": "סאות'רן פרופרטיס קפיטל לטד",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    },
+    "1280": {
+      "name": "תשלוז פיננסים בע\"מ",
+      "mainSecurityId": null,
+      "ticker": null,
+      "isin": null
+    }
+  },
+  "blocked_cids": {
+    "1822": "Polyram plastics - no valid .TA ticker found",
+    "2538": "CYBR.TA shows wrong company (Palo Alto) in YF data",
+    "1349": "Blue Square Real Estate != Property & Building Corp",
+    "362": "Globalyana != Top Group",
+    "1221": "P.S.B. Computers != P.C.B. Technologies"
+  }
+}

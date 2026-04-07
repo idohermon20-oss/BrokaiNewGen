@@ -93,16 +93,16 @@ class BotServer:
         while True:
             try:
                 updates = self._get_updates(timeout=30)
-                if updates:
-                    for upd in updates:
-                        try:
-                            self._handle_update(upd)
-                        except Exception:
-                            print("[BotPoller] update error:", traceback.format_exc())
-                    # Advance offset past the last processed update
-                    last_id = updates[-1]["update_id"]
-                    self._settings.last_offset = last_id + 1
-                    self._settings.save()
+                for upd in updates:
+                    try:
+                        self._handle_update(upd)
+                    except Exception:
+                        print("[BotPoller] update error:", traceback.format_exc())
+                    finally:
+                        # Advance offset immediately after each update so a crash
+                        # mid-batch does not replay already-processed messages.
+                        self._settings.last_offset = upd["update_id"] + 1
+                        self._settings.save()
             except Exception:
                 print("[BotPoller] poll error:", traceback.format_exc())
                 time.sleep(5)
@@ -122,7 +122,7 @@ class BotServer:
         return []
 
     def _handle_update(self, update: dict) -> None:
-        msg = update.get("message") or update.get("edited_message")
+        msg = update.get("message")   # deliberately ignore edited_message — re-processing edits causes double answers
         if not msg:
             return
         chat_id  = str(msg.get("chat", {}).get("id", ""))

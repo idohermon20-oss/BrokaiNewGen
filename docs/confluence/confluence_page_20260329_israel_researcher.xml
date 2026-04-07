@@ -1,0 +1,880 @@
+<h1>Israel Researcher — Automated TASE Equity Research System</h1>
+
+<p>
+  <strong>Israel Researcher</strong> is an AI-powered stock research agent that scans the full Tel Aviv Stock Exchange (TASE) every 15 minutes.
+  It reads regulatory filings, monitors news, detects market anomalies, and uses GPT to rank investment opportunities — then broadcasts results via Telegram.
+  It covers every Israeli stock: TA-35, TA-125, TA-SME, and new IPOs from day one.
+</p>
+
+<ac:structured-macro ac:name="info">
+  <ac:parameter ac:name="title">Quick Start</ac:parameter>
+  <ac:rich-text-body>
+    <p>Create a <code>.env</code> file in the project root with your credentials, then run <code>python -m israel_researcher</code>. That's it.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<ac:structured-macro ac:name="toc">
+  <ac:parameter ac:name="minLevel">2</ac:parameter>
+  <ac:parameter ac:name="maxLevel">3</ac:parameter>
+</ac:structured-macro>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>What Does It Do?</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<p>Every 15 minutes, the system runs a full research cycle:</p>
+<ol>
+  <li>Reads the latest corporate filings from <strong>Maya</strong> (the official TASE disclosure system) — earnings, IPOs, contracts, institutional moves, buybacks, M&amp;A — before any financial media picks them up.</li>
+  <li>Scans <strong>Israeli news RSS feeds</strong> (Globes, Calcalist, Ynet, Walla, Maariv) and matches articles to company names in Hebrew.</li>
+  <li>Detects <strong>market anomalies</strong> across ~500 TASE stocks via yfinance: volume spikes, price breaks, RSI bounces, 52-week highs/lows, momentum streaks.</li>
+  <li>Runs 7 <strong>sector-specialized AI agents</strong> in parallel — each one an expert on its domain.</li>
+  <li>A <strong>CIO-level manager LLM</strong> reads all sector outputs and picks the best cross-sector opportunity of the week.</li>
+  <li>Sends a <strong>Telegram alert</strong> with top 3 stocks, scores, and catalysts. Also answers free-text questions 24/7.</li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Why It Was Built</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<p>Standard Israeli stock screeners have three blind spots this system was designed to fix:</p>
+
+<table>
+  <tbody>
+    <tr><th>Problem</th><th>This System's Solution</th></tr>
+    <tr>
+      <td><strong>Only TA-35 coverage</strong> — most tools ignore the 400+ smaller TASE stocks where real alpha lives.</td>
+      <td>DiscoveryAgent covers the full TASE universe including TA-SME and new IPOs from day one of their listing.</td>
+    </tr>
+    <tr>
+      <td><strong>Late to the news</strong> — by the time financial media reports a Maya filing, the stock has already moved.</td>
+      <td>Maya filings are read in real time via Playwright. The system often scores a stock before the first news article is published.</td>
+    </tr>
+    <tr>
+      <td><strong>No Israeli macro context</strong> — generic screeners don't know that a ceasefire is bad for defense stocks, or that shekel depreciation helps tech exporters.</td>
+      <td>Every LLM call receives an explicit Israeli macro framework: geopolitics, BoI rates, shekel moves, oil prices, US-Israel relations.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>High-Level Architecture</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<p>The diagram below shows all major components and data flows in one view.</p>
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam componentStyle rectangle
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+title Israel Researcher — Full System Architecture
+
+package "Data Sources (Phase 1 — Sequential)" {
+  [Maya API\n(Playwright)] as MAYA
+  [Market Data\n(yfinance)] as MKT
+  [Israeli News RSS\n(Globes, Ynet, Walla)] as NEWS
+  [Google News RSS\n(per ticker)] as GNEWS
+  [Global Headlines\n(Yahoo/WSJ/MarketWatch)] as GLOB
+}
+
+package "Analysis Engine" {
+  [SignalEnricher] as ENRICH
+  [ConvergenceEngine\n(scoring + multipliers)] as CONV
+  [StockMemoryManager\n(analyst notebook)] as MEM
+}
+
+package "Sector Agents (Phase 2 — Parallel × 4)" {
+  [BanksAgent\n15 tickers] as BANKS
+  [TechDefenseAgent\n11 tickers] as TECH
+  [EnergyAgent\n9 tickers] as ENERGY
+  [PharmaAgent\n7 tickers] as PHARMA
+  [RealEstateAgent\n15 tickers] as REALE
+  [TelecomConsumerAgent\n8 tickers] as TELCO
+  [DiscoveryAgent\n~500 tickers] as DISC
+}
+
+package "LLM Layer (GPT-4o-mini)" {
+  [LLMAnalyst\n(sector scoring)] as LLM
+  [ResearchManager\n(CIO arbitration)] as MGR
+  [QAPipeline\n(free-text Q&A)] as QA
+}
+
+package "Output" {
+  [TelegramReporter\n(quick alerts / weekly)] as TEL
+  [Excel Memory\n(israel_researcher_memory.xlsx)] as XLS
+  [State File\n(israel_researcher_state.json)] as STATE
+}
+
+package "Telegram Bot (Daemon Thread)" {
+  [BotServer\n(long-poll)] as BOT
+  [CommandHandler\n(14 slash commands)] as CMD
+  [QAPipeline] as QA2
+}
+
+MAYA --> ENRICH : filings (TASE{id} signals)
+MKT --> BANKS : anomaly signals (.TA)
+MKT --> TECH
+MKT --> ENERGY
+MKT --> PHARMA
+MKT --> REALE
+MKT --> TELCO
+MKT --> DISC
+NEWS --> ENRICH : article signals
+GNEWS --> LLM : web news per ticker
+GLOB --> LLM : macro context (text)
+ENRICH --> CONV
+CONV --> BANKS
+CONV --> TECH
+CONV --> ENERGY
+CONV --> PHARMA
+CONV --> REALE
+CONV --> TELCO
+CONV --> DISC
+MEM --> LLM : memory context
+BANKS --> LLM
+TECH --> LLM
+ENERGY --> LLM
+PHARMA --> LLM
+REALE --> LLM
+TELCO --> LLM
+DISC --> LLM
+LLM --> MGR : ranked sector portfolios
+MGR --> TEL : Stock of the Week + top 3
+MGR --> XLS : picks + alert history
+MGR --> STATE : signal history
+MEM --> XLS : stock memory backup
+BOT --> CMD
+BOT --> QA2
+QA2 --> MEM : memory lookup
+QA2 --> MKT : live scan
+QA2 --> GNEWS : news search
+TEL --> Telegram
+@enduml
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Package Structure</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<table>
+  <tbody>
+    <tr><th>Layer</th><th>Module</th><th>Responsibility</th></tr>
+    <tr><td rowspan="5"><strong>Data Sources</strong></td>
+      <td><code>sources/maya.py</code></td>
+      <td>MayaMonitor reads the latest 100 filings via POST to Maya REST API, wrapped in a Playwright browser session (required to bypass Incapsula WAF). MayaFilingExtractor fetches full text for high-value filings (max 2/cycle). EarningsCalendar reads the financial-reports schedule endpoint.</td></tr>
+    <tr><td><code>sources/market.py</code></td>
+      <td>MarketAnomalyDetector runs 8 technical detectors on every ticker. MacroContext fetches 7 macro instruments. DualListedMonitor checks 13 Nasdaq/NYSE dual-listed stocks overnight. SectorAnalyzer computes per-sector RSI and 1-month return. DynamicUniverseBuilder fetches the full TLV-exchange ticker list from Yahoo Finance Screener.</td></tr>
+    <tr><td><code>sources/news_monitor.py</code></td>
+      <td>IsraeliNewsMonitor reads 8 RSS feeds (Globes Finance, Globes Stocks, Calcalist, Ynet Finance, Ynet Business, Walla Finance, Walla News, Maariv Business). Matches article text to Hebrew company names from Maya's autocomplete cache using regex word-boundary matching.</td></tr>
+    <tr><td><code>sources/web_news.py</code></td>
+      <td>WebNewsSearcher hits Google News RSS with two queries per ticker (company name + ticker symbol). LLM (extract_web_news_signals) parses results into typed Signal objects. No API key needed. Throttled at 0.3s between queries.</td></tr>
+    <tr><td><code>sources/chrome_news.py</code></td>
+      <td>Chrome-driven news fetcher — in progress, not yet integrated into main pipeline.</td></tr>
+
+    <tr><td rowspan="5"><strong>Analysis</strong></td>
+      <td><code>analysis/convergence.py</code></td>
+      <td>ConvergenceEngine.group_by_ticker() aggregates all signals per ticker, sums base scores, applies pairwise multipliers, adds earnings proximity gradient, and applies the 3-category convergence bonus. Returns a ranked list of {ticker, final_score, signals, multiplier_applied}.</td></tr>
+    <tr><td><code>analysis/enricher.py</code></td>
+      <td>SignalEnricher upgrades GENERAL signals (produced when Hebrew name matching fails) by scanning the article text for keywords from KEYWORD_GROUPS in config.py. A GENERAL signal about "חוזה" becomes a new_contract signal.</td></tr>
+    <tr><td><code>analysis/llm.py</code></td>
+      <td>LLMAnalyst wraps all GPT-4o-mini calls. score_sector() scores a full sector portfolio. arbitrate() runs the CIO manager prompt. extract_web_news_signals() converts raw articles to structured signals. resolve_ticker() maps Hebrew company names to .TA symbols (bot use).</td></tr>
+    <tr><td><code>analysis/memory.py</code></td>
+      <td>StockMemoryManager maintains a dict of per-stock memory in state. build_context_string() formats it for LLM injection. update_llm_insights() writes back GPT's memory_update fields after each sector call.</td></tr>
+    <tr><td><code>analysis/excel_memory.py</code></td>
+      <td>Writes israel_researcher_memory.xlsx with 3 sheets after every cycle. Sheet 1 (Active Stock Memory) is the recovery mechanism — it can restore stock_memory and alerted_today after a state wipe.</td></tr>
+
+    <tr><td rowspan="8"><strong>Sector Agents</strong></td>
+      <td><code>agents/base.py</code></td>
+      <td>SectorAgent abstract base class. Defines the 9-step run() flow. Subclasses override _get_sector_macro_signals() and optionally _filter_signals() (DiscoveryAgent).</td></tr>
+    <tr><td><code>agents/banks.py</code></td><td>BanksAgent — 15 tickers: Big-5 banks + Bank of Jerusalem, 5 insurance groups, Isracard, Israel Corp, Discount Investment, TASE Ltd. Macro: KBE/XLF ETF move, IL10Y proxy.</td></tr>
+    <tr><td><code>agents/tech_defense.py</code></td><td>TechDefenseAgent — 11 tickers: Elbit, NextVision, Hilan, Formula, Malam-Team, Nova, Tower Semi, Camtek, NICE, AudioCodes, Allot, Matrix IT. Macro: LMT/RTX peers, AMAT/KLAC semis, VIX, shekel move.</td></tr>
+    <tr><td><code>agents/energy.py</code></td><td>EnergyAgent — 9 tickers: Delek Group, OPC Energy, Enlight, Navitas, NewMed, Energix, Oil Refineries (Bazan), Paz, Ratio. Macro: WTI (CL=F), NG=F, Brent (BZ=F), NEE.</td></tr>
+    <tr><td><code>agents/pharma.py</code></td><td>PharmaAgent — 7 tickers: Teva, ICL, Kamada, Compugen, Evogene, Brainsway, Blue &amp; White Pharma. Macro: XBI, IBB, MOS (potash proxy for ICL).</td></tr>
+    <tr><td><code>agents/real_estate.py</code></td><td>RealEstateAgent — 15 tickers: Azrieli, Amot, BIG, Melisron, Mivne, Dimri, Shapir, Alony-Hetz, Gav-Yam, Airport City, G City, Shikun &amp; Binui, Aura, Rotshtein, Africa Israel Residences. Macro: VNQ/IYR REITs, shekel.</td></tr>
+    <tr><td><code>agents/telecom_consumer.py</code></td><td>TelecomConsumerAgent — 8 tickers: Bezeq, Partner, Cellcom, Shufersal, Strauss, Fattal, Rami Levi, Elco. Macro: XLP/IYZ ETFs, shekel (importers).</td></tr>
+    <tr><td><code>agents/discovery.py</code></td><td>DiscoveryAgent — full TASE universe (~500 tickers) NOT covered by the 6 sector agents. Overrides _filter_signals() to pass through maya_ipo and maya_spinoff signals even without a real ticker. Uses DynamicUniverseBuilder (YF Screener) as universe source.</td></tr>
+
+    <tr><td rowspan="4"><strong>Telegram Bot</strong></td>
+      <td><code>bot/server.py</code></td>
+      <td>BotServer runs as a daemon thread. Long-polls Telegram (getUpdates timeout=30s). Routes "/" messages to CommandHandler and free text to QAPipeline. Maintains per-chat conversation history (last 8 messages). Persists last_offset to bot_state.json after every batch to prevent re-processing on restart.</td></tr>
+    <tr><td><code>bot/commands.py</code></td><td>Handles 14 slash commands. Settings commands mutate BotSettings and atomically save to bot_state.json. Status commands read live state without blocking.</td></tr>
+    <tr><td><code>bot/qa_pipeline.py</code></td><td>QAPipeline.answer() runs 3 sequential LLM calls: intent detection → tool execution → answer generation. 10-second per-chat cooldown. Sends "Analyzing..." placeholder immediately. Hebrew ticker resolution via resolve_ticker() when needed.</td></tr>
+    <tr><td><code>bot/user_alerts.py</code></td><td>Stores user-defined price/event alert subscriptions. Not yet wired into main pipeline — planned feature.</td></tr>
+
+    <tr><td rowspan="3"><strong>Core</strong></td>
+      <td><code>config.py</code></td>
+      <td>All credentials and thresholds. Auto-loads .env file via python-dotenv on import. Defines KEYWORD_GROUPS (40+ terms per signal type in Hebrew + English), SECTOR_TICKERS, TASE_MAJOR_TICKERS, DUAL_LISTED_STOCKS, MACRO_TICKERS, MAYA_TYPE_MAP.</td></tr>
+    <tr><td><code>models.py</code></td><td>Signal dataclass (ticker, signal_type, score, metadata, source, timestamp). State load/save functions. refresh_company_cache() — fetches Maya autocomplete API.</td></tr>
+    <tr><td><code>researcher.py</code></td><td>Main loop: run_research_cycle() orchestrates all 3 phases. Starts Telegram bot daemon. Reads BotSettings every cycle (so /set_interval takes effect without restart). Handles graceful shutdown.</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Pipeline — Step by Step</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam activityBackgroundColor #EEF4FF
+skinparam activityBorderColor #3366CC
+
+title Research Cycle — Full Pipeline (Every 15 Minutes)
+
+start
+
+partition "Phase 1: Data Collection (Sequential)" {
+  :Start shared Playwright browser session\n(required for Maya WAF bypass);
+  :Refresh Maya company cache\n(500 companies, 24h TTL);
+  :Fetch latest 100 Maya filings\nEach → Signal(TASE{id}, maya_type);
+  :Fetch full text for 2 high-value\ninstitutional filings (deal size, stake %);
+  :Fetch earnings calendar\n(events within 10 days → earnings_calendar signal);
+  :Check 13 dual-listed stocks overnight\n(move ≥ 2% → dual_listed_move signal);
+  :Read 8 Israeli RSS feeds\n(Hebrew name regex → company signal);
+  :Read 3 global headline feeds\n(Yahoo/MarketWatch/WSJ — context text only);
+  :Fetch macro snapshot\n(TA-125, S&P, Nasdaq, USD/ILS, VIX, WTI, US10Y);
+  :Compute sector rotation labels\n(BULL+/BULL/NEUTRAL/BEAR/BEAR-);
+  :Run SignalEnricher\n(upgrade GENERAL signals via keywords);
+}
+
+partition "Phase 2: Sector Agents (Parallel — 4 workers)" {
+  fork
+    :BanksAgent;
+  fork again
+    :TechDefenseAgent;
+  fork again
+    :EnergyAgent;
+  fork again
+    :PharmaAgent;
+  end fork
+  fork
+    :RealEstateAgent;
+  fork again
+    :TelecomConsumerAgent;
+  fork again
+    :DiscoveryAgent\n(~500 tickers);
+  end fork
+
+  note right
+    Each agent runs 9 steps:
+    1. Filter signals for this sector
+    2. MarketAnomalyDetector (8 detectors)
+    3. Sector-specific macro signals
+    4. Preliminary ConvergenceEngine
+    5. Drop tickers with score = 0
+    6. Web news for top-5 (Google News RSS)
+    7. Re-run ConvergenceEngine
+    8. DeepStockAnalyzer (top-8)
+    9. Sector LLM call → ranked portfolio
+  end note
+}
+
+partition "Phase 3: Manager Arbitration (Sequential)" {
+  :ResearchManager collects all sector portfolios;
+  :CIO LLM arbitrates — picks Stock of the Week;
+  :Apply cross-sector rules\n(no 2 from same sector unless score > 90);
+}
+
+partition "Output" {
+  if (score > 0 after arbitration?) then (yes)
+    :Send Telegram quick alert\n(top N stocks);
+  endif
+  if (after 17:00 Israel time?) then (yes)
+    :Send daily summary;
+  endif
+  if (Thursday 17:00?) then (yes)
+    :Send weekly report with full rationale;
+  endif
+  :Update excel_memory.xlsx\n(3 sheets);
+  :Save state.json;
+}
+
+:Sleep until next cycle\n(default: 15 min);
+stop
+@enduml
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>Phase 1 — Data Collection (Sequential, once per cycle)</h3>
+<p>Uses a single shared Playwright browser session. Required because Maya's API is protected by Incapsula WAF which blocks all plain HTTP clients.</p>
+
+<table>
+  <tbody>
+    <tr><th>#</th><th>Step</th><th>Output</th><th>Cache / TTL</th></tr>
+    <tr><td>1</td><td><strong>Maya company cache</strong> — POST to Maya autocomplete API</td><td>~500 {companyId, name_hebrew} entries. Used for Hebrew name-to-ID matching in news articles.</td><td>24 hours</td></tr>
+    <tr><td>2</td><td><strong>Maya filings</strong> — POST /api/v1/reports/companies, paginated to 100</td><td>Signals: maya_ipo, maya_earnings, maya_contract, maya_institutional, maya_buyback, maya_dividend, maya_ma, maya_management. Ticker = TASE{id} pseudo-ticker.</td><td>No cache — fetched fresh every cycle</td></tr>
+    <tr><td>3</td><td><strong>Institutional filing text</strong> — fetch full HTML of top 2 filings</td><td>Enriched signals with deal_size, stake_pct, direction extracted by LLM</td><td>Max 2 per cycle to avoid rate limiting</td></tr>
+    <tr><td>4</td><td><strong>Earnings calendar</strong> — POST /api/v1/corporate-actions/financial-reports-schedule</td><td>earnings_calendar signals with event_date and days-to-earnings (dte)</td><td>No cache</td></tr>
+    <tr><td>5</td><td><strong>Dual-listed US overnight</strong> — yfinance for 13 stocks</td><td>dual_listed_move signals for moves ≥ 2%. Carries real .TA ticker. Most reliable leading indicator.</td><td>No cache</td></tr>
+    <tr><td>6</td><td><strong>Israeli RSS feeds</strong> — 8 feeds (Globes × 2, Calcalist, Ynet × 2, Walla × 2, Maariv)</td><td>Typed signals where name matches; GENERAL signals where matching fails (~40% of articles)</td><td>Deduplication via seen_signal_keys (today only)</td></tr>
+    <tr><td>7</td><td><strong>Global headlines</strong> — 3 feeds (Yahoo Finance, MarketWatch, WSJ)</td><td>Plain text string injected into every LLM call as "global_context". No signals generated.</td><td>No cache</td></tr>
+    <tr><td>8</td><td><strong>Macro snapshot</strong> — yfinance for 7 instruments</td><td>Formatted string: TA-125 price/chg%, S&amp;P 500, Nasdaq, USD/ILS, VIX, WTI oil, US 10Y yield. Injected into every LLM call.</td><td>No cache — live prices each cycle</td></tr>
+    <tr><td>9</td><td><strong>Sector rotation</strong> — yfinance for 2–3 tickers per sector</td><td>Per-sector label: BULL+ / BULL / NEUTRAL / BEAR / BEAR-. Based on 1-month return and avg RSI-14.</td><td>No cache</td></tr>
+  </tbody>
+</table>
+
+<h3>Phase 2 — Sector Agents (Parallel)</h3>
+<p>All 7 agents run simultaneously in a ThreadPoolExecutor with 4 workers. Each agent follows the same 9-step flow defined in <code>agents/base.py</code>:</p>
+
+<table>
+  <tbody>
+    <tr><th>Step</th><th>What happens</th><th>Key detail</th></tr>
+    <tr><td>1</td><td><strong>Filter signals</strong></td><td>Take only Phase 1 signals whose ticker belongs to this agent's ticker list.</td></tr>
+    <tr><td>2</td><td><strong>MarketAnomalyDetector</strong></td><td>Runs 8 detectors on every ticker in the sector. Returns real .TA signals. See detector table below.</td></tr>
+    <tr><td>3</td><td><strong>Sector macro signals</strong></td><td>Each agent fetches its own macro peers (e.g. EnergyAgent checks WTI and Brent; BanksAgent checks KBE and XLF). Returns sector-level signals if peers moved significantly.</td></tr>
+    <tr><td>4–5</td><td><strong>Preliminary convergence + filter</strong></td><td>ConvergenceEngine scores all collected signals by ticker. Tickers with final_score = 0 are dropped silently.</td></tr>
+    <tr><td>6</td><td><strong>Web news enrichment</strong></td><td>Top 5 candidates by preliminary score are searched on Google News RSS. LLM reads articles and extracts structured signals. relevance &lt; 4 discarded; relevance 4–10 → Signal with score = relevance × 4.</td></tr>
+    <tr><td>7</td><td><strong>Re-score with web news</strong></td><td>ConvergenceEngine re-runs with web news signals added. A contract mention in a news article can significantly boost a ticker's score.</td></tr>
+    <tr><td>8</td><td><strong>DeepStockAnalyzer</strong></td><td>Fetches fundamental + technical data for top 8 by score: RSI-14, MA-20, MA-50, % from 52w high, market cap, revenue growth %, avg volume.</td></tr>
+    <tr><td>9</td><td><strong>Sector LLM (score_sector)</strong></td><td>GPT-4o-mini receives: all scored tickers, macro snapshot, sector rotation, deep data, and stock memory context. Returns a ranked portfolio with tier (buy / watch / monitor), 0–100 score, rationale, and key_catalyst per stock.</td></tr>
+  </tbody>
+</table>
+
+<h4>MarketAnomalyDetector — 8 Detectors</h4>
+<table>
+  <tbody>
+    <tr><th>Detector</th><th>Trigger Condition</th><th>Base Score</th></tr>
+    <tr><td>volume_spike</td><td>Today's volume &gt; 2.5× 20-day average volume</td><td>28</td></tr>
+    <tr><td>price_move</td><td>Absolute daily price change &gt; 3.5%</td><td>30</td></tr>
+    <tr><td>breakout</td><td>New 52-week high AND today's volume &gt; 20-day avg</td><td>35</td></tr>
+    <tr><td>ma_crossover</td><td>MA-20 crosses above MA-50 (golden cross) in last 3 days</td><td>25</td></tr>
+    <tr><td>oversold_bounce</td><td>RSI-14 &lt; 32 AND volume is rising (accumulation pattern)</td><td>28</td></tr>
+    <tr><td>low_reversal</td><td>Price within 5% of 52-week low AND volume rising</td><td>28</td></tr>
+    <tr><td>consecutive_momentum</td><td>4+ consecutive up-days with increasing volume each day</td><td>25</td></tr>
+    <tr><td>relative_strength</td><td>Stock outperforming TA-125 by ≥ 5% over the past 20 days</td><td>25</td></tr>
+  </tbody>
+</table>
+
+<h3>Phase 3 — Manager Arbitration (Sequential)</h3>
+<p>ResearchManager._arbitrate() acts as a CIO reviewing all sector agent outputs. The manager LLM prompt enforces these portfolio construction rules:</p>
+<ul>
+  <li>No 2 picks from the same sector unless score &gt; 90.</li>
+  <li>Prioritize the sector with the strongest macro tailwind this week.</li>
+  <li>At least one mid/small-cap in the final selection.</li>
+  <li>Best pick must have: hard catalyst + confirming technicals + macro alignment.</li>
+  <li>Avoid repeating last week's Stock of the Week pick (stored in <code>last_weekly_pick</code> in state).</li>
+</ul>
+
+<p><strong>Output schema:</strong></p>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">json</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+{
+  "stock_of_the_week": {
+    "ticker":          "ESLT.TA",
+    "name":            "Elbit Systems",
+    "score":           87,
+    "full_rationale":  "...",
+    "key_catalyst":    "New IDF drone contract, NIS 320M, representing 4% of annual revenue",
+    "technical_setup": "Breakout above 52w high on 3x average volume",
+    "main_risk":       "Ceasefire announcement could trigger sector rotation out of defense",
+    "keywords":        ["defense", "contract", "volume_spike", "breakout"]
+  },
+  "runners_up": [
+    {"ticker": "NVMI.TA", "name": "Nova Ltd", "score": 71, "summary": "...", "key_catalyst": "..."},
+    {"ticker": "TEVA.TA", "name": "Teva Pharma", "score": 66, "summary": "...", "key_catalyst": "..."}
+  ],
+  "macro_context": "USD/ILS at 3.72 (shekel weak) — favors exporters. WTI at $82 — energy names bid.",
+  "week_theme":    "Defense + Semis outperforming on security escalation + US tariff news",
+  "sector_in_focus": "TechDefense"
+}
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Signal Scoring — ConvergenceEngine</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<p>The ConvergenceEngine is the mathematical heart of the system. It converts a list of raw signals into a final ranked score per ticker.</p>
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+title ConvergenceEngine — Score Calculation Flow
+
+start
+
+:Collect all signals for one ticker\n(maya, market anomaly, news, web news);
+
+:Sum base scores\nbase = Σ BASE_SCORES[signal_type];
+
+note right
+  Top base scores:
+  maya_ipo = 50
+  new_contract = 45
+  regulatory_approval = 42
+  institutional_investor = 40
+  breakout = 35
+  dual_listed_move = 35
+  earnings (web) = 35
+  volume_spike = 28
+  price_move = 30
+end note
+
+:Find best pairwise multiplier\nmultiplier = max(MULTIPLIERS[t1,t2]) for any pair in signals;
+
+note right
+  Top multipliers:
+  earnings_calendar + volume_spike = 2.5x
+  low_reversal + earnings_calendar = 2.4x
+  oversold_bounce + earnings_calendar = 2.3x
+  earnings + volume_spike = 2.3x
+  relative_strength + earnings_calendar = 2.2x
+end note
+
+if (earnings_calendar signal present?) then (yes)
+  :Add earnings proximity gradient\n(dte=0 → +80, dte=1 → +70, dte=2 → +60\n dte=3 → +45, dte≤7 → +25, dte≤14 → +12);
+endif
+
+:Count distinct signal categories\n(fundamental, technical, news, macro);
+
+if (3 or more categories?) then (yes)
+  :Apply 3-category bonus\nmultiplier × 1.3;
+endif
+
+:final_score = base × multiplier;
+
+note right
+  Expected distribution:
+  38–58 = monitor / informational
+  65–81 = strong buy candidate
+  85–100 = exceptional (≤1/month)
+end note
+
+stop
+@enduml
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>Signal Base Scores</h3>
+<table>
+  <tbody>
+    <tr><th>Signal Type</th><th>Source</th><th>Base Score</th><th>Why It Matters</th></tr>
+    <tr><td>maya_ipo</td><td>Maya filing</td><td>50</td><td>New listing — maximum information asymmetry window before price discovery</td></tr>
+    <tr><td>maya_contract / new_contract</td><td>Maya / web news</td><td>45</td><td>Concrete, revenue-generating event with a counterparty and value</td></tr>
+    <tr><td>regulatory_approval</td><td>Maya / web news</td><td>42</td><td>FDA/EMA/CE mark approval unlocks an entire product market</td></tr>
+    <tr><td>maya_institutional / institutional_investor</td><td>Maya / web news</td><td>40</td><td>Smart money taking a position — informed signal with skin in the game</td></tr>
+    <tr><td>breakout</td><td>Market anomaly</td><td>35</td><td>New 52w high with volume — price action confirming a fundamental thesis</td></tr>
+    <tr><td>dual_listed_move</td><td>yfinance</td><td>35</td><td>Overnight US move = leading indicator for TASE open next morning</td></tr>
+    <tr><td>earnings</td><td>Web news</td><td>35</td><td>Earnings beat / guidance raise = fundamental surprise</td></tr>
+    <tr><td>ipo (web)</td><td>Web news</td><td>38</td><td>IPO confirmed in financial press before Maya filing appears</td></tr>
+    <tr><td>price_move</td><td>Market anomaly</td><td>30</td><td>Something is happening — price reacts before news is published</td></tr>
+    <tr><td>volume_spike</td><td>Market anomaly</td><td>28</td><td>Informed accumulation / distribution — one of the earliest signals</td></tr>
+    <tr><td>ma_crossover</td><td>Market anomaly</td><td>25</td><td>Technical confirmation — trend changing direction</td></tr>
+    <tr><td>oversold_bounce</td><td>Market anomaly</td><td>28</td><td>Accumulation pattern: sellers exhausted, buyers stepping in</td></tr>
+    <tr><td>low_reversal</td><td>Market anomaly</td><td>28</td><td>Capitulation followed by buying — a classic reversal setup</td></tr>
+    <tr><td>consecutive_momentum</td><td>Market anomaly</td><td>25</td><td>4+ up days with building volume = sustained institutional buying</td></tr>
+    <tr><td>relative_strength</td><td>Market anomaly</td><td>25</td><td>Outperforming TA-125 by 5%+ over 20 days = sector rotation in progress</td></tr>
+  </tbody>
+</table>
+
+<h3>Top Convergence Multipliers</h3>
+<p>When two or more signal types confirm each other on the same ticker, the final score is multiplied. Only the highest applicable multiplier is used.</p>
+<table>
+  <tbody>
+    <tr><th>Signal Combination</th><th>Multiplier</th><th>Why This Combination Is Powerful</th></tr>
+    <tr><td>earnings_calendar + volume_spike</td><td>2.5×</td><td>Someone is buying ahead of an expected earnings event — strong informed-trading signal</td></tr>
+    <tr><td>low_reversal + earnings_calendar</td><td>2.4×</td><td>Stock at multi-month lows, reversal beginning, earnings approaching — classic catalyst setup</td></tr>
+    <tr><td>oversold_bounce + earnings_calendar</td><td>2.3×</td><td>Deeply oversold stock starting to accumulate before earnings — high risk/reward</td></tr>
+    <tr><td>earnings + volume_spike</td><td>2.3×</td><td>Earnings news AND unusual volume — confirms the market is reacting</td></tr>
+    <tr><td>relative_strength + earnings_calendar</td><td>2.2×</td><td>Stock already outperforming, catalyst approaching — momentum + event = highest conviction</td></tr>
+    <tr><td>new_contract + volume_spike</td><td>2.0×</td><td>Contract filing + volume reaction = material deal already being priced in</td></tr>
+    <tr><td>institutional_investor + price_move</td><td>1.9×</td><td>Institutional filing + price action = confirmed smart money entry</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>LLM Intelligence — What the AI Knows</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<p>Every GPT prompt in the system contains an explicit Israeli-market knowledge framework that generic LLMs do not have out of the box. This is injected as a system prompt in every sector call and manager call.</p>
+
+<h3>Israeli Macro Rules (always injected)</h3>
+<table>
+  <tbody>
+    <tr><th>Macro Event</th><th>LLM Instruction</th></tr>
+    <tr><td>Security escalation (war, rocket fire, IDF operation)</td><td>Boost defense (Elbit, Rafael-adjacent), discount tourism (Fattal), retail, consumer. Discount shekel-denominated domestic revenue.</td></tr>
+    <tr><td>Ceasefire / de-escalation</td><td>Reverse above. Tourism, real estate, consumer re-rating upward.</td></tr>
+    <tr><td>BoI rate cut (proxied via US10Y falling)</td><td>Banks/insurance discount on NIM compression. Real estate and construction re-rate upward (lower financing costs). REITs benefit.</td></tr>
+    <tr><td>BoI rate hold/hike</td><td>Banks benefit from NIM expansion. Real estate under pressure.</td></tr>
+    <tr><td>Shekel depreciation (USD/ILS rising)</td><td>Exporters benefit: tech (NICE, NVMI), defense (Elbit), pharma (Teva), chemicals (ICL). Importers hurt: retail (Shufersal), food (Strauss), electronics distribution (Elco).</td></tr>
+    <tr><td>Oil spike (WTI / Brent rising)</td><td>Energy producers up: Delek, OPC, NewMed, Navitas. Consumers/airlines/logistics hurt. Refineries (Bazan) have mixed impact.</td></tr>
+    <tr><td>US-Israel diplomatic friction</td><td>Defense export risk — Elbit relies on US export licenses. Flag as risk, not necessarily sell.</td></tr>
+    <tr><td>Israeli political instability</td><td>Domestic sector discount: real estate, retail, construction. Export-oriented tech less affected.</td></tr>
+  </tbody>
+</table>
+
+<h3>Small-Cap &amp; Low-Volume Guidance</h3>
+<ul>
+  <li>TASE micro-caps (&lt;100K shares/day avg volume) are <strong>valid signals, not noise</strong>. A 3× volume spike on a 50K/day stock is as meaningful as on a liquid large-cap.</li>
+  <li>For avg_volume &lt; 300K/day: require a hard catalyst (Maya filing, web news contract, earnings) before scoring &gt; 65.</li>
+  <li>Market-cap catalyst materiality: deal_size &gt; 10% of market cap = transformative; deal_size &lt; 1% = immaterial. This is explicitly in the LLM prompt.</li>
+  <li>IPO stocks (TASE pseudo-tickers): score on maya_ipo signal + web news. No technicals penalty for missing yfinance data.</li>
+</ul>
+
+<h3>Analyst Memory — What the LLM Remembers</h3>
+<p>Each sector LLM call injects per-stock memory context AND writes back a structured memory update. This creates a feedback loop: the LLM becomes a better analyst of each stock over time.</p>
+
+<table>
+  <tbody>
+    <tr><th>Memory Field</th><th>Direction</th><th>Example</th></tr>
+    <tr><td>analyst_notes</td><td>Injected into LLM prompt</td><td>"Volume spike 3x on no news for 3rd consecutive week — possible informed accumulation"</td></tr>
+    <tr><td>prior_analyst_notes</td><td>Injected into LLM prompt</td><td>Previous day's notes — allows trend detection across sessions</td></tr>
+    <tr><td>memory_note</td><td>Written back by LLM</td><td>"Management buyback accelerating — typically precedes re-rating in Israeli market"</td></tr>
+    <tr><td>sentiment</td><td>Written back by LLM</td><td>bullish / bearish / neutral</td></tr>
+    <tr><td>risk_flag</td><td>Written back by LLM</td><td>"Ceasefire would eliminate defense premium; thesis invalidated below 850 support"</td></tr>
+    <tr><td>watch_for</td><td>Written back by LLM</td><td>"Q2 earnings (June 12). Price target 920. Watch for insider Form 5 filing."</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Telegram Bot</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+title Telegram Bot — Message Routing & Q&A Pipeline
+
+actor User as U
+participant "BotServer\n(daemon thread)" as BS
+participant "CommandHandler\n(14 commands)" as CMD
+participant "QAPipeline" as QA
+participant "LLMAnalyst\nplan_intent()" as INTENT
+participant "Tool Registry\n(11 tools)" as TOOLS
+participant "LLMAnalyst\nchat_answer()" as ANSWER
+database "Shared State\n(RLock)" as STATE
+
+U -> BS : Telegram message
+BS -> BS : Check 10s cooldown per chat
+BS -> BS : Send "Analyzing..." placeholder
+
+alt Starts with "/"
+  BS -> CMD : handle_command(message)
+  CMD -> STATE : read or mutate settings
+  CMD --> U : command response
+else Free text
+  BS -> QA : answer(chat_id, question)
+  QA -> STATE : deepcopy() [lock held <5ms]
+
+  QA -> INTENT : plan_intent(question, tickers, tools)
+  INTENT --> QA : {ticker, intent, tools[], language}
+
+  alt ticker is null AND stock-specific intent
+    QA -> INTENT : resolve_ticker(question, company_list)
+    note right: Hebrew company name → .TA symbol\n(confidence ≥ 0.6 required)
+    INTENT --> QA : {ticker, company_name, confidence}
+  end
+
+  loop for each tool in plan.tools
+    QA -> TOOLS : run(tool_name, ticker, state_copy)
+    TOOLS --> QA : context string
+  end
+
+  QA -> ANSWER : chat_answer(question, context, language, history)
+  ANSWER --> QA : 3-6 sentence answer
+  QA -> BS : split at paragraph boundaries (≤4096 chars/chunk)
+  BS --> U : answer chunks
+  BS -> BS : append to chat_history[chat_id]\n(keep last 8 messages)
+end
+
+@enduml
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>Slash Commands (14 total)</h3>
+<table>
+  <tbody>
+    <tr><th>Category</th><th>Command</th><th>Effect</th><th>Takes Effect</th></tr>
+    <tr><td rowspan="8"><strong>Settings</strong><br/>(mutate BotSettings,<br/>save to bot_state.json)</td>
+      <td><code>/set_interval &lt;min&gt;</code></td><td>Change scan interval. Range: 5–240 minutes.</td><td>Next time.sleep() expires</td></tr>
+    <tr><td><code>/set_topn &lt;n&gt;</code></td><td>Stocks per Telegram alert. Range: 1–10.</td><td>Immediately</td></tr>
+    <tr><td><code>/set_volume &lt;x&gt;</code></td><td>Volume spike threshold (multiplier of 20-day average). Range: 1.5–10.0.</td><td>Next cycle</td></tr>
+    <tr><td><code>/set_price &lt;pct&gt;</code></td><td>Price move threshold (absolute % daily change). Range: 1.0–20.0.</td><td>Next cycle</td></tr>
+    <tr><td><code>/set_language en|he</code></td><td>All bot reply text switches to English or Hebrew.</td><td>Immediately</td></tr>
+    <tr><td><code>/set_sectors s1,s2,...</code></td><td>Limit which sector agents run. Valid: Banks, TechDefense, Energy, PharmaBiotech, RealEstate, TelecomConsumer, Discovery.</td><td>Next cycle</td></tr>
+    <tr><td><code>/enable_alerts</code></td><td>Allow quick-alert Telegram messages after each cycle.</td><td>Immediately</td></tr>
+    <tr><td><code>/disable_alerts</code></td><td>Suppress quick-alert messages (weekly report still sends).</td><td>Immediately</td></tr>
+    <tr><td rowspan="6"><strong>Status</strong><br/>(read-only)</td>
+      <td><code>/status</code></td><td>Current settings (interval, language, top_n, sectors) + last scan time + alerted tickers today.</td><td>—</td></tr>
+    <tr><td><code>/macro</code></td><td>Live: TA-125, S&amp;P 500, Nasdaq, USD/ILS, VIX, WTI oil, US 10Y yield. Fetched fresh from yfinance.</td><td>—</td></tr>
+    <tr><td><code>/earnings</code></td><td>Upcoming earnings events from state (within 14 days), sorted by days-to-earnings.</td><td>—</td></tr>
+    <tr><td><code>/weekly</code></td><td>Latest Stock of the Week + runners-up + macro context + week theme from last arbitration report.</td><td>—</td></tr>
+    <tr><td><code>/sector &lt;name&gt;</code></td><td>Live sector rating (BULL+/BULL/NEUTRAL/BEAR/BEAR-) + avg RSI + 1-month return. Runs SectorAnalyzer fresh.</td><td>—</td></tr>
+    <tr><td><code>/help</code></td><td>Full command reference with examples.</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<h3>Free-Text Q&A — Intent Types and Tool Selection</h3>
+<table>
+  <tbody>
+    <tr><th>Intent</th><th>Example Question</th><th>Tools Used</th></tr>
+    <tr><td>stock_analysis</td><td>"What do you think about Teva right now?"</td><td>get_stock_data, search_news, get_memory</td></tr>
+    <tr><td>live_scan</td><td>"Is there anything unusual happening with ESLT today?"</td><td>run_live_scan, get_stock_data, get_memory</td></tr>
+    <tr><td>earnings_query</td><td>"Which stocks are reporting earnings this week?"</td><td>get_weekly_signals (filtered to earnings_calendar)</td></tr>
+    <tr><td>market_overview</td><td>"How does the market look today?"</td><td>get_macro, get_sector_context</td></tr>
+    <tr><td>sector_query</td><td>"Is the energy sector bullish right now?"</td><td>get_sector_context, get_macro</td></tr>
+    <tr><td>ipo_query</td><td>"Any new IPOs this week?"</td><td>get_recent_ipos, get_macro</td></tr>
+    <tr><td>maya_query</td><td>"What filings came out today?"</td><td>get_maya_filings</td></tr>
+    <tr><td>recommendations</td><td>"What should I buy this week?"</td><td>get_alerted_stocks, get_macro</td></tr>
+    <tr><td>tracker_query</td><td>"What stocks are you tracking?"</td><td>get_tracked_stocks</td></tr>
+    <tr><td>general_question</td><td>"What is a golden cross?"</td><td>direct_answer (no tools — instant LLM response)</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Persistent Memory &amp; State</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<ac:structured-macro ac:name="plantuml">
+  <ac:plain-text-body><![CDATA[
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+title Persistence — How Memory Survives Restarts
+
+rectangle "Runtime (in memory)" {
+  [state dict\n(RLock-protected)] as STATE
+}
+
+rectangle "israel_researcher_state.json" {
+  [seen_maya_report_ids\n(dedup, never expires)] as IDS
+  [seen_signal_keys\n(today only)] as SIGKEYS
+  [tase_company_cache\n(24h TTL)] as CCACHE
+  [tase_universe_cache\n(24h TTL)] as UCACHE
+  [ticker_validation_cache\n(valid 30d / invalid 7d)] as VCACHE
+  [stock_memory\n(analyst notes, LLM insights)] as MEM
+  [weekly_signals\n(accumulates all week)] as WSIG
+  [alerted_today\n(resets each calendar day)] as ALERT
+  [last_weekly_pick\n(prevents consecutive repeat)] as WPICK
+}
+
+rectangle "israel_researcher_memory.xlsx" {
+  [Sheet 1: Active Stock Memory\n(full stock_memory backup)] as SH1
+  [Sheet 2: Buy/Watch Picks\n(filtered actionable view)] as SH2
+  [Sheet 3: Sent Alerts\n(all Telegram alerts ever sent)] as SH3
+}
+
+rectangle "bot_state.json" {
+  [BotSettings\n(interval, language, top_n, etc.)] as BSET
+  [last_offset\n(Telegram dedup)] as OFFSET
+}
+
+STATE --> IDS : save every cycle
+STATE --> MEM : save every cycle
+STATE --> ALERT : save every cycle
+SH1 --> STATE : restore stock_memory\n(on startup if state was wiped)
+SH3 --> STATE : restore alerted_today\n(on startup if state was wiped)
+
+note bottom of SH1
+  Excel memory is the recovery mechanism.
+  If state.json is deleted, the system
+  restores its analyst knowledge from
+  the Excel file on next startup.
+end note
+
+@enduml
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>state.json — Key Fields</h3>
+<table>
+  <tbody>
+    <tr><th>Field</th><th>Type</th><th>TTL / Reset</th><th>Purpose</th></tr>
+    <tr><td>seen_maya_report_ids</td><td>list of strings</td><td>Never expires</td><td>Prevents the same Maya filing from generating duplicate signals across cycles</td></tr>
+    <tr><td>seen_signal_keys</td><td>list of strings</td><td>Resets each day</td><td>Prevents the same market anomaly from firing twice in one day</td></tr>
+    <tr><td>tase_company_cache</td><td>{fetched_at, companies: [{id, name_he}]}</td><td>24h TTL</td><td>Hebrew company names from Maya autocomplete — used for news article matching</td></tr>
+    <tr><td>tase_universe_cache</td><td>{fetched_at, tickers: ["ABCD.TA", ...]}</td><td>24h TTL</td><td>All real .TA symbols from Yahoo Finance Screener — DiscoveryAgent universe</td></tr>
+    <tr><td>ticker_validation_cache</td><td>{"ABCD.TA": {valid: true, checked: "2026-03-25"}}</td><td>Valid: 30d / Invalid: 7d</td><td>Caches yfinance liveness checks — avoids re-validating the same tickers every cycle</td></tr>
+    <tr><td>stock_memory</td><td>{ticker: {fundamentals, analyst_notes, prior_notes, llm_sentiment, memory_note, risk_flag, watch_for}}</td><td>Grows indefinitely</td><td>Per-stock analyst notebook injected into every LLM call</td></tr>
+    <tr><td>alerted_today</td><td>{ticker: "2026-03-26"}</td><td>Resets each calendar day</td><td>Prevents sending the same stock multiple times in one day. Restored from Excel Sheet 3 on restart.</td></tr>
+    <tr><td>last_weekly_pick</td><td>string (ticker)</td><td>Updated weekly</td><td>Prevents the manager LLM from picking the same Stock of the Week two weeks in a row</td></tr>
+    <tr><td>weekly_signals</td><td>list of Signal dicts</td><td>Resets each Monday</td><td>Accumulates all signals for the weekly report — gives the LLM a full week's view</td></tr>
+    <tr><td>last_arbitration_report</td><td>dict (manager output)</td><td>Updated each cycle</td><td>Powers /weekly bot command without re-running the LLM</td></tr>
+  </tbody>
+</table>
+
+<ac:structured-macro ac:name="warning">
+  <ac:parameter ac:name="title">Never delete state files</ac:parameter>
+  <ac:rich-text-body>
+    <p>The ticker_validation_cache and tase_universe_cache take many cycles to rebuild (~10 hours for full TASE validation). Deleting <code>israel_researcher_state.json</code> means the DiscoveryAgent runs blind for the rest of the day. The Excel memory will restore stock_memory and alerted_today, but validation caches cannot be recovered.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>How to Run</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<h3>Step 1 — Create your .env file</h3>
+<p>Create a file named <code>.env</code> in the project root (<code>BorsaProject/</code>). This file is gitignored and will never be committed.</p>
+
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">bash</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+# BorsaProject/.env
+OPENAI_API_KEY=sk-proj-your-key-here
+TELEGRAM_BOT_TOKEN=your-telegram-bot-token
+TELEGRAM_CHAT_ID=your-telegram-chat-id
+
+# Optional overrides (defaults shown)
+# OPENAI_MODEL=gpt-4o-mini
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<p>The system loads this file automatically via <code>python-dotenv</code> when <code>config.py</code> is imported. No other setup needed.</p>
+
+<h3>Step 2 — Activate virtual environment and run</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">bash</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+# Activate venv (Windows)
+source venv/Scripts/activate
+
+# Run israel_researcher (research cycle + Telegram bot daemon)
+python -m israel_researcher
+
+# Other entry points
+python main.py           # US stock analysis pipeline (BorsaProject main)
+python alert.py          # aTyr Pharma Telegram monitor (single company)
+python multibiutec.py    # Multi-company biotech monitor (aTyr, KALA, RAPP, Omeros, Crinetics)
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<h3>First-Run Behaviour</h3>
+<p>The first run populates caches that take time to build. Expect the first few cycles to be slower and less complete:</p>
+<table>
+  <tbody>
+    <tr><th>Cache</th><th>Time to Build</th><th>What's Missing Without It</th></tr>
+    <tr><td>TASE universe cache (~500 tickers)</td><td>1 cycle (~15 min)</td><td>DiscoveryAgent has no ticker list to scan</td></tr>
+    <tr><td>Ticker validation cache</td><td>~10 cycles (~2.5 hours, max 50/cycle)</td><td>DiscoveryAgent cannot confirm which .TA tickers are alive on yfinance</td></tr>
+    <tr><td>Maya company cache</td><td>1 cycle</td><td>Hebrew news article matching produces only GENERAL signals</td></tr>
+    <tr><td>Stock memory</td><td>Builds over days/weeks</td><td>LLM has no historical context, gives less precise analysis</td></tr>
+  </tbody>
+</table>
+
+<h3>Dependencies</h3>
+<ac:structured-macro ac:name="code">
+  <ac:parameter ac:name="language">bash</ac:parameter>
+  <ac:plain-text-body><![CDATA[
+pip install yfinance feedparser trafilatura openai pandas openpyxl \
+            beautifulsoup4 playwright python-dotenv requests
+
+playwright install chromium   # required for Maya scraping
+]]></ac:plain-text-body>
+</ac:structured-macro>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Known Limitations</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<table>
+  <tbody>
+    <tr><th>Limitation</th><th>Root Cause</th><th>Current Impact</th><th>Planned Fix</th></tr>
+    <tr>
+      <td><strong>Maya pseudo-tickers cannot converge with technical signals</strong></td>
+      <td>Maya API returns <code>TASE{companyId}</code> IDs, not real .TA symbols. There is no official Maya→YF ticker mapping.</td>
+      <td>A company with a Maya filing AND a volume spike is treated as two different tickers. Their scores do not multiply. This is the single biggest missed-alpha source in the system.</td>
+      <td>Build a scraper for Maya company profile pages to extract TASE symbol. Estimated coverage: 80%+ of filings.</td>
+    </tr>
+    <tr>
+      <td><strong>Hebrew news matching fails ~40% of articles</strong></td>
+      <td>Hebrew word-boundary regex fails on construct forms (e.g. "בנק הפועלים" vs "הפועלים"), abbreviations, and possessive forms.</td>
+      <td>~40% of news articles produce a GENERAL ticker and contribute nothing to convergence scoring. Significant signal loss for small-cap tickers that rarely appear in global news.</td>
+      <td>Replace regex with LLM-based Hebrew NER. GPT can handle construct forms and abbreviations reliably.</td>
+    </tr>
+    <tr>
+      <td><strong>Ticker validation is slow on first run</strong></td>
+      <td>Max 50 Yahoo Finance validations per cycle to avoid rate limiting.</td>
+      <td>DiscoveryAgent misses uncovered tickers until they are validated. Full coverage takes ~10 cycles (2.5 hours).</td>
+      <td>Acceptable tradeoff. Validation cache has a 30-day TTL so rebuild is rare.</td>
+    </tr>
+    <tr>
+      <td><strong>Google News rate limiting (HTTP 429)</strong></td>
+      <td>Google throttles RSS scraping at scale.</td>
+      <td>Web news enrichment skipped for that cycle. Agent continues without it. Scores are lower but not incorrect.</td>
+      <td>0.3s sleep between queries reduces frequency. No API key alternative available for free.</td>
+    </tr>
+    <tr>
+      <td><strong>User alert subscriptions not wired in</strong></td>
+      <td><code>bot/user_alerts.py</code> is partially implemented but not integrated into the main pipeline.</td>
+      <td>Users cannot currently set personal price alerts via Telegram.</td>
+      <td>Planned feature — requires checking alert conditions after each cycle before sending.</td>
+    </tr>
+    <tr>
+      <td><strong>Single Telegram chat only</strong></td>
+      <td>CHAT_ID is a single hardcoded value from config.</td>
+      <td>Cannot serve multiple users or teams from the same bot instance.</td>
+      <td>Requires per-user settings dict, authorization middleware, and broadcasting logic.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>What Still Needs to Be Built</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<table>
+  <tbody>
+    <tr><th>Feature</th><th>Description</th><th>Priority</th><th>Estimated Effort</th></tr>
+    <tr><td><strong>Maya → .TA ticker mapping</strong></td><td>Scrape Maya company profile pages to build companyId → .TA symbol mapping. Would allow filing signals and technical signals to converge — the single highest-value improvement possible.</td><td>🔴 High</td><td>2–3 days</td></tr>
+    <tr><td><strong>Hebrew NER for news matching</strong></td><td>Replace regex matching with LLM-based Hebrew entity extraction. Would cut GENERAL ticker rate from ~40% to near zero, dramatically improving small-cap coverage.</td><td>🔴 High</td><td>1–2 days</td></tr>
+    <tr><td><strong>User alert subscriptions</strong></td><td>Wire bot/user_alerts.py into main pipeline. Users set personal price/event triggers via Telegram. Check conditions after each cycle.</td><td>🟡 Medium</td><td>1 day</td></tr>
+    <tr><td><strong>Backtesting framework</strong></td><td>Replay historical cycles against Yahoo Finance price data. Measure signal-to-next-day-return accuracy. Empirically tune BASE_SCORES and MULTIPLIERS.</td><td>🟡 Medium</td><td>3–5 days</td></tr>
+    <tr><td><strong>TASE valuation module</strong></td><td>Port the US StockManagement P/E / DCF valuation pipeline to TASE stocks. Would add a fundamental valuation layer to the LLM analysis.</td><td>🟡 Medium</td><td>2–3 days</td></tr>
+    <tr><td><strong>Multi-user Telegram</strong></td><td>Per-user settings, authorization whitelist, broadcasting. Required to share the bot with more than one person.</td><td>🟢 Low</td><td>2–3 days</td></tr>
+    <tr><td><strong>Chrome news integration</strong></td><td>Finish and wire in sources/chrome_news.py for sites that block RSS scraping (TheMarker, some Globes pages).</td><td>🟢 Low</td><td>1 day</td></tr>
+    <tr><td><strong>Streamlit dashboard</strong></td><td>Web UI showing live scores, weekly picks, memory notebook, and signal history. Would make the system accessible to users without Telegram.</td><td>🟢 Low</td><td>3–4 days</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>Quick Reference — Important Tickers</h2>
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<h3>Dual-Listed Stocks (leading indicators for TASE open)</h3>
+<table>
+  <tbody>
+    <tr><th>US Ticker</th><th>TASE Ticker</th><th>Company</th><th>Sector</th></tr>
+    <tr><td>TEVA</td><td>TEVA.TA</td><td>Teva Pharmaceutical</td><td>Pharma</td></tr>
+    <tr><td>NICE</td><td>NICE.TA</td><td>NICE Systems</td><td>Tech (CX AI)</td></tr>
+    <tr><td>ICL</td><td>ICL.TA</td><td>ICL Group</td><td>Chemicals / Pharma</td></tr>
+    <tr><td>ESLT</td><td>ESLT.TA</td><td>Elbit Systems</td><td>Defense</td></tr>
+    <tr><td>NVMI</td><td>NVMI.TA</td><td>Nova Ltd</td><td>Semiconductors</td></tr>
+    <tr><td>TSEM</td><td>TSEM.TA</td><td>Tower Semiconductor</td><td>Semiconductors</td></tr>
+    <tr><td>CAMT</td><td>CAMT.TA</td><td>Camtek</td><td>Semiconductors</td></tr>
+    <tr><td>AUDC</td><td>AUDC.TA</td><td>AudioCodes</td><td>Tech (Voice networking)</td></tr>
+    <tr><td>ALLT</td><td>ALLT.TA</td><td>Allot Communications</td><td>Tech (Network intelligence)</td></tr>
+    <tr><td>KMDA</td><td>KMDA.TA</td><td>Kamada</td><td>Pharma (Plasma proteins)</td></tr>
+    <tr><td>EVGN</td><td>EVGN.TA</td><td>Evogene</td><td>Ag-biotech</td></tr>
+    <tr><td>CGEN</td><td>CGEN.TA</td><td>Compugen</td><td>Drug discovery</td></tr>
+    <tr><td>BWAY</td><td>BRND.TA</td><td>Brainsway</td><td>Medical devices</td></tr>
+  </tbody>
+</table>
+
+<h3>Common Gotchas</h3>
+<table>
+  <tbody>
+    <tr><th>Wrong</th><th>Correct</th><th>Note</th></tr>
+    <tr><td>^TA35.TA</td><td>^TA125.TA</td><td>TA-35 index ticker is invalid on Yahoo Finance. Use TA-125.</td></tr>
+    <tr><td>CLAL.TA</td><td>CLIS.TA</td><td>Clal Insurance is CLIS.TA, not CLAL.TA</td></tr>
+    <tr><td>SPNS.TA / SMTC.TA</td><td>—</td><td>Sapiens International — delisted December 2025</td></tr>
+    <tr><td>MGIC.TA</td><td>—</td><td>Magic Software — delisted February 2026</td></tr>
+  </tbody>
+</table>

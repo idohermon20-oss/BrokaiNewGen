@@ -1,0 +1,30 @@
+{
+  "alerts": [
+    {
+      "alert_id": "30c5fd39",
+      "chat_id": "12345",
+      "alert_type": "earnings",
+      "ticker": "TEVA",
+      "company_name": "Teva",
+      "created_at": "2026-03-27T10:31:28.604379+00:00",
+      "seen_signal_keys": [
+        "TEVA_earnings_2026-03-30",
+        "TEVA_earnings_2026-03-31"
+      ],
+      "description": "Earnings report published — TEVA"
+    },
+    {
+      "alert_id": "f8778c33",
+      "chat_id": "12345",
+      "alert_type": "earnings",
+      "ticker": "TEVA",
+      "company_name": "Teva",
+      "created_at": "2026-03-27T10:31:59.324218+00:00",
+      "seen_signal_keys": [
+        "TEVA_earnings_2026-03-30",
+        "TEVA_earnings_2026-03-31"
+      ],
+      "description": "Earnings report published — TEVA"
+    }
+  ]
+}
