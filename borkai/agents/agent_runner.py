@@ -147,15 +147,33 @@ RULES:
 - If you genuinely cannot form a view, state why explicitly in key_unknowns
 - full_reasoning should read like an analyst memo section, not a chatbot answer"""
 
-    raw = call_llm(
-        client=client,
-        model=config.models.agent,
-        system=_SYSTEM,
-        prompt=prompt,
-        max_tokens=8192,
-        expect_json=True,
-    )
-    data = parse_json_response(raw)
+    for _attempt in range(2):
+        raw = call_llm(
+            client=client,
+            model=config.models.agent,
+            system=_SYSTEM,
+            prompt=prompt,
+            max_tokens=8192,
+            expect_json=True,
+        )
+        try:
+            data = parse_json_response(raw)
+            break
+        except ValueError:
+            if _attempt == 0:
+                # Retry with a reminder to be concise
+                prompt = prompt + "\n\nIMPORTANT: Return ONLY a valid JSON object. Keep evidence to 3 items max. Be concise."
+            else:
+                # Give up — return a minimal stub so the pipeline doesn't crash
+                data = {
+                    "key_finding": "Analysis could not be completed due to a response formatting error.",
+                    "stance": "neutral",
+                    "confidence": "low",
+                    "evidence": [],
+                    "key_unknowns": ["LLM response was malformed — retry recommended."],
+                    "flags_for_committee": ["This agent's output is unreliable — treat as missing."],
+                    "full_reasoning": "Response parsing failed after 2 attempts.",
+                }
 
     # Parse evidence items
     evidence: List[EvidenceItem] = []
