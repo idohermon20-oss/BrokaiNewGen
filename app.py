@@ -1244,7 +1244,7 @@ PIPELINE_STAGES = [
 
 def tab_analyze():
     st.markdown('<div style="font-family:var(--condensed);font-size:1.4rem;font-weight:900;letter-spacing:0.12em;text-transform:uppercase;margin:12px 0 4px">Stock Analysis</div>', unsafe_allow_html=True)
-    st.markdown('<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px;font-family:var(--mono)">Full 12-stage AI analysis pipeline — Israeli TASE stocks</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px;font-family:var(--mono)">8-stage AI analysis pipeline — Israeli TASE stocks</div>', unsafe_allow_html=True)
 
     prefill = st.session_state.pop("analyze_ticker", "")
 
@@ -1272,42 +1272,52 @@ def tab_analyze():
         ticker = ticker_raw.strip().upper().replace(".TA", "")
         st.session_state.pop("analysis_result", None)
 
-        # Terminal-style pipeline display
+        # Terminal header (static)
         st.markdown(f"""
-        <div class="bk-terminal">
+        <div class="bk-terminal" style="margin-bottom:0;border-bottom:none;border-radius:4px 4px 0 0">
           <div class="bk-terminal-header">
             <span class="bk-dot bk-dot-red"></span>
             <span class="bk-dot bk-dot-amber"></span>
             <span class="bk-dot bk-dot-green"></span>
-            <span class="bk-term-title">BORKAI ANALYSIS ENGINE — {ticker}.TA · {HORIZON_SHORT.get(horizon, horizon.upper())}</span>
+            <span class="bk-term-title">BORKAI ENGINE — {ticker} · {HORIZON_SHORT.get(horizon, horizon.upper())} · {market.upper()}</span>
           </div>
           <span class="bk-term-prompt">$</span> borkai analyze --ticker {ticker} --horizon {horizon} --market {market}
         </div>
         """, unsafe_allow_html=True)
 
-        terminal_placeholder = st.empty()
         progress_bar = st.progress(0.0)
+        log_placeholder = st.empty()
         completed_stages = []
 
-        def on_progress(stage: int, label: str, detail: str):
-            pct = min(stage / 12, 1.0)
-            progress_bar.progress(pct)
-            completed_stages.append((stage, label, detail))
+        def _render_log(final: bool = False, error: str = ""):
             lines = []
             for s, l, d in completed_stages:
-                lines.append(f'<span class="bk-term-line-ok">✓ [{s:02d}]</span> <span style="color:#c9d1d9;font-weight:600">{l}</span> <span style="color:var(--text-dim)">{d}</span>')
-            lines.append(f'<span class="bk-term-line-wait">⟳</span> <span style="color:var(--amber)">Processing…</span>')
-            terminal_placeholder.markdown(f"""
-            <div class="bk-terminal">
-              <div class="bk-terminal-header">
-                <span class="bk-dot bk-dot-red"></span>
-                <span class="bk-dot bk-dot-amber"></span>
-                <span class="bk-dot bk-dot-green"></span>
-                <span class="bk-term-title">BORKAI · {ticker} · {stage}/12</span>
-              </div>
-              {"<br>".join(lines)}
-            </div>
-            """, unsafe_allow_html=True)
+                detail_html = f'  <span style="color:var(--text-dim)">{d}</span>' if d else ""
+                lines.append(
+                    f'<span style="color:#39d353">✓</span> '
+                    f'<span style="color:var(--text-dim);font-family:var(--mono)">[{s:02d}/08]</span> '
+                    f'<span style="color:#c9d1d9">{l}</span>{detail_html}'
+                )
+            if error:
+                lines.append(f'<span style="color:var(--red)">✗ {error}</span>')
+            elif not final:
+                lines.append(f'<span style="color:var(--amber)">⟳  running…</span>')
+            else:
+                lines.append(f'<span style="color:#39d353;font-weight:700">✓ COMPLETE</span>')
+
+            log_placeholder.markdown(
+                '<div class="bk-terminal" style="border-top:none;border-radius:0 0 4px 4px;min-height:80px">'
+                + "<br>".join(lines)
+                + "</div>",
+                unsafe_allow_html=True,
+            )
+
+        def on_progress(stage: int, label: str, detail: str):
+            completed_stages.append((stage, label, detail))
+            progress_bar.progress(min(stage / 8, 1.0))
+            _render_log()
+
+        _render_log()  # show empty terminal immediately
 
         try:
             from main import analyze
@@ -1317,36 +1327,14 @@ def tab_analyze():
             )
             st.session_state["analysis_result"] = (report_he, result)
             progress_bar.progress(1.0)
-
-            all_lines = [
-                f'<span class="bk-term-line-ok">✓ [{s:02d}]</span> <span style="color:#c9d1d9;font-weight:600">{l}</span> <span style="color:var(--text-dim)">{d}</span>'
-                for s, l, d in completed_stages
-            ]
-            all_lines.append(f'<span style="color:var(--green);font-weight:700">✓ ANALYSIS COMPLETE — {ticker}.TA</span>')
-            terminal_placeholder.markdown(f"""
-            <div class="bk-terminal">
-              <div class="bk-terminal-header">
-                <span class="bk-dot bk-dot-red"></span>
-                <span class="bk-dot bk-dot-amber"></span>
-                <span class="bk-dot bk-dot-green"></span>
-                <span class="bk-term-title">BORKAI · {ticker} · DONE</span>
-              </div>
-              {"<br>".join(all_lines)}
-            </div>
-            """, unsafe_allow_html=True)
+            _render_log(final=True)
         except Exception as e:
-            terminal_placeholder.markdown(f"""
-            <div class="bk-terminal">
-              <div class="bk-terminal-header">
-                <span class="bk-dot bk-dot-red"></span>
-                <span class="bk-dot bk-dot-amber"></span>
-                <span class="bk-dot bk-dot-green"></span>
-                <span class="bk-term-title">ERROR</span>
-              </div>
-              <span style="color:var(--red)">✗ ANALYSIS FAILED: {e}</span>
-            </div>
-            """, unsafe_allow_html=True)
-            st.error(f"Error: {e}"); return
+            import traceback
+            _render_log(error=str(e))
+            st.error(f"Analysis failed: {e}")
+            with st.expander("Traceback"):
+                st.code(traceback.format_exc())
+            return
 
     if "analysis_result" in st.session_state:
         report_he, result = st.session_state["analysis_result"]
