@@ -190,11 +190,11 @@ def _load_tase_tickers():
 
 
 def _list_report_files():
-    """Return individual Hebrew report .md files from the reports/ dir."""
+    """Return individual report .md files from the reports/ dir (newest first)."""
     rdir = Path(REPORTS_DIR)
     if not rdir.exists():
         return []
-    files = sorted(rdir.glob("report_*_he.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+    files = sorted(rdir.glob("report_*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
     return files
 
 
@@ -388,7 +388,7 @@ def tab_analyze():
 
         try:
             from main import analyze
-            report_en, report_he, result = analyze(
+            report_en, result = analyze(
                 ticker=ticker,
                 time_horizon=horizon,
                 market=market,
@@ -399,7 +399,7 @@ def tab_analyze():
                 "ticker": ticker,
                 "horizon": horizon,
                 "market": market,
-                "report_he": report_he,
+                "report": report_en,
                 "result": result,
             }
             pbar.progress(1.0)
@@ -415,7 +415,7 @@ def tab_analyze():
     # ── Show result ───────────────────────────────────────────────────────────
     if "last_result" in st.session_state:
         data = st.session_state["last_result"]
-        report_he = data["report_he"]
+        report_en = data["report"]
         result = data["result"]
         d = result.decision
 
@@ -430,7 +430,7 @@ def tab_analyze():
 
         name  = getattr(result.profile, "company_name", "")
         today = getattr(result, "analysis_date", str(date.today()))
-        fname = f"borkai_{data['ticker']}_{data['horizon']}_{today}_he.md"
+        fname = f"borkai_{data['ticker']}_{data['horizon']}_{today}.md"
 
         col_info, col_dl = st.columns([4, 1])
         with col_info:
@@ -449,7 +449,7 @@ def tab_analyze():
         with col_dl:
             st.download_button(
                 "Download Report",
-                data=report_he.encode("utf-8"),
+                data=report_en.encode("utf-8"),
                 file_name=fname,
                 mime="text/markdown",
                 use_container_width=True,
@@ -458,10 +458,8 @@ def tab_analyze():
 
         st.divider()
 
-        with st.expander("Full Report (Hebrew)", expanded=True):
-            st.markdown('<div class="bk-report">', unsafe_allow_html=True)
-            st.markdown(report_he)
-            st.markdown("</div>", unsafe_allow_html=True)
+        with st.expander("Full Report", expanded=True):
+            st.markdown(report_en)
 
 
 # ── Tab: Reports ──────────────────────────────────────────────────────────────
@@ -520,9 +518,7 @@ def tab_reports():
                 key="dl_saved_btn",
             )
         with st.expander("Report", expanded=True):
-            st.markdown('<div class="bk-report">', unsafe_allow_html=True)
             st.markdown(content)
-            st.markdown("</div>", unsafe_allow_html=True)
 
 
 # ── Tab: Maya Filings ─────────────────────────────────────────────────────────

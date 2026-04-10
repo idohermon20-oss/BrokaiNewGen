@@ -272,32 +272,28 @@ def analyze(
     # Generate English report
     report_en = generate_report(result)
 
-    # Always translate to Hebrew
-    print("\nמתרגם לעברית...")
-    report_he = translate_to_hebrew(report_en, client, config)
-
-    # Save — Hebrew only
+    # Save English report
     saved_path = None
     if save_report:
         os.makedirs(output_dir, exist_ok=True)
-        filename_he = os.path.join(
+        filename = os.path.join(
             output_dir,
-            f"report_{ticker.replace('.', '_')}_{time_horizon}_{date.today()}_he.md"
+            f"report_{ticker.replace('.', '_')}_{time_horizon}_{date.today()}.md"
         )
-        with open(filename_he, "w", encoding="utf-8") as f:
-            f.write(report_he)
-        print(f"דוח נשמר: {filename_he}")
-        saved_path = filename_he
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(report_en)
+        print(f"Report saved: {filename}")
+        saved_path = filename
 
     print(f"\n{'='*60}")
-    print(f"  פסיקה: {decision.direction.upper()} | {decision.conviction.upper()} | ציון {decision.return_score}/100")
+    print(f"  Decision: {decision.direction.upper()} | {decision.conviction.upper()} | Score {decision.return_score}/100")
     print(f"{'='*60}\n")
 
     # Telegram notification (optional — only fires if TELEGRAM_BOT_TOKEN is set in .env)
     try:
         from borkai.utils.telegram import send_report_summary
         highlights_lines = []
-        for line in report_he.split("\n"):
+        for line in report_en.split("\n"):
             if line.startswith("- ") and any(e in line for e in ["🟢", "🔴", "⚪"]):
                 highlights_lines.append(line)
             if len(highlights_lines) >= 5:
@@ -318,7 +314,7 @@ def analyze(
     except Exception:
         pass
 
-    return report_en, report_he, result
+    return report_en, result
 
 
 def main():
@@ -335,8 +331,8 @@ def main():
     horizon = sys.argv[2]
     market = sys.argv[3] if len(sys.argv) > 3 else "us"
 
-    _, report_he, _ = analyze(ticker, horizon, market=market)
-    print(report_he)
+    report_en, _ = analyze(ticker, horizon, market=market)
+    print(report_en)
 
 
 if __name__ == "__main__":
