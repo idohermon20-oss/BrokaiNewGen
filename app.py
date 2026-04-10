@@ -983,10 +983,11 @@ def tab_maya_reports():
     filter_col1, filter_col2 = st.columns(2)
     with filter_col1:
         impact_filter = st.selectbox("Impact", options=["all", "bullish", "bearish", "neutral"],
+            key="maya_impact_filter",
             format_func=lambda x: {"all": "All", "bullish": "Bullish", "bearish": "Bearish", "neutral": "Neutral"}[x])
     with filter_col2:
         all_sectors = sorted(set(r.sector for r in maya_cache if r.sector))
-        sector_filter = st.multiselect("Sector", options=all_sectors)
+        sector_filter = st.multiselect("Sector", options=all_sectors, key="maya_sector_filter")
 
     filtered = maya_cache
     if impact_filter != "all":
@@ -1240,21 +1241,27 @@ def tab_analyze():
     st.markdown('<div style="font-family:var(--condensed);font-size:1.4rem;font-weight:900;letter-spacing:0.12em;text-transform:uppercase;margin:12px 0 4px">Stock Analysis</div>', unsafe_allow_html=True)
     st.markdown('<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px;font-family:var(--mono)">Full AI analysis pipeline — data, analysts, committee, report</div>', unsafe_allow_html=True)
 
-    prefill = st.session_state.pop("analyze_ticker", "")
+    # Use get+delete pattern instead of pop to avoid state modification issues
+    prefill = st.session_state.get("analyze_ticker", "")
+    if "analyze_ticker" in st.session_state:
+        del st.session_state["analyze_ticker"]
 
     col1, col2, col3, col4 = st.columns([2, 2, 1, 1])
     with col1:
         ticker_raw = st.text_input("Ticker", value=prefill, placeholder="ESLT / BEZQ / TEVA …",
+            key="analyze_ticker_input",
             help="Without .TA suffix — added automatically for IL market")
     with col2:
         horizon = st.selectbox("Horizon", options=["short", "medium", "long"],
+            key="analyze_horizon",
             format_func=lambda x: HORIZON_LABELS[x])
     with col3:
         market = st.selectbox("Market", options=["il", "us"],
+            key="analyze_market",
             format_func=lambda x: {"il": "🇮🇱 TASE", "us": "🇺🇸 US"}[x])
     with col4:
         st.markdown("<div style='height:28px'></div>", unsafe_allow_html=True)
-        run_btn = st.button("▶ Analyze", type="primary", use_container_width=True)
+        run_btn = st.button("▶ Analyze", key="analyze_run_btn", type="primary", use_container_width=True)
 
     if run_btn:
         if not ticker_raw.strip():
@@ -1462,4 +1469,9 @@ TAB_FUNCS  = [tab_overview, tab_maya_reports, tab_hot_stocks, tab_scanner, tab_a
 tabs = st.tabs(TAB_LABELS)
 for i, (tab, fn) in enumerate(zip(tabs, TAB_FUNCS)):
     with tab:
-        fn()
+        try:
+            fn()
+        except Exception as _tab_err:
+            import traceback as _tb
+            st.error(f"**Error in {TAB_LABELS[i]} tab:** {_tab_err}")
+            st.code(_tb.format_exc())
