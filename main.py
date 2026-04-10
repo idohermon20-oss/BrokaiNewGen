@@ -197,9 +197,10 @@ def analyze(
 
     # Stage 2b: Fetch company-specific Maya/TASE reports
     try:
-        from borkai.data.maya_fetcher import fetch_company_reports, assess_company_report_impacts
-        print(f"      Fetching Maya reports for {stock_data.company_name}...")
-        maya_reports = fetch_company_reports(stock_data.company_name, ticker, max_items=8)
+        from borkai.data.maya_fetcher import fetch_company_reports, assess_company_report_impacts, get_hebrew_name
+        name_he = get_hebrew_name(ticker)
+        print(f"      Fetching Maya reports for {stock_data.company_name}" + (f" ({name_he})" if name_he else "") + "...")
+        maya_reports = fetch_company_reports(stock_data.company_name, ticker, max_items=8, name_he=name_he)
         if maya_reports:
             maya_reports = assess_company_report_impacts(
                 maya_reports, ticker, stock_data.company_name, client, config
