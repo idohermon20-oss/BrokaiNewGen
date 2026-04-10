@@ -4,6 +4,7 @@ Run with:  streamlit run app.py
 """
 import streamlit as st
 import os
+import sys
 import json
 import re
 import threading
@@ -11,8 +12,13 @@ from datetime import date, datetime
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env before anything else so OPENAI_API_KEY is available
-load_dotenv()
+# Load .env using absolute path so it works regardless of Streamlit's CWD
+_APP_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(_APP_DIR, ".env"))
+
+# Ensure project root is on sys.path so `from main import analyze` works
+if _APP_DIR not in sys.path:
+    sys.path.insert(0, _APP_DIR)
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -1230,32 +1236,16 @@ def _render_ranking_table(ranking: list, scan_date: str, horizon: str):
 
 # ── Tab: Analyze ──────────────────────────────────────────────────────────────
 
-PIPELINE_STAGES = [
-    (1, "Market Data",       "Fetching price history, financials, technicals, macro context"),
-    (2, "News & Articles",   "Searching DDG + Google RSS for recent news"),
-    (3, "Maya Filings",      "Scanning TASE regulatory disclosures"),
-    (4, "Sector News",       "Gathering sector-level market context"),
-    (5, "Stock Profile",     "Building situational analysis and phase assessment"),
-    (6, "Relevance Map",     "Defining key investment questions for this stock"),
-    (7, "Agent Team",        "Designing specialist analyst panel"),
-    (8, "Analyst Panel",     "Running 5–10 independent analysts in parallel"),
-    (9, "Synthesis",         "Finding agreements and disagreements across analysts"),
-    (10, "Committee Verdict","Issuing final investment recommendation"),
-    (11, "Report",           "Assembling structured research report"),
-    (12, "Translation",      "Translating report to Hebrew"),
-]
-
-
 def tab_analyze():
     st.markdown('<div style="font-family:var(--condensed);font-size:1.4rem;font-weight:900;letter-spacing:0.12em;text-transform:uppercase;margin:12px 0 4px">Stock Analysis</div>', unsafe_allow_html=True)
-    st.markdown('<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px;font-family:var(--mono)">8-stage AI analysis pipeline — Israeli TASE stocks</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px;font-family:var(--mono)">Full AI analysis pipeline — data, analysts, committee, report</div>', unsafe_allow_html=True)
 
     prefill = st.session_state.pop("analyze_ticker", "")
 
     col1, col2, col3, col4 = st.columns([2, 2, 1, 1])
     with col1:
         ticker_raw = st.text_input("Ticker", value=prefill, placeholder="ESLT / BEZQ / TEVA …",
-            help="Without .TA suffix — added automatically")
+            help="Without .TA suffix — added automatically for IL market")
     with col2:
         horizon = st.selectbox("Horizon", options=["short", "medium", "long"],
             format_func=lambda x: HORIZON_LABELS[x])
@@ -1269,9 +1259,16 @@ def tab_analyze():
     if run_btn:
         if not ticker_raw.strip():
             st.error("Enter a ticker symbol."); return
+
+        # Check API key early
         openai_key = os.environ.get("OPENAI_API_KEY", "")
         if not openai_key:
-            st.error("OPENAI_API_KEY not set."); return
+            st.error(
+                "**OPENAI_API_KEY not found.**\n\n"
+                "Create a `.env` file in the project root with:\n"
+                "```\nOPENAI_API_KEY=sk-...\n```"
+            )
+            return
 
         ticker = ticker_raw.strip().upper().replace(".TA", "")
         st.session_state.pop("analysis_result", None)
@@ -1291,63 +1288,71 @@ def tab_analyze():
 
         progress_bar = st.progress(0.0)
         log_placeholder = st.empty()
-        completed_stages = []
+        completed_stages: list = []
 
         def _render_log(final: bool = False, error: str = ""):
-            lines = []
+            lines: list = []
             for s, l, d in completed_stages:
-                detail_html = f'  <span style="color:var(--text-dim)">{d}</span>' if d else ""
+                detail_part = ""
+                if d:
+                    detail_part = f'  <span style="color:var(--text-dim)">{d}</span>'
                 lines.append(
                     f'<span style="color:#39d353">✓</span> '
                     f'<span style="color:var(--text-dim);font-family:var(--mono)">[{s:02d}/08]</span> '
-                    f'<span style="color:#c9d1d9">{l}</span>{detail_html}'
+                    f'<span style="color:#c9d1d9">{l}</span>{detail_part}'
                 )
             if error:
-                lines.append(f'<span style="color:var(--red)">✗ {error}</span>')
+                lines.append(f'<span style="color:#f85149">✗ {error}</span>')
             elif not final:
-                lines.append(f'<span style="color:var(--amber)">⟳  running…</span>')
+                lines.append(f'<span style="color:#e3a00a">⟳  running…</span>')
             else:
                 lines.append(f'<span style="color:#39d353;font-weight:700">✓ COMPLETE</span>')
 
-            log_placeholder.markdown(
+            html = (
                 '<div class="bk-terminal" style="border-top:none;border-radius:0 0 4px 4px;min-height:80px">'
                 + "<br>".join(lines)
-                + "</div>",
-                unsafe_allow_html=True,
+                + "</div>"
             )
+            log_placeholder.markdown(html, unsafe_allow_html=True)
 
         def on_progress(stage: int, label: str, detail: str):
             completed_stages.append((stage, label, detail))
             progress_bar.progress(min(stage / 8, 1.0))
             _render_log()
 
-        _render_log()  # show empty terminal immediately
+        _render_log()  # show empty terminal with "running…"
 
         try:
-            from main import analyze
-            report_en, report_he, result = analyze(
-                ticker=ticker, time_horizon=horizon, market=market,
-                save_report=True, progress_callback=on_progress,
+            from main import analyze as run_analysis
+            report_en, report_he, result = run_analysis(
+                ticker=ticker,
+                time_horizon=horizon,
+                market=market,
+                save_report=True,
+                progress_callback=on_progress,
             )
             st.session_state["analysis_result"] = (report_he, result)
             progress_bar.progress(1.0)
             _render_log(final=True)
-        except Exception as e:
-            import traceback
-            _render_log(error=str(e))
-            st.error(f"Analysis failed: {e}")
-            with st.expander("Traceback"):
-                st.code(traceback.format_exc())
+        except Exception as exc:
+            import traceback as tb
+            _render_log(error=str(exc))
+            st.error(f"Analysis failed: {exc}")
+            with st.expander("Full traceback"):
+                st.code(tb.format_exc())
             return
 
+    # ── Display stored result ────────────────────────────────────────────────
     if "analysis_result" in st.session_state:
         report_he, result = st.session_state["analysis_result"]
         d = result.decision
 
         st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
-        render_verdict_card(rec=d.invest_recommendation, score=d.return_score,
-                            direction=d.direction, conviction=d.conviction,
-                            rationale=d.invest_rationale)
+        render_verdict_card(
+            rec=d.invest_recommendation, score=d.return_score,
+            direction=d.direction, conviction=d.conviction,
+            rationale=d.invest_rationale,
+        )
 
         # Info row
         name  = result.profile.company_name if hasattr(result, "profile") else ""
