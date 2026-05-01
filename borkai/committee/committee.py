@@ -11,6 +11,8 @@ from dataclasses import dataclass, field
 from typing import List
 import openai
 
+from typing import Optional
+
 from ..config import Config
 from ..agents.base_agent import AgentOutput
 from ..orchestrator.profiler import StockProfile
@@ -18,8 +20,82 @@ from ..orchestrator.relevance_mapper import RelevanceMap
 from ..committee.synthesizer import SynthesisResult
 from ..utils.llm import call_llm, parse_json_response
 
-VALID_DIRECTIONS = {"up", "down", "mixed"}
+VALID_DIRECTIONS = {"up", "conditional_up", "down", "mixed"}
 VALID_CONVICTION = {"low", "moderate", "high"}
+
+# Score thresholds that drive direction enforcement
+_SCORE_BULLISH          = 70   # score >= this -> must be "up" or "conditional_up"
+_SCORE_CONDITIONAL_LOW  = 55   # 55-69 -> "up" or "conditional_up", not "down"
+_SCORE_MIXED_LOW        = 40   # 40-54 -> "mixed" expected; "down" only if analyst lean supports it
+                                # < 40  -> "down"
+
+
+def _enforce_direction(
+    direction: str,
+    invest_recommendation: str,
+    return_score: int,
+    conviction: str,
+) -> tuple:
+    """
+    Enforce direction/recommendation consistency with the computed score.
+
+    Rules (per spec):
+      Score >= 70  -> "up"              invest can be YES or CONDITIONAL
+      Score 55-69  -> "up" or "conditional_up"   invest can be YES or CONDITIONAL
+      Score 40-54  -> "mixed" preferred   invest usually CONDITIONAL
+      Score < 40   -> "down"             invest NO
+
+    Risks do NOT create "mixed" — they reduce conviction.
+    "mixed" is reserved for genuine two-sided uncertainty (strong bull AND bear signals).
+    A high score with risks = "conditional_up", not "mixed".
+
+    Returns (corrected_direction, corrected_recommendation, correction_note)
+    """
+    note = ""
+    rec  = invest_recommendation.upper() if invest_recommendation else "CONDITIONAL"
+
+    if return_score >= _SCORE_BULLISH:
+        if direction not in ("up", "conditional_up"):
+            note = (
+                f"Direction auto-corrected: score {return_score} >= {_SCORE_BULLISH} "
+                f"requires bullish direction (was: {direction})"
+            )
+            direction = "up"
+        if rec == "NO":
+            rec  = "CONDITIONAL"
+            note += " | Recommendation lifted to CONDITIONAL (score too high for NO)"
+
+    elif return_score >= _SCORE_CONDITIONAL_LOW:
+        if direction == "down":
+            note = (
+                f"Direction auto-corrected: score {return_score} ({_SCORE_CONDITIONAL_LOW}-{_SCORE_BULLISH-1}) "
+                f"is inconsistent with BEARISH (was: {direction})"
+            )
+            direction = "conditional_up"
+        elif direction == "mixed":
+            # Prefer conditional_up when score is clearly positive
+            if return_score >= 62:
+                direction = "conditional_up"
+                note = (
+                    f"Direction refined: score {return_score} with mixed signals -> conditional_up "
+                    f"(risks acknowledged but dominant signal is positive)"
+                )
+        if rec == "NO":
+            rec  = "CONDITIONAL"
+            note += " | Recommendation lifted to CONDITIONAL (score too high for NO)"
+
+    elif return_score < _SCORE_MIXED_LOW:
+        if direction in ("up", "conditional_up"):
+            note = (
+                f"Direction auto-corrected: score {return_score} < {_SCORE_MIXED_LOW} "
+                f"is inconsistent with BULLISH (was: {direction})"
+            )
+            direction = "down"
+        if rec == "YES":
+            rec  = "CONDITIONAL"
+            note += " | Recommendation lowered to CONDITIONAL (score too low for YES)"
+
+    return direction, rec, note
 
 
 @dataclass
@@ -59,6 +135,18 @@ class CommitteeDecision:
     invest_recommendation: str   # YES | NO | CONDITIONAL
     invest_rationale: str        # One clear sentence explaining the recommendation
     return_score: int            # 0-100 composite expected return score for ranking
+
+    # ── Enhanced signal fields ─────────────────────────────────────────────────
+    risk_score: int = 5          # 1-10 composite risk level (1=very low, 10=very high)
+    top_risks: list = None       # Top 3 risks by materiality
+    market_regime: str = ""      # risk-on / risk-off / neutral + one sentence on impact
+    signal_summary: str = ""     # Formatted signal list: "+ Revenue ↑\n- Valuation ↓\nNet: Bullish"
+    relative_strength: str = ""  # Outperforming / underperforming vs sector and market
+    consistency_note: str = ""   # Are signals consistent? Call out any contradictions.
+
+    def __post_init__(self):
+        if self.top_risks is None:
+            self.top_risks = []
 
 
 _SYSTEM = """You are chairing an investment committee at a top-tier investment firm.
@@ -101,9 +189,28 @@ def _format_agent_summaries(outputs: List[AgentOutput]) -> str:
     lines = []
     for out in outputs:
         lines.append(
-            f"• {out.agent_name}: {out.stance.upper()} ({out.confidence} confidence) — {out.key_finding[:200]}"
+            f"• {out.agent_name}: {out.stance.upper()} ({out.confidence} confidence) — {out.key_finding}"
         )
     return "\n".join(lines)
+
+
+def _parse_return_score(raw_value, computed_score: Optional[int]) -> int:
+    """
+    Parse the LLM's return_score and enforce the ±5 constraint when a
+    computed_score was provided by the scoring engine.
+    """
+    try:
+        llm_score = int(raw_value) if isinstance(raw_value, (int, float)) else 50
+    except (TypeError, ValueError):
+        llm_score = 50
+
+    llm_score = max(0, min(100, llm_score))
+
+    if computed_score is not None:
+        # Hard clamp: LLM may only move the score ±5 from the system-computed value
+        llm_score = max(computed_score - 5, min(computed_score + 5, llm_score))
+
+    return llm_score
 
 
 def run_investment_committee(
@@ -113,6 +220,7 @@ def run_investment_committee(
     relevance_map: RelevanceMap,
     client: openai.OpenAI,
     config: Config,
+    computed_score: Optional[int] = None,
 ) -> CommitteeDecision:
     """
     Run the investment committee and produce the final decision.
@@ -121,10 +229,22 @@ def run_investment_committee(
     agent_summaries = _format_agent_summaries(outputs)
     key_questions = "\n".join(f"  {i+1}. {q}" for i, q in enumerate(relevance_map.key_questions))
 
+    # Build the score-validation block
+    if computed_score is not None:
+        score_block = (
+            f"\nCOMPUTED SCORE (system-calculated, do NOT invent a new number):\n"
+            f"  Raw score: {computed_score}/100\n"
+            f"  Your job: validate this score and optionally adjust by at most ±5 points.\n"
+            f"  Set return_score = {computed_score} ± 5 only. Justify any adjustment in conviction_rationale.\n"
+        )
+    else:
+        score_block = ""
+
     prompt = f"""{config.market_context}
 Investment Committee for: {profile.ticker} ({profile.company_name})
 Time horizon: {profile.time_horizon.upper()}
 Phase: {profile.phase}
+{score_block}
 
 QUESTIONS THIS ANALYSIS SET OUT TO ANSWER:
 {key_questions}
@@ -137,7 +257,7 @@ SYNTHESIS:
 
 Make the investment committee decision. Return a JSON object:
 {{
-  "direction": "<up | down | mixed>",
+  "direction": "<up | conditional_up | down | mixed — RULES BELOW>",
   "confidence_score": "<e.g. 'moderate', 'moderate-high', 'low' — be honest, not precise>",
   "conviction": "<low | moderate | high>",
   "conviction_rationale": "<Why exactly this conviction level? Reference specific agreements/disagreements/gaps>",
@@ -181,16 +301,42 @@ Make the investment committee decision. Return a JSON object:
   "invest_recommendation": "<YES | NO | CONDITIONAL — a single binary team verdict: should capital be deployed in this stock now?>",
   "invest_rationale": "<One direct sentence explaining the recommendation. Be concrete — reference the specific dominant factor that tipped the decision.>",
 
-  "return_score": <integer 0-100. Composite expected return score for this stock in the given time horizon.
-    50 = neutral/no edge. >70 = meaningfully bullish expected return. <30 = meaningfully bearish.
-    Factor in: direction, conviction, base-case probability, upside/downside asymmetry, and time-adjusted expected value.
-    Calibration guide: most stocks score 35-65. Only score >80 if conviction=high AND direction=up. Only score <20 if conviction=high AND direction=down.
-    This score is used to rank stocks against each other — be consistent and honest.>
+  "return_score": <integer 0-100. IMPORTANT: If a computed_score was provided above, you MUST stay within ±5 of that number. The system has already calculated a structured score from financial data, filings, news, technical signals, and analyst votes. Your role is to VALIDATE, not reinvent. Only adjust if you see a compelling qualitative reason the system could not capture (e.g. a binary event risk, a major geopolitical factor, a thesis-invalidating development visible in the reasoning but not in raw data). If no computed_score was provided, use: 50=neutral, >70=meaningfully bullish, <30=meaningfully bearish.>,
+
+  "risk_score": <integer 1-10. Composite risk level. 1=very low risk, 10=extremely high risk.
+    Consider: valuation risk, geopolitical exposure, execution risk, currency risk, liquidity, leverage, regulatory risk.
+    Most stocks score 3-7. Score >8 only if multiple material risks compound each other.>,
+  "top_risks": ["<top 3 specific risks ordered by materiality — be concrete, not generic>"],
+  "market_regime": "<Is the current market environment risk-on, risk-off, or neutral? One sentence on how this regime specifically affects {profile.ticker} (sector tailwinds/headwinds, currency impact, macro sensitivity).>",
+  "signal_summary": "<Compressed signal list. Format exactly as follows — one signal per line, '+' for bullish, '-' for bearish, then blank line, then 'Net: [lean]'. Example: '+ Strong earnings growth\\n+ Positive Maya filings\\n- High valuation\\n- Currency headwind\\n\\nNet: Bullish'>",
+  "relative_strength": "<Is {profile.ticker} outperforming, underperforming, or inline with its sector and the broader market? Reference specific price performance or momentum data.>",
+  "consistency_note": "<Do all signal types align? Check: financials vs price trend vs news vs filings vs analyst stances. If signals are consistent, confirm it. If there are contradictions, identify exactly what conflicts and why it matters for the investment decision.>"
 }}
+
+DIRECTION RULES (CRITICAL — follow exactly):
+  "up"             : Majority of strong signals are positive. No major contradiction.
+                     Risks exist but do NOT dominate. Score typically >= 65.
+  "conditional_up" : Positive signals dominate, but ONE meaningful risk could change the outcome.
+                     Use this — NOT "mixed" — when a high score coexists with a specific risk.
+                     Score typically 50-70. Example: strong growth + currency/regulatory risk.
+  "mixed"          : Strong signals exist on BOTH the bull AND bear side simultaneously.
+                     Genuine two-sided uncertainty where you cannot call a dominant direction.
+                     NOT a catch-all for "there are some risks". Score typically 40-60.
+  "down"           : Majority of strong signals are negative. Score typically < 45.
+
+  IMPORTANT: "mixed" means BOTH sides are strong. A positive dominant signal with risks =
+  "conditional_up". Do NOT use "mixed" just because risks exist.
+
+SCORE ALIGNMENT (direction must be consistent with return_score):
+  Score >= 70   -> direction MUST be "up" or "conditional_up"
+  Score 55-69   -> direction must be "up" or "conditional_up" (not "down", not "mixed" unless truly two-sided)
+  Score 40-54   -> "mixed" is appropriate; "conditional_up" if lean is positive
+  Score < 40    -> direction must be "down"
 
 RULES:
 - Do NOT express false precision. "moderate-high confidence" is more honest than "73%"
-- Conviction is REDUCED if there are meaningful unresolved disagreements
+- Conviction is REDUCED if there are meaningful unresolved disagreements — but direction stays aligned with score
+- Risks reduce conviction and may trigger "conditional_up" — they do NOT flip direction to "mixed" or "down"
 - Scenarios must be internally consistent — each must have plausible assumptions
 - variant_perception must identify something specific, not just say 'market may be wrong'
 - what_would_invalidate must be specific events or data points, not vague risks"""
@@ -200,7 +346,7 @@ RULES:
         model=config.models.committee,
         system=_SYSTEM,
         prompt=prompt,
-        max_tokens=5000,
+        max_tokens=6000,
         expect_json=True,
     )
     data = parse_json_response(raw)
@@ -222,11 +368,28 @@ RULES:
     if conviction not in VALID_CONVICTION:
         conviction = "low"
 
+    raw_risk = data.get("risk_score", 5)
+    risk_score = max(1, min(10, int(raw_risk) if isinstance(raw_risk, (int, float)) else 5))
+
+    # Parse final score first so enforcement can use it
+    parsed_score = _parse_return_score(data.get("return_score"), computed_score)
+    invest_rec   = data.get("invest_recommendation", "CONDITIONAL")
+
+    # Enforce direction/recommendation consistency with score
+    direction, invest_rec, correction_note = _enforce_direction(
+        direction, invest_rec, parsed_score, conviction
+    )
+
+    # Append correction note to conviction_rationale so it's visible in the report
+    conviction_rationale = data.get("conviction_rationale", "")
+    if correction_note:
+        conviction_rationale = f"{conviction_rationale} [AUTO-CORRECTED: {correction_note}]".strip()
+
     return CommitteeDecision(
         direction=direction,
         confidence_score=data.get("confidence_score", "low"),
         conviction=conviction,
-        conviction_rationale=data.get("conviction_rationale", ""),
+        conviction_rationale=conviction_rationale,
         summary=data.get("summary", ""),
         bull_scenario=_parse_scenario(data.get("bull_scenario", {}), "bull"),
         base_scenario=_parse_scenario(data.get("base_scenario", {}), "base"),
@@ -240,8 +403,13 @@ RULES:
         research_gaps=data.get("research_gaps", []),
         what_would_invalidate=data.get("what_would_invalidate", []),
         committee_debate_summary=data.get("committee_debate_summary", ""),
-        invest_recommendation=data.get("invest_recommendation", "CONDITIONAL"),
+        invest_recommendation=invest_rec,
         invest_rationale=data.get("invest_rationale", ""),
-        return_score=max(0, min(100, int(data.get("return_score", 50))
-                                if isinstance(data.get("return_score"), (int, float)) else 50)),
+        return_score=parsed_score,
+        risk_score=risk_score,
+        top_risks=data.get("top_risks", []),
+        market_regime=data.get("market_regime", ""),
+        signal_summary=data.get("signal_summary", ""),
+        relative_strength=data.get("relative_strength", ""),
+        consistency_note=data.get("consistency_note", ""),
     )

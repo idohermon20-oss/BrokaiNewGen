@@ -7,3 +7,4 @@ lxml>=5.0.0
 feedparser>=6.0.0
 streamlit>=1.37.0
 ddgs>=9.0.0
+plotly>=5.0

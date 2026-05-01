@@ -29,21 +29,36 @@ class SectorNewsItem:
 def fetch_sector_news(
     company_name: str,
     sector: str,
+    industry: str = "",
     max_items: int = 12,
     timeout: int = 10,
 ) -> List[SectorNewsItem]:
     """
-    Fetch recent sector news from Google News RSS.
+    Fetch recent sector-level news from Google News RSS.
+
+    Queries are deliberately sector/market focused — NOT company specific —
+    so analysts receive true backdrop context rather than company repetition.
+
     Returns up to max_items de-duplicated items. Returns [] on any failure.
     """
     if not _FEEDPARSER_AVAILABLE:
         return []
 
-    queries = [
-        f"{company_name} stock",
-        f"{sector} Israel market stocks",
-        f"TASE Israel {sector}",
-    ]
+    # Use industry if it's more specific than sector (and different)
+    sub_sector = (industry or "").strip()
+    if sub_sector and sub_sector.lower() == sector.lower():
+        sub_sector = ""
+
+    queries: List[str] = []
+    # Sector-level queries — true backdrop, not company-specific
+    queries.append(f"{sector} sector Israel news")
+    queries.append(f"Israel {sector} market")
+    queries.append(f"TASE {sector} stocks")
+    if sub_sector:
+        queries.append(f"{sub_sector} industry Israel")
+        queries.append(f"{sub_sector} stocks outlook")
+    queries.append(f"{sector} ETF performance")
+    queries.append(f"Tel Aviv {sector} sector")
 
     seen: set = set()
     results: List[SectorNewsItem] = []

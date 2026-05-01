@@ -32,42 +32,42 @@ def main():
 
     ticker = args.ticker.upper().replace(".TA", "")
 
-    # ── Resolve company name ──────────────────────────────────────────────────
-    from borkai.data.maya_fetcher import get_hebrew_name, fetch_company_reports, assess_company_report_impacts
+    # ── Resolve canonical company identity ───────────────────────────────────
+    from borkai.data.company_resolver import resolve_company
+    from borkai.data.maya_fetcher import fetch_company_reports, assess_company_report_impacts
 
-    name_he = args.name_he or get_hebrew_name(ticker)
+    query    = args.name_he or args.name or ticker
+    identity = resolve_company(query)
 
-    company_name = args.name
-    if not company_name:
-        # Try to look up English name from CSV
-        try:
-            import csv as _csv
-            _csv_path = os.path.join("borkai", "data", "tase_stocks.csv")
-            with open(_csv_path, newline="", encoding="utf-8") as f:
-                for row in _csv.DictReader(f):
-                    if row["ticker"].strip().upper() == ticker:
-                        company_name = row["name"].strip()
-                        break
-        except Exception:
-            pass
-        if not company_name:
-            company_name = ticker  # fallback
+    # Allow CLI overrides to supplement the resolved identity
+    if args.name_he:
+        identity.name_he = args.name_he
+    if args.name:
+        identity.name_en = args.name
+
+    company_name = identity.name_en or identity.ticker or ticker
 
     print(f"\n{'='*60}")
     print(f"  Maya Fetcher Test")
-    print(f"  Ticker  : {ticker}")
-    print(f"  English : {company_name}")
-    print(f"  Hebrew  : {name_he or '(not in mapping)'}")
+    print(f"  Query   : {query!r}")
+    print(f"  Ticker  : {identity.ticker or ticker}")
+    print(f"  English : {identity.name_en or '(unknown)'}")
+    print(f"  Hebrew  : {identity.name_he or '(unknown)'}")
+    print(f"  Maya ID : {identity.maya_id or '(unknown)'}")
+    print(f"  Path    : {identity.resolution_path}  confidence={identity.confidence:.2f}")
+    if identity.resolution_note:
+        print(f"  Note    : {identity.resolution_note}")
+    print(f"  Variants: {identity.news_variants}")
     print(f"  Max     : {args.max}")
     print(f"{'='*60}\n")
 
     # ── Fetch ─────────────────────────────────────────────────────────────────
-    print("Fetching reports from Maya TASE via DDG...")
+    print("Fetching reports from Maya TASE (Playwright API / DDG fallback)...")
     reports = fetch_company_reports(
         company_name=company_name,
-        ticker=ticker,
+        ticker=identity.ticker or ticker,
         max_items=args.max,
-        name_he=name_he,
+        identity=identity,
     )
 
     if not reports:
@@ -77,8 +77,9 @@ def main():
     print(f"\n{len(reports)} reports found (before LLM assessment):\n")
     for i, r in enumerate(reports, 1):
         print(f"  [{i:02d}] {r.title[:80]}")
-        print(f"       {r.link}")
-        print(f"       type={r.report_type}  source={r.source}")
+        print(f"       link  : {r.link}")
+        print(f"       date  : {r.published or '(no date)'}")
+        print(f"       type  : {r.report_type}  |  path: {r.fetch_path}")
         print()
 
     # ── LLM impact assessment ─────────────────────────────────────────────────

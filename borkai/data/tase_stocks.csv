@@ -1,94 +1,241 @@
-ticker,name,sector,market_cap_bucket,name_he
-HAPO,Bank Hapoalim,Banks,large,בנק הפועלים
-LUMI,Bank Leumi,Banks,large,בנק לאומי
-MZTF,Mizrahi Tefahot Bank,Banks,large,מזרחי טפחות
-DSCT,Bank Discount,Banks,large,בנק דיסקונט
-FIBI,First International Bank,Banks,mid,הבנק הבינלאומי הראשון
-PHOE,Phoenix Insurance,Insurance,large,הפניקס אחזקות
-HARL,Harel Insurance,Insurance,large,הראל ביטוח
-MGDL,Migdal Insurance,Insurance,large,מגדל ביטוח
-MSBI,Menorah Mivtachim,Insurance,large,מנורה מבטחים
-ESLT,Elbit Systems,Defense,large,אלביט מערכות
-ICL,ICL Group,Chemicals,large,כימיקלים לישראל
-ORL,Bazan Oil Refineries,Energy,large,בז"ן
-DLEKG,Delek Group,Energy,large,דלק קבוצה
-PZOL,Paz Energy,Energy,large,פז נפט
-ENLT,Enlight Renewable Energy,Energy,mid,אנלייט
-GSFI,NewMed Energy,Energy,mid,ניומד אנרגיה
-SPNR,Shapir Engineering,Construction,large,שפיר הנדסה
-BEZQ,Bezeq,Telecom,large,בזק
-PTNR,Partner Communications,Telecom,large,פרטנר
-CEL,Cellcom,Telecom,mid,סלקום
-AZRG,Azrieli Group,Real Estate,large,קבוצת עזריאלי
-AMOT,Amot Investments,Real Estate,large,עמות
-ELCO,Elco Holdings,Real Estate,large,אלקו
-GVYM,Gav-Yam Lands,Real Estate,mid,גב ים
-PTBL,Property and Building,Real Estate,mid,נכסים ובנין
-ALRV,Alrov Properties,Real Estate,mid,אלרוב נדל"ן
-SUPR,Shufersal,Retail,large,שופרסל
-RAMI,Rami Levy,Retail,large,רמי לוי
-OSEM,Osem,Food,large,אסם
-STRS,Strauss Group,Food,large,שטראוס
-DLTA,Delta Galil,Consumer,large,דלתא גליל
-NICE,NICE Systems,Technology,large,נייס מערכות
-TSEM,Tower Semiconductor,Technology,large,טאואר סמיקונדקטור
-NVMI,Nova Ltd,Technology,large,נובה
-AUDC,AudioCodes,Technology,mid,אודיוקודס
-CAMT,Camtek,Technology,mid,קמטק
-GILT,Gilat Satellite,Technology,mid,גילת לוויין
-ALLT,Allot Communications,Technology,mid,אלוט
-RDCM,Radcom,Technology,small,ראדקום
-SILI,Silicom,Technology,mid,סיליקום
-TEVA,Teva Pharmaceutical,Pharma,large,טבע
-IDB,IDB Holdings,Holdings,mid,אי.די.בי
-KRUR,Kibbutz Industries,Holdings,mid,
-ACCRV,Acer Capital,Holdings,small,
-CLAL,Clal Insurance,Insurance,large,כלל ביטוח
-MIVTX,Mivtach Shamir Holdings,Insurance,large,מבטח שמיר
-DIFI,Direct Insurance,Insurance,mid,ביטוח ישיר
-ILCO,Israel Corp,Holdings,large,חברה ישראלית
-MTIL,Meitav Investment House,Finance,large,מיטב
-MTDS,Meitav Dash Investments,Finance,large,מיטב דש
-SGRE,Shikun & Binui,Construction,large,שיכון ובינוי
-MTRX,Matrix IT,Technology,large,מטריקס
-PCBT,Priority Software,Technology,mid,פריוריטי
-HLWN,Hilan Tech,Technology,mid,היילן
-PCOM,Pointer Telocation,Technology,mid,פויינטר
-BRND,Brainsway,Pharma,mid,ברינספיי
-BLRX,BioLineRx,Pharma,small,
-MAPI,Mapi Pharma,Pharma,mid,
-ZIM,Zim Integrated Shipping,Transport,large,ZIM
-SPCE,Spacecom,Telecom,mid,ספייסקום
-MNRT,Menivim,Real Estate,mid,מניבים
-ECMX,Electra Real Estate,Real Estate,mid,אלקטרה נדל"ן
-DRSL,Dor Alon Energy,Energy,mid,דור אלון
-LVPR,Lev Leviev Properties,Holdings,mid,
-AYAL,Ayalon Insurance,Insurance,mid,איילון ביטוח
-ISCF,Israel Chemicals Finance,Chemicals,mid,
-AMRK,A.M.R.K. Holdings,Holdings,small,
-HDST,Hadassah Biomedical,Pharma,small,
-KARE,Kamedis Pharma,Pharma,small,
-EVGN,Evogene,Technology,small,אבוגן
-BCNV,BioCanCell,Pharma,small,
-NAWI,Nawi Brothers Group,Construction,small,
-RMLI,Rami Levy Chain Stores,Retail,large,רמי לוי רשתות
-TVLT,Tivall,Food,mid,
-BRAM,Bram Industries,Consumer,small,
-CLIS,Clal Industries,Holdings,large,כלל תעשיות
-FTAL,Fattal Hotels,Consumer,large,פתאל
-ISCM,Iscar Metal Working,Manufacturing,large,
-DORL,Dorad Energy,Energy,mid,דוראד אנרגיה
-GNGR,Gan Shmuel Foods,Food,small,
-HLIL,Hilan,Technology,mid,הילן
-MGRT,Migros Turkey,Retail,mid,
-NVLG,Novolog Pharmaceutical,Pharma,small,
-OPKO,OPKOHealth Israel,Pharma,mid,
-PLSN,Plus500,Finance,large,פלוס500
-SMLT,Sievert Larsen Moltech,Manufacturing,small,
-THGR,The Group Real Estate,Real Estate,small,
-VNET,VocalTec Communications,Technology,small,
-WSMR,Weissman Real Estate,Real Estate,small,
-YAHD,Yahad Real Estate,Real Estate,small,
-ZRFN,Zrif Energy,Energy,small,
-AFIL,Africa Israel Investments,Holdings,large,אפריקה ישראל
-KNFM,Knafaim Holdings,Transport,mid,כנפיים
+ticker,name_en,sector,market_cap_bucket,name_he,security_number,short_name,last_updated
+AURA,,,,אאורה השקעות בע"מ,373019,,2026-04-21
+AVGD,,,,אב-גד,1171818,,2026-04-21
+AVGL,,,,אבגול,1100957,,2026-04-21
+EVGN,Evogene,Technology,small,אבוג'ן,1105055,,2026-04-21
+OVERSEAS,,,,אוברסיז,1139617,,2026-04-21
+AUDC,AudioCodes,Technology,mid,אודיוקודס,1082965,,2026-04-21
+AGRD,,,,אוטונומוס,1083419,,2026-04-21
+ALL,,,,אולטרייד,1236967,,2026-04-21
+ALLMED SOLUTION,,,,אולמד סולושנס,1101450,,2026-04-21
+AUSTRALIA ISR,,,,אוסטרליה ישראל,1080522,,2026-04-21
+OPK,,,,אופקו הלת',1129543,,2026-04-21
+ORAD,,,,אורד,1104496,,2026-04-21
+AUSA,,,,אורה סמארט-ש,1176619,,2026-04-21
+ORON,,,,אורון קבוצה,1135706,,2026-04-21
+ORNP,,,,אוריון,1232750,,2026-04-21
+ORA,,,,אורמת טכנו,1134402,,2026-04-21
+AZRM,,,,אזורים,715011,,2026-04-21
+ATRO,,,,אטראו שוקי הון,1096106,,2026-04-21
+ITGI,,,,אי.טי.ג'י.איי,1176114,,2026-04-21
+IBIU,,,,איביאי חיתום,1084482,,2026-04-21
+IBIS,,,,איביאי סילבר-ש,1097054,,2026-04-21
+IES,,,,אייאיאס,431015,,2026-04-21
+ICON,,,,אייקון גרופ,1182484,,2026-04-21
+ERNG,,,,אייראנג'י טק,1105907,,2026-04-21
+ILX,,,,אילקס מדיקל,1080753,,2026-04-21
+INCR,,,,אינטרקיור,1106376,,2026-04-21
+INRM,,,,אינרום,1132356,,2026-04-21
+ISTA,,,,איסתא,1081074,,2026-04-21
+ARG,,,,אירודרום קבוצה,363010,,2026-04-21
+ELAL,,,,אל על,1087824,,2026-04-21
+ELLO,,,,אלומיי,1082635,,2026-04-21
+ALMG,,,,אלמוגים,1136829,,2026-04-21
+ALMR,,,,אלמור חשמל,1142454,,2026-04-21
+ALSP,,,,אלספק,1090364,,2026-04-21
+ECMX,Electra Real Estate,Real Estate,mid,אלקטרה,739037,,2026-04-21
+ECP,,,,אלקטרה צריכה,5010129,,2026-04-21
+ELRN,,,,אלרון,749077,,2026-04-21
+AMOT,,,,אמות,1097278,,2026-04-21
+EMDV,,,,אמיליה פיתוח,589010,,2026-04-21
+AMNT,,,,אמנת,654012,,2026-04-21
+AMPA,,,,אמפא,1225200,,2026-04-21
+ENLV,,,,אנלייבקס,1158997,,2026-04-21
+ENLT,Enlight Renewable Energy,Energy,mid,אנלייט אנרגיה,720011,,2026-04-21
+ANLT,,,,אנליסט,1080613,,2026-04-21
+ENOG,,,,אנרג'יאן,1155290,,2026-04-21
+NRGN,,,,אנרג'ין,1172071,,2026-04-21
+CITY,,,,אנשי העיר,1198266,,2026-04-21
+STG,,,,אסטיגי,550012,,2026-04-21
+AFPR,,,,אפי נכסים,1091354,,2026-04-21
+EPIC,,,,אפי קפיטל,1181437,,2026-04-21
+EPIT,,,,אפיטומי מדיקל,1182591,,2026-04-21
+AFRE,,,,אפריקה מגורים,1097948,,2026-04-21
+AXON,,,,אקסון ויז'ן,1227552,,2026-04-21
+ASHG,,,,אשטרום קבוצה,1132315,,2026-04-21
+AZRD,,,,בזא,1198910,,2026-04-21
+BMLK,,,,ביו דבש,1082346,,2026-04-21
+BIOV,,,,ביו ויו,1096049,,2026-04-21
+BKSD,,,,בכורי שדה,1172618,,2026-04-21
+BRAM,,,,ברם תעשיות,1094515,,2026-04-21
+BRK,,,,ברק בית השקעות,1104363,,2026-04-21
+GBAI,,,,גבאי קבוצה,1224641,,2026-04-21
+GOTO,,,,גוטו,1176726,,2026-04-21
+GLDN,,,,גולדן אנרג'י,1083443,,2026-04-21
+GLAN,,,,גולן תעשיות,1091933,,2026-04-21
+GCT,,,,ג'י סיטי,126011,,2026-04-21
+GILT,Gilat Satellite,Technology,mid,גילת,1082510,,2026-04-21
+GEN,,,,ג'ין טכנולוגיות,1099787,,2026-04-21
+GLOP,,,,גלובל פיי-ש,1081983,,2026-04-21
+GLBR,,,,גלוברנדס,1147487,,2026-04-21
+GNCL,,,,ג'נסל,1169689,,2026-04-21
+DRSL,,,,דורסל,1190628,,2026-04-21
+DIMRI,,,,דמרי,1090315,,2026-04-21
+DANH,,,,דן מלונות,822015,,2026-04-21
+DNL,,,,דנאל,314013,,2026-04-21
+HOME,,,,הום ביוגז,1172204,,2026-04-21
+HYPR,,,,הייפר גלובל,1184985,,2026-04-21
+HCSH,,,,הכשרה התחדשות,1121474,,2026-04-21
+WTR,,,,ווטר אי או,1180306,,2026-04-21
+WBOX,,,,וויי בוקס,486027,,2026-04-21
+WILC,,,,ויליפוד אינטרנש,1082858,,2026-04-21
+WILK,Wilk Technologies Ltd,Consumer Defensive,,וילק,278010,,2026-04-24
+VCTR,,,,ויקטורי,1123777,,2026-04-21
+ZOOZ,,,,זוז אסטרטגיה,1174184,,2026-04-21
+ILCO,,,,חברה לישראל,576017,,2026-04-21
+HAD,,,,חד,351015,,2026-04-21
+HILAN,,,,חילן,1084698,,2026-04-21
+TSEM,Tower Semiconductor,Technology,large,"טאואר סמיקונדקטור בע""מ",1082379,,2026-04-21
+TNDO,,,,טונדו סמארט,1180686,,2026-04-21
+TECT,,,,טקטונה,216010,,2026-04-21
+IBH,,,,י.ב התחדשות,111013,,2026-04-21
+UMH,,,,יו.אמ.איץ',1184282,,2026-04-21
+UNBO,,,,יוניבו-ש,1093558,,2026-04-21
+YSDT,,,,יסודות,1188416,,2026-04-21
+YAAZ,,,,יעז יזמות,1227321,,2026-04-21
+EXPO,,,,יצוא,704015,,2026-04-21
+ISCN,,,,ישראל קנדה,434019,,2026-04-21
+ICH,,,,ישראל קנדה מלונ,1103852,,2026-04-21
+COHP,,,,כהן פיתוח,810010,,2026-04-21
+KNFM,Knafaim Holdings,Transport,mid,כנפיים,543017,,2026-04-21
+CRML,,,,כרמל קורפ,1147685,,2026-04-21
+LDZA,,,,לודזיה,753012,,2026-04-21
+LODN,,,,לודן,1081439,,2026-04-21
+LZCR,,,,לוזון אשראי,666016,,2026-04-21
+LZRN,,,,לוזון רונסון,1202597,,2026-04-21
+LVO,,,,לוינסקי עופר,200014,,2026-04-21
+LIB,,,,ליברה,1176981,,2026-04-21
+LSCO,,,,לסיכו,1140946,,2026-04-21
+LAPD,,,,לפידות קפיטל,642017,,2026-04-21
+MSVT,,,,מאסיבית,1172972,,2026-04-21
+MDPR,,,,מדיפאואר,1139955,,2026-04-21
+MTSL,,,,מטריסלף,1176791,,2026-04-21
+MIA,,,,מיה דיינמיקס,494013,,2026-04-21
+DCR,,,,מיחשוב ישר קב,507012,,2026-04-21
+MTIL,Meitav Investment House,Finance,large,מיטב השקעות,1081843,,2026-04-21
+MTRN,,,,מיטרוניקס,1091065,,2026-04-21
+DIFI,,,,מימון ישיר,1168186,,2026-04-21
+MLND,,,,מירלנד-ש,1108638,,2026-04-21
+MSHR,,,,מישורים,1105196,,2026-04-21
+MLTM,Malam - Team Ltd,Technology,,מלם-תים בע"מ,731018,,2026-04-26
+MLRN,,,,מלרן,1170950,,2026-04-21
+MNRV,,,,מנרב,1238427,,2026-04-21
+MRHL,,,,מרחביה אחזקות,257014,,2026-04-21
+NXTC,,,,נקסטקום,1095785,,2026-04-21
+NTNL,,,,נתנאל גרופ,421016,,2026-04-21
+SUNY,,,,סאני תקשורת,1082353,,2026-04-21
+SVRT,,,,סבוריט-ש,1169978,,2026-04-21
+SLAR,,,,סולאיר,1172287,,2026-04-21
+STRW,,,,סטרוברי אינק,1205913,,2026-04-21
+SAON,,,,סיאון,1194000,,2026-04-21
+CEE,,,,סיאי,442012,,2026-04-21
+CPYA,,,,סיפיה וויז'ן,1181932,,2026-04-21
+CEL,Cellcom,Telecom,mid,סלקום,1101534,,2026-04-21
+SPDV,,,,ספידווליו,1178284,,2026-04-21
+SPRG,,,,ספרינג,1097344,,2026-04-21
+SCDX,,,,סקודיקס,1178490,,2026-04-21
+AZRG,,,,עזריאלי קבוצה,1119478,,2026-04-21
+ALMA,,,,עלמא יסודות,1173145,,2026-04-21
+AMIR,,,,עמיר שיווק,1092204,,2026-04-21
+AMAL,,,,עמל הולדינגס,1232008,,2026-04-21
+AMRM,,,,עמרם,1188200,,2026-04-21
+ASHT,,,,עשות,312017,,2026-04-21
+PI-S,,,,פאי סיאם,1186527,,2026-04-21
+PANW,,,,פאלו אלטו,1236736,,2026-04-21
+PTMN,,,,פוטומיין,1173855,,2026-04-21
+POLI,,,,פוליגון,745018,,2026-04-21
+PMVM,,,,פוםוום,1173434,,2026-04-21
+FOX,,,,פוקס,1087022,,2026-04-21
+FORTY,,,,פורמולה מערכות,256016,,2026-04-21
+FIBI,,,,פיבי,763011,,2026-04-21
+PAY,,,,פייטון,412015,,2026-04-21
+PMNT,,,,פיימנט,1180876,,2026-04-21
+PSRX,,,,פסיירקס ביו-טק,1176908,,2026-04-21
+PRSP,,,,פרוספקט,1230655,,2026-04-21
+PRPD,,,,פרופדו,1188622,,2026-04-21
+PTNR,Partner Communications,Telecom,large,פרטנר,1083484,,2026-04-21
+PERI,,,,פריון נטוורק,1095819,,2026-04-21
+PRTR,,,,פריורטק,328013,,2026-04-21
+PRIM,,,,פריים אנרג'י,1174457,,2026-04-21
+PRMT,,,,פרימוטק,1175496,,2026-04-21
+CNGL,,,,קנדה גלובל,106013,,2026-04-21
+KEN,,,,קנון,1134139,,2026-04-21
+CNZN,,,,קנזון-ש,1096007,,2026-04-21
+CPTN,,,,קפיטל פוינט,1097146,,2026-04-21
+KRNV,,,,קרדן אן.וי-ש,1087949,,2026-04-21
+KRUR,,,,קרור,621011,,2026-04-21
+CRSO,,,,קרסו מוטורס,1123850,,2026-04-21
+RBD,,,,רבד,526012,,2026-04-21
+BLRE,,,,רבוע נדלן,1098565,,2026-04-21
+RVL,,,,רבל,1103878,,2026-04-21
+RMN,,,,רימון,1178722,,2026-04-21
+RMNI,,,,רימוני,1080456,,2026-04-21
+RMON,,,,רם און,1090943,,2026-04-21
+RAMI,Rami Levy,Retail,large,רמי לוי,1104249,,2026-04-21
+RAMI,Rami Levy,Retail,large,רמי לוי נדל''ן,1235001,,2026-04-21
+RKH,,,,רקח,1081009,,2026-04-21
+SADA,,,,שדה נדל''ן,341016,,2026-04-21
+SHUV,,,,שוב אנרגיה,1188242,,2026-04-21
+SHMN,,,,שמן נדלן,634030,,2026-04-21
+SHNP,,,,שנפ,1103571,,2026-04-21
+TRPZ,,,,תורפז,1175611,,2026-04-21
+THEA,,,,תיא השקעות,796011,,2026-04-21
+TKUN,,,,תיקון עולם קנבט,1084367,,2026-04-21
+HAPO,Bank Hapoalim,Banks,large,בנק הפועלים,,,2026-04-21
+LUMI,Bank Leumi,Banks,large,בנק לאומי,,,2026-04-21
+MZTF,Mizrahi Tefahot Bank,Banks,large,מזרחי טפחות,,,2026-04-21
+DSCT,Bank Discount,Banks,large,בנק דיסקונט,,,2026-04-21
+FIBI,First International Bank,Banks,mid,הבנק הבינלאומי הראשון,,,2026-04-21
+PHOE,Phoenix Insurance,Insurance,large,הפניקס אחזקות,,,2026-04-21
+HARL,Harel Insurance,Insurance,large,הראל ביטוח,,,2026-04-21
+MGDL,Migdal Insurance,Insurance,large,מגדל ביטוח,,,2026-04-21
+MSBI,Menorah Mivtachim,Insurance,large,מנורה מבטחים,,,2026-04-21
+ESLT,Elbit Systems,Defense,large,אלביט מערכות,,,2026-04-21
+ICL,ICL Group,Chemicals,large,כימיקלים לישראל,,,2026-04-21
+ORL,Bazan Oil Refineries,Energy,large,"בז""ן",,,2026-04-21
+DLEKG,Delek Group,Energy,large,דלק קבוצה,,,2026-04-21
+PZOL,Paz Energy,Energy,large,פז נפט,,,2026-04-21
+GSFI,NewMed Energy,Energy,mid,ניומד אנרגיה,,,2026-04-21
+SPNR,Shapir Engineering,Construction,large,שפיר הנדסה,,,2026-04-21
+BEZQ,Bezeq,Telecom,large,בזק,,,2026-04-21
+AZRG,Azrieli Group,Real Estate,large,קבוצת עזריאלי,,,2026-04-21
+AMOT,Amot Investments,Real Estate,large,עמות,,,2026-04-21
+ELCO,Elco Holdings,Real Estate,large,אלקו,,,2026-04-21
+GVYM,Gav-Yam Lands,Real Estate,mid,גב ים,,,2026-04-21
+PTBL,Property and Building,Real Estate,mid,נכסים ובנין,,,2026-04-21
+ALRV,Alrov Properties,Real Estate,mid,"אלרוב נדל""ן",,,2026-04-21
+SUPR,Shufersal,Retail,large,שופרסל,,,2026-04-21
+OSEM,Osem,Food,large,אסם,,,2026-04-21
+STRS,Strauss Group,Food,large,שטראוס,,,2026-04-21
+DLTA,Delta Galil,Consumer,large,דלתא גליל,,,2026-04-21
+NICE,NICE Systems,Technology,large,נייס מערכות,,,2026-04-21
+NVMI,Nova Ltd,Technology,large,נובה,,,2026-04-21
+CAMT,Camtek,Technology,mid,קמטק,,,2026-04-21
+ALLT,Allot Communications,Technology,mid,אלוט,,,2026-04-21
+RDCM,Radcom,Technology,small,ראדקום,,,2026-04-21
+SILI,Silicom,Technology,mid,סיליקום,,,2026-04-21
+TEVA,Teva Pharmaceutical,Pharma,large,טבע,,,2026-04-21
+IDB,IDB Holdings,Holdings,mid,אי.די.בי,,,2026-04-21
+CLAL,Clal Insurance,Insurance,large,כלל ביטוח,,,2026-04-21
+MIVTX,Mivtach Shamir Holdings,Insurance,large,מבטח שמיר,,,2026-04-21
+DIFI,Direct Insurance,Insurance,mid,ביטוח ישיר,,,2026-04-21
+ILCO,Israel Corp,Holdings,large,חברה ישראלית,,,2026-04-21
+MTDS,Meitav Dash Investments,Finance,large,מיטב דש,,,2026-04-21
+SGRE,Shikun & Binui,Construction,large,שיכון ובינוי,,,2026-04-21
+MTRX,Matrix IT,Technology,large,מטריקס,,,2026-04-21
+PCBT,Priority Software,Technology,mid,פריוריטי,,,2026-04-21
+HLWN,Hilan Tech,Technology,mid,היילן,,,2026-04-21
+PCOM,Pointer Telocation,Technology,mid,פויינטר,,,2026-04-21
+BRND,Brainsway,Pharma,mid,ברינספיי,,,2026-04-21
+ZIM,Zim Integrated Shipping,Transport,large,ZIM,,,2026-04-21
+SPCE,Spacecom,Telecom,mid,ספייסקום,,,2026-04-21
+MNRT,Menivim,Real Estate,mid,מניבים,,,2026-04-21
+DRSL,Dor Alon Energy,Energy,mid,דור אלון,,,2026-04-21
+AYAL,Ayalon Insurance,Insurance,mid,איילון ביטוח,,,2026-04-21
+RMLI,Rami Levy Chain Stores,Retail,large,רמי לוי רשתות,1104249,רמי לוי,2026-04-21
+CLIS,Clal Industries,Holdings,large,כלל תעשיות,,,2026-04-21
+FTAL,Fattal Hotels,Consumer,large,פתאל,,,2026-04-21
+DORL,Dorad Energy,Energy,mid,דוראד אנרגיה,,,2026-04-21
+HLIL,Hilan,Technology,mid,הילן,,,2026-04-21
+PLSN,Plus500,Finance,large,פלוס500,,,2026-04-21
+AFIL,Africa Israel Investments,Holdings,large,אפריקה ישראל,,,2026-04-21

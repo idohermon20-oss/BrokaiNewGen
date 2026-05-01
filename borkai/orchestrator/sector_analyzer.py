@@ -26,6 +26,9 @@ class SectorAnalysis:
     market_sentiment: str = "neutral"       # bullish | bearish | mixed | neutral
     sentiment_rationale: str = ""
     relevance_to_stock: str = ""
+    sector_phase: str = ""                  # momentum | slowdown | transition | stable
+    sector_summary: str = ""               # 2-3 sentence narrative of sector conditions
+    news_items: List[SectorNewsItem] = field(default_factory=list)  # raw items for report
     analysis_skipped: bool = False
     skip_reason: str = ""
 
@@ -70,6 +73,8 @@ Based on these news items, extract sector-level intelligence.
 
 Return a JSON object:
 {{
+  "sector_phase": "<momentum | slowdown | transition | stable — the current phase of this sector>",
+  "sector_summary": "<2-3 sentence narrative of current sector conditions: what is driving this sector right now, what has changed, what investors are watching>",
   "hot_topics": [
     "<3-5 dominant themes currently driving this sector — be specific to the news above>"
   ],
@@ -81,20 +86,21 @@ Return a JSON object:
   ],
   "market_sentiment": "<bullish | bearish | mixed | neutral — based on the overall news tone>",
   "sentiment_rationale": "<1-2 sentences explaining the sentiment verdict with reference to specific news items>",
-  "relevance_to_stock": "<2-3 sentences: how does this sector news landscape specifically affect {company_name}? Be concrete.>"
+  "relevance_to_stock": "<2-3 sentences: how do current sector conditions specifically affect {company_name} ({ticker})? Be concrete — mention whether the sector trend is a tailwind or headwind for this stock.>"
 }}
 
 RULES:
-- Hot topics must be grounded in the actual news items provided, not generic observations
+- sector_summary must be substantive — describe actual conditions, not generic observations
+- Hot topics must be grounded in the actual news items provided
 - If news is sparse or unrelated, reflect that in a lower-confidence sentiment
-- relevance_to_stock must mention {ticker} specifically, not just the sector"""
+- relevance_to_stock must mention {ticker} specifically and state clearly whether sector momentum helps or hurts the stock"""
 
     raw = call_llm(
         client=client,
         model=config.models.agent,
         system=_SYSTEM,
         prompt=prompt,
-        max_tokens=1000,
+        max_tokens=1200,
         expect_json=True,
     )
     data = parse_json_response(raw)
@@ -103,14 +109,21 @@ RULES:
     if sentiment not in {"bullish", "bearish", "mixed", "neutral"}:
         sentiment = "neutral"
 
+    phase = data.get("sector_phase", "stable")
+    if phase not in {"momentum", "slowdown", "transition", "stable"}:
+        phase = "stable"
+
     return SectorAnalysis(
         sector=sector,
         company_name=company_name,
         news_count=len(news_items),
+        sector_phase=phase,
+        sector_summary=data.get("sector_summary", ""),
         hot_topics=data.get("hot_topics", []),
         key_risks=data.get("key_risks", []),
         key_opportunities=data.get("key_opportunities", []),
         market_sentiment=sentiment,
         sentiment_rationale=data.get("sentiment_rationale", ""),
         relevance_to_stock=data.get("relevance_to_stock", ""),
+        news_items=news_items,
     )

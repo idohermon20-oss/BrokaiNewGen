@@ -39,7 +39,7 @@ import openai
 
 from borkai.config import load_config, Config
 from borkai.data.fetcher import fetch_stock_data
-from main import analyze, translate_to_hebrew
+from main import analyze
 
 DEFAULT_CSV = os.path.join(os.path.dirname(__file__), "borkai", "data", "tase_stocks.csv")
 DEFAULT_OUTPUT_DIR = "reports"
@@ -60,7 +60,6 @@ class ScanResult:
     conviction: str
     invest_recommendation: str
     report_en: str
-    report_he: str
     analysis_date: str
     error: Optional[str] = None
 
@@ -70,33 +69,58 @@ class ScanResult:
 # ---------------------------------------------------------------------------
 
 def load_tickers(csv_path: str, size_filter: Optional[str] = None) -> List[Dict[str, str]]:
-    """Load tickers from CSV. Optionally filter by market_cap_bucket (large/mid/small)."""
+    """
+    Load ALL stocks from CSV.
+    Stocks without a ticker are recorded as skipped (not silently dropped).
+    Optionally filter by market_cap_bucket (large/mid/small).
+    Returns the scannable list and prints a validation summary.
+    """
     if not os.path.exists(csv_path):
         print(f"ERROR: Stock list CSV not found at: {csv_path}")
         print("       Update borkai/data/tase_stocks.csv with TASE tickers.")
         sys.exit(1)
 
     stocks = []
+    no_ticker_count = 0
+    size_filtered_count = 0
+
     with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            ticker = row.get("ticker", "").strip()
+            ticker  = row.get("ticker", "").strip()
+            name_en = row.get("name_en", "").strip()
+            name_he = row.get("name_he", "").strip()
+            display = name_en or name_he or ticker or "unknown"
+
             if not ticker:
+                no_ticker_count += 1
                 continue
-            if size_filter and row.get("market_cap_bucket", "").lower() != size_filter.lower():
-                continue
-            # Append .TA suffix if not already present
+
+            if size_filter:
+                bucket = row.get("market_cap_bucket", "").lower()
+                if bucket and bucket != size_filter.lower():
+                    size_filtered_count += 1
+                    continue
+
             if not ticker.endswith(".TA"):
                 ticker = ticker + ".TA"
             stocks.append({
                 "ticker": ticker,
-                "name": row.get("name", ticker),
+                "name": display,
                 "sector": row.get("sector", "Unknown"),
                 "market_cap_bucket": row.get("market_cap_bucket", ""),
+                "name_he": name_he,
             })
 
-    print(f"Loaded {len(stocks)} stocks from {csv_path}" +
-          (f" (filter: {size_filter})" if size_filter else ""))
+    total_in_csv = len(stocks) + no_ticker_count + size_filtered_count
+    print(f"\nSTOCK UNIVERSE LOADED FROM: {csv_path}")
+    print(f"  Total rows in CSV        : {total_in_csv}")
+    print(f"  Scannable (have ticker)  : {len(stocks)}")
+    if no_ticker_count:
+        print(f"  Skipped (no ticker)      : {no_ticker_count}")
+    if size_filter:
+        print(f"  Filtered (not {size_filter:5s} cap) : {size_filtered_count}")
+    print(f"  Will scan                : {len(stocks)} stocks\n")
     return stocks
 
 
@@ -172,20 +196,9 @@ def save_top_reports(
         ticker_safe = result.ticker.replace(".", "_")
         base_name = f"{rank:02d}_{ticker_safe}_score{result.return_score}"
 
-        report_he = result.report_he
-        # Fallback: translate if not already done (e.g. resumed from old progress)
-        if not report_he and result.report_en:
-            print(f"  Translating {result.ticker} to Hebrew...")
-            report_he = translate_to_hebrew(result.report_en, client, config)
-
         en_path = os.path.join(top_dir, f"{base_name}.md")
         with open(en_path, "w", encoding="utf-8") as f:
             f.write(result.report_en)
-
-        if report_he:
-            he_path = os.path.join(top_dir, f"{base_name}_he.md")
-            with open(he_path, "w", encoding="utf-8") as f:
-                f.write(report_he)
 
     # Generate ranking_summary.md (all analyzed stocks, not just top N)
     summary_path = os.path.join(horizon_dir, "ranking_summary.md")
@@ -284,15 +297,19 @@ def run_scanner(
     # Results per horizon
     horizon_results: Dict[str, List[ScanResult]] = {h: [] for h in horizons}
 
+    # Validation counters
+    prefilter_skipped: List[Dict[str, str]] = []  # {ticker, name, reason}
+
     total = len(stocks)
     for i, stock in enumerate(stocks, 1):
         ticker = stock["ticker"]
         print(f"\n[{i}/{total}] {ticker} — {stock['name']}")
 
-        # Pre-filter
+        # Pre-filter: quick data check (no price data, low volume, micro-cap)
         passes, reason = prefilter_stock(ticker)
         if not passes:
             print(f"  SKIP: {reason}")
+            prefilter_skipped.append({"ticker": ticker, "name": stock["name"], "reason": reason})
             progress[ticker] = {"status": "filtered", "reason": reason}
             save_progress(progress_file, progress)
             continue
@@ -310,7 +327,7 @@ def run_scanner(
 
             print(f"  Analyzing {horizon} horizon...")
             try:
-                report_en, report_he, result = analyze(
+                report_en, result = analyze(
                     ticker=ticker,
                     time_horizon=horizon,
                     market="il",
@@ -325,7 +342,6 @@ def run_scanner(
                     conviction=result.decision.conviction,
                     invest_recommendation=result.decision.invest_recommendation,
                     report_en=report_en,
-                    report_he=report_he,   # Already translated by analyze()
                     analysis_date=analysis_date,
                 )
                 horizon_results[horizon].append(scan_result)
@@ -342,7 +358,6 @@ def run_scanner(
                         "conviction": scan_result.conviction,
                         "invest_recommendation": scan_result.invest_recommendation,
                         "report_en": "",  # Don't persist full report in progress file
-                        "report_he": "",
                         "analysis_date": scan_result.analysis_date,
                     },
                 }
@@ -359,7 +374,6 @@ def run_scanner(
                     conviction="unknown",
                     invest_recommendation="N/A",
                     report_en="",
-                    report_he="",
                     analysis_date=analysis_date,
                     error=str(e),
                 ))
@@ -374,6 +388,7 @@ def run_scanner(
     for horizon in horizons:
         results = horizon_results[horizon]
         successful = [r for r in results if r.error is None]
+        failed     = [r for r in results if r.error is not None]
         if not successful:
             print(f"\n{horizon.upper()}: No successful analyses to rank.")
             continue
@@ -395,6 +410,43 @@ def run_scanner(
         print(f"  Top 5 ({horizon}):")
         for rank, r in enumerate(sorted_r[:5], 1):
             print(f"    {rank}. {r.ticker:12s} score={r.return_score:3d}  {r.direction.upper():6s}  {r.invest_recommendation}")
+
+    # ── Final validation summary ─────────────────────────────────────────────
+    print("\n" + "=" * 60)
+    print("SCAN VALIDATION SUMMARY")
+    print("=" * 60)
+
+    # Count analysis results across all horizons (use first horizon as representative)
+    first_h = horizons[0]
+    first_results  = horizon_results[first_h]
+    analyzed_ok    = [r for r in first_results if r.error is None]
+    analyzed_err   = [r for r in first_results if r.error is not None]
+
+    print(f"  Stock list (CSV)             : {total} stocks with ticker")
+    print(f"  Pre-filter skipped           : {len(prefilter_skipped)}")
+    print(f"  Attempted full analysis      : {total - len(prefilter_skipped)}")
+    print(f"  Analyzed successfully        : {len(analyzed_ok)}")
+    print(f"  Analysis errors              : {len(analyzed_err)}")
+
+    # Pre-filter breakdown by reason
+    if prefilter_skipped:
+        reason_counts: Dict[str, int] = {}
+        for s in prefilter_skipped:
+            key = s["reason"]
+            reason_counts[key] = reason_counts.get(key, 0) + 1
+        print(f"\n  Pre-filter breakdown:")
+        for reason, count in sorted(reason_counts.items(), key=lambda x: -x[1]):
+            print(f"    [{count:3d}x] {reason}")
+        print(f"\n  Pre-filtered stocks (first 10):")
+        for s in prefilter_skipped[:10]:
+            print(f"    SKIP {s['ticker']:14s} {s['name'][:25]:25s}  → {s['reason']}")
+        if len(prefilter_skipped) > 10:
+            print(f"    ... and {len(prefilter_skipped)-10} more")
+
+    if analyzed_err:
+        print(f"\n  Analysis errors (first 5):")
+        for r in analyzed_err[:5]:
+            print(f"    FAIL {r.ticker:14s} → {r.error[:60]}")
 
     print(f"\nAll reports saved under: {os.path.join(output_dir, analysis_date)}/")
 
