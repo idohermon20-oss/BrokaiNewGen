@@ -459,36 +459,48 @@ def _maya_ui_and_intercept(page, name_he: str) -> list:
     except ImportError:
         return []
 
-    # ── Find search input ─────────────────────────────────────────────────────
-    input_selectors = [
-        "input[formcontrolname='freeText']",
+    # ── Find search input — use wait_for_selector so Angular has time to boot ──
+    # el.count() > 0 returns 0 immediately before Angular bootstraps the form
+    # (the formcontrolname attribute is only in the DOM after Angular renders).
+    # wait_for_selector() polls continuously until the element appears or times out.
+    primary_sel   = "input[formcontrolname='freeText']"
+    fallback_sels = [
         "input[formcontrolname='companyName']",
         "mat-form-field input[type='text']",
         "input.mat-input-element",
         "input[placeholder*='חיפוש']",
-        "input[placeholder*='שם']",
-        "input[placeholder*='חברה']",
-        "input[type='text']:not([readonly]):not([disabled])",
     ]
-    found_input = False
-    for sel in input_selectors:
-        try:
-            el = page.locator(sel).first
-            if el.count() > 0 and el.is_visible(timeout=4000):
-                el.click()
-                page.wait_for_timeout(300)
-                page.keyboard.press("Control+a")
-                page.keyboard.press("Delete")
-                page.keyboard.type(name_he)
-                _log(f"    [Maya-UI] Typed {name_he!r} into {sel!r}")
-                found_input = True
-                break
-        except Exception:
-            continue
-
-    if not found_input:
-        _log("    [Maya-UI] search input not found")
+    found_sel = None
+    try:
+        from playwright.sync_api import TimeoutError as PWTimeout
+    except ImportError:
         return []
+
+    # Try the Angular-specific selector first with a generous timeout
+    try:
+        page.wait_for_selector(primary_sel, timeout=15_000)
+        found_sel = primary_sel
+    except PWTimeout:
+        _log(f"    [Maya-UI] primary selector timed out — trying fallbacks")
+        for sel in fallback_sels:
+            try:
+                page.wait_for_selector(sel, timeout=5_000)
+                found_sel = sel
+                break
+            except PWTimeout:
+                continue
+
+    if not found_sel:
+        _log("    [Maya-UI] search input not found (Angular may not have loaded)")
+        return []
+
+    el = page.locator(found_sel).first
+    el.click()
+    page.wait_for_timeout(300)
+    page.keyboard.press("Control+a")
+    page.keyboard.press("Delete")
+    page.keyboard.type(name_he)
+    _log(f"    [Maya-UI] Typed {name_he!r} into {found_sel!r}")
 
     # ── Wait for autocomplete panel ───────────────────────────────────────────
     page.wait_for_timeout(1500)
