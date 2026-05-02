@@ -283,24 +283,21 @@ def debug_magna(ticker: str, name_he: str) -> list:
             print(f"  [nav-fail] {exc}")
         _screenshot(page, "magna_01_loaded")
 
-        print(f"\n[step 2] Looking for search input…")
-        search_selectors = [
+        print(f"\n[step 2] Looking for MAGNA search input…")
+        from playwright.sync_api import TimeoutError as PWTimeout
+        magna_selectors = [
             "input[name='q']", "input#q", "input#search",
             "input[type='search']", "input[placeholder*='חיפוש']",
             "input[type='text']",
         ]
         found_sel = None
-        for sel in search_selectors:
+        for sel in magna_selectors:
             try:
-                el = page.locator(sel).first
-                if el.count() > 0 and el.is_visible(timeout=4000):
-                    el.click()
-                    page.wait_for_timeout(200)
-                    el.fill(name_he)
-                    print(f"  [input] {sel!r}  typed={name_he!r}")
-                    found_sel = sel
-                    break
-            except Exception:
+                page.wait_for_selector(sel, timeout=6_000)
+                found_sel = sel
+                print(f"  [input] {sel!r}")
+                break
+            except PWTimeout:
                 continue
 
         if not found_sel:
