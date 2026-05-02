@@ -306,6 +306,11 @@ def debug_magna(ticker: str, name_he: str) -> list:
             browser.close()
             return []
 
+        el = page.locator(found_sel).first
+        el.click()
+        page.wait_for_timeout(200)
+        el.fill(name_he)
+        print(f"  [typed] {name_he!r}")
         _screenshot(page, "magna_02_after_typing")
         page.wait_for_timeout(1500)
 
