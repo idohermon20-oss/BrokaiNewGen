@@ -109,38 +109,47 @@ def debug_maya(ticker: str, name_he: str) -> list:
         print(f"  [page title] {page.title()}")
 
         # ── 2. Find search input ──────────────────────────────────────────────
-        print(f"\n[step 2] Looking for search input…")
-        input_selectors = [
-            "input[formcontrolname='freeText']",
+        print(f"\n[step 2] Looking for search input (waiting for Angular to bootstrap)…")
+        from playwright.sync_api import TimeoutError as PWTimeout
+        # Must use wait_for_selector — el.count() returns 0 immediately before Angular
+        # renders formcontrolname attributes. wait_for_selector polls until it appears.
+        primary   = "input[formcontrolname='freeText']"
+        fallbacks = [
             "input[formcontrolname='companyName']",
             "mat-form-field input[type='text']",
             "input.mat-input-element",
             "input[placeholder*='חיפוש']",
-            "input[type='text']:not([readonly]):not([disabled])",
         ]
         found_sel = None
-        for sel in input_selectors:
-            try:
-                el = page.locator(sel).first
-                if el.count() > 0 and el.is_visible(timeout=4000):
-                    print(f"  [input] found: {sel!r}")
+        try:
+            page.wait_for_selector(primary, timeout=15_000)
+            found_sel = primary
+            print(f"  [input] Angular form ready: {primary!r}")
+        except PWTimeout:
+            print(f"  [input] Angular primary timed out — trying fallbacks")
+            for sel in fallbacks:
+                try:
+                    page.wait_for_selector(sel, timeout=5_000)
                     found_sel = sel
-                    el.click()
-                    page.wait_for_timeout(200)
-                    page.keyboard.press("Control+a")
-                    page.keyboard.press("Delete")
-                    page.keyboard.type(name_he)
-                    print(f"  [typed] {name_he!r}")
+                    print(f"  [input] fallback found: {sel!r}")
                     break
-            except Exception:
-                continue
+                except PWTimeout:
+                    continue
 
         if not found_sel:
-            print("  [ERROR] no search input found")
+            print("  [ERROR] no search input found — Angular may not have loaded")
             _screenshot(page, "02_no_input")
             _save_html(page, "02_no_input")
             browser.close()
             return []
+
+        el = page.locator(found_sel).first
+        el.click()
+        page.wait_for_timeout(200)
+        page.keyboard.press("Control+a")
+        page.keyboard.press("Delete")
+        page.keyboard.type(name_he)
+        print(f"  [typed] {name_he!r} into {found_sel!r}")
 
         _screenshot(page, "02_after_typing")
 
